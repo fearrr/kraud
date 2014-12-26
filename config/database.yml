@@ -1,0 +1,20 @@
+# PostgreSQL. Versions 8.2 and up are supported.
+
+default: &default
+  adapter: postgresql
+  encoding: LATIN1
+  pool: 5
+
+development:
+  <<: *default
+  database: kraud-app_development
+
+test:
+  <<: *default
+  database: kraud-app_test
+
+production:
+  <<: *default
+  database: kraud-app_production
+  username: kraud-app
+  password: <%= ENV['KRAUD-APP_DATABASE_PASSWORD'] %>
