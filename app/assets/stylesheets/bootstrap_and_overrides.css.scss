@@ -1,0 +1,197 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+html, body {
+  height: 100%;
+  background-color: #555555;
+}
+
+h1, h2, h3 {
+  padding: 1rem 0;
+  margin: 0;
+}
+header{
+  min-height:16rem;
+  .col-lg-4{
+    text-align:right;
+    p {
+      margin:0;
+    }
+  }
+}
+footer {
+  background-color: #363636;
+  color: #ffffff;
+  .col-lg-7 {
+    padding: 1rem 0
+  }
+  .col-lg-1 {
+    width: 7rem
+  }
+  .row {
+    padding: 0 0 2rem 0
+  }
+  i {
+    color: #981c1e;
+  }
+}
+
+.container {
+  padding: 0 2em;
+}
+
+.phone {
+  color: #8c2419;
+  font-size: 2em;
+}
+
+.fa-phone {
+  padding: 0 2rem 0 0;
+}
+
+.navbar-default {
+  hr {
+    border: 0;
+    border-bottom: 1.5rem solid #efefef;
+    margin: auto;
+  }
+  .nav {
+    li a {
+      color: #fff;
+    }
+    li {
+      width: 18.53rem;
+      border-right: 1px solid #4f4f4f;
+    }
+  }
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #fff;
+  background: #981c1e;
+}
+
+.navbar-default .navbar-nav > li:hover,
+.navbar-default .navbar-nav > li:focus {
+  color: #fff;
+  background: #981c1e;
+  a {
+    color:#fff;
+  }
+}
+
+
+.navbar-default .navbar-nav > a + a:before {
+  padding: 0 7px;
+  color: #333;
+  content: " | ";
+}
+
+.top-menu {
+  background: linear-gradient(to bottom, #4f4f4f, #787878);
+  text-align: center;
+  .active {
+    background-color: #337ab7;
+  }
+}
+
+.bottom-menu {
+  text-align: center;
+  color: #555555;
+  a {
+    color: #fff;
+    padding: 1.5rem;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #981c1e;
+  }
+
+}
+
+.content {
+  min-height: 70rem;
+}
+
+.random-text {
+  background-color: #981c1e;
+  margin-left: -1.3rem;
+  padding: 1rem 2rem;
+}
+
+.random-text:after {
+  content: '';
+  position: absolute;
+  right: -4rem;
+  top: 0;
+  bottom: 0;
+  width: 8rem;
+  background: #333;
+  -webkit-transform: skewX(-50deg);
+  -moz-transform: skewX(-50deg);
+  -ms-transform: skewX(-50deg);
+  -o-transform: skewX(-50deg);
+  transform: skewX(-50deg);
+}
+
+.copyright {
+  text-align: center;
+  padding: 2rem;
+  background-color: #000000;
+  color: #555555;
+}
+
+.breadcrumb {
+  background-color: #efefef;
+  a {
+    color: #555555;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #981c1e;
+  }
+
+}
+
+.breadcrumb > li + li:before {
+  padding: 0 7px;
+  color: #333;
+  content: ">";
+}
+
+
+i.tooltips {
+  position: relative;
+  display: inline;
+}
+i.tooltips span {
+  font-size: 1.3rem;
+  position: absolute;
+  width:18rem;
+  padding:1rem;
+  right:-12rem;
+  top:4rem;
+  color: #FFFFFF;
+  background: #000000;
+  height: 5rem;
+  line-height: 1.4rem;
+  text-align: left;
+  border-radius: 6px;
+}
+i.tooltips span:after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 14%;
+  margin-left: -8px;
+  width: 0; height: 0;
+  border-bottom: 8px solid #000000;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
