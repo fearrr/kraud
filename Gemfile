@@ -19,3 +19,7 @@ gem 'jbuilder', '~> 2.0'
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
 end
+
+group :production, :staging do
+gem 'rails_12factor'
+end
