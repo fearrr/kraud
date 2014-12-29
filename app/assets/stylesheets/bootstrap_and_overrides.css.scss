@@ -208,31 +208,20 @@ i.tooltips span:after {
 
 //MEGA MENU _________________________________________
 
-#menu {
-  display: block;
-  position: relative;
+.dropdown{
+//  visibility: hidden;
 }
-
 .dropdown_1column,
 .dropdown_2columns,
 .dropdown_3columns, {
   position: absolute;
-  left: -999em; /* Hides the drop down */
   text-align: left;
-//  border: 1px solid #777777;
   border-top: none;
 }
 
 .dropdown_1column {width: 140px;}
 .dropdown_2column {width: 280px;}
 .dropdown_3column {width: 420px;}
-
-#menu:hover .dropdown_1column,
-#menu:hover .dropdown_2columns,
-#menu:hover .dropdown_3columns {
-  left: -1px;
-  top: auto;
-}
 
 .col_1,
 .col_2,
