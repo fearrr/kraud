@@ -36,84 +36,22 @@
 
   <%= javascript_include_tag "application" %>
 </head>
+
+
 <body>
 <div class="container navbar-default content">
   <hr>
-  <header>
-    <div class="row">
-      <div class="col-lg-3">
-        <h1>LOGO</h1>
-
-        <p>комбикормовое оборудование <br>
-          пеллетное оборудование</p>
-      </div>
-      <div class="col-lg-5">
-        <h2>производитель и поставщик</h2>
-
-        <p>соверменного и высококачественного оборудования для сельского хозяйства</p>
-      </div>
-      <div class="col-lg-4">
-        <h2></h2>
-
-        <p>С 8:00 до 17:00 мо МCК (Сейчас работаем)</p>
-        <i class="fa fa-phone fa-2x fa-fw tooltips"> <span>Нажмите, чтобы заказать обратный звонок</span></i> <span class="phone">+7 831 412-99-90</span>
-
-
-      </div>
-    </div>
-  </header>
+  <%= render 'layouts/header' %>
   <!-- /header -->
-
-  <nav class="navbar navbar-default ">
-    <ul class="nav navbar-nav top-menu">
-      <li><a href="#">ГЛАВНАЯ</a></li>
-      <li><a href="#">КАТАЛОГ</a></li>
-      <li><a href="#">НОВОСТИ</a></li>
-      <li class="active"><a href="#">АКЦИИ</a></li>
-      <li><a href="#">О КОМПАНИИ</a></li>
-      <li><a href="#">КОНТАКТЫ</a></li>
-    </ul>
-  </nav>
+  <%= render 'layouts/top_menu' %>
   <!-- /menu -->
-  <ol class="breadcrumb">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Library</a></li>
-  </ol>
-  <!-- /bread -->
+  <%= render 'layouts/breadcrumbs' %>
+  <!-- /breadcrumbs -->
   <%= bootstrap_flash %>
   <%= yield %>
-
 </div>
 <!-- /container -->
-
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3 random-text"><p> Качественно новый стандарт</p></div>
-      <div class="col-lg-7 bottom-menu">
-        <a href="#">Главная</a> |
-        <a href="#">Каталог</a> |
-        <a href="#">Новости</a> |
-        <a href="#">Акции</a> |
-        <a href="#">О камании</a> |
-        <a href="#">Контакты</a>
-      </div>
-    </div>
-      <div class="row">
-        <div class="col-lg-1 col-md-offset-4">
-          <i class=" fa fa-home fa-4x"></i>
-        </div>
-        <div class="col-md-3">
-          603105, Россия, Нижний Новгород
-          ул. Агрономическая, 125а
-          тел. +7 831 412-99-90
-        </div>
-        <div class="col-lg-2 col-md-offset-2"><h1>LOGO</h1></div>
-      </div>
-    </div>
-  </div>
-  <div class="copyright">C 2014 Крауд. Все права защищены</div>
-</footer>
-
+<%= render 'layouts/footer' %>
+<!-- /footer -->
 </body>
 </html>
