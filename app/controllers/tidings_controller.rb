@@ -21,7 +21,25 @@ class TidingsController < ApplicationController
       render 'new'
     end
   end
-
+  def edit
+    @tiding = Tiding.find(params[:id])
+  end
+  def update
+    @tiding = Tiding.find(params[:id])
+    if @tiding.update_attributes(tidings_param)
+      # Handle a successful update.
+      flash[:success] = "Новость обновлена"
+      redirect_to tidings_url
+    else
+      render 'edit'
+    end
+  end
+  def destroy
+    @tiding = Tiding.find(params[:id])
+    @tiding.destroy
+    flash[:success] = "Новость удалена"
+    redirect_to tidings_url
+  end
   private
   def tidings_param
     params.require(:tiding).permit(:title, :body)

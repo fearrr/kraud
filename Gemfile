@@ -17,6 +17,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 gem 'impressionist'
+gem 'ckeditor'
+gem 'paperclip'
+
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

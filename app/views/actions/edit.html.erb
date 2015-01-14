@@ -1,8 +1,10 @@
-<%= form_for(@tiding) do |f| %>
+<%= form_for(@action, :as => :foo) do |f| %>
 
     <%= f.label :title, 'Заголовок' %></li>
     <%= f.text_field :title, class:'form-control' %>
-    <%= f.label :body, 'Текст новости' %>
+    <%= f.label :body, 'Текст акции' %>
     <%= f.cktext_area :body, :class => 'form-control', :ckeditor => {:language => 'ru'} %>
-    <%= f.submit "Добавить", class: "btn btn-primary" %>
+    <%= f.submit "Изменить", class: "btn btn-primary" %>
+
+
 <% end %>

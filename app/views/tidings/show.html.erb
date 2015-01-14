@@ -1,3 +1,7 @@
 <h3><%= @tiding.title %></h3>
-<p><%= @tiding.body %></p>
+<p><%= raw(@tiding.body) %></p>
 <p> Дата создания: <%= @tiding.created_at.strftime("%d.%m.%y") %>, Просмотров: <%= @impression %></p>
+<p class="admin">
+  <%= link_to "Удалить", @tiding, method: :delete, data: { confirm: "Вы уверены?" } %> |
+  <%= link_to "Изменить", edit_tiding_path(@tiding) %>
+</p>
