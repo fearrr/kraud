@@ -14,6 +14,13 @@
   <div class="col-md-3">
     <div class="tidings-preview">
       <h4>Новости компании</h4>
+      <ul>
+        <% @tidings.each do |tiding| %>
+            <li><span class="date"><%= tiding.created_at.strftime("%d.%m.%y") %></span>
+              <%= link_to tiding.title, tiding_path(tiding.id), :class=>'single' %>
+            </li>
+        <% end %>
+      </ul>
       <p>
         <%= link_to "Все новости", tidings_path, :class=>'all' %>
       </p>

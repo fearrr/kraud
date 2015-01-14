@@ -16,6 +16,7 @@ gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
+gem 'impressionist'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

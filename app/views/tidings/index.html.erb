@@ -1,18 +1,11 @@
-<h1>Tidings#index</h1>
-<p>Find me in app/views/tidings/index.html.erb</p>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
+<h1>Новости</h1>
+<p><%= link_to 'Добавить новость', new_tiding_path %></p>
+
+<% @tiding.each do |tiding| %>
+    <h3><%= link_to tiding.title, tiding_path(tiding.id) %></h3>
+    <p><%= truncate(tiding.body, length:255) %></p>
+    <p><%= link_to "Читать полностью", tiding_path(tiding.id) %></p>
+    <p><%= tiding.created_at.strftime("%d.%m.%y") %> | Просмотров: <%= tiding.impressionist_count(:filter=>:all) %></p>
+
+<% end %>
+

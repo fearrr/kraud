@@ -267,6 +267,17 @@ hr {
   a.single:hover {
     text-decoration: underline;
   }
+  .date{
+    background-color:red;
+    color:white;
+    font-size: 1rem;
+    padding:0.4rem;
+    margin-right:0.5rem;
+  }
+  li {
+    padding:0.5rem 0;
+    list-style-type:none;
+  }
 }
 
 .actions-preview {
@@ -279,16 +290,6 @@ hr {
     right: -3rem;
     border-bottom: 1.7rem solid red;
     border-left: 4rem solid red;
-  }
-  li {
-    padding:0.5rem 0;
-    list-style-type:none;
-  }
-  .date{
-    background-color:red;
-    color:white;
-    padding:0.4rem;
-    margin-right:1rem;
   }
   span.triangle::after {
     content: '';
@@ -314,7 +315,9 @@ hr {
     border-left: 1.5rem solid red;
   }
 }
-
-
-
-
+.content {
+  padding-bottom:2rem;
+}
+h3 a {
+  color:#555555;
+}

@@ -1,10 +1,12 @@
 class ActionsController < ApplicationController
   # encoding: UTF-8
+  impressionist :actions=>[:show, :index]
   def index
     @action = Action.all
   end
   def show
-
+    @action = Action.find(params[:id])
+    @impression = @action.impressionist_count(:filter=>:all)
   end
   def new
     @action = Action.new

@@ -40,7 +40,11 @@ GEM
     erubis (2.7.0)
     execjs (2.2.2)
     hike (1.2.3)
+    httpclient (2.6.0.1)
     i18n (0.7.0)
+    impressionist (1.5.1)
+      httpclient (~> 2.2)
+      nokogiri (~> 1.5)
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -54,8 +58,11 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
+    mini_portile (0.6.2)
     minitest (5.5.0)
     multi_json (1.10.1)
+    nokogiri (1.6.5)
+      mini_portile (~> 0.6.0)
     pg (0.17.1)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -131,6 +138,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   execjs
+  impressionist
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks

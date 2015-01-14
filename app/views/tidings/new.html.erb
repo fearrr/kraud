@@ -1,8 +1,8 @@
-<%= form_for(@action, :as => :foo) do |f| %>
+<%= form_for(@tiding) do |f| %>
 
     <%= f.label :title, 'Заголовок' %></li>
     <%= f.text_field :title, class:'form-control' %>
-    <%= f.label :body, 'Текст акции' %>
+    <%= f.label :body, 'Текст новости' %>
     <%= f.text_area :body, size: "60x12", class:'form-control' %>
     <%= f.submit "Добавить", class: "btn btn-primary" %>
 <% end %>
