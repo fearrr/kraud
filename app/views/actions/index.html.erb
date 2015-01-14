@@ -1,18 +1,10 @@
-<h1>Actions#index</h1>
-<p>Find me in app/views/actions/index.html.erb</p>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
-<h1></h1>
+# encoding: utf-8
+
+<h1>Акции</h1>
+<p><%= link_to 'Добавить акцию', new_action_path %></p>
+
+<% @action.each do |action| %>
+    <h3><%= action.title %></h3>
+    <p><%= action.body %></p>
+<% end %>
+

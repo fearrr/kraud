@@ -1,32 +1,48 @@
 <nav class="navbar navbar-default ">
   <ul class="nav navbar-nav top-menu">
-    <li class="active"><a href="#5">ГЛАВНАЯ</a></li>
+    <li><%= link_to 'ГЛАВНАЯ', root_path %></li>
     <li><a href="#" class="drop">КАТАЛОГ</a>
-      <div class="dropdown_3columns dropdown">
+      <div class="dropdown_2columns dropdown">
+          <div class="col_1">
+            <p>Комбикормовое оборудование</p>
+            <ul>
+              <li><a href="#">Линии производства комбикорма</a></li>
+              <li><a href="#">Дробилки</a></li>
+              <li><a href="#">Грануляторы</a></li>
+              <li><a href="#">Смесители</a></li>
+              <li><a href="#">Весы и весовые устройства</a></li>
+              <li><a href="#">Склады и бункеры</a></li>
+              <li><a href="#">Система охлаждения</a></li>
+              <li><a href="#">Система отопления, обогрева</a></li>
+              <li><a href="#">Система аспирации</a></li>
+              <li><a href="#">Система автоматизации</a></li>
+              <li><a href="#">Транспортировочное оборудование</a></li>
+              <li><a href="#">Зернопроводы и запорное оборудование</a></li>
+              <li><a href="#">Измельчители</a></li>
+              <li><a href="#">Прочее оборудование</a></li>
+            </ul>
+          </div>
         <div class="col_1">
-          <p>This is a 1 Column content</p>
-        </div>
-        <div class="col_1">
-          <p>This is a 1 Column content</p>
-        </div>
-        <div class="col_1">
-          <p>This is a 1 Column content</p>
-        </div>
-        <div class="col_1">
-          <p>This is a 1 Column content</p>
-        </div>
-        <div class="col_1">
-          <p>This is a 1 Column content</p>
-        </div>
-        <div class="col_1">
-          <p>This is a 1 Column content</p>
-        </div>
-        <div class="col_3">
+          <p>Пеллетное оборудование</p>
+          <ul>
+            <li><a href="#">Линии производства пеллет</a></li>
+            <li><a href="#">Дробилки</a></li>
+            <li><a href="#">Грануляторы</a></li>
+            <li><a href="#">Весы и весовые устройства</a></li>
+            <li><a href="#">Склады и бункеры</a></li>
+            <li><a href="#">Система охлаждения</a></li>
+            <li><a href="#">Система отопления, обогрева</a></li>
+            <li><a href="#">Система аспирации</a></li>
+            <li><a href="#">Система автоматизации</a></li>
+            <li><a href="#">Транспортировочное оборудование</a></li>
+            <li><a href="#">Измельчители</a></li>
+            <li><a href="#">Прочее оборудование</a></li>
+          </ul>
         </div>
       </div>
     </li>
-    <li><a href="#2">НОВОСТИ</a></li>
-    <li><a href="#1">АКЦИИ</a></li>
+    <li><%= link_to 'НОВОСТИ', tidings_path %></li>
+    <li><%= link_to 'АКЦИИ', actions_path %></li>
     <li><a href="#3">О КОМПАНИИ</a></li>
     <li><a href="#4">КОНТАКТЫ</a></li>
   </ul>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  root 'actions#index'
+  resources :actions
+  resources :tidings
+  root 'static#index'
 
 end

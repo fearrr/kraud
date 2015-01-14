@@ -2,8 +2,11 @@
 
 default: &default
   adapter: postgresql
-  encoding: LATIN1
+  encoding: utf8
   pool: 5
+  ctype: en_US.utf8
+  collation: en_US.utf8
+  template: template0
 
 development:
   <<: *default
