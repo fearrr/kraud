@@ -1,0 +1,6 @@
+<%= render 'shared/abouts_error_messages' %>
+<%= form_for(@body) do |f| %>
+    <%= f.label :body, 'Текст страницы' %>
+    <%= f.cktext_area :body, :class => 'form-control', :ckeditor => {:language => 'ru'} %>
+    <%= f.submit "Изменить", class: "btn btn-primary" %>
+<% end %>
