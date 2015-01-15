@@ -24,5 +24,9 @@ module KraudApp
     # config.i18n.default_locale = :de
     config.i18n.default_locale = :ru
 
+    # ckeditor precompile
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    config.assets.precompile += Ckeditor.assets
+    config.assets.precompile += %w(ckeditor/*)
   end
 end
