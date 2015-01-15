@@ -19,7 +19,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'impressionist'
 gem 'ckeditor'
 gem 'paperclip'
+gem 'russian'
 
+gem 'gmaps4rails'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

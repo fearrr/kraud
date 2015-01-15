@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :tidings
   root 'static#index'
 
+  get 'about' => 'static#about'
+  get 'contact' => 'static#contact'
+
 end

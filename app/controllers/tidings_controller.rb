@@ -2,7 +2,7 @@ class TidingsController < ApplicationController
   # encoding: UTF-8
   impressionist :actions=>[:show, :index]
   def index
-    @tiding = Tiding.all
+    @tiding = Tiding.all.order('created_at DESC')
   end
   def show
     @tiding = Tiding.find(params[:id])

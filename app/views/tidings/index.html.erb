@@ -1,16 +1,18 @@
 <h1>Новости</h1>
-<p class="admin"><%= link_to 'Добавить новость', new_tiding_path %></p>
+<p><%= link_to 'Добавить новость', new_tiding_path, :class=>"btn btn-primary" %></p>
 
 <% @tiding.each do |tiding| %>
+    <div class="blog-item">
     <h3><%= link_to tiding.title, tiding_path(tiding.id) %></h3>
     <p><%= raw(truncate(tiding.body, length:255,:escape => false)) %></p>
     <p><%= link_to "Читать полностью", tiding_path(tiding.id) %></p>
     <p><%= tiding.created_at.strftime("%d.%m.%y") %> | Просмотров: <%= tiding.impressionist_count(:filter=>:all) %></p>
 
     <p class="admin">
-      <%= link_to "Удалить", tiding, method: :delete, data: { confirm: "Вы уверены?" } %> |
-      <%= link_to "Изменить", edit_tiding_path(tiding) %>
+      <%= link_to "Изменить", edit_tiding_path(tiding), :class=>"btn btn-sm btn-primary" %>
+      <%= link_to "Удалить", tiding, :class=>"btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+
     </p>
-    <hr>
+    </div>
 <% end %>
 

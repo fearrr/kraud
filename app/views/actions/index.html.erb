@@ -1,16 +1,21 @@
 <h1>Акции</h1>
-<p class="admin"><%= link_to 'Добавить акцию', new_action_path %></p>
+<p><%= link_to 'Добавить акцию', new_action_path, :class=>"btn btn-primary" %></p>
 
 <% @action.each do |action| %>
-    <h3><%= link_to action.title, action_path(action.id) %></h3>
-    <p><%= raw(truncate(action.body, length:255,:escape => false)) %></p>
-    <p><%= link_to "Читать полностью", action_path(action.id) %></p>
-    <p><%= action.created_at.strftime("%d.%m.%y") %> | Просмотров: <%= action.impressionist_count(:filter=>:all) %></p>
+    <div class="blog-item">
+      <h3><%= link_to action.title, action_path(action.id) %></h3>
 
-    <p class="admin">
-      <%= link_to "Удалить", action, method: :delete, data: { confirm: "Вы уверены?" } %>  |
-      <%= link_to "Изменить", edit_action_path(action) %>
-    </p>
-    <hr>
+      <p><%= raw(truncate(action.body, length: 255, :escape => false)) %></p>
+
+      <p><%= link_to "Читать полностью", action_path(action.id) %></p>
+
+      <p><%= action.created_at.strftime("%d.%m.%y") %> |
+        Просмотров: <%= action.impressionist_count(:filter => :all) %></p>
+
+      <p class="admin">
+        <%= link_to "Изменить", edit_action_path(action), :class=>"btn btn-sm btn-primary" %>
+        <%= link_to "Удалить", action, :class=>"btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+      </p>
+    </div>
 <% end %>
 

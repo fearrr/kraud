@@ -208,6 +208,7 @@ i.tooltips span:after {
 
 .dropdown_2columns {
   position: absolute;
+  z-index:9999;
   text-align: left;
   border-top: none;
   background: #4f4f4f;
@@ -326,6 +327,12 @@ h3 a {
   margin-top:1rem;
 }
 
-p.admin a{
-  color:red;
+p.admin{
+  text-align:right;
+}
+
+.blog-item{
+  background-color: #efefef;
+  padding:0 1rem 1rem 1rem;
+  margin:2rem 0;
 }
