@@ -15,6 +15,10 @@ crumb :edit_tiding do |tiding|
   link "Изменить", tiding
   parent tiding
 end
+crumb :add_tiding do
+  link "Добавить", new_tiding_path
+  parent :tidings
+end
 
 # Actions
 crumb :actions do
@@ -27,6 +31,10 @@ end
 crumb :edit_action do |action|
   link "Изменить", action
   parent action
+end
+crumb :add_action do
+  link "Добавить", new_action_path
+  parent :actions
 end
 
 # About
