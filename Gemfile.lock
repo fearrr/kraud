@@ -29,6 +29,7 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
+    bxslider-rails (4.1.0)
     ckeditor (4.1.1)
       cocaine
       orm_adapter (~> 0.5.0)
@@ -152,6 +153,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bxslider-rails
   ckeditor
   coffee-rails (~> 4.0.0)
   execjs

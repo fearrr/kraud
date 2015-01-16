@@ -208,7 +208,7 @@ i.tooltips span:after {
 
 .dropdown_2columns {
   position: absolute;
-  z-index:9999;
+  z-index: 9999;
   text-align: left;
   border-top: none;
   background: #4f4f4f;
@@ -250,34 +250,34 @@ hr {
 .actions-preview, .tidings-preview {
   background-color: #f4f4f4;
   padding: 0.5rem 0;
-  h4 ~ *{
-    padding:0 2rem;
+  h4 ~ * {
+    padding: 0 2rem;
   }
   h4 {
     background-color: #dddddd;
     padding: 1rem;
   }
   a.all {
-    color:#555555;
+    color: #555555;
     text-decoration: underline;
   }
   a.single {
-    color:#555555;
+    color: #555555;
     text-decoration: none;
   }
   a.single:hover {
     text-decoration: underline;
   }
-  .date{
-    background-color:red;
-    color:white;
+  .date {
+    background-color: red;
+    color: white;
     font-size: 1rem;
-    padding:0.4rem;
-    margin-right:0.5rem;
+    padding: 0.4rem;
+    margin-right: 0.5rem;
   }
   li {
-    padding:0.5rem 0;
-    list-style-type:none;
+    padding: 0.5rem 0;
+    list-style-type: none;
   }
 }
 
@@ -316,37 +316,98 @@ hr {
     border-left: 1.5rem solid red;
   }
 }
+
 .content {
-  padding-bottom:2rem;
+  padding-bottom: 2rem;
 }
+
 h3 a {
-  color:#555555;
+  color: #555555;
 }
 
 .btn {
-  margin-top:1rem;
+  margin-top: 1rem;
 }
 
-p.admin{
-  text-align:right;
+p.admin {
+  text-align: right;
 }
 
-.blog-item{
+.blog-item {
   background-color: #efefef;
-  padding:0 1rem 1rem 1rem;
-  margin:2rem 0;
+  padding: 0 1rem 1rem 1rem;
+  margin: 2rem 0;
 }
 
-.contact{
+.contact {
   li {
-    list-style-type:none;
+    list-style-type: none;
   }
   i {
-    padding:1rem;
+    padding: 1rem;
     font-size: 2rem;
   }
 }
 
 #map {
-  margin-bottom:1rem;
+  margin-bottom: 1rem;
+}
+
+//BX-SLIDER
+ul.bxslider {
+  padding: 0;
+  margin: 0;
+}
+
+.bx-viewport {
+  padding: 0;
+}
+
+.bx-wrapper {
+  padding-left: 0.6rem;
+  height: 250px;
+}
+
+.bx-caption {
+  top: 0;
+  height: 4rem;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.bx-wrapper .bx-prev {
+  opacity: 0.5;
+  left: 10px;
+  background: url(left.png) no-repeat;
+}
+
+.bx-wrapper .bx-next {
+  opacity: 0.5;
+  right: 10px;
+  background: url(right.png) no-repeat;
+}
+
+.bx-wrapper .bx-controls-direction a {
+  position: absolute;
+  top: 50%;
+  margin-top: 25px;
+  outline: 0;
+  width: 40px;
+  height: 40px;
+  text-indent: -9999px;
+  z-index: 9999;
+}
+
+.bx-wrapper .bx-prev:hover {
+  opacity: 1;
+  background-position: 0 0;
+}
+
+.bx-wrapper .bx-next:hover {
+  opacity: 1;
+  background-position: 0 0;
+}
+
+.bx-wrapper .bx-viewport {
+  border: 0;
 }

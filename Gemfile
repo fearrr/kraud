@@ -22,6 +22,7 @@ gem 'paperclip'
 gem 'russian'
 
 gem 'gmaps4rails'
+gem 'bxslider-rails'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

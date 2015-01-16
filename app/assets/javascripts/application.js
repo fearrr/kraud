@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require bxslider
 //= require twitter/bootstrap
 //= require ckeditor/init
 //= require ckeditor/config
