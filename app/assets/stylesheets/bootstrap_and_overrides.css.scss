@@ -378,13 +378,13 @@ ul.bxslider {
 .bx-wrapper .bx-prev {
   opacity: 0.5;
   left: 10px;
-  background: url(left.png) no-repeat;
+  background: image-url("bxslider/left.png") no-repeat;
 }
 
 .bx-wrapper .bx-next {
   opacity: 0.5;
   right: 10px;
-  background: url(right.png) no-repeat;
+  background: image-url("bxslider/right.png") no-repeat;
 }
 
 .bx-wrapper .bx-controls-direction a {
