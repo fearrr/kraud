@@ -209,11 +209,19 @@ i.tooltips span:after {
 
 //MEGA MENU _________________________________________
 
+.dropdown_2columns:after {
+  content:"";
+  background: #c0c0c0;
+  position: absolute;
+  top:0;
+  left:18.5rem;
+  height: 1px;
+  width: 37rem;
+}
 .dropdown_2columns {
   position: absolute;
   z-index: 999999;
   text-align: left;
-  border-top: none;
   background: #a04332;
   width: 55.5rem;
   ul {
