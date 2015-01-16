@@ -16,7 +16,6 @@
 //= require bxslider
 //= require twitter/bootstrap
 //= require ckeditor/init
-//= require ckeditor/config
 //= require underscore
 //= require gmaps/google
 //= require turbolinks

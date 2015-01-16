@@ -42,15 +42,18 @@ crumb :about do
   link "О компании", abouts_path
 end
 crumb :edit_about do
-  link "Изменить", abouts_path
+  link "Редактировать страницу", abouts_path
   parent :about
 end
 
 # Contact
 crumb :contact do
-  link "Контакты", contact_path
+  link "Контакты", contacts_path
 end
-
+crumb :edit_contact do
+  link "Редактировать страницу", contacts_path
+  parent :contact
+end
 # crumb :projects do
 #   link "Projects", projects_path
 # end

@@ -1,0 +1,27 @@
+<% breadcrumb :contact %>
+<p><%= link_to 'Редактировать страницу', edit_contact_path(@body), :class => "btn btn-primary" %></p>
+
+<div id="map" style='width: 100%; height: 400px;'></div>
+
+<div class="row">
+  <div class="col-md-7">
+    <h4>Оставьте ваш отзыв</h4>
+  </div>
+  <div class="col-md-5">
+    <%= raw(@body.body) %>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+    var handler = Gmaps.build('Google');
+    handler.buildMap({internal: {id: 'map'}}, function () {
+        var markers = handler.addMarkers([
+            {lat: 56.32414, lng: 44.00149, infowindow: "Офис"},
+            {lat: 56.2994, lng: 44.0249, infowindow: "Склад"}
+        ]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(13);
+    });
+</script>
