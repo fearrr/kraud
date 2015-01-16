@@ -32,10 +32,7 @@ CKEDITOR.editorConfig = function( config )
   // The location of a script that handles file uploads.
   config.filebrowserUploadUrl = "/ckeditor/attachment_files";
 
-
-  config.enterMode = CKEDITOR.ENTER_BR;
   config.allowedContent = true;
-
 
   // Rails CSRF token
   config.filebrowserParams = function(){
@@ -119,5 +116,3 @@ CKEDITOR.editorConfig = function( config )
     { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar' ] }
   ];
 };
-
-CKEDITOR.dtd.$removeEmpty['i'] = false;
