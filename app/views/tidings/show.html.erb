@@ -1,7 +1,8 @@
+<% breadcrumb :tiding, @tiding %>
 <h3><%= @tiding.title %></h3>
 <p><%= raw(@tiding.body) %></p>
 <p> Дата создания: <%= @tiding.created_at.strftime("%d.%m.%y") %>, Просмотров: <%= @impression %></p>
 <p class="admin">
-  <%= link_to "Изменить", edit_action_path(@tiding), :class=>"btn btn-sm btn-primary" %>
+  <%= link_to "Изменить", edit_tiding_path(@tiding), :class=>"btn btn-sm btn-primary" %>
   <%= link_to "Удалить", @tiding, :class=>"btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
 </p>

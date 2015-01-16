@@ -1,3 +1,5 @@
+<% breadcrumb :action, @action %>
+
 <h3><%= @action.title %></h3>
 <p><%= raw(@action.body) %></p>
 <p> Дата создания: <%= @action.created_at.strftime("%d.%m.%y") %>, Просмотров: <%= @impression %></p>

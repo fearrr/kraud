@@ -23,6 +23,7 @@ gem 'russian'
 
 gem 'gmaps4rails'
 gem 'bxslider-rails'
+gem "gretel"
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
