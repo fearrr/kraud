@@ -377,6 +377,7 @@ ul.bxslider {
 
 .bx-wrapper .bx-prev {
   opacity: 0.5;
+  z-index: 9999999;
   left: 10px;
   background: image-url("bxslider/left.png") no-repeat;
 }
@@ -384,6 +385,7 @@ ul.bxslider {
 .bx-wrapper .bx-next {
   opacity: 0.5;
   right: 10px;
+  z-index: 9999999;
   background: image-url("bxslider/right.png") no-repeat;
 }
 
