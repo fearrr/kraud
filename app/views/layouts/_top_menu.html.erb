@@ -1,40 +1,24 @@
 <nav class="navbar navbar-default ">
   <ul class="nav navbar-nav top-menu">
     <li><%= link_to 'ГЛАВНАЯ', root_path %></li>
-    <li><a href="#" class="drop">КАТАЛОГ</a>
+    <li><%= link_to 'КАТАЛОГ &nbsp;<i class="fa fa-angle-down"></i>'.html_safe, items_path, :class => "drop" %>
       <div class="dropdown_2columns dropdown">
         <div class="col_1">
-            <ul class="bord">
-              <li><strong>Линии производства комбикорма</strong></li>
-              <li><a href="#">Дробилки</a></li>
-              <li><a href="#">Грануляторы</a></li>
-              <li><a href="#">Смесители</a></li>
-              <li><a href="#">Весы и весовые устройства</a></li>
-              <li><a href="#">Склады и бункеры</a></li>
-              <li><a href="#">Система охлаждения</a></li>
-              <li><a href="#">Система отопления, обогрева</a></li>
-              <li><a href="#">Система аспирации</a></li>
-              <li><a href="#">Система автоматизации</a></li>
-              <li><a href="#">Транспортировочное оборудование</a></li>
-              <li><a href="#">Зернопроводы и запорное оборудование</a></li>
-              <li><a href="#">Измельчители</a></li>
-              <li><a href="#">Прочее оборудование</a></li>
-            </ul>
-          </div>
+          <ul class="bord">
+            <li><strong>Линии производства комбикорма</strong></li>
+            <% @kombikorm = Type.where(section_name:"Комбикормовое оборудование")
+               @kombikorm.each do |type| %>
+                <li><%= type.title %></li>
+            <% end %>
+          </ul>
+        </div>
         <div class="col_1">
           <ul>
             <li><strong>Линии производства пеллет</strong></li>
-            <li><a href="#">Дробилки</a></li>
-            <li><a href="#">Грануляторы</a></li>
-            <li><a href="#">Весы и весовые устройства</a></li>
-            <li><a href="#">Склады и бункеры</a></li>
-            <li><a href="#">Система охлаждения</a></li>
-            <li><a href="#">Система отопления, обогрева</a></li>
-            <li><a href="#">Система аспирации</a></li>
-            <li><a href="#">Система автоматизации</a></li>
-            <li><a href="#">Транспортировочное оборудование</a></li>
-            <li><a href="#">Измельчители</a></li>
-            <li><a href="#">Прочее оборудование</a></li>
+            <% @pellet = Type.where(section_name:"Пеллетное оборудование")
+               @pellet.each do |type| %>
+                <li><%= type.title %></li>
+            <% end %>
           </ul>
         </div>
       </div>

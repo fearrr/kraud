@@ -1,0 +1,18 @@
+<p>
+  <%= link_to 'Добавить материал', new_item_path, :class=>"btn btn-primary" %>
+  <%= link_to 'Добавить раздел', new_type_path, :class=>"btn btn-primary" %>
+</p>
+
+<h2><%= @kombikorm.first.section_name %></h2>
+<ul>
+    <% @kombikorm.each do |type| %>
+    <li><%= type.title %></li>
+    <% end %>
+</ul>
+<h2><%= @pellet.first.section_name %></h2>
+<ul>
+  <% @pellet.each do |type| %>
+      <li><%= type.title %></li>
+  <% end %>
+</ul>
+

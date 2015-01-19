@@ -1,0 +1,17 @@
+<%= render 'shared/items_error_messages' %>
+<%= form_for(@item, html: {method: "get"}, :format => :js, :remote=>true) do |f| %>
+
+    <%= f.label :title, 'Наименование' %>
+    <%= f.text_field :title, class: 'form-control' %>
+
+    <%= f.label :section, 'Тип оборудования' %>
+    <%= f.select :section, @sections.map {|value| [ value, value ]}, {}, {:class=>'form-control', :id=>'sections_select'} %>
+
+    <%= f.label :type_id, 'Тип категории' %>
+    <%= f.collection_select :type_id, @types, :id, :title, {}, {:class => 'form-control', :id=>'types_select' } %>
+
+    <%= f.label :body, 'Текст материала' %>
+    <%= f.cktext_area :body, :class => 'form-control', :ckeditor => { :language => 'ru' } %>
+    <%= f.submit "Добавить", class: "btn btn-primary" %>
+
+<% end %>
