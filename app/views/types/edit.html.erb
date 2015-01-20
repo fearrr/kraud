@@ -1,0 +1,15 @@
+<% if @type.section_name == "Комбикормовое оборудование" %>
+    <% breadcrumb :edit_type_kombikorm, @type %>
+<% else %>
+    <% breadcrumb :edit_type_pellet, @type %>
+<% end %>
+<%= render 'shared/types_error_messages' %>
+<div class="col-md-4">
+  <%= form_for(@type) do |f| %>
+      <%= f.label :section_name, 'Тип оборудования' %>
+      <%= f.select(:section_name, [["Комбикормовое оборудование"], ["Пеллетное оборудование"]], {}, :class => 'form-control') %>
+      <%= f.label :title, 'Наименование' %>
+      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.submit "Изменить", class: "btn btn-primary" %>
+  <% end %>
+</div>

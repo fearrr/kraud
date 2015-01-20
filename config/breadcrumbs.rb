@@ -93,7 +93,22 @@ crumb :item_pellet do |item, type|
   link item.title, item
   parent :type_pellet, type
 end
-
+crumb :edit_type_pellet do |type|
+  link "Изменить", type
+  parent :type_pellet, type
+end
+crumb :edit_type_kombikorm do |type|
+  link "Изменить", type
+  parent :type_kombikorm, type
+end
+crumb :edit_item_kombikorm do |item, type|
+  link "Изменить", item
+  parent :item_kombikorm, item, type
+end
+crumb :edit_item_pellet do |item, type|
+  link "Изменить", item
+  parent :item_pellet, item, type
+end
 
 
 # crumb :projects do

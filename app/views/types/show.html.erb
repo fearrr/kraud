@@ -4,6 +4,9 @@
     <% breadcrumb :type_pellet, @type %>
 <% end %>
 
+<%= link_to "Редактировать раздел", edit_type_path(@type), :class=>"btn btn-primary" %>
+<%= link_to "Удалить раздел", @type, :class=>"btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+
 <ul>
   <% if @items.first %>
       <% @items.each do |item| %>

@@ -1,0 +1,23 @@
+<% if @item.section == "Комбикормовое оборудование" %>
+    <% breadcrumb :edit_item_kombikorm, @item, @type %>
+<% else %>
+    <% breadcrumb :edit_item_pellet, @item, @type %>
+<% end %>
+<%= render 'shared/items_error_messages' %>
+<%= form_for(@item) do |f| %>
+
+    <%= f.label :title, 'Наименование' %>
+    <%= f.text_field :title, class: 'form-control' %>
+
+    <%= f.label :section, 'Тип оборудования' %>
+    <%= f.select :section, @sections.map {|value| [ value, value ]}, {}, {:class=>'form-control', :id=>'sections_select'} %>
+
+    <%= f.label :type_id, 'Тип категории' %>
+    <%= f.collection_select :type_id, @types, :id, :title, {}, {:class => 'form-control', :id=>'types_select' } %>
+
+    <%= f.label :body, 'Текст материала' %>
+    <%= f.cktext_area :body, :class => 'form-control', :ckeditor => { :language => 'ru' } %>
+
+    <%= f.submit "Изменить", class: "btn btn-primary" %>
+
+<% end %>
