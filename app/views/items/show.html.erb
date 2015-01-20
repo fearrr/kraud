@@ -1,0 +1,6 @@
+<% if @item.section == "Комбикормовое оборудование" %>
+    <% breadcrumb :item_kombikorm, @item, @type %>
+<% else %>
+    <% breadcrumb :item_pellet, @item, @type %>
+<% end %>
+<%= raw(@item.body) %>

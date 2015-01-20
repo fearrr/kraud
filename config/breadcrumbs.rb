@@ -54,6 +54,48 @@ crumb :edit_contact do
   link "Редактировать страницу", contacts_path
   parent :contact
 end
+
+
+
+# Catalog
+crumb :catalog do
+  link "Каталог", types_path
+end
+crumb :add_type do
+  link "Добавить раздел", new_type_path
+  parent :catalog
+end
+crumb :add_material do
+  link "Добавить материал", new_item_path
+  parent :catalog
+end
+crumb :kombikorm do
+  link "Линии проризводства комбикорма", kombikorm_path
+  parent :catalog
+end
+crumb :pellet do
+  link "Линии проризводства пеллет", pellet_path
+  parent :catalog
+end
+crumb :type_kombikorm do |type|
+  link type.title, type
+  parent :kombikorm
+end
+crumb :type_pellet do |type|
+  link type.title, type
+  parent :pellet
+end
+crumb :item_kombikorm do |item, type|
+  link item.title, item
+  parent :type_kombikorm, type
+end
+crumb :item_pellet do |item, type|
+  link item.title, item
+  parent :type_pellet, type
+end
+
+
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end

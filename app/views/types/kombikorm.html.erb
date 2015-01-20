@@ -1,0 +1,6 @@
+<% breadcrumb :kombikorm %>
+<ul>
+<% @kombikorm.each do |type| %>
+      <li><%= link_to type.title, type_path(type.id) %></li>
+<% end %>
+</ul>

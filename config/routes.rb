@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   get 'items/update_types', as: 'update_types'
+  get 'types/kombikorm', as: 'kombikorm'
+  get 'types/pellet', as: 'pellet'
   resources :actions
   resources :tidings
   resources :types

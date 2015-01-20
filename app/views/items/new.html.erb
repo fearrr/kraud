@@ -1,5 +1,6 @@
+<% breadcrumb :add_material %>
 <%= render 'shared/items_error_messages' %>
-<%= form_for(@item, html: {method: "get"}, :format => :js, :remote=>true) do |f| %>
+<%= form_for(@item) do |f| %>
 
     <%= f.label :title, 'Наименование' %>
     <%= f.text_field :title, class: 'form-control' %>
@@ -12,6 +13,7 @@
 
     <%= f.label :body, 'Текст материала' %>
     <%= f.cktext_area :body, :class => 'form-control', :ckeditor => { :language => 'ru' } %>
+
     <%= f.submit "Добавить", class: "btn btn-primary" %>
 
 <% end %>

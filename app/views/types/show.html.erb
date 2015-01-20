@@ -1,0 +1,16 @@
+<% if @type.section_name == "Комбикормовое оборудование" %>
+    <% breadcrumb :type_kombikorm, @type %>
+<% else %>
+    <% breadcrumb :type_pellet, @type %>
+<% end %>
+
+<ul>
+  <% if @items.first %>
+      <% @items.each do |item| %>
+          <li><%= link_to item.title, item_path(item.id) %></li>
+      <% end %>
+  <% else %>
+      Нет материалов в данной категории
+  <% end %>
+
+</ul>
