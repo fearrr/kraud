@@ -3,17 +3,19 @@
 <% else %>
     <% breadcrumb :type_pellet, @type %>
 <% end %>
-
+<h2><%= @type.title %></h2>
+<p>
 <%= link_to "Редактировать раздел", edit_type_path(@type), :class=>"btn btn-primary" %>
 <%= link_to "Удалить раздел", @type, :class=>"btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
-
+</p>
 <ul>
   <% if @items.first %>
       <% @items.each do |item| %>
           <li><%= link_to item.title, item_path(item.id) %></li>
       <% end %>
+      </ul>
   <% else %>
-      Нет материалов в данной категории
+      </ul>
+      <p>Нет материалов в данной категории</p>
   <% end %>
 
-</ul>

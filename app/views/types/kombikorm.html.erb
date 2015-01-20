@@ -1,4 +1,5 @@
 <% breadcrumb :kombikorm %>
+<h2><%= @kombikorm.first.section_name %></h2>
 <ul>
 <% @kombikorm.each do |type| %>
       <li><%= link_to type.title, type_path(type.id) %></li>
