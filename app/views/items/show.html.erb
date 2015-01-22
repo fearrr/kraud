@@ -13,8 +13,10 @@
   <div class="col-md-7">
     <h4 class="item-title"><%= @item.title %></h4>
     <%= raw(@description) if @description %>
-    <h4 class="text">Особенности конструкции</h4>
-    <%= raw(@features) %>
+    <% if @features %>
+        <h4 class="text">Особенности конструкции</h4>
+        <%= raw(@features) %>
+    <% end %>
   </div>
 
   <div class="col-md-4 gallery">

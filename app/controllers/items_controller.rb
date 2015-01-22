@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
     if @item.save
       # Handle a successful save.
       flash[:success] = "Материал добавлен"
-      redirect_to types_url
+      redirect_to item_url(@item.id)
     else
       render 'new'
     end

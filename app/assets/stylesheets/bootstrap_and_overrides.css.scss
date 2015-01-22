@@ -397,14 +397,14 @@ ul.bxslider {
   opacity: 0.5;
   z-index: 9999999;
   left: 10px;
-  background: image-url("bxslider/left.png") no-repeat;
+  background: asset-url("bxslider/left.png") no-repeat;
 }
 
 .bx-wrapper .bx-next {
   opacity: 0.5;
   right: 10px;
   z-index: 9999999;
-  background: image-url("bxslider/right.png") no-repeat;
+  background: asset-url("bxslider/right.png") no-repeat;
 }
 
 .bx-wrapper .bx-controls-direction a {
@@ -487,7 +487,7 @@ ul.bxslider {
 
   /* Делаем input побольше, чтобы он точно
      перекрыл контейнер. */
-  font-size: 200px;
+  font-size: 30px;
 
   /* Делаем input невидимым. По-другому нельзя,
      иначе браузер не будет на него реагировать. */
@@ -540,15 +540,15 @@ h4.item-title{
   background-color: #8c8c8c;
   color:#fff;
   padding: 1rem 2rem;
-  max-width: 500px;
+  width: 500px;
 }
-h4.item-title::after {
+h4.item-title::before {
   content: '';
   position: relative;
   width: 0;
   height: 0;
   top: -0.8rem;
-  right:-28.5rem;
+  left:-2.1rem;
   border-bottom: 1.7rem solid red;
   border-left: 1.5rem solid red;
 }
