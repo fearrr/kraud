@@ -3,7 +3,6 @@
 <% else %>
     <% breadcrumb :item_pellet, @item, @type %>
 <% end %>
-<h2><%= @item.title %></h2>
 <p>
   <%= link_to "Редактировать материал", edit_item_path(@item), :class => "btn btn-primary" %>
   <%= link_to "Удалить материал", @item, :class => "btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>

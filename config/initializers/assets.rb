@@ -7,6 +7,8 @@ Rails.application.config.assets.precompile += %w( controls.png )
 Rails.application.config.assets.precompile += %w( border.png )
 Rails.application.config.assets.precompile += %w( loading-background.png )
 Rails.application.config.assets.precompile += %w( loading.gif )
+Rails.application.config.assets.precompile += %w( left.png )
+Rails.application.config.assets.precompile += %w( right.png )
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
