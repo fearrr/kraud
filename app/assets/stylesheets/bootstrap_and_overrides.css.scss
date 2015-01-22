@@ -15,6 +15,16 @@ h1, h2, h3 {
   margin: 0;
 }
 
+h2 {
+  font-size: 30px;
+  color: #080808;
+}
+
+h3 {
+  font-size: 24px;
+  color: #666666;
+}
+
 header {
   min-height: 16rem;
   .col-lg-4 {
@@ -210,14 +220,15 @@ i.tooltips span:after {
 //MEGA MENU _________________________________________
 
 .dropdown_2columns:after {
-  content:"";
+  content: "";
   background: #c0c0c0;
   position: absolute;
-  top:0;
-  left:18.5rem;
+  top: 0;
+  left: 18.5rem;
   height: 1px;
   width: 37rem;
 }
+
 .dropdown_2columns {
   position: absolute;
   z-index: 999999;
@@ -236,8 +247,9 @@ i.tooltips span:after {
   padding: 2rem;
   width: 27rem;
 }
+
 .bord:after {
-  content:"";
+  content: "";
   background: #555555;
   position: absolute;
   bottom: 5%;
@@ -418,4 +430,129 @@ ul.bxslider {
 
 .bx-wrapper .bx-viewport {
   border: 0;
+}
+
+.catalog {
+  hr {
+    border-color: #8c8c8c;
+  }
+  div {
+    padding: 1rem 0 1rem 0;
+    background-color: #fff;
+    text-align: center;
+    a {
+      margin: 0;
+      color: #555555;
+    }
+    img {
+      margin: 0 auto;
+      display: block;
+      padding-bottom: 1rem;
+    }
+  }
+  li {
+    list-style-type: none;
+    a {
+      color: #666666;
+    }
+  }
+}
+
+.file_upload {
+  /* Для того, чтобы спозиционировать input
+     относительно контейнера. */
+  position: relative;
+  /* Скрываем неумещающуюся часть input-а. */
+  //  overflow: hidden;
+  display: inline-block;
+  /* Украшательство: */
+  background: #eee;
+  border: 1px solid #ccc;
+  font-size: 20px;
+  margin: 1rem 1rem 0 0;
+  //  line-height: 1;
+  text-align: center;
+  width: 35px;
+  height: 35px;
+}
+
+.file_upload input[type=file] {
+  /* Позиционируем правый верхний край
+     input поверх нашего контейнера.
+     Правый верхний потому как именно там
+     у нас кнопка. */
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  /* Делаем input побольше, чтобы он точно
+     перекрыл контейнер. */
+  font-size: 200px;
+
+  /* Делаем input невидимым. По-другому нельзя,
+     иначе браузер не будет на него реагировать. */
+  opacity: 0;
+  filter: alpha(opacity=0);
+
+  /*  Украшательства: */
+  cursor: pointer;
+}
+
+#text {
+//  width: 100%;
+//  display:block;
+  table {
+    padding: 20px 0;
+  }
+  section{
+    padding:5px;
+  }
+  ul li {
+   padding:1rem 0;
+  }
+  td, th {
+    text-align:center;
+  }
+  thead {
+    background-color: black;
+    color: #fff;
+  }
+}
+
+#text h4:not(.item-title), h4.text {
+  background-color: #d4d4d4;
+  padding: 1rem 2rem;
+  max-width: 500px;
+}
+
+#text h4:not(.item-title)::before, h4.text::before {
+  content: '';
+  position: relative;
+  width: 0;
+  height: 0;
+  top: -0.8rem;
+  left:-2.1rem;
+  border-bottom: 1.7rem solid red;
+  border-left: 1.5rem solid red;
+}
+
+h4.item-title{
+  background-color: #8c8c8c;
+  color:#fff;
+  padding: 1rem 2rem;
+  max-width: 500px;
+}
+h4.item-title::after {
+  content: '';
+  position: relative;
+  width: 0;
+  height: 0;
+  top: -0.8rem;
+  right:-28.5rem;
+  border-bottom: 1.7rem solid red;
+  border-left: 1.5rem solid red;
+}
+
+section {
+  padding:20px 0;
 }

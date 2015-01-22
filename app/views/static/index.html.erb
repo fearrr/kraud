@@ -16,6 +16,7 @@
     <%= image_tag("karen.png", :alt => "karen", :size => "250x190") %>
   </div>
 </div>
+
 <div class="row">
   <div class="col-md-3">
     <div class="tidings-preview">
@@ -23,25 +24,25 @@
       <ul>
         <% @tidings.each do |tiding| %>
             <li><span class="date"><%= tiding.created_at.strftime("%d.%m.%y") %></span>
-              <%= link_to tiding.title, tiding_path(tiding.id), :class=>'single' %>
+              <%= link_to tiding.title, tiding_path(tiding.id), :class => 'single' %>
             </li>
         <% end %>
       </ul>
       <p>
-        <%= link_to "Все новости", tidings_path, :class=>'all' %>
+        <%= link_to "Все новости", tidings_path, :class => 'all' %>
       </p>
     </div>
     <div class="actions-preview">
       <h4>Внимание, акция!</h4>
       <ul>
         <% @actions.each do |action| %>
-          <li><span class="date"><%= action.created_at.strftime("%d.%m.%y") %></span>
-            <%= link_to action.title, action_path(action.id), :class=>'single' %>
-          </li>
+            <li><span class="date"><%= action.created_at.strftime("%d.%m.%y") %></span>
+              <%= link_to action.title, action_path(action.id), :class => 'single' %>
+            </li>
         <% end %>
       </ul>
       <p>
-        <%= link_to "Все акции", actions_path, :class=>'all' %>
+        <%= link_to "Все акции", actions_path, :class => 'all' %>
       </p>
     </div>
   </div>
@@ -61,7 +62,8 @@
           <h4>Инжиниринг</h4>
 
           <p>При разработке оборудования наши инжинеры используют самые современные технологии и многолетний опыт.
-            Конструкторский отдел компании имеет возможность разработать схему любой сложности исходя из Ваших потребностей.
+            Конструкторский отдел компании имеет возможность разработать схему любой сложности исходя из Ваших
+            потребностей.
           </p>
         </td>
       </tr>
@@ -69,7 +71,8 @@
         <td>
           <h4>Собственное производство</h4>
 
-          <p>Компания «Крауд» имеет собственные производственные площади, расположенные в г. Нижнем Новгороде и г. Арзамасе.
+          <p>Компания «Крауд» имеет собственные производственные площади, расположенные в г. Нижнем Новгороде и г.
+            Арзамасе.
             На производстве задействовано более 300 квалифицированных специалистов.
           </p>
         </td>
@@ -94,15 +97,18 @@
         <td>
           <h4>Наши решения приносят прибыль</h4>
 
-          <p>Сотрудничая с нами, вы получаете качественную и надежную технику по конкурентным ценам, что гарантирует быстрый
+          <p>Сотрудничая с нами, вы получаете качественную и надежную технику по конкурентным ценам, что гарантирует
+            быстрый
             возврат инвестиций и стабильную эксплуатацию в течение многих лет
           </p>
         </td>
       </tr>
-</table>
+    </table>
 
-</div>
+  </div>
 </div>
 
 <hr class="solid-hr">
+
+<%= render "types/index" %>
 

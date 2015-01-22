@@ -4,7 +4,7 @@
     <% breadcrumb :edit_item_pellet, @item, @type %>
 <% end %>
 <%= render 'shared/items_error_messages' %>
-<%= form_for(@item) do |f| %>
+<%= form_for @item, :html => { :multipart => true } do |f| %>
 
     <%= f.label :title, 'Наименование' %>
     <%= f.text_field :title, class: 'form-control' %>
@@ -16,7 +16,9 @@
     <%= f.collection_select :type_id, @types, :id, :title, {}, {:class => 'form-control', :id=>'types_select' } %>
 
     <%= f.label :body, 'Текст материала' %>
-    <%= f.cktext_area :body, :class => 'form-control', :ckeditor => { :language => 'ru' } %>
+    <%= f.cktext_area :body, :class => 'form-control', :ckeditor => { :language => 'ru', :toolbar=>'mini' } %>
+
+    <div class="file_upload">+<%= file_field_tag('item_attached_assets_asset', multiple: true, name: "item[attached_assets_attributes][][asset]") %> </div> <b>Загрузить изображения</b> (изображения отображатся в превью и галерее )  <br>
 
     <%= f.submit "Изменить", class: "btn btn-primary" %>
 

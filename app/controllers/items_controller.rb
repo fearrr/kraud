@@ -5,6 +5,22 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @type = Type.find(@item.type_id)
+
+    parser = @item.body
+
+    @table = parser.slice(parser.index('<thead>')..parser.index('</table>')-1)
+
+    @description = parser.slice(parser.index('<section class="description"')..parser.index('</section>')+10)
+    parser = parser.sub(@description, '')
+
+    @features = parser.slice(parser.index('<section class="features"')..parser.index('</section>')+10)
+    parser = parser.sub(@features, '')
+
+    @options = parser.slice(parser.index('<section class="options"')..parser.index('</section>')+10)
+    parser = parser.sub(@options, '')
+
+    @delivery = parser.slice(parser.index('<section class="delivery"')..parser.index('</section>')+10)
+
   end
 
   def new
@@ -16,6 +32,8 @@ class ItemsController < ApplicationController
   def create
     @sections = Type.uniq.pluck(:section_name)
     @types = Type.where("section_name = ?", Type.first.section_name)
+
+    # AttachedAsset.create(attached_params)
 
     @item = Item.new(items_params)
     if @item.save
@@ -31,13 +49,12 @@ class ItemsController < ApplicationController
     @sections = Type.uniq.pluck(:section_name)
     @item = Item.find(params[:id])
     @type = Type.find(@item.type_id)
-
     @types = Type.where("section_name = ?", @type.section_name)
   end
 
   def update
     @sections = Type.uniq.pluck(:section_name)
-    @item = Type.find(params[:id])
+    @item = Item.find(params[:id])
     @type = Type.find(@item.type_id)
     @types = Type.where("section_name = ?", @type.section_name)
     if @item.update_attributes(items_params)
@@ -65,6 +82,6 @@ class ItemsController < ApplicationController
 
   private
   def items_params
-    params.require(:item).permit(:section, :body, :title, :type_id)
+    params.require(:item).permit(:section, :body, :title, :type_id, attached_assets_attributes: [:asset, :asset_file_name])
   end
 end

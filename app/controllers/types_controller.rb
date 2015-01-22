@@ -9,7 +9,7 @@ class TypesController < ApplicationController
     if @type.update_attributes(types_params)
       # Handle a successful update.
       flash[:success] = "Раздел обновлен"
-      redirect_to items_url
+      redirect_to types_url
     else
       render 'edit'
     end
@@ -30,9 +30,11 @@ class TypesController < ApplicationController
   end
 
   def index
-    @kombikorm = Type.where(section_name: "Комбикормовое оборудование")
-    @pellet = Type.where(section_name: "Пеллетное оборудование")
+    @kombikorm = Type.where(section_name: "Комбикормовое оборудование").limit(2)
+    @pellet = Type.where(section_name: "Пеллетное оборудование").limit(2)
     @sections = Type.uniq.pluck(:section_name)
+
+    @pellet_items = Item.where("section = ?", @pellet.first.section_name)
   end
 
   def show
@@ -49,7 +51,7 @@ class TypesController < ApplicationController
     if @type.save
       # Handle a successful save.
       flash[:success] = "Категория добавлена"
-      redirect_to items_url
+      redirect_to types_url
     else
       render 'new'
     end

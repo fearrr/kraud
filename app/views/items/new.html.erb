@@ -1,18 +1,21 @@
 <% breadcrumb :add_material %>
 <%= render 'shared/items_error_messages' %>
-<%= form_for(@item) do |f| %>
+<%= form_for @item, :html => { :multipart => true } do |f| %>
+
 
     <%= f.label :title, 'Наименование' %>
     <%= f.text_field :title, class: 'form-control' %>
 
     <%= f.label :section, 'Тип оборудования' %>
-    <%= f.select :section, @sections.map {|value| [ value, value ]}, {}, {:class=>'form-control', :id=>'sections_select'} %>
+    <%= f.select :section, @sections.map {|value| [ value, value ]}, {:prompt=>'Выберите тип оборудования'}, {:class=>'form-control', :id=>'sections_select'} %>
 
     <%= f.label :type_id, 'Тип категории' %>
     <%= f.collection_select :type_id, @types, :id, :title, {}, {:class => 'form-control', :id=>'types_select' } %>
 
     <%= f.label :body, 'Текст материала' %>
-    <%= f.cktext_area :body, :class => 'form-control', :ckeditor => { :language => 'ru' } %>
+    <%= f.cktext_area :body, :class => 'form-control', :ckeditor => { :language => 'ru', :toolbar => "mini", :customConfig => asset_path('ckeditor/config.js') } %>
+
+    <div class="file_upload">+<%= file_field_tag('item_attached_assets_asset', multiple: true, name: "item[attached_assets_attributes][][asset]") %> </div> <b>Загрузить изображения</b> (изображения отображатся в превью и галерее)  <br>
 
     <%= f.submit "Добавить", class: "btn btn-primary" %>
 

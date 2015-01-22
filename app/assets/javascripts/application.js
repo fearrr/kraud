@@ -13,18 +13,33 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require_tree ./ckeditor
 //= require bxslider
 //= require twitter/bootstrap
 //= require ckeditor/init
 //= require underscore
+//= require jquery.colorbox
+//= require jquery.lightSlider
+//= require simpleGal
 //= require gmaps/google
 //= require turbolinks
 //= require_tree .
 
 $(document).ready(function(){
+    //$('a.gallery').colorbox({rel:'gal'});
 
     $('ul.top-menu a').each(function () {
         if (this.href == location.href) $(this).parent().addClass('active');
+    });
+
+    $("#lightSlider").lightSlider({
+        gallery: true,
+        item: 1,
+        loop:true,
+        slideMargin: 0,
+        thumbItem: 3,
+        vertical:true,
+        thumbItem:5
     });
 
 });
