@@ -1,15 +1,14 @@
 <% breadcrumb :pellet %>
-<h2><%= @pellet.first.section_name %></h2>
+<h3><%= @pellet.first.section_name %></h3>
 <ul>
   <% @pellet.each do |type| %>
       <li><%= link_to type.title, type_path(type.id) %></li>
   <% end %>
 </ul>
 <div class="catalog">
-<h2><%= @pellet.first.section_name %></h2>
 <ul>
   <% @pellet.each do |type| %>
-      <li><h3><%= link_to "#{type.title} для пеллет", type_path(type.id) %></h3></li>
+      <li><h4><%= link_to "#{type.title} для пеллет", type_path(type.id) %></h4></li>
       <% @items = Item.where("type_id = ?", type.id) %>
       <div class="row">
         <% if @items.first %>

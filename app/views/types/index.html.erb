@@ -1,14 +1,13 @@
 <% breadcrumb :catalog %>
-<h1>Каталог</h1>
 <p>
   <%= link_to 'Добавить материал', new_item_path, :class => "btn btn-primary" %>
   <%= link_to 'Добавить раздел', new_type_path, :class => "btn btn-primary" %>
 </p>
 <div class="catalog">
-  <h2><%= @kombikorm.first.section_name %></h2>
+  <h3><%= @kombikorm.first.section_name %></h3>
   <ul>
     <% @kombikorm.each do |type| %>
-        <li><h3><%= link_to "#{type.title} для комбикорма", type_path(type.id) %></h3></li>
+        <li><h4><%= link_to "#{type.title} для комбикорма", type_path(type.id) %></h4></li>
         <% @items = Item.where("type_id = ?", type.id) %>
         <div class="row">
           <% if @items.first %>
@@ -27,10 +26,10 @@
         <hr>
     <% end %>
   </ul>
-  <h2><%= @pellet.first.section_name %></h2>
+  <h3><%= @pellet.first.section_name %></h3>
   <ul>
     <% @pellet.each do |type| %>
-        <li><h3><%= link_to "#{type.title} для пеллет", type_path(type.id) %></h3></li>
+        <li><h4><%= link_to "#{type.title} для пеллет", type_path(type.id) %></h4></li>
         <% @items = Item.where("type_id = ?", type.id) %>
         <div class="row">
           <% if @items.first %>
