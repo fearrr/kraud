@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require_tree ./ckeditor
 //= require bxslider
 //= require twitter/bootstrap
 //= require ckeditor/init
@@ -26,12 +25,9 @@
 //= require_tree .
 
 $(document).ready(function(){
-    //$('a.gallery').colorbox({rel:'gal'});
-
     $('ul.top-menu a').each(function () {
         if (this.href == location.href) $(this).parent().addClass('active');
     });
-
     $("#lightSlider").lightSlider({
         gallery: true,
         item: 1,
@@ -41,7 +37,6 @@ $(document).ready(function(){
         vertical:true,
         thumbItem:5
     });
-
 });
 
 
