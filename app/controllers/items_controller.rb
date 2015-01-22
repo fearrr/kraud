@@ -8,18 +8,24 @@ class ItemsController < ApplicationController
 
     parser = @item.body
 
-    @table = parser.slice(parser.index('<thead>')..parser.index('</table>')-1)
 
-    @description = parser.slice(parser.index('<section class="description"')..parser.index('</section>')+10)
-    parser = parser.sub(@description, '')
+    @table = parser.slice(parser.index('<thead>')..parser.index('</table>')-1) if parser.index('<thead>')
 
-    @features = parser.slice(parser.index('<section class="features"')..parser.index('</section>')+10)
-    parser = parser.sub(@features, '')
+    if parser.index('<section class="description"')
+      @description = parser.slice(parser.index('<section class="description"')..parser.index('</section>')+10)
+      parser = parser.sub(@description, '')
+    end
+    if parser.index('<section class="features"')
+      @features = parser.slice(parser.index('<section class="features"')..parser.index('</section>')+10)
+      parser = parser.sub(@features, '')
+    end
 
-    @options = parser.slice(parser.index('<section class="options"')..parser.index('</section>')+10)
-    parser = parser.sub(@options, '')
+    if parser.index('<section class="options"')
+      @options = parser.slice(parser.index('<section class="options"')..parser.index('</section>')+10)
+      parser = parser.sub(@options, '')
+    end
 
-    @delivery = parser.slice(parser.index('<section class="delivery"')..parser.index('</section>')+10)
+    @delivery = parser.slice(parser.index('<section class="delivery"')..parser.index('</section>')+10) if parser.index('<section class="delivery"')
 
   end
 
@@ -60,7 +66,7 @@ class ItemsController < ApplicationController
     if @item.update_attributes(items_params)
       # Handle a successful update.
       flash[:success] = "Материал обновлен"
-      redirect_to types_url
+      redirect_to item_url(@item.id)
     else
       render 'edit'
     end

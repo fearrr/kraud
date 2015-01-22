@@ -3,14 +3,18 @@
  For licensing, see LICENSE.html or http://ckeditor.com/license
  */
 
+CKEDITOR.stylesSet.add('custom', [
+    { name: 'Описание материала', element: 'section', attributes: { 'class': 'description' } },
+    { name: 'Условия поставки', element: 'section', attributes: { 'class': 'delivery' } },
+    { name: 'Комплектация', element: 'section', attributes: { 'class': 'options' } }
+]);
 
 
-CKEDITOR.editorConfig = function( config )
-{
+CKEDITOR.editorConfig = function (config) {
     // Define changes to default configuration here. For example:
     // config.language = 'fr';
     // config.uiColor = '#AADC6E';
-
+    config.stylesSet = 'custom';
     /* Filebrowser routes */
     // The location of an external file browser, that should be launched when "Browse Server" button is pressed.
     config.filebrowserBrowseUrl = "/ckeditor/attachment_files";
@@ -36,15 +40,15 @@ CKEDITOR.editorConfig = function( config )
     config.allowedContent = true;
 
     // Rails CSRF token
-    config.filebrowserParams = function(){
+    config.filebrowserParams = function () {
         var csrf_token, csrf_param, meta,
             metas = document.getElementsByTagName('meta'),
             params = new Object();
 
-        for ( var i = 0 ; i < metas.length ; i++ ){
+        for (var i = 0; i < metas.length; i++) {
             meta = metas[i];
 
-            switch(meta.name) {
+            switch (meta.name) {
                 case "csrf-token":
                     csrf_token = meta.content;
                     break;
@@ -63,21 +67,21 @@ CKEDITOR.editorConfig = function( config )
         return params;
     };
 
-    config.addQueryString = function( url, params ){
+    config.addQueryString = function (url, params) {
         var queryString = [];
 
-        if ( !params ) {
+        if (!params) {
             return url;
         } else {
-            for ( var i in params )
-                queryString.push( i + "=" + encodeURIComponent( params[ i ] ) );
+            for (var i in params)
+                queryString.push(i + "=" + encodeURIComponent(params[i]));
         }
 
-        return url + ( ( url.indexOf( "?" ) != -1 ) ? "&" : "?" ) + queryString.join( "&" );
+        return url + ( ( url.indexOf("?") != -1 ) ? "&" : "?" ) + queryString.join("&");
     };
 
     // Integrate Rails CSRF token into file upload dialogs (link, image, attachment and flash)
-    CKEDITOR.on( 'dialogDefinition', function( ev ){
+    CKEDITOR.on('dialogDefinition', function (ev) {
         // Take the dialog name and its definition from the event data.
         var dialogName = ev.data.name;
         var dialogDefinition = ev.data.definition;
@@ -96,25 +100,46 @@ CKEDITOR.editorConfig = function( config )
 
     // Toolbar groups configuration.
     config.toolbar = [
-        { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source'] },
-        { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+        {name: 'document', groups: ['mode', 'document', 'doctools'], items: ['Source']},
+        {
+            name: 'clipboard',
+            groups: ['clipboard', 'undo'],
+            items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']
+        },
         // { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
         // { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
-        { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
-        { name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'SpecialChar' ] },
-        { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] },
+        {name: 'links', items: ['Link', 'Unlink', 'Anchor']},
+        {name: 'insert', items: ['Image', 'Flash', 'Table', 'HorizontalRule', 'SpecialChar']},
+        {
+            name: 'paragraph',
+            groups: ['list', 'indent', 'blocks', 'align', 'bidi'],
+            items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
+        },
         '/',
-        { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
-        { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
-        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] }
+        {name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize']},
+        {name: 'colors', items: ['TextColor', 'BGColor']},
+        {
+            name: 'basicstyles',
+            groups: ['basicstyles', 'cleanup'],
+            items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']
+        }
     ];
 
     config.toolbar_mini = [
-        { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] },
-        { name: 'styles', items: [ 'Font', 'FontSize' ] },
-        { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
-        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
-        { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar' ] }
+        {name: 'document', groups: ['mode', 'document', 'doctools'], items: ['Source']},
+        {
+            name: 'paragraph',
+            groups: ['list', 'indent', 'blocks', 'align', 'bidi'],
+            items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
+        },
+        {name: 'styles', items: ['Styles']},
+        {name: 'colors', items: ['TextColor', 'BGColor']},
+        {
+            name: 'basicstyles',
+            groups: ['basicstyles', 'cleanup'],
+            items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']
+        },
+        {name: 'insert', items: ['Image', 'Table', 'HorizontalRule', 'SpecialChar']}
     ];
 };
 

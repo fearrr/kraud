@@ -13,7 +13,7 @@
     <%= f.collection_select :type_id, @types, :id, :title, {}, {:class => 'form-control', :id=>'types_select' } %>
 
     <%= f.label :body, 'Текст материала' %>
-    <%= f.cktext_area :body, :class => 'form-control', :ckeditor => { :language => 'ru', :toolbar => "mini", :customConfig => asset_path('ckeditor/config.js') } %>
+    <%= f.cktext_area :body, :class => 'form-control', :ckeditor => { :language => 'ru', :toolbar=>'mini' } %>
 
     <div class="file_upload">+<%= file_field_tag('item_attached_assets_asset', multiple: true, name: "item[attached_assets_attributes][][asset]") %> </div> <b>Загрузить изображения</b> (изображения отображатся в превью и галерее)  <br>
 
