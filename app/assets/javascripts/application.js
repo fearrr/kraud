@@ -28,14 +28,22 @@ $(document).ready(function(){
     $('ul.top-menu a').each(function () {
         if (this.href == location.href) $(this).parent().addClass('active');
     });
-    $("#lightSlider").lightSlider({
+
+    var slider = $("#lightSlider").lightSlider({
         gallery: true,
         item: 1,
         loop:true,
-        slideMargin: 0,
-        thumbItem: 3,
-        vertical:true,
-        thumbItem:5
+        slideWidth:10,
+        slideMargin: 1,
+        thumbItem: 4,
+        thumbMargin:1,
+        controls:false
+    });
+    $('#goToPrevSlide').click(function(){
+        slider.goToPrevSlide();
+    });
+    $('#goToNextSlide').click(function(){
+        slider.goToNextSlide();
     });
 });
 

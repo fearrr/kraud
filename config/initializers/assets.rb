@@ -4,6 +4,7 @@
 Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( overlay.png )
 Rails.application.config.assets.precompile += %w( controls.png )
+Rails.application.config.assets.precompile += %w( lightcontrols.png )
 Rails.application.config.assets.precompile += %w( border.png )
 Rails.application.config.assets.precompile += %w( loading-background.png )
 Rails.application.config.assets.precompile += %w( loading.gif )

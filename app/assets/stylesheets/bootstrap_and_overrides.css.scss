@@ -5,35 +5,98 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
   */
+
+$red: #c54a48;
+$menu: #cf4f4f;
+$dropdown-menu: #d55e5e;
+$grey: #a1a1a1;
+
 html, body {
   height: 100%;
   background-color: #555555;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+//  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 h1, h2, h3 {
   padding: 1rem 0;
   margin: 0;
+//  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.landing{
+  font-size:16px;
 }
 
-h2 {
-  font-size: 30px;
+  h2 {
+  font-size: 24px;
   color: #080808;
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 20px;
   color: #666666;
 }
 
 header {
   min-height: 16rem;
-  .col-lg-4 {
-    text-align: right;
+  .col-lg-4:not(.main-logo){
+    padding-top:2rem;
+    h2{
+      padding:0;
+    }
     p {
       margin: 0;
+      color:$grey;
     }
   }
+  .under-logo {
+    margin-top:-2rem;
+    font-size:15px;
+  }
+  .time {
+    text-align: right;
+  }
+  .phone {
+    color: $red;
+    font-size: 1.7em;
+    font-weight: 300;
+  }
+
+  i.tooltips {
+    position: relative;
+    display: inline;
+  }
+
+  i.tooltips span {
+    font-size: 1.3rem;
+    position: absolute;
+    width: 18rem;
+    padding: 1rem;
+    right: -14rem;
+    top: 4rem;
+    color: #FFFFFF;
+    background: #000000;
+    height: 5rem;
+    line-height: 1.4rem;
+    text-align: left;
+    border-radius: 6px;
+  }
+
+  i.tooltips span:after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 14%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-bottom: 8px solid #000000;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+  }
 }
+
 
 footer {
   background-color: #363636;
@@ -48,7 +111,7 @@ footer {
     padding: 0 0 2rem 0
   }
   i {
-    color: #981c1e;
+    color: $red;
   }
 }
 
@@ -56,14 +119,7 @@ footer {
   padding: 0 2em;
 }
 
-.phone {
-  color: #8c2419;
-  font-size: 2em;
-}
 
-.fa-phone {
-  padding: 0 2rem 0 0;
-}
 
 .navbar-default {
   hr.top-hr {
@@ -98,13 +154,13 @@ ul.top-menu > li {
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: #fff;
-  background: #981c1e;
+  background: $menu;
 }
 
 .navbar-default .navbar-nav > li:hover,
 .navbar-default .navbar-nav > li:focus {
   color: #fff;
-  background: #981c1e;
+  background: $menu;
   a {
     color: #fff;
   }
@@ -117,7 +173,7 @@ ul.top-menu > li {
 }
 
 .top-menu {
-  background: linear-gradient(to bottom, #4f4f4f, #787878);
+  background: linear-gradient(to bottom, #727272, #8a8a8a);
   text-align: center;
   border-bottom: 1px solid #c0c0c0;
 }
@@ -131,7 +187,7 @@ ul.top-menu > li {
   }
   a:hover {
     text-decoration: none;
-    color: #981c1e;
+    color: $menu;
   }
 }
 
@@ -140,9 +196,11 @@ ul.top-menu > li {
 }
 
 .random-text {
-  background-color: #981c1e;
+  background-color: #752424;
   margin-left: -1.3rem;
   padding: 1rem 2rem;
+  font-size:1.1em;
+  font-weight: 100;
 }
 
 .random-text:after {
@@ -168,6 +226,7 @@ ul.top-menu > li {
 }
 
 .breadcrumb {
+  margin-top:-1.3rem;
   background-color: #efefef;
   a {
     color: #555555;
@@ -184,38 +243,7 @@ ul.top-menu > li {
   content: ">";
 }
 
-i.tooltips {
-  position: relative;
-  display: inline;
-}
 
-i.tooltips span {
-  font-size: 1.3rem;
-  position: absolute;
-  width: 18rem;
-  padding: 1rem;
-  right: -12rem;
-  top: 4rem;
-  color: #FFFFFF;
-  background: #000000;
-  height: 5rem;
-  line-height: 1.4rem;
-  text-align: left;
-  border-radius: 6px;
-}
-
-i.tooltips span:after {
-  content: '';
-  position: absolute;
-  bottom: 100%;
-  left: 14%;
-  margin-left: -8px;
-  width: 0;
-  height: 0;
-  border-bottom: 8px solid #000000;
-  border-right: 8px solid transparent;
-  border-left: 8px solid transparent;
-}
 
 //MEGA MENU _________________________________________
 
@@ -233,7 +261,7 @@ i.tooltips span:after {
   position: absolute;
   z-index: 999999;
   text-align: left;
-  background: #a04332;
+  background: $dropdown-menu;
   width: 55.5rem;
   ul {
     padding: 0 1rem;
@@ -250,7 +278,7 @@ i.tooltips span:after {
 
 .bord:after {
   content: "";
-  background: #555555;
+  background: #8c8c8c;
   position: absolute;
   bottom: 5%;
   right: 0;
@@ -297,7 +325,7 @@ hr {
     text-decoration: underline;
   }
   .date {
-    background-color: red;
+    background-color: $menu;
     color: white;
     font-size: 1rem;
     padding: 0.4rem;
@@ -317,8 +345,8 @@ hr {
     height: 0;
     top: -0.8rem;
     right: -7.5rem;
-    border-bottom: 1.7rem solid red;
-    border-left: 1.5rem solid red;
+    border-bottom: 1.7rem solid $menu;
+    border-left: 1.5rem solid $menu;
   }
 }
 
@@ -330,8 +358,8 @@ hr {
     height: 0;
     top: -0.8rem;
     right: -6.5rem;
-    border-bottom: 1.7rem solid red;
-    border-left: 1.5rem solid red;
+    border-bottom: 1.7rem solid $menu;
+    border-left: 1.5rem solid $menu;
   }
 }
 
@@ -376,21 +404,24 @@ ul.bxslider {
   padding: 0;
   margin: 0;
 }
-
 .bx-viewport {
   padding: 0;
 }
 
 .bx-wrapper {
+  margin-top:-1rem;
   padding-left: 0.6rem;
   height: 250px;
 }
 
 .bx-caption {
+  opcaity:0.6;
   top: 0;
   height: 4rem;
-  padding: 0.5rem;
-  font-size: 1.5rem;
+  padding-top: 0;
+  font-size: 1.8rem;
+  text-decoration: underline;
+  color:#fff;
 }
 
 .bx-wrapper .bx-prev {
@@ -438,7 +469,6 @@ ul.bxslider {
   }
   div {
     padding: 1rem 0 1rem 0;
-    background-color: #fff;
     text-align: center;
     a {
       margin: 0;
@@ -499,16 +529,11 @@ ul.bxslider {
 }
 
 #text {
-//  width: 100%;
-//  display:block;
   table {
     padding: 20px 0;
   }
   section{
     padding:5px;
-  }
-  ul li {
-   padding:1rem 0;
   }
   td, th {
     text-align:center;
@@ -517,12 +542,19 @@ ul.bxslider {
     background-color: black;
     color: #fff;
   }
+  .col-md-5{
+    overflow:hidden;
+    width:550px;
+  }
+  table {
+    padding:5px;
+  }
 }
 
 #text h4:not(.item-title), h4.text {
   background-color: #d4d4d4;
   padding: 1rem 2rem;
-  max-width: 500px;
+  width: 570px;
 }
 
 #text h4:not(.item-title)::before, h4.text::before {
@@ -532,15 +564,15 @@ ul.bxslider {
   height: 0;
   top: -0.8rem;
   left:-2.1rem;
-  border-bottom: 1.7rem solid red;
-  border-left: 1.5rem solid red;
+  border-bottom: 1.7rem solid $menu;
+  border-left: 1.5rem solid $menu;
 }
 
 h4.item-title{
   background-color: #8c8c8c;
   color:#fff;
   padding: 1rem 2rem;
-  width: 500px;
+  width: 570px;
 }
 h4.item-title::before {
   content: '';
@@ -549,14 +581,81 @@ h4.item-title::before {
   height: 0;
   top: -0.8rem;
   left:-2.1rem;
-  border-bottom: 1.7rem solid red;
-  border-left: 1.5rem solid red;
+  border-bottom: 1.7rem solid $menu;
+  border-left: 1.5rem solid $menu;
 }
 
 section {
   padding:20px 0;
 }
 
-.gallery {
-  width:430px;
+#goToPrevSlide, #goToNextSlide{
+  width: 32px;
+  display: block;
+  top: 30%;
+  height: 45px;
+  cursor: pointer;
+  position: absolute;
+  z-index: 9999;
+  margin-top: -16px;
+  opacity: 0.5;
+  -webkit-transition: opacity 0.35s linear 0s;
+  transition: opacity 0.35s linear 0s;
+  background-image: asset-url('lightcontrols.png');
+}
+#goToPrevSlide, #goToNextSlide > a:hover {
+  opacity: 1;
+}
+#goToPrevSlide {
+  background-position: 0 0;
+  left: -35px;
+}
+#goToNextSlide {
+  background-position: -32px 0;
+  right: -35px;
+}
+.gallery{
+  width:370px;
+  padding:0 0 3rem 0;
+  float:right;
+}
+.item-description {
+  width:1100px;
+}
+.description, .features {
+  ul {
+    margin-left:-4rem;
+    margin-top:-2rem;
+    list-style: none;
+    li {
+      padding:1rem;
+      text-indent: -.7em;
+    }
+    li:before {
+      content: "• ";
+      font-size:2rem;
+      color: $red;
+      padding:0.5rem;
+    }
+  }
+}
+
+
+
+.options, .delivery{
+  ul {
+    margin-left:-4rem;
+    margin-top:-1rem;
+    list-style: none;
+    li {
+      padding:0.5rem;
+      text-indent: -.7em;
+    }
+    li:before {
+      content: "• ";
+      font-size:2rem;
+      color: $red;
+      padding:0.5rem;
+    }
+  }
 }

@@ -1,5 +1,5 @@
 <% breadcrumb :kombikorm %>
-<h3><%= @kombikorm.first.section_name %></h3>
+<h2><%= @kombikorm.first.section_name %></h2>
 <ul>
 <% @kombikorm.each do |type| %>
       <li><%= link_to type.title, type_path(type.id) %></li>
@@ -8,12 +8,12 @@
 <div class="catalog">
 <ul>
   <% @kombikorm.each do |type| %>
-      <li><h4><%= link_to "#{type.title} для комбикорма", type_path(type.id) %></h4></li>
+      <li><h3><%= link_to "#{type.title} для комбикорма", type_path(type.id) %></h3></li>
       <% @items = Item.where("type_id = ?", type.id) %>
       <div class="row">
         <% if @items.first %>
             <% @items.each do |item| %>
-                <div class="col-md-3">
+                <div class="col-md-2">
                   <%= image_tag(item.attached_assets.first.asset.url(:mini)) if !item.attached_assets.empty? && item.attached_assets.first.asset %>
                   <%= link_to item.title, item_path(item.id) %>
                 </div>
