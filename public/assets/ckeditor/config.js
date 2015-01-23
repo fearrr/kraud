@@ -3,6 +3,7 @@
  For licensing, see LICENSE.html or http://ckeditor.com/license
  */
 
+
 CKEDITOR.stylesSet.add('custom', [
     { name: 'Описание материала', element: 'section', attributes: { 'class': 'description' } },
     { name: 'Условия поставки', element: 'section', attributes: { 'class': 'delivery' } },
