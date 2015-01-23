@@ -8,5 +8,7 @@ class StaticController < ApplicationController
     @sections = Type.uniq.pluck(:section_name)
 
     @pellet_items = Item.where("section = ?", @pellet.first.section_name)
+
+
   end
 end

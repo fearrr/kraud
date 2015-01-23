@@ -1,3 +1,12 @@
+<% Time.zone = 'Moscow'
+    t = Time.zone.now
+    if t.hour >= 8 && t.hour <= 17
+      @hours = "Сейчас работаем"
+    else
+      @hours = "Сейчас не работаем"
+    end
+%>
+
 <header>
   <div class="row">
     <div class="col-lg-4 main-logo">
@@ -7,11 +16,13 @@
     </div>
     <div class="col-lg-4">
       <h2><strong>ПРОИЗВОДИТЕЛЬ <br> И ПОСТАВЩИК</strong></h2>
+
       <p class="under-logo">СОВРЕМЕННОГО ВЫСОКОКАЧЕСТВЕННОГО ОБОРУДОВАНИЯ <br> ДЛЯ СЕЛЬСКОГО ХОЗЯЙСТВА</p>
     </div>
     <div class="col-lg-4 time">
-      <p>С 8:00 до 17:00 мо МCК (Сейчас работаем)</p>
-      <i class="fa fa-phone fa-2x fa-fw tooltips"> <span>Нажмите, чтобы заказать обратный звонок</span></i> <span class="phone">+7 831 412-99-90</span>
+      <p>С 8:00 до 17:00 мо МCК (<%= @hours %>)</p>
+      <i class="fa fa-phone fa-2x fa-fw tooltips"> <span>Нажмите, чтобы заказать обратный звонок</span></i>
+      <span class="phone">+7 831 412-99-90</span>
     </div>
   </div>
 </header>

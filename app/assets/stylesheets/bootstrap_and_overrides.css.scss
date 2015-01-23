@@ -183,11 +183,15 @@ ul.top-menu > li {
   color: #555555;
   a {
     color: #fff;
-    padding: 1.5rem;
+    padding: 1rem;
   }
   a:hover {
     text-decoration: none;
     color: $menu;
+  }
+  a:not(:last-child)::after{
+    content: "|";
+    padding-left:2rem;
   }
 }
 
@@ -539,7 +543,7 @@ ul.bxslider {
     text-align:center;
   }
   thead {
-    background-color: black;
+    background-color: #555555;
     color: #fff;
   }
   .col-md-5{
@@ -658,4 +662,8 @@ section {
       padding:0.5rem;
     }
   }
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #e0e0e0;
 }
