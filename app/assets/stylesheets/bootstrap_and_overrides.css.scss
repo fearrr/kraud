@@ -428,14 +428,14 @@ ul.bxslider {
   opacity: 0.5;
   z-index: 9999999;
   left: 10px;
-  background: asset-url("bxslider/left.png") no-repeat;
+  background: url(asset-path("bxslider/left.png")) no-repeat;
 }
 
 .bx-wrapper .bx-next {
   opacity: 0.5;
   right: 10px;
   z-index: 9999999;
-  background: asset-url("bxslider/right.png") no-repeat;
+  background: url(asset-path("bxslider/right.png")) no-repeat;
 }
 
 .bx-wrapper .bx-controls-direction a {
@@ -601,9 +601,9 @@ section {
   opacity: 0.5;
   -webkit-transition: opacity 0.35s linear 0s;
   transition: opacity 0.35s linear 0s;
-  background-image: asset-url('lightcontrols.png');
+  background-image: url(asset-path('lightcontrols.png'));
 }
-#goToPrevSlide, #goToNextSlide > a:hover {
+#goToPrevSlide:hover, #goToNextSlide:hover {
   opacity: 1;
 }
 #goToPrevSlide {
