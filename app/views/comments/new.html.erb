@@ -1,0 +1,10 @@
+<%= render 'shared/comments_error_messages' %>
+<%= form_for @comment do |f| %>
+    <%= f.label :name, 'Ваше имя' %>
+    <%= f.text_field :name, class:'form-control' %>
+    <%= f.label :email, 'Ваш email' %>
+    <%= f.text_field :email, class:'form-control' %>
+    <%= f.label :body, 'Ваш отзыв' %>
+    <%= f.text_area :body, :class => 'form-control' %>
+    <%= f.submit "Добавить", class: "btn btn-primary" %>
+<% end %>

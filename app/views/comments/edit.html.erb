@@ -1,0 +1,14 @@
+<%= render 'shared/comments_error_messages' %>
+<%= form_for @comment do |f| %>
+    <%= f.label :body, 'Текст отзыва' %>
+    <%= f.text_area :body, :class => 'form-control' %>
+    <p>
+     <div class="checkbox">
+       <label>
+         <%= f.check_box :public %>
+         Опубликован
+       </label>
+     </div>
+     </p>
+    <%= f.submit "Сохранить", class: "btn btn-primary" %>
+<% end %>

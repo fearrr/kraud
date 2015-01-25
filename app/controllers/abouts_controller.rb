@@ -1,6 +1,7 @@
 class AboutsController < ApplicationController
   def index
     @body = About.find(1)
+    @comments = Comment.where("public = ?", true).order('created_at DESC')
   end
   def edit
     @body = About.find(params[:id])

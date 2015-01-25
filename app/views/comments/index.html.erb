@@ -1,0 +1,17 @@
+<p><%= link_to 'Добавить комментарий', new_comment_path, :class=>"btn btn-primary" %></p>
+<% if @comments %>
+    <% @comments.each do |comment| %>
+        <% if !comment.public %>
+            <% title = "дата создания: #{comment.created_at.strftime("%d.%m.%y")}, не обпубликован" %>
+        <% else %>
+            <% title = "дата создания: #{comment.created_at.strftime("%d.%m.%y")}, опубликован #{comment.updated_at.strftime("%d.%m.%y")}" %>
+        <% end %>
+
+        <div class="blog-item">
+          <p><b><%= comment.name %></b>, <%= title %> </p>
+          <p><%= comment.body %></p>
+          <%= link_to "Изменить", edit_comment_path(comment), :class=>"btn btn-sm btn-primary" %>
+          <%= link_to "Удалить", comment, :class=>"btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+        </div>
+    <% end %>
+<% end %>

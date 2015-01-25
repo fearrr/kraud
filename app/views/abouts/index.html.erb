@@ -1,3 +1,13 @@
 <% breadcrumb :about %>
 <%= link_to "Редактировать страницу", edit_about_path(@body), :class=>"btn btn-primary" %>
+<%= link_to "Управление отзывами", comments_path, :class=>"btn btn-primary" %>
 <p><%= raw(@body.body) %></p>
+<h4>Отзывы покупателей</h4>
+<% @comments.each do |comment| %>
+    <% title = "дата создания: #{comment.created_at.strftime("%d.%m.%y")}, опубликован #{comment.updated_at.strftime("%d.%m.%y")}" %>
+    <div class="blog-item">
+      <p><b><%= comment.name %></b>, <%= title %> </p>
+      <p><%= comment.body %></p>
+    </div>
+<% end  %>
+<%= link_to "Добавить свой отзыв", new_comment_path, :class=>"btn btn-default" %>
