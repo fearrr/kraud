@@ -6,7 +6,7 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
-$red: #c54a48;
+$red: #841a1c;
 $menu: #cf4f4f;
 $dropdown-menu: #d55e5e;
 $grey: #a1a1a1;
@@ -16,19 +16,20 @@ html, body {
   background-color: #555555;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-//  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  //  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 h1, h2, h3 {
   padding: 1rem 0;
   margin: 0;
-//  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-}
-.landing{
-  font-size:16px;
+  //  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
-  h2 {
+.landing {
+  font-size: 16px;
+}
+
+h2 {
   font-size: 24px;
   color: #080808;
 }
@@ -40,19 +41,19 @@ h3 {
 
 header {
   min-height: 16rem;
-  .col-lg-4:not(.main-logo){
-    padding-top:2rem;
-    h2{
-      padding:0;
+  .col-lg-4:not(.main-logo) {
+    padding-top: 2rem;
+    h2 {
+      padding: 0;
     }
     p {
       margin: 0;
-      color:$grey;
+      color: $grey;
     }
   }
   .under-logo {
-    margin-top:-2rem;
-    font-size:15px;
+    margin-top: -2rem;
+    font-size: 15px;
   }
   .time {
     text-align: right;
@@ -95,8 +96,99 @@ header {
     border-right: 8px solid transparent;
     border-left: 8px solid transparent;
   }
-}
+  a {
+    text-decoration: none;
+    color: #000000;
+  }
+  a:hover {
+    text-decoration: none;
+    color: $grey;
+  }
+  .modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+    h1, h3 {
+      color: #d4d4d4;
+      padding: 0;
+      margin: 0;
+      font-weight: 100;
+    }
+    h1 {
+      font-size: 5rem;
+    }
+    h3 {
+      font-size: 2.5rem;
+    }
+    .close {
+      background: rgba(152, 28, 30, 1);
+      color: #FFFFFF;
+      line-height: 25px;
+      position: absolute;
+      right: -12px;
+      text-align: center;
+      top: -10px;
+      width: 24px;
+      text-decoration: none;
+      font-weight: bold;
+      -webkit-border-radius: 12px;
+      -moz-border-radius: 12px;
+      border-radius: 12px;
+      -moz-box-shadow: 1px 1px 3px #000;
+      -webkit-box-shadow: 1px 1px 3px #000;
+      box-shadow: 1px 1px 3px #000;
+    }
 
+    .close:hover {
+      background: #f52f2f;
+    }
+    .col-md-6 {
+      padding-top: 2rem;
+      input {
+        padding: 2rem;
+        margin-top: 3rem;
+        color: #333333;
+        font-size: 20px;
+      }
+      input[type=submit] {
+        padding: 10px 30px;
+        background: $red;
+        color: #fff;
+        font-size: 20px;
+        border: 0;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+      }
+      input[type=submit]:hover {
+        background: #c22124;
+      }
+    }
+  }
+  .modalDialog:target {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modalDialog > div {
+    width: 900px;
+    height: 450px;
+    text-align: center;
+    position: relative;
+    margin: 20% auto;
+    padding: 35px 20px 13px 50px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.80);
+  }
+}
 
 footer {
   background-color: #363636;
@@ -118,8 +210,6 @@ footer {
 .container {
   padding: 0 2em;
 }
-
-
 
 .navbar-default {
   hr.top-hr {
@@ -189,9 +279,9 @@ ul.top-menu > li {
     text-decoration: none;
     color: $menu;
   }
-  a:not(:last-child)::after{
+  a:not(:last-child)::after {
     content: "|";
-    padding-left:2rem;
+    padding-left: 2rem;
   }
 }
 
@@ -203,7 +293,7 @@ ul.top-menu > li {
   background-color: #752424;
   margin-left: -1.3rem;
   padding: 1rem 2rem;
-  font-size:1.1em;
+  font-size: 1.1em;
   font-weight: 100;
 }
 
@@ -230,7 +320,7 @@ ul.top-menu > li {
 }
 
 .breadcrumb {
-  margin-top:-1.3rem;
+  margin-top: -1.3rem;
   background-color: #efefef;
   a {
     color: #555555;
@@ -246,8 +336,6 @@ ul.top-menu > li {
   color: #333;
   content: ">";
 }
-
-
 
 //MEGA MENU _________________________________________
 
@@ -408,24 +496,25 @@ ul.bxslider {
   padding: 0;
   margin: 0;
 }
+
 .bx-viewport {
   padding: 0;
 }
 
 .bx-wrapper {
-  margin-top:-1rem;
+  margin-top: -1rem;
   padding-left: 0.6rem;
   height: 250px;
 }
 
 .bx-caption {
-  opcaity:0.6;
+  opcaity: 0.6;
   top: 0;
   height: 4rem;
   padding-top: 0;
   font-size: 1.8rem;
   text-decoration: underline;
-  color:#fff;
+  color: #fff;
 }
 
 .bx-wrapper .bx-prev {
@@ -536,22 +625,22 @@ ul.bxslider {
   table {
     padding: 20px 0;
   }
-  section{
-    padding:5px;
+  section {
+    padding: 5px;
   }
   td, th {
-    text-align:center;
+    text-align: center;
   }
   thead {
     background-color: #555555;
     color: #fff;
   }
-  .col-md-5{
-    overflow:hidden;
-    width:550px;
+  .col-md-5 {
+    overflow: hidden;
+    width: 550px;
   }
   table {
-    padding:5px;
+    padding: 5px;
   }
 }
 
@@ -567,33 +656,34 @@ ul.bxslider {
   width: 0;
   height: 0;
   top: -0.8rem;
-  left:-2.1rem;
+  left: -2.1rem;
   border-bottom: 1.7rem solid $menu;
   border-left: 1.5rem solid $menu;
 }
 
-h4.item-title{
+h4.item-title {
   background-color: #8c8c8c;
-  color:#fff;
+  color: #fff;
   padding: 1rem 2rem;
   width: 620px;
 }
+
 h4.item-title::before {
   content: '';
   position: relative;
   width: 0;
   height: 0;
   top: -0.8rem;
-  left:-2.1rem;
+  left: -2.1rem;
   border-bottom: 1.7rem solid $menu;
   border-left: 1.5rem solid $menu;
 }
 
 section {
-  padding:20px 0;
+  padding: 20px 0;
 }
 
-#goToPrevSlide, #goToNextSlide{
+#goToPrevSlide, #goToNextSlide {
   width: 32px;
   display: block;
   top: 30%;
@@ -607,59 +697,63 @@ section {
   transition: opacity 0.35s linear 0s;
   background-image: url(asset-path('lightcontrols.png'));
 }
+
 #goToPrevSlide:hover, #goToNextSlide:hover {
   opacity: 1;
 }
+
 #goToPrevSlide {
   background-position: 0 0;
   left: -35px;
 }
+
 #goToNextSlide {
   background-position: -32px 0;
   right: -35px;
 }
-.gallery{
-  width:370px;
-  padding:0 0 3rem 0;
-  float:right;
+
+.gallery {
+  width: 370px;
+  padding: 0 0 3rem 0;
+  float: right;
 }
+
 .item-description {
-  width:1100px;
+  width: 1100px;
 }
+
 .description, .features {
   ul {
-    margin-left:-4rem;
-    margin-top:-2rem;
+    margin-left: -4rem;
+    margin-top: -2rem;
     list-style: none;
     li {
-      padding:1rem;
+      padding: 1rem;
       text-indent: -.7em;
     }
     li:before {
       content: "• ";
-      font-size:2rem;
+      font-size: 2rem;
       color: $red;
-      padding:0.5rem;
+      padding: 0.5rem;
     }
   }
 }
 
-
-
-.options, .delivery{
+.options, .delivery {
   ul {
-    margin-left:-4rem;
-    margin-top:-1rem;
+    margin-left: -4rem;
+    margin-top: -1rem;
     list-style: none;
     li {
-      padding:0.5rem;
+      padding: 0.5rem;
       text-indent: -.7em;
     }
     li:before {
       content: "• ";
-      font-size:2rem;
+      font-size: 2rem;
       color: $red;
-      padding:0.5rem;
+      padding: 0.5rem;
     }
   }
 }

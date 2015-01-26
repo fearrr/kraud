@@ -1,10 +1,10 @@
 <% Time.zone = 'Moscow'
-    t = Time.zone.now
-    if t.hour >= 8 && t.hour <= 17 && t.wday != 6 && t.wday !=0
-      @hours = "Сейчас работаем"
-    else
-      @hours = "Сейчас не работаем"
-    end
+   t = Time.zone.now
+   if t.hour >= 8 && t.hour <= 17 && t.wday != 6 && t.wday !=0
+     @hours = "Сейчас работаем"
+   else
+     @hours = "Сейчас не работаем"
+   end
 %>
 
 <header>
@@ -21,8 +21,26 @@
     </div>
     <div class="col-lg-4 time">
       <p>С 8:00 до 17:00 мо МCК (<%= @hours %>)</p>
-      <i class="fa fa-phone fa-2x fa-fw tooltips"> <span>Нажмите, чтобы заказать обратный звонок</span></i>
+      <a href="#openModal">
+        <i class="fa fa-phone fa-2x fa-fw tooltips"> <span>Нажмите, чтобы заказать обратный звонок</span></i></a>
       <span class="phone">+7 831 412-99-90</span>
+    </div>
+  </div>
+  <div id="openModal" class="modalDialog">
+    <div>
+      <a href="#close" title="Close" class="close">X</a>
+
+      <h1>Закажите обратный зконок</h1>
+
+      <h3>Мы перезвоним Вам в течение получаса...</h3>
+
+      <div class="col-md-6 col-sm-offset-3">
+        <%= form_tag(controller: "callbacks", action: "fast_callback", method: "post") do %>
+            <%= text_field_tag(:name, "Ваше имя", :class => 'form-control') %>
+            <%= text_field_tag(:phone, "Телефон", :class => 'form-control') %>
+            <%= submit_tag "ОТПРАВИТЬ" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </header>

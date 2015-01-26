@@ -21,6 +21,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update_attributes(publish_comment_params)
+      # UserMailer.callback_email.deliver
       # Handle a successful update.
       flash[:success] = "Комментарий обновлен"
       redirect_to comments_url

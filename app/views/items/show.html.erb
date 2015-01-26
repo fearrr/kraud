@@ -16,7 +16,7 @@
       <ul id="lightSlider">
         <% @item.attached_assets.each do |a| %>
             <li data-thumb="<%= a.asset.url(:mikro) %>">
-              <%= link_to image_tag(a.asset.url(:normal)), a.asset.url(:normal), :title => a.asset_file_name.slice(0..(a.asset_file_name.index('.')-1)) %>
+              <%= link_to image_tag(a.asset.url(:normal)), a.asset.url(:normal), :rel=>"gal", :title => a.asset_file_name.slice(0..(a.asset_file_name.index('.')-1)) %>
             </li>
         <% end %>
       </ul>

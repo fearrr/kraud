@@ -25,6 +25,7 @@
 //= require_tree .
 
 $(document).ready(function(){
+    $('#lightSlider a').colorbox({rel:'gal'});
     $('ul.top-menu a').each(function () {
         if (this.href == location.href) $(this).parent().addClass('active');
     });

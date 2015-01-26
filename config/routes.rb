@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'items/update_types', as: 'update_types'
   get 'types/kombikorm', as: 'kombikorm'
   get 'types/pellet', as: 'pellet'
+  post 'callbacks/fast_callback'
 
   resources :actions
   resources :tidings
