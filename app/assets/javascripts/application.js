@@ -17,7 +17,6 @@
 //= require twitter/bootstrap
 //= require ckeditor/init
 //= require underscore
-//= require jquery.colorbox
 //= require jquery.lightSlider
 //= require simpleGal
 //= require gmaps/google
@@ -25,7 +24,6 @@
 //= require_tree .
 
 $(document).ready(function(){
-    $('#lightSlider a').colorbox({rel:'gal'});
     $('ul.top-menu a').each(function () {
         if (this.href == location.href) $(this).parent().addClass('active');
     });
