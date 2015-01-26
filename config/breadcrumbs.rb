@@ -45,6 +45,19 @@ crumb :edit_about do
   link "Редактировать страницу", abouts_path
   parent :about
 end
+crumb :comments do
+  link "Управление отзывами", comments_path
+  parent :about
+end
+crumb :new_comment do
+  link "Добавить отзыв", new_comment_path
+  parent :about
+end
+crumb :edit_comment do
+  link "Редактировать"
+  parent :comments
+end
+
 
 # Contact
 crumb :contact do
@@ -70,11 +83,11 @@ crumb :add_material do
   parent :catalog
 end
 crumb :kombikorm do
-  link "Линии проризводства комбикорма", kombikorm_path
+  link "Линии производства комбикорма", kombikorm_path
   parent :catalog
 end
 crumb :pellet do
-  link "Линии проризводства пеллет", pellet_path
+  link "Линии производства пеллет", pellet_path
   parent :catalog
 end
 crumb :type_kombikorm do |type|

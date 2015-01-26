@@ -1,6 +1,6 @@
 <% Time.zone = 'Moscow'
     t = Time.zone.now
-    if t.hour >= 8 && t.hour <= 17
+    if t.hour >= 8 && t.hour <= 17 && t.wday != 6 && t.wday !=0
       @hours = "Сейчас работаем"
     else
       @hours = "Сейчас не работаем"

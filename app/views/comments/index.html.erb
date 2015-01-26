@@ -1,4 +1,5 @@
-<p><%= link_to 'Добавить комментарий', new_comment_path, :class=>"btn btn-primary" %></p>
+<% breadcrumb :comments %>
+<p><%= link_to 'Добавить отзыв', new_comment_path, :class=>"btn btn-primary" %></p>
 <% if @comments %>
     <% @comments.each do |comment| %>
         <% if !comment.public %>
