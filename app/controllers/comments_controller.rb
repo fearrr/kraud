@@ -8,8 +8,9 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
+      @comment.update_attributes(public: false)
       # Handle a successful update.
-      flash[:success] = "Комментарий добавлен"
+      flash[:success] = "Отзыв добавлен"
       redirect_to abouts_url
     else
       render 'new'
@@ -21,9 +22,8 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update_attributes(publish_comment_params)
-      # UserMailer.callback_email.deliver
       # Handle a successful update.
-      flash[:success] = "Комментарий обновлен"
+      flash[:success] = "Отзыв обновлен"
       redirect_to comments_url
     else
       render 'edit'
@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    flash[:success] = "Комментарий удалена"
+    flash[:success] = "Отзыв удален"
     redirect_to comments_url
   end
 
@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:body, :email, :name, :public=>false)
+    params.require(:comment).permit(:body, :email, :name, :public)
   end
   def publish_comment_params
     params.require(:comment).permit(:body, :public)

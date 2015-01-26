@@ -132,6 +132,7 @@ header {
     .close {
       background: rgba(152, 28, 30, 1);
       color: #FFFFFF;
+      opacity:1;
       line-height: 25px;
       position: absolute;
       right: -12px;
@@ -149,7 +150,7 @@ header {
     }
 
     .close:hover {
-      background: #f52f2f;
+      background: #e82b2b;
     }
     .col-md-6 {
       padding-top: 2rem;

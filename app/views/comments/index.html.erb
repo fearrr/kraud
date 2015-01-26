@@ -3,7 +3,7 @@
 <% if @comments %>
     <% @comments.each do |comment| %>
         <% if !comment.public %>
-            <% title = "дата создания: #{comment.created_at.strftime("%d.%m.%y")}, не обпубликован" %>
+            <% title = "дата создания: #{comment.created_at.strftime("%d.%m.%y")}, не опубликован" %>
         <% else %>
             <% title = "дата создания: #{comment.created_at.strftime("%d.%m.%y")}, опубликован #{comment.updated_at.strftime("%d.%m.%y")}" %>
         <% end %>
