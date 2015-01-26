@@ -2,9 +2,11 @@ class ContactsController < ApplicationController
   def index
     @body = Contact.find(1)
   end
+
   def edit
     @body = Contact.find(params[:id])
   end
+
   def update
     @body = Contact.find(params[:id])
     if @body.update_attributes(contact_params)

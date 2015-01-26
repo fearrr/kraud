@@ -35,8 +35,8 @@
       <h3>Мы перезвоним Вам в течение получаса...</h3>
       <div class="col-md-6 col-sm-offset-3">
         <%= form_tag(controller: "callbacks", action: "fast_callback", method: "post") do %>
-            <%= text_field_tag(:name, "Ваше имя", :class => 'form-control') %>
-            <%= text_field_tag(:phone, "Телефон", :class => 'form-control') %>
+            <%= text_field_tag(:name, '', :placeholder=>"Ваше имя", :class => 'form-control') %>
+            <%= text_field_tag(:phone, '', :placeholder=>"Телефон", :class => 'form-control') %>
             <%= submit_tag "ОТПРАВИТЬ" %>
         <% end %>
       </div>

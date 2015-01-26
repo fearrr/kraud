@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'types/kombikorm', as: 'kombikorm'
   get 'types/pellet', as: 'pellet'
   post 'callbacks/fast_callback'
+  post 'callbacks/slow_callback'
 
   resources :actions
   resources :tidings

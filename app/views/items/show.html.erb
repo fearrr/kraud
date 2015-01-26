@@ -16,21 +16,18 @@
       <ul id="lightSlider">
         <% @item.attached_assets.each do |a| %>
             <li data-thumb="<%= a.asset.url(:mikro) %>">
-              <%= link_to image_tag(a.asset.url(:normal)), a.asset.url(:normal), :rel=>"gal", :title => a.asset_file_name.slice(0..(a.asset_file_name.index('.')-1)) %>
+              <%= link_to image_tag(a.asset.url(:normal)), a.asset.url(:normal), :rel => "gal", :title => a.asset_file_name.slice(0..(a.asset_file_name.index('.')-1)) %>
             </li>
         <% end %>
       </ul>
     </div>
-
     <h4 class="item-title"><%= @item.title %></h4>
     <%= raw(@description) if @description %>
     <% if @features %>
         <h4 class="text">Особенности конструкции</h4>
         <%= raw(@features) %>
     <% end %>
-
   </div>
-
 </div>
 
 
@@ -39,7 +36,6 @@
       <h4>Технические характеристики</h4>
       <table class="table table-striped table-hover table-bordered"> <%= raw(@table) %></table>
   <% end %>
-
   <div class="row">
     <% if @delivery %>
         <div class="col-md-5">
@@ -54,8 +50,6 @@
         </div>
     <% end %>
   </div>
-
-
 </div>
 
 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+</head>
+<body>
+<h2>Заявка на обратную связь</h2>
+<% if @user[:subject] %>
+    <h4><%= @user[:subject] %></h4>
+<% end %>
+<ul>
+  <li>Имя: <%= @user[:name] %></li>
+  <li>Email: <%= @user[:email] %></li>
+</ul>
+<p><%= @user[:message] %></p>
+</body>
+</html>

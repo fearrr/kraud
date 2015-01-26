@@ -762,3 +762,12 @@ section {
 .table-striped > tbody > tr:nth-of-type(odd) {
   background-color: #e0e0e0;
 }
+
+.callback {
+  p {
+    padding: 3rem 0;
+  }
+  label {
+    color:$grey;
+  }
+}
