@@ -1,13 +1,11 @@
 <% breadcrumb :root %>
 
-<div class="admin">
-  <%= link_to 'Управление случайными фразами', captions_path, :class=>"btn btn-primary" %>
-</div>
-
 <ul class="bxslider">
   <li><%= image_tag("bxslider/slider-1.jpg", :alt => "slider-1", :title => "Инновационные технологии в сфере сельского хозяйства") %></li>
   <li><%= image_tag("bxslider/slider-2.jpg", :alt => "slider-2", :title => "Другой текст описания") %></li>
 </ul>
+
+  <%= link_to 'Управление случайными фразами', captions_path, :class=>"btn btn-primary" %>
 
 <div class="row">
   <div class="col-md-8">
