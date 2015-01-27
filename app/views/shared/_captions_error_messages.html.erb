@@ -1,0 +1,12 @@
+<% if @caption.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      Форма содержит <%= Russian::pluralize(@caption.errors.count, "ошибку", "ошибки", "ошибок") %>.
+    </div>
+    <ul>
+    <% @caption.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

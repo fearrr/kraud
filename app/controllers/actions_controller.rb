@@ -2,7 +2,7 @@ class ActionsController < ApplicationController
   # encoding: UTF-8
   impressionist :actions=>[:show, :index]
   def index
-    @action = Action.all.order('created_at DESC')
+    @action = Action.all
   end
   def show
     @action = Action.find(params[:id])

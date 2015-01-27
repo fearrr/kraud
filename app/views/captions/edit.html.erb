@@ -1,0 +1,7 @@
+<% breadcrumb :edit_caption %>
+<%= render 'shared/captions_error_messages' %>
+<%= form_for @caption do |f| %>
+    <%= f.label :body, 'Случайный текст' %>
+    <%= f.text_area :body, :class => 'form-control' %>
+    <%= f.submit "Сохранить", class: "btn btn-primary" %>
+<% end %>

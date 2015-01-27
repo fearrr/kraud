@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :types
   resources :items
   resources :comments
+  resources :captions
   resources :abouts, :only => [:index, :edit, :update]
   resources :contacts, :only => [:index, :edit, :update]
   root 'static#index'

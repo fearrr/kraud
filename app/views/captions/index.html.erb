@@ -1,0 +1,12 @@
+<% breadcrumb :captions %>
+<%= link_to "Добавить", new_caption_path, :class=>"btn btn-primary" %>
+<br><br>
+<table class="table">
+  <% @captions.each do |caption| %>
+    <tr>
+      <td><%= caption.body %></td>
+      <td><%= link_to "Изменить", edit_caption_path(caption) %></td>
+      <td><%= link_to "Удалить", captions_path, method: :delete, data: { confirm: "Вы уверены?" } %></td>
+    </tr>
+  <% end %>
+</table>

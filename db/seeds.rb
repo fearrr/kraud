@@ -35,6 +35,17 @@ pellet_types_list = [
     "Прочее оборудование"
 ]
 
+random_text_list = [
+    "Новый стандарт качества",
+    "Случайный текст 1",
+    "Случайный текст 2",
+    "Случайный текст 3",
+]
+
+random_text_list.each do |text|
+  Caption.create(body:text)
+end
+
 kombikorm_types_list.each do |title|
   Type.create(title:title, section_name:"Комбикормовое оборудование")
 end
