@@ -1,18 +1,24 @@
 <% breadcrumb :tidings %>
-<p><%= link_to 'Добавить новость', new_tiding_path, :class=>"btn btn-primary" %></p>
+<% if logged_in? %>
+    <p><%= link_to 'Добавить новость', new_tiding_path, :class => "btn btn-primary" %></p>
+<% end %>
 
 <% @tiding.each do |tiding| %>
     <div class="blog-item">
-    <h3><%= link_to tiding.title, tiding_path(tiding.id) %></h3>
-    <p><%= raw(truncate(tiding.body, length:255,:escape => false)) %></p>
-    <p><%= link_to "Читать полностью", tiding_path(tiding.id) %></p>
-    <p><%= tiding.created_at.strftime("%d.%m.%y") %> | Просмотров: <%= tiding.impressionist_count(:filter=>:all) %></p>
+      <h3><%= link_to tiding.title, tiding_path(tiding.id) %></h3>
 
-    <p class="admin">
-      <%= link_to "Изменить", edit_tiding_path(tiding), :class=>"btn btn-sm btn-primary" %>
-      <%= link_to "Удалить", tiding, :class=>"btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+      <p><%= raw(truncate(tiding.body, length: 255, :escape => false)) %></p>
 
-    </p>
+      <p><%= link_to "Читать полностью", tiding_path(tiding.id) %></p>
+
+      <p><%= tiding.created_at.strftime("%d.%m.%y") %> |
+        Просмотров: <%= tiding.impressionist_count(:filter => :all) %></p>
+      <% if logged_in? %>
+          <p class="admin">
+            <%= link_to "Изменить", edit_tiding_path(tiding), :class => "btn btn-sm btn-primary" %>
+            <%= link_to "Удалить", tiding, :class => "btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+          </p>
+      <% end %>
     </div>
 <% end %>
 

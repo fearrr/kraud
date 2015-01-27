@@ -1,0 +1,19 @@
+<% breadcrumb :new_admin %>
+<%= render 'shared/admins_error_messages' %>
+<div class="login">
+  <%= form_for(@admin) do |f| %>
+      <%= f.label :name, 'Имя' %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form-control' %>
+
+      <%= f.label :password, 'Пароль' %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Подтверждение пароля" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit "Зарегистрировать", class: "btn btn-primary" %>
+  <% end %>
+</div>

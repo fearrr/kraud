@@ -1,8 +1,10 @@
 <% breadcrumb :catalog %>
-<p>
-  <%= link_to 'Добавить материал', new_item_path, :class => "btn btn-primary" %>
-  <%= link_to 'Добавить раздел', new_type_path, :class => "btn btn-primary" %>
-</p>
+<% if logged_in? %>
+    <p>
+      <%= link_to 'Добавить материал', new_item_path, :class => "btn btn-primary" %>
+      <%= link_to 'Добавить раздел', new_type_path, :class => "btn btn-primary" %>
+    </p>
+<% end %>
 <div class="catalog">
   <h2><%= @kombikorm.first.section_name %></h2>
   <ul>
@@ -18,7 +20,7 @@
                   </div>
               <% end %>
           <% else %>
-              <div class="col-md-3">
+              <div class="col-md-2">
                 Материалов нет
               </div>
           <% end %>

@@ -1,6 +1,8 @@
 <% breadcrumb :about %>
-<%= link_to "Редактировать страницу", edit_about_path(@body), :class => "btn btn-primary" %>
-<%= link_to "Управление отзывами (#{@notPublic})", comments_path, :class => "btn btn-primary" %>
+<% if logged_in? %>
+    <%= link_to "Редактировать страницу", edit_about_path(@body), :class => "btn btn-primary" %>
+    <%= link_to "Управление отзывами (#{@notPublic})", comments_path, :class => "btn btn-primary" %>
+<% end %>
 <p><%= raw(@body.body) %></p>
 <h4>Отзывы покупателей</h4>
 <% if @comments %>
@@ -8,6 +10,7 @@
         <% title = "дата создания: #{comment.created_at.strftime("%d.%m.%y")}, опубликован #{comment.updated_at.strftime("%d.%m.%y")}" %>
         <div class="blog-item">
           <p><b><%= comment.name %></b>, <%= title %> </p>
+
           <p><%= comment.body %></p>
         </div>
     <% end %>

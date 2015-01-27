@@ -42,6 +42,13 @@ random_text_list = [
     "Случайный текст 3",
 ]
 
+Admin.create!(id: 1,
+    name:  "admin",
+    email: "admin@yandex.ru",
+    password:              "foobar",
+    password_confirmation: "foobar")
+
+
 random_text_list.each do |text|
   Caption.create(body:text)
 end

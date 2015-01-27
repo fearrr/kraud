@@ -3,10 +3,12 @@
 <% else %>
     <% breadcrumb :item_pellet, @item, @type %>
 <% end %>
-<p>
-  <%= link_to "Редактировать материал", edit_item_path(@item), :class => "btn btn-primary" %>
-  <%= link_to "Удалить материал", @item, :class => "btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
-</p>
+<% if logged_in? %>
+    <p>
+      <%= link_to "Редактировать материал", edit_item_path(@item), :class => "btn btn-primary" %>
+      <%= link_to "Удалить материал", @item, :class => "btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+    </p>
+<% end %>
 
 <div class="row">
   <div class="col-md-6 item-description">

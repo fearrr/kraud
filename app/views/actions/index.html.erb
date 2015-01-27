@@ -1,6 +1,7 @@
 <% breadcrumb :actions %>
-<p><%= link_to 'Добавить акцию', new_action_path, :class=>"btn btn-primary" %></p>
-
+<% if logged_in? %>
+    <p><%= link_to 'Добавить акцию', new_action_path, :class => "btn btn-primary" %></p>
+<% end %>
 <% @action.each do |action| %>
     <div class="blog-item">
       <h3><%= link_to action.title, action_path(action.id) %></h3>
@@ -12,10 +13,12 @@
       <p><%= action.created_at.strftime("%d.%m.%y") %> |
         Просмотров: <%= action.impressionist_count(:filter => :all) %></p>
 
-      <p class="admin">
-        <%= link_to "Изменить", edit_action_path(action), :class=>"btn btn-sm btn-primary" %>
-        <%= link_to "Удалить", action, :class=>"btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
-      </p>
+      <% if logged_in? %>
+          <p class="admin">
+            <%= link_to "Изменить", edit_action_path(action), :class => "btn btn-sm btn-primary" %>
+            <%= link_to "Удалить", action, :class => "btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+          </p>
+      <% end %>
     </div>
 <% end %>
 

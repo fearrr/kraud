@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'callbacks/fast_callback'
   post 'callbacks/slow_callback'
 
+  resources :admins
   resources :actions
   resources :tidings
   resources :types
@@ -16,4 +17,7 @@ Rails.application.routes.draw do
   resources :contacts, :only => [:index, :edit, :update]
   root 'static#index'
 
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
 end

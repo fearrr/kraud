@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.8'
 gem 'pg'
 gem "figaro"
+gem 'bcrypt',               '3.1.7'
 
 gem "twitter-bootstrap-rails"
 gem "execjs"

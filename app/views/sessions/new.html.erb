@@ -1,0 +1,24 @@
+<% breadcrumb :login %>
+<div class="login">
+  <% if logged_in? %>
+      Вы уже находитесь в режиме администрирования
+  <% else %>
+      <%= form_for(:session, url: login_path) do |f| %>
+
+          <%= f.label :email, 'Email' %>
+          <%= f.text_field :email, class: 'form-control', :value => "admin@yandex.ru" %>
+
+          <%= f.label :password, 'Пароль' %>
+          <%= f.password_field :password, class: 'form-control' %>
+
+          <%= f.label :remember_me, class: "checkbox inline" do %>
+              <%= f.check_box :remember_me %>
+              <span>Запомнить меня</span>
+          <% end %>
+
+          <%= f.submit "Войти", class: 'btn btn-md btn-primary' %>
+      <% end %>
+  <% end %>
+</div>
+
+

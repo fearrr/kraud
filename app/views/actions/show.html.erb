@@ -4,6 +4,8 @@
 <p><%= raw(@action.body) %></p>
 <p> Дата создания: <%= @action.created_at.strftime("%d.%m.%y") %>, Просмотров: <%= @impression %></p>
 <p class="admin">
-  <%= link_to "Изменить", edit_action_path(@action), :class=>"btn btn-sm btn-primary" %>
-  <%= link_to "Удалить", @action, :class=>"btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+  <% if logged_in? %>
+      <%= link_to "Изменить", edit_action_path(@action), :class => "btn btn-sm btn-primary" %>
+      <%= link_to "Удалить", @action, :class => "btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+  <% end %>
 </p>

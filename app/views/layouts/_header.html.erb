@@ -6,7 +6,14 @@
      @hours = "Сейчас не работаем"
    end
 %>
-
+<% if logged_in? %>
+    <div class="main_admin">
+      Вы вошли как <b><%= current_admin.name %></b> &nbsp;|&nbsp;
+      <%= link_to 'Изменить данные профиля', edit_admin_path(current_admin) %> &nbsp;|&nbsp;
+      <%= link_to 'Зарегистрировать нового администратора', new_admin_path %>
+      <%= link_to 'Выход', logout_path, method: "delete", :class => "btn btn-primary" %>
+    </div>
+<% end %>
 <header>
   <div class="row">
     <div class="col-lg-4 main-logo">
@@ -31,12 +38,15 @@
 
     <div>
       <a href="#close" title="Close" class="close">X</a>
+
       <h1>Закажите обратный зконок</h1>
+
       <h3>Мы перезвоним Вам в течение получаса...</h3>
+
       <div class="col-md-6 col-sm-offset-3">
         <%= form_tag(controller: "callbacks", action: "fast_callback", method: "post") do %>
-            <%= text_field_tag(:name, '', :placeholder=>"Ваше имя", :class => 'form-control') %>
-            <%= text_field_tag(:phone, '', :placeholder=>"Телефон", :class => 'form-control') %>
+            <%= text_field_tag(:name, '', :placeholder => "Ваше имя", :class => 'form-control') %>
+            <%= text_field_tag(:phone, '', :placeholder => "Телефон", :class => 'form-control') %>
             <%= submit_tag "ОТПРАВИТЬ" %>
         <% end %>
       </div>

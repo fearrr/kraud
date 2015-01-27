@@ -767,3 +767,26 @@ section {
     color:$grey;
   }
 }
+
+.login {
+  width:400px;
+  margin:5rem auto;
+  padding:2rem;
+  background:#fff;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  .checkbox {
+    padding-left:2rem;
+  }
+}
+.main_admin{
+  background: #f5e8c6;
+  width:100%;
+  padding:2rem;
+  text-align:right;
+  .btn {
+    margin-left:2rem;
+    margin-top:-0.5rem;
+  }
+}
