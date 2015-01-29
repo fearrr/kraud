@@ -1,15 +1,17 @@
-<% if @type.section_name == "Комбикормовое оборудование" %>
-    <% breadcrumb :edit_type_kombikorm, @type %>
-<% else %>
-    <% breadcrumb :edit_type_pellet, @type %>
-<% end %>
+<% @part.section == "Комбикормовое оборудование" ? (breadcrumb :edit_type_kombikorm, @type, @part) : (breadcrumb :edit_type_pellet, @type, @part) %>
 <%= render 'shared/types_error_messages' %>
 <div class="col-md-4">
   <%= form_for(@type) do |f| %>
-      <%= f.label :section_name, 'Тип оборудования' %>
-      <%= f.select(:section_name, [["Комбикормовое оборудование"], ["Пеллетное оборудование"]], {}, :class => 'form-control') %>
+
+      <%= f.label :section, 'Тип оборудования' %>
+      <%= f.select :section, @sections.map {|value| [ value, value ]}, {:selected => 'Выберете тип оборудования', :include_blank => "Выберете тип оборудования"}, {:class=>'form-control', :id=>'sections_select'} %>
+
+      <%= f.label :part_id, 'Раздел' %>
+      <%= f.collection_select :part_id, @parts, :id, :title, {}, {:class => 'form-control', :id=>'parts_select' } %>
+
       <%= f.label :title, 'Наименование' %>
       <%= f.text_field :title, class: 'form-control' %>
-      <%= f.submit "Изменить", class: "btn btn-primary" %>
+
+      <%= f.submit "Сохранить", class: "btn btn-primary" %>
   <% end %>
 </div>

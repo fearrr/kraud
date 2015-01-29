@@ -1,8 +1,4 @@
-<% if @item.section == "Комбикормовое оборудование" %>
-    <% breadcrumb :item_kombikorm, @item, @type %>
-<% else %>
-    <% breadcrumb :item_pellet, @item, @type %>
-<% end %>
+<% @part.section == "Комбикормовое оборудование" ? (breadcrumb :item_kombikorm, @item, @type, @part) : (breadcrumb :item_pellet, @item, @type, @part) %>
 <% if logged_in? %>
     <p>
       <%= link_to "Редактировать материал", edit_item_path(@item), :class => "btn btn-primary" %>

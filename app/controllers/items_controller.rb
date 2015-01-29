@@ -2,10 +2,24 @@ class ItemsController < ApplicationController
   def index
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    flash[:success] = "Материал удален"
+    redirect_to parts_url
+  end
+
+  def update_types
+    @types = Type.where("part_id = ?", params[:part])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def show
     @item = Item.find(params[:id])
     @type = Type.find(@item.type_id)
-
+    @part = Part.find(@type.part_id)
     parser = @item.body
 
 
@@ -31,15 +45,16 @@ class ItemsController < ApplicationController
 
   def new
     @item =Item.new
-    @sections = Type.uniq.pluck(:section_name)
-    @types = Type.where("section_name = ?", Type.first.section_name)
+
+    @sections = Part.uniq.pluck(:section)
+    @parts = Part.where("section = ?", Part.first.section)
+    @types = @parts.first.types.all
   end
 
   def create
-    @sections = Type.uniq.pluck(:section_name)
-    @types = Type.where("section_name = ?", Type.first.section_name)
-
-    # AttachedAsset.create(attached_params)
+    @sections = Part.uniq.pluck(:section)
+    @parts = Part.where("section = ?", Part.first.section)
+    @types = @parts.first.types.all
 
     @item = Item.new(items_params)
     if @item.save
@@ -52,17 +67,22 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @sections = Type.uniq.pluck(:section_name)
     @item = Item.find(params[:id])
     @type = Type.find(@item.type_id)
-    @types = Type.where("section_name = ?", @type.section_name)
+    @part = Part.find(@type.part_id)
+
+    @sections = Part.uniq.pluck(:section)
+    @parts = Part.where("section = ?", @item.section)
+    @types = @parts.first.types.all
   end
 
   def update
-    @sections = Type.uniq.pluck(:section_name)
     @item = Item.find(params[:id])
-    @type = Type.find(@item.type_id)
-    @types = Type.where("section_name = ?", @type.section_name)
+
+    @sections = Part.uniq.pluck(:section)
+    @parts = Part.where("section = ?", @item.section)
+    @types = @parts.first.types.all
+
     if @item.update_attributes(items_params)
       # Handle a successful update.
       flash[:success] = "Материал обновлен"
@@ -72,22 +92,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
-    flash[:success] = "Материал удален"
-    redirect_to types_url
-  end
-
-  def update_types
-    @types = Type.where("section_name = ?", params[:section])
-    respond_to do |format|
-      format.js
-    end
-  end
-
   private
   def items_params
-    params.require(:item).permit(:section, :body, :title, :type_id, attached_assets_attributes: [:asset, :asset_file_name])
+    params.require(:item).permit(:section, :body, :title, :type_id, :part_id, attached_assets_attributes: [:asset, :asset_file_name])
   end
 end

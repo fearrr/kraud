@@ -1,57 +1,55 @@
 class TypesController < ApplicationController
 # encoding: UTF-8
+  def destroy
+    @type = Type.find(params[:id])
+    @type.destroy
+    flash[:success] = "Подраздел удален"
+    redirect_to parts_url
+  end
+  def update_parts
+    @parts = Part.where("section = ?", params[:section])
+    respond_to do |format|
+      format.js
+    end
+  end
   def edit
     @type = Type.find(params[:id])
+    @part = Part.find(@type.part_id)
+    @sections = Part.uniq.pluck(:section)
+    @parts = Part.where("section = ?", Part.first.section)
   end
-
   def update
     @type = Type.find(params[:id])
+    @sections = Part.uniq.pluck(:section)
+    @parts = Part.where("section = ?", Part.first.section)
     if @type.update_attributes(types_params)
       # Handle a successful update.
       flash[:success] = "Раздел обновлен"
-      redirect_to types_url
+      redirect_to type_url(@type.id)
     else
       render 'edit'
     end
   end
-  def destroy
-    @type = Type.find(params[:id])
-    @type.destroy
-    flash[:success] = "Раздел удален"
-    redirect_to types_url
-  end
-
-  def kombikorm
-    @kombikorm = Type.where(section_name: "Комбикормовое оборудование")
-  end
-
-  def pellet
-    @pellet = Type.where(section_name: "Пеллетное оборудование")
-  end
-
-  def index
-    @kombikorm = Type.where(section_name: "Комбикормовое оборудование").limit(2)
-    @pellet = Type.where(section_name: "Пеллетное оборудование").limit(2)
-    @sections = Type.uniq.pluck(:section_name)
-
-    @pellet_items = Item.where("section = ?", @pellet.first.section_name)
-  end
-
   def show
     @type = Type.find(params[:id])
-    @items = Item.where("type_id = ?", params[:id])
+    @part = Part.find(@type.part_id)
+    @items = @type.items.all
   end
-
   def new
     @type = Type.new
+    @sections = Part.uniq.pluck(:section)
+    @parts = Part.where("section = ?", Part.first.section)
   end
 
   def create
+    @sections = Part.uniq.pluck(:section)
+    @parts = Part.where("section = ?", Part.first.section)
+
     @type = Type.new(types_params)
     if @type.save
       # Handle a successful save.
-      flash[:success] = "Категория добавлена"
-      redirect_to types_url
+      flash[:success] = "Подраздел добавлен"
+      redirect_to type_url(@type.id)
     else
       render 'new'
     end
@@ -60,8 +58,10 @@ end
 
 
 
+def index
+end
 
 private
 def types_params
-  params.require(:type).permit(:title, :section_name)
+  params.require(:type).permit(:title, :section, :part_id)
 end

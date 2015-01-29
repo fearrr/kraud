@@ -3,16 +3,15 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $(document).on 'change', '#sections_select', (evt) ->
+  $(document).on 'change', '#parts_select', (evt) ->
     $.ajax 'update_types',
       type: 'GET'
       dataType: 'script'
       data: {
-        section: $("#sections_select option:selected").val()
+        part: $("#parts_select option:selected").val()
       }
 
       error: (jqXHR, textStatus, errorThrown) ->
-        console.log("AJAX Error: #{textStatus}")
+        console.log("AJAX Error YO: #{textStatus}")
       success: (data, textStatus, jqXHR) ->
         console.log("Dynamic section select OK!")
-

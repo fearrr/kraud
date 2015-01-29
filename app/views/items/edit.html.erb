@@ -1,25 +1,24 @@
-<% if @item.section == "Комбикормовое оборудование" %>
-    <% breadcrumb :edit_item_kombikorm, @item, @type %>
-<% else %>
-    <% breadcrumb :edit_item_pellet, @item, @type %>
-<% end %>
+<% @part.section == "Комбикормовое оборудование" ? (breadcrumb :edit_item_kombikorm, @item, @type, @part) : (breadcrumb :edit_item_pellet, @item, @type, @part) %>
 <%= render 'shared/items_error_messages' %>
 <%= form_for @item, :html => { :multipart => true } do |f| %>
+
+    <%= f.label :section, 'Тип оборудования' %>
+    <%= f.select :section, @sections.map {|value| [ value, value ]}, {:selected => 'Выберете тип оборудования', :include_blank => "Выберете тип оборудования"}, {:class=>'form-control', :id=>'sections_select'} %>
+
+    <%= f.label :part_id, 'Раздел' %>
+    <%= f.collection_select :part_id, @parts, :id, :title, {}, {:class => 'form-control', :id=>'parts_select' } %>
+
+    <%= f.label :type_id, 'Подраздел' %>
+    <%= f.collection_select :type_id, @types, :id, :title, {}, {:class => 'form-control', :id=>'types_select' } %>
 
     <%= f.label :title, 'Наименование' %>
     <%= f.text_field :title, class: 'form-control' %>
 
-    <%= f.label :section, 'Тип оборудования' %>
-    <%= f.select :section, @sections.map {|value| [ value, value ]}, {}, {:class=>'form-control', :id=>'sections_select'} %>
-
-    <%= f.label :type_id, 'Тип категории' %>
-    <%= f.collection_select :type_id, @types, :id, :title, {}, {:class => 'form-control', :id=>'types_select' } %>
-
     <%= f.label :body, 'Текст материала' %>
     <%= f.cktext_area :body, :class => 'form-control', :ckeditor => { :language => 'ru', :toolbar=>'mini' } %>
 
-    <div class="file_upload">+<%= file_field_tag('item_attached_assets_asset', multiple: true, name: "item[attached_assets_attributes][][asset]") %> </div> <b>Загрузить изображения</b> (изображения отображатся в превью и галерее )  <br>
+    <div class="file_upload">+<%= file_field_tag('item_attached_assets_asset', multiple: true, name: "item[attached_assets_attributes][][asset]") %> </div> <b>Загрузить изображения</b> (изображения отображатся в превью и галерее)  <br>
 
-    <%= f.submit "Изменить", class: "btn btn-primary" %>
+    <%= f.submit "Сохранить", class: "btn btn-primary" %>
 
 <% end %>

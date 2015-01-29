@@ -1,0 +1,25 @@
+<% @part.section == "Комбикормовое оборудование" ? (breadcrumb :part_kombikorm, @part) : (breadcrumb :part_pellet, @part) %>
+<h2><%= @part.title %></h2>
+<% if logged_in? %>
+<p>
+  <%= link_to "Редактировать раздел", edit_part_path(@part), :class => "btn btn-primary" %>
+  <%= link_to "Удалить раздел", @part, :class => "btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+</p>
+<% end %>
+
+<div class="catalog">
+<ul>
+  <% if @types.first %>
+      <% @types.each do |type| %>
+          <div class="col-md-2">
+            <%= link_to type.title, type_path(type.id) %>
+          </div>
+      <% end %>
+  <% else %>
+      <div class="col-md-2">
+        Материалов нет
+      </div>
+  <% end %>
+
+</ul>
+</div>

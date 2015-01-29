@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
+
+  get 'types/update_parts', as: 'update_parts'
+  get 'types/:id/update_parts' => 'types#update_parts'
+
   get 'items/update_types', as: 'update_types'
-  get 'types/kombikorm', as: 'kombikorm'
-  get 'types/pellet', as: 'pellet'
+  get 'items/update_parts' => 'types#update_parts'
+  get 'items/:id/update_types' => 'items#update_types'
+  get 'items/:id/update_parts' => 'types#update_parts'
+
+
+  get 'parts/kombikorm', as: 'kombikorm'
+  get 'parts/pellet', as: 'pellet'
   post 'callbacks/fast_callback'
   post 'callbacks/slow_callback'
 
   resources :admins
   resources :actions
   resources :tidings
+  resources :parts
   resources :types
   resources :items
   resources :comments

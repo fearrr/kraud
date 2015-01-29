@@ -1,11 +1,20 @@
 <% Time.zone = 'Moscow'
    t = Time.zone.now
-   if t.hour >= 8 && t.hour <= 17 && t.wday != 6 && t.wday !=0
+   begin_time = 8
+   end_time = 17
+   if t.hour >= begin_time && t.hour <= end_time && t.wday != 6 && t.wday !=0
      @hours = "Сейчас работаем"
    else
-     @hours = "Сейчас не работаем"
+     if t.wday !=6 && t.wday !=0
+       @will_be_time = 24 - t.hour + begin_time
+       @plural = Russian::pluralize(@will_be_time, "час", "часа", "часов")
+       @hours = "Открываемся через #{@will_be_time} #{@plural}"
+     else
+       @hours = "Открываемся в понедельник в #{begin_time}:00"
+     end
    end
 %>
+
 <% if logged_in? %>
     <div class="main_admin">
       Вы вошли как <b><%= current_admin.name %></b> &nbsp;|&nbsp;
@@ -27,7 +36,7 @@
       <p class="under-logo">СОВРЕМЕННОГО ВЫСОКОКАЧЕСТВЕННОГО ОБОРУДОВАНИЯ <br> ДЛЯ СЕЛЬСКОГО ХОЗЯЙСТВА</p>
     </div>
     <div class="col-lg-4 time">
-      <p>С 8:00 до 17:00 мо МCК (<%= @hours %>)</p>
+      <p>С 8:00 до 17:00 по МCК <br> (<%= @hours %>)</p>
       <a href="#openModal">
         <i class="fa fa-phone fa-2x fa-fw tooltips"> <span>Нажмите, чтобы заказать обратный звонок</span></i></a>
       <span class="phone">+7 831 412-99-90</span>

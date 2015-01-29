@@ -1,0 +1,53 @@
+<% breadcrumb :catalog %>
+<% if logged_in? %>
+    <p>
+      <%= link_to 'Добавить раздел', new_part_path, :class => "btn btn-primary" %>
+      <%= link_to 'Добавить подраздел', new_type_path, :class => "btn btn-primary" %>
+      <%= link_to 'Добавить материал', new_item_path, :class => "btn btn-primary" %>
+    </p>
+<% end %>
+
+<div class="catalog">
+  <h2><%= @kombikorm.first.section%></h2>
+  <ul>
+    <% @kombikorm.each do |part| %>
+        <li><h3><%= link_to "#{part.title} для комбикорма", part_path(part.id) %></h3></li>
+        <% @types = Type.where("part_id = ?", part.id) %>
+        <div class="row">
+          <% if @types.first %>
+              <% @types.each do |type| %>
+                  <div class="col-md-2">
+                    <%= link_to type.title, type_path(type.id) %>
+                  </div>
+              <% end %>
+          <% else %>
+              <div class="col-md-2">
+                Материалов нет
+              </div>
+          <% end %>
+        </div>
+        <hr>
+    <% end %>
+  </ul>
+  <h2><%= @pellet.first.section %></h2>
+  <ul>
+    <% @pellet.each do |part| %>
+        <li><h3><%= link_to "#{part.title} для пеллет", part_path(part.id) %></h3></li>
+        <% @types = Type.where("part_id = ?", part.id) %>
+        <div class="row">
+          <% if @types.first %>
+              <% @types.each do |type| %>
+                  <div class="col-md-2">
+                    <%= link_to type.title, type_path(type.id) %>
+                  </div>
+              <% end %>
+          <% else %>
+              <div class="col-md-2">
+                Материалов нет
+              </div>
+          <% end %>
+        </div>
+        <hr>
+    <% end %>
+  </ul>
+</div>

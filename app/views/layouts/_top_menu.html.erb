@@ -1,23 +1,23 @@
 <nav class="navbar navbar-default ">
   <ul class="nav navbar-nav top-menu">
     <li><%= link_to 'ГЛАВНАЯ', root_path %></li>
-    <li><%= link_to 'КАТАЛОГ &nbsp;<i class="fa fa-angle-down"></i>'.html_safe, types_path, :class => "drop" %>
+    <li><%= link_to 'КАТАЛОГ &nbsp;<i class="fa fa-angle-down"></i>'.html_safe, parts_path, :class => "drop" %>
       <div class="dropdown_2columns dropdown">
         <div class="col_1">
           <ul class="bord">
-            <% @kombikorm = Type.where(section_name: "Комбикормовое оборудование") %>
-            <li><%= link_to @kombikorm.first.section_name, kombikorm_path %></li>
-            <% @kombikorm.each do |type| %>
-                <li><%= link_to type.title, type_path(type.id) %></li>
+            <% @kombikorm = Part.where(section: "Комбикормовое оборудование") %>
+            <li><%= link_to @kombikorm.first.section, kombikorm_path %></li>
+            <% @kombikorm.each do |part| %>
+                <li><%= link_to part.title, part_path(part.id) %></li>
             <% end %>
           </ul>
         </div>
         <div class="col_1">
           <ul>
-            <% @pellet = Type.where(section_name: "Пеллетное оборудование") %>
-            <li><%= link_to @pellet.first.section_name, pellet_path %></li>
-            <% @pellet.each do |type| %>
-                <li><%= link_to type.title, type_path(type.id) %></li>
+            <% @pellet = Part.where(section: "Пеллетное оборудование") %>
+            <li><%= link_to @pellet.first.section, pellet_path %></li>
+            <% @pellet.each do |part| %>
+                <li><%= link_to part.title, part_path(part.id) %></li>
             <% end %>
           </ul>
         </div>

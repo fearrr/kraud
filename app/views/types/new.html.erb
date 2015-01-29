@@ -2,10 +2,16 @@
 <%= render 'shared/types_error_messages' %>
 <div class="col-md-4">
   <%= form_for(@type) do |f| %>
-      <%= f.label :section_name, 'Тип оборудования' %>
-      <%= f.select(:section_name, [["Комбикормовое оборудование"], ["Пеллетное оборудование"]], {}, :class => 'form-control') %>
+
+      <%= f.label :section, 'Тип оборудования' %>
+      <%= f.select :section, @sections.map {|value| [ value, value ]}, {:prompt=>'Выберите тип оборудования'}, {:class=>'form-control', :id=>'sections_select'} %>
+
+      <%= f.label :part_id, 'Раздел' %>
+      <%= f.collection_select :part_id, @parts, :id, :title, {}, {:class => 'form-control', :id=>'parts_select' } %>
+
       <%= f.label :title, 'Наименование' %>
       <%= f.text_field :title, class: 'form-control' %>
+
       <%= f.submit "Добавить", class: "btn btn-primary" %>
   <% end %>
 </div>
