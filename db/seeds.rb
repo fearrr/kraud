@@ -202,22 +202,18 @@ data = {
 }
 
 
-# id = 1
 data["kombikorm_parts_list"].each do |part_hash|
   newPart = Part.create(title: part_hash["part"], section: "Комбикормовое оборудование")
   part_hash["type"].each do |type_hash|
     Type.create(part_id: newPart.id, title: type_hash)
   end
-  # id += 1
 end
 
-# pid = data["kombikorm_parts_list"].count + 1
 data["pellet_parts_list"].each do |part_hash|
   newPart = Part.create(title: part_hash["part"], section: "Пеллетное оборудование")
   part_hash["type"].each do |type_hash|
     Type.create(part_id: newPart.id, title: type_hash)
   end
-  # pid += 1
 end
 
 
@@ -245,6 +241,10 @@ random_text_list = [
     "Случайный текст 2",
     "Случайный текст 3",
 ]
+
+random_text_list.each do |caption|
+  Caption.create(body: caption)
+end
 
 Admin.create!(id: 1,
     name: "admin",
