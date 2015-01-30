@@ -17,13 +17,14 @@
 //= require twitter/bootstrap
 //= require ckeditor/init
 //= require underscore
+//= require parsley.min
 //= require jquery.lightSlider
 //= require simpleGal
 //= require gmaps/google
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('ul.top-menu a').each(function () {
         if (this.href == location.href) $(this).parent().addClass('active');
     });
@@ -31,20 +32,52 @@ $(document).ready(function(){
     var slider = $("#lightSlider").lightSlider({
         gallery: true,
         item: 1,
-        loop:true,
-        slideWidth:10,
+        loop: true,
+        slideWidth: 10,
         slideMargin: 1,
         thumbItem: 4,
-        thumbMargin:1,
-        controls:false
+        thumbMargin: 1,
+        controls: false
     });
-    $('#goToPrevSlide').click(function(){
+    $('#goToPrevSlide').click(function () {
         slider.goToPrevSlide();
     });
-    $('#goToNextSlide').click(function(){
+    $('#goToNextSlide').click(function () {
         slider.goToNextSlide();
     });
+
+    window.ParsleyConfig = window.ParsleyConfig || {};
+    window.ParsleyConfig.i18n = window.ParsleyConfig.i18n || {};
+    window.ParsleyConfig.i18n.ru = $.extend(window.ParsleyConfig.i18n.ru || {}, {
+        defaultMessage: "Некорректное значение",
+        type: {
+            email: "Введите адрес электронной почты",
+            url: "Введите URL адрес",
+            number: "Введите число",
+            phone: "Введите номер телефона",
+            integer: "Введите целое число",
+            digits: "Введите только цифры",
+            alphanum: "Введите буквенно-цифровое значение"
+        },
+        notblank: "Это поле должно быть заполнено",
+        required: "Обязательное поле",
+        pattern: "Введите номер телефона",
+        min: "Это значение должно быть не менее чем %s",
+        max: "Это значение должно быть не более чем %s",
+        range: "Это значение должно быть в интервале от %s до %s",
+        minlength: "Введите не менее %s символов",
+        maxlength: "Введите не более %s символов",
+        length: "Длина строки должна быть от %s до %s символов",
+        mincheck: "Выберите не менее %s значений",
+        maxcheck: "Выберите не более %s значений",
+        check: "Выберите от %s до %s значений",
+        equalto: "Это значение должно совпадать"
+    });
+    window.ParsleyValidator.addCatalog('ru', window.ParsleyConfig.i18n.ru, true);
 });
+
+
+
 
 
 

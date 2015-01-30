@@ -10,20 +10,22 @@
     <h4>Форма обратной связи</h4>
 
     <p>Задайте нам Ваш вопрос, и мы свяжемся с Вами в ближайшее время</p>
-    <%= form_tag(controller: "callbacks", action: "slow_callback", method: "post") do %>
-        <%= label_tag(:name, 'Ваше имя*') %>
-        <%= text_field_tag(:name, '', :class => 'form-control') %>
 
-        <%= label_tag(:email, 'Email*') %>
-        <%= text_field_tag(:email, '', :class => 'form-control') %>
+      <%= form_for @body, :html => { "data-parsley-validate" => '' }, :url => url_for(:controller => 'callbacks', :action => 'slow_callback') do %>
+          <%= label_tag(:name, 'Ваше имя*') %>
+          <%= text_field_tag(:name, '', 'required' => '', :class => 'form-control') %>
 
-        <%= label_tag(:subject, 'Тема сообщения') %>
-        <%= text_field_tag(:subject, '', :class => 'form-control') %>
+          <%= label_tag(:email, 'Email*') %>
+          <%= text_field_tag(:email, '', 'type' => 'email', 'required' => '', :class => 'form-control') %>
 
-        <%= label_tag(:message, 'Текст сообщения*') %>
-        <%= text_area_tag(:message, '', :class => 'form-control') %>
-        <%= submit_tag "ОТПРАВИТЬ", :class => "btn btn-sm btn-default" %>
-    <% end %>
+          <%= label_tag(:subject, 'Тема сообщения') %>
+          <%= text_field_tag(:subject, '', :class => 'form-control') %>
+
+          <%= label_tag(:message, 'Текст сообщения*') %>
+          <%= text_area_tag(:message, '', "data-parsley-trigger" => 'keyup', 'data-parsley-minlength' => '10', :class => 'form-control') %>
+          <%= submit_tag "ОТПРАВИТЬ", :class => "btn btn-sm btn-default" %>
+
+      <% end %>
   </div>
   <div class="col-md-5">
     <%= raw(@body.body) %>

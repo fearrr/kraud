@@ -1,11 +1,13 @@
 <% breadcrumb :new_comment %>
 <%= render 'shared/comments_error_messages' %>
-<%= form_for @comment do |f| %>
-    <%= f.label :name, 'Ваше имя' %>
-    <%= f.text_field :name, class:'form-control' %>
-    <%= f.label :email, 'Ваш email' %>
-    <%= f.text_field :email, class:'form-control' %>
-    <%= f.label :body, 'Ваш отзыв' %>
-    <%= f.text_area :body, :class => 'form-control' %>
+<div class="col-md-7">
+<%= form_for @comment, :html => { "data-parsley-validate" => ''} do |f| %>
+    <%= f.label :name, 'Ваше имя*' %>
+    <%= f.text_field :name, 'required' => '', class:'form-control' %>
+    <%= f.label :email, 'Email*' %>
+    <%= f.text_field :email, 'type' => 'email', 'required' => '', class:'form-control' %>
+    <%= f.label :body, 'Ваш отзыв*' %>
+    <%= f.text_area :body, "data-parsley-minlength-message"=>'Минимум 5 символов',"data-parsley-trigger" => 'keyup', 'data-parsley-minlength' => '5',:class => 'form-control' %>
     <%= f.submit "Добавить", class: "btn btn-primary" %>
 <% end %>
+</div>

@@ -4,7 +4,7 @@
     <%= link_to "Управление отзывами (#{@notPublic})", comments_path, :class => "btn btn-primary" %>
 <% end %>
 <p><%= raw(@body.body) %></p>
-<h4>Отзывы покупателей</h4>
+<h4>Отзывы клиентов</h4>
 <% if @comments %>
     <% @comments.each do |comment| %>
         <% title = "дата создания: #{comment.created_at.strftime("%d.%m.%y")}, опубликован #{comment.updated_at.strftime("%d.%m.%y")}" %>

@@ -1,7 +1,7 @@
 <% breadcrumb :add_part %>
 <%= render 'shared/parts_error_messages' %>
-<div class="col-md-4">
-  <%= form_for(@part) do |f| %>
+<div class="col-md-4 form-group">
+  <%= form_for @part do |f| %>
       <%= f.label :section, 'Тип оборудования' %>
       <%= f.select(:section, [["Комбикормовое оборудование"], ["Пеллетное оборудование"]], {}, :class => 'form-control') %>
       <%= f.label :title, 'Наименование' %>

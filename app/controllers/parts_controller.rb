@@ -1,5 +1,6 @@
 class PartsController < ApplicationController
   # encoding: UTF-8
+
   def edit
     @part = Part.find(params[:id])
   end

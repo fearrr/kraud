@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'parts/pellet', as: 'pellet'
   post 'callbacks/fast_callback'
   post 'callbacks/slow_callback'
+  patch 'callbacks/slow_callback'
+  patch 'callbacks/fast_callback'
 
   resources :admins
   resources :actions
@@ -30,4 +32,5 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+
 end

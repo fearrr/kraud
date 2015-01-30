@@ -1,4 +1,6 @@
-<% Time.zone = 'Moscow'
+<%
+   @body = About.find(1)
+   Time.zone = 'Moscow'
    t = Time.zone.now
    begin_time = 8
    end_time = 17
@@ -53,9 +55,9 @@
       <h3>Мы перезвоним Вам в течение получаса...</h3>
 
       <div class="col-md-6 col-sm-offset-3">
-        <%= form_tag(controller: "callbacks", action: "fast_callback", method: "post") do %>
-            <%= text_field_tag(:name, '', :placeholder => "Ваше имя", :class => 'form-control') %>
-            <%= text_field_tag(:phone, '', :placeholder => "Телефон", :class => 'form-control') %>
+        <%= form_for @body, :html => { "data-parsley-validate" => '' }, :url => url_for(:controller => 'callbacks', :action => 'fast_callback') do %>
+            <%= text_field_tag(:name, '', 'required' => '', :placeholder => "Ваше имя", :class => 'form-control') %>
+            <%= text_field_tag(:phone, '', "data-parsley-minlength" => "6", "parsley-trigger" => "change", " data-parsley-type" =>"digits", 'required' => '', :placeholder => "Телефон", :class => 'form-control') %>
             <%= submit_tag "ОТПРАВИТЬ" %>
         <% end %>
       </div>
