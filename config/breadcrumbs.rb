@@ -179,6 +179,20 @@ crumb :edit_admin do
 end
 
 
+
+# Slider
+crumb :sliders do
+  link "Управление сладером", sliders_path
+end
+crumb :new_slider do
+  link "Новое изображение"
+  parent :sliders
+end
+crumb :edit_slider do
+  link "Редактировать"
+  parent :sliders
+end
+
 # If you want to split your breadcrumbs configuration over multiple files, you
 # can create a folder named `config/breadcrumbs` and put your configuration
 # files there. All *.rb files (e.g. `frontend.rb` or `products.rb`) in that

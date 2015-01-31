@@ -1,11 +1,14 @@
 <% breadcrumb :root %>
 
 <ul class="bxslider">
-  <li><%= image_tag("bxslider/slider-1.jpg", :alt => "slider-1", :title => "Инновационные технологии в сфере сельского хозяйства") %></li>
-  <li><%= image_tag("bxslider/slider-2.jpg", :alt => "slider-2", :title => "Другой текст описания") %></li>
+  <% @sliders.each do |slider| %>
+      <li><%= image_tag(slider.image.url(:normal), :alt => slider.title, :title => slider.title) %></li>
+<% end %>
 </ul>
 
+
 <% if logged_in? %>
+    <%= link_to 'Управление слайдером', sliders_path, :class => "btn btn-primary" %>
     <%= link_to 'Управление случайными фразами', captions_path, :class => "btn btn-primary" %>
 <% end %>
 
@@ -117,3 +120,4 @@
 <hr class="solid-hr">
 
 <%= render "parts/index" %>
+<%= render "abouts/index" %>

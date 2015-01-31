@@ -1,0 +1,12 @@
+<h2>Отзывы клиентов</h2>
+<% if @comments %>
+    <% @comments.each do |comment| %>
+        <% title = "дата создания: #{comment.created_at.strftime("%d.%m.%y")}, опубликован #{comment.updated_at.strftime("%d.%m.%y")}" %>
+        <div class="blog-item">
+          <p><b><%= comment.name %></b>, <%= title %> </p>
+
+          <p><%= comment.body %></p>
+        </div>
+    <% end %>
+<% end %>
+<%= link_to "Добавить свой отзыв", new_comment_path, :class => "btn btn-default" %>

@@ -7,8 +7,8 @@ class StaticController < ApplicationController
     @pellet = Part.where(section: "Пеллетное оборудование").limit(2)
     @sections = Part.uniq.pluck(:section)
 
-    # @pellet_items = Item.where("section = ?", @pellet.first.section)
+    @comments = Comment.where("public = ?", true).order('created_at DESC')
 
-
+    @sliders = Slider.all
   end
 end

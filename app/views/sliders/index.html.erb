@@ -1,0 +1,13 @@
+<% breadcrumb :sliders %>
+<p><%= link_to 'Добавить изображение', new_slider_path, :class => "btn btn-primary" %></p>
+<table class="table">
+  <% @sliders.each do |slider| %>
+      <tr>
+        <td><%= slider.title %></td>
+        <td><%= image_tag slider.image.url(:preview) %></td>
+
+        <td><%= link_to "Изменить", edit_slider_path(slider.id) %></td>
+        <td><%= link_to "Удалить", slider, method: :delete, data: { confirm: "Вы уверены?" } %></td>
+      </tr>
+  <% end %>
+</table>
