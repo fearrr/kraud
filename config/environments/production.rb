@@ -92,5 +92,11 @@ Rails.application.configure do
       :authentication => "plain",
       :enable_starttls_auto => true
   }
+
+  # Precompile additional assets.
+  # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
+  config.assets.precompile += %w(bxslider/*)
+  config.assets.precompile += %w( left.png right.png )
+  config.assets.precompile += %w( lightcontrols.png )
 end
 
