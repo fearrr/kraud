@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require bxslider
 //= require twitter/bootstrap
+//= require bootstrap-datepicker
 //= require ckeditor/init
 //= require underscore
 //= require parsley.min
@@ -27,6 +28,10 @@
 $(document).ready(function () {
     $('ul.top-menu a').each(function () {
         if (this.href == location.href) $(this).parent().addClass('active');
+    });
+
+    $('.datepicker').datepicker({
+        format: "dd/mm/yyyy"
     });
 
     var slider = $("#lightSlider").lightSlider({

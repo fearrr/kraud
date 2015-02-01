@@ -13,5 +13,6 @@
  *= require_self
  *= require bxslider
  *= require lightSlider
+ *= require bootstrap-datepicker
  *= require_tree .
  */

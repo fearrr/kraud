@@ -7,6 +7,7 @@ gem "figaro"
 gem 'bcrypt',               '3.1.7'
 
 gem "twitter-bootstrap-rails"
+gem 'bootstrap-datepicker-rails'
 gem "execjs"
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'

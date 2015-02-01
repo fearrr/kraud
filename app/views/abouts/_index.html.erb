@@ -1,7 +1,7 @@
 <h2>Отзывы клиентов</h2>
 <% if @comments %>
     <% @comments.each do |comment| %>
-        <% title = "дата создания: #{comment.created_at.strftime("%d.%m.%y")}, опубликован #{comment.updated_at.strftime("%d.%m.%y")}" %>
+        <% title = "дата публикации: #{comment.created_at.strftime("%d.%m.%y")}" %>
         <div class="blog-item">
           <p><b><%= comment.name %></b>, <%= title %> </p>
 

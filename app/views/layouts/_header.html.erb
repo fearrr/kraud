@@ -1,5 +1,6 @@
 <%
    @body = About.find(1)
+
    Time.zone = 'Moscow'
    t = Time.zone.now
    begin_time = 8
@@ -41,7 +42,7 @@
       <p>С 8:00 до 17:00 по МCК <br> (<%= @hours %>)</p>
       <a href="#openModal">
         <i class="fa fa-phone fa-2x fa-fw tooltips"> <span>Нажмите, чтобы заказать обратный звонок</span></i></a>
-      <span class="phone">+7 831 412-99-90</span>
+      <span class="phone"><%= phone %></span>
     </div>
   </div>
 
