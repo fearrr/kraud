@@ -360,8 +360,10 @@ ul.top-menu > li {
     padding: 0 1rem;
   }
 }
+
 .bord {
-    padding: 0 0.5rem;
+  padding: 0 1px;
+  width:400px;
 }
 
 .col_1 {
@@ -799,11 +801,11 @@ section {
   color: $red;
 }
 
-.parsley-required, .parsley-type, .parsley-minlength,  .parsley-pattern {
+.parsley-required, .parsley-type, .parsley-minlength, .parsley-pattern {
   list-style-type: none;
-  margin-left:-40px;
-  margin-top:5px;
-  width:158px;
+  margin-left: -40px;
+  margin-top: 5px;
+  width: 158px;
   background: #000;
   color: #fff;
   border: 1px solid #000;
@@ -812,14 +814,15 @@ section {
   -moz-border-radius: 6px;
   border-radius: 6px;
 }
+
 .parsley-type, .parsley-pattern, .parsley-minlength {
-  width:280px;
+  width: 280px;
 }
 
-.parsley-required:after,.parsley-type:after, .parsley-minlength:after, .parsley-pattern:after {
+.parsley-required:after, .parsley-type:after, .parsley-minlength:after, .parsley-pattern:after {
   content: '';
   position: relative;
-  top:-30px;
+  top: -30px;
   left: -120px;
   width: 0;
   height: 0;
@@ -829,17 +832,17 @@ section {
 }
 
 .modalDialog {
-  .parsley-required, .parsley-type, .parsley-minlength,  .parsley-pattern {
-    text-align:center;
+  .parsley-required, .parsley-type, .parsley-minlength, .parsley-pattern {
+    text-align: center;
     background: transparent;
-    width:390px;
-    border:0;
+    width: 390px;
+    border: 0;
     color: #fff;
-    font-size:19px;
-    padding-top:0px;
-    padding-bottom:0px;
+    font-size: 19px;
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
-  .parsley-required:after,.parsley-type:after, .parsley-minlength:after, .parsley-pattern:after {
-    border:0
+  .parsley-required:after, .parsley-type:after, .parsley-minlength:after, .parsley-pattern:after {
+    border: 0
   }
 }
