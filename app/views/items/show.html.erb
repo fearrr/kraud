@@ -1,4 +1,9 @@
-<% @part.section == "Комбикормовое оборудование" ? (breadcrumb :item_kombikorm, @item, @type, @part) : (breadcrumb :item_pellet, @item, @type, @part) %>
+<% if @part.section == "Комбикормовое оборудование" %>
+    <% @type.items.all.count == 1 && !logged_in? ? (breadcrumb :only_item_kombikorm, @item, @part) : (breadcrumb :item_kombikorm, @item, @type, @part) %>
+<% else %>
+    <% @type.items.all.count == 1 && !logged_in? ? (breadcrumb :only_item_pellet, @item, @part) : (breadcrumb :item_pellet, @item, @type, @part) %>
+<% end %>
+
 <% if logged_in? %>
     <p>
       <%= link_to "Редактировать материал", edit_item_path(@item), :class => "btn btn-primary" %>

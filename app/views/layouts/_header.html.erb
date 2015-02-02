@@ -1,4 +1,5 @@
 <%
+   @notPublic = Comment.where("public = ? OR public = ?", nil, false).length
    @body = About.find(1)
 
    Time.zone = 'Moscow'
@@ -19,9 +20,10 @@
 <% if logged_in? %>
     <div class="main_admin">
       Вы вошли как <b><%= current_admin.name %></b> &nbsp;|&nbsp;
+      <%= link_to "Отзывы (#{@notPublic})", comments_path %> &nbsp;|&nbsp;
       <%= link_to 'Изменить данные профиля', edit_admin_path(current_admin) %> &nbsp;|&nbsp;
       <%= link_to 'Зарегистрировать нового администратора', new_admin_path %>
-      <%= link_to 'Выход', logout_path, method: "delete", :class => "btn btn-primary" %>
+      <p><%= link_to 'Выход', logout_path, method: "delete", :class => "btn btn-primary" %></p>
     </div>
 <% end %>
 <header>
@@ -56,7 +58,7 @@
       <div class="col-md-6 col-sm-offset-3">
         <%= form_for @body, :html => { "data-parsley-validate" => '' }, :url => url_for(:controller => 'callbacks', :action => 'fast_callback') do %>
             <%= text_field_tag(:name, '', 'required' => '', :placeholder => "Ваше имя", :class => 'form-control') %>
-            <%= text_field_tag(:phone, '', "data-parsley-minlength" => "6", "parsley-trigger" => "change", " data-parsley-type" =>"digits", 'required' => '', :placeholder => "Телефон", :class => 'form-control') %>
+            <%= text_field_tag(:phone, '', "data-parsley-minlength" => "6", "parsley-trigger" => "change", " data-parsley-type" => "digits", 'required' => '', :placeholder => "Телефон", :class => 'form-control') %>
             <%= submit_tag "ОТПРАВИТЬ" %>
         <% end %>
       </div>

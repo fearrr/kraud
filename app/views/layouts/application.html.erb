@@ -49,7 +49,7 @@
   <!-- /header -->
   <%= render 'layouts/top_menu' %>
   <!-- /menu -->
-  <%= breadcrumbs display_single_fragment: true, style: :bootstrap if !current_page?(controller: 'static', action: 'index') %>
+  <%= breadcrumbs display_single_fragment: true, separator: " <i class='fa fa-angle-right'></i> ", style: :bootstrap if !current_page?(controller: 'static', action: 'index') %>
   <!-- /breadcrumbs -->
   <%= bootstrap_flash %>
   <%= yield %>

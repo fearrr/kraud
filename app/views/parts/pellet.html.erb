@@ -14,8 +14,12 @@
         <% if @types.first %>
             <% @types.each do |type| %>
                 <div class="col-md-2">
-
-                  <%= link_to type.title, type_path(type.id) %>
+                  <%= image_tag(type.items.first.attached_assets.first.asset.url(:mini)) if type.items.first && !type.items.first.attached_assets.empty? && type.items.first.attached_assets.first.asset %>
+                  <% if type.items.all.count == 1 && !logged_in? %>
+                      <%= link_to type.items.first.title, item_path(type.items.first.id) %>
+                  <% else %>
+                      <%= link_to type.title, type_path(type.id) %>
+                  <% end %>
                 </div>
             <% end %>
         <% else %>

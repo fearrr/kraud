@@ -12,6 +12,7 @@
   <% if @items.first %>
       <% @items.each do |item| %>
           <div class="col-md-2">
+            <%= image_tag(item.attached_assets.first.asset.url(:mini)) if !item.attached_assets.empty? && item.attached_assets.first.asset %>
             <%= link_to item.title, item_path(item.id) %>
           </div>
       <% end %>

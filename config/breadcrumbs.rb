@@ -122,7 +122,14 @@ crumb :item_pellet do |item, type, part|
   link item.title, item
   parent :type_pellet, type, part
 end
-
+crumb :only_item_kombikorm do |item, part|
+  link item.title, item
+  parent :part_kombikorm, part
+end
+crumb :only_item_pellet do |item, part|
+  link item.title, item
+  parent :part_pellet, part
+end
 
 # Catalog edit action
 

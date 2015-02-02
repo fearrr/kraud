@@ -61,7 +61,4 @@ class PartsController < ApplicationController
   def parts_params
     params.require(:part).permit(:title, :section)
   end
-
-  # <%= image_tag(type.attached_assets.first.asset.url(:mini)) if !item.attached_assets.empty? && item.attached_assets.first.asset %>
-
 end
