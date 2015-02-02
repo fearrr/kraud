@@ -193,6 +193,16 @@ crumb :edit_slider do
   parent :sliders
 end
 
+# Globals
+crumb :globals do
+  link "Глобальные параметры", globals_path
+end
+crumb :edit_globals do
+  link "Редактировать"
+  parent :globals
+end
+
+
 # If you want to split your breadcrumbs configuration over multiple files, you
 # can create a folder named `config/breadcrumbs` and put your configuration
 # files there. All *.rb files (e.g. `frontend.rb` or `products.rb`) in that

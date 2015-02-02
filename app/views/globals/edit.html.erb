@@ -1,0 +1,20 @@
+<% breadcrumb :edit_globals %>
+<%= render 'shared/globals_error_messages' %>
+<%= form_for @global do |f| %>
+    <%= f.label :address, 'Адрес' %>
+    <%= f.text_area :address, :class => 'form-control' %>
+
+    <%= f.label :phone, 'Телефон' %>
+    <%= f.text_field :phone, :class => 'form-control' %>
+
+    <%= f.label :email, 'Email' %>
+    <%= f.text_field :email, :class => 'form-control' %>
+
+    <%= f.label :workStart, 'Начало рабочего дня' %>
+    <%= f.text_field :workStart, :class => 'form-control' %>
+
+    <%= f.label :workEnd, 'Конец рабочего дня' %>
+    <%= f.text_field :workEnd, :class => 'form-control' %>
+
+    <%= f.submit "Сохранить", class: "btn btn-primary" %>
+<% end %>

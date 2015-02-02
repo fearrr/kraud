@@ -252,3 +252,9 @@ Admin.create!(id: 1,
     password: "foobar",
     password_confirmation: "foobar")
 
+Global.create!(workStart: 8,
+           workEnd: 17,
+           phone: "+7 831 412-99-90",
+           email: "office@kraud.org",
+           address: "603105, г. Н. Новгород, <br> ул. Агрономическая, д. 125А",
+)

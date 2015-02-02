@@ -1,0 +1,32 @@
+<% breadcrumb :globals %>
+<p><%= link_to 'Редактировать', edit_global_path(@globals.id), :class => "btn btn-primary" %></p>
+<table class="table table-bordered">
+  <tr>
+    <td>Адрес</td>
+    <td>
+      <%= @globals.address.gsub(/<br\s*\/?>/, '') %></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>
+      <%= @globals.email %></td>
+  </tr>
+  <tr>
+    <td>Телефон</td>
+    <td><%= @globals.phone %></td>
+  </tr>
+  <tr>
+    <td>Начало рабочего дня</td>
+    <td>
+      <%= @globals.workStart %>
+      <%= Russian::pluralize(@globals.workStart, "час", "часа", "часов") %>
+    </td>
+  </tr>
+  <tr>
+    <td>Конец рабочего дня</td>
+    <td>
+      <%= @globals.workEnd %>
+      <%= Russian::pluralize(@globals.workEnd, "час", "часа", "часов") %>
+    </td>
+  </tr>
+</table>

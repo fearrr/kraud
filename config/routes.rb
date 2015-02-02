@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   resources :captions
   resources :sliders
   resources :abouts, :only => [:index, :edit, :update]
-  resources :contacts, :only => [:index, :edit, :update]
+  resources :contacts, :only => [:index]
+  resources :globals
   root 'static#index'
 
   get    'login'   => 'sessions#new'

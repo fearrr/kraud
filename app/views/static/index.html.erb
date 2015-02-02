@@ -8,6 +8,7 @@
 
 
 <% if logged_in? %>
+    <%= link_to 'Глобальные настройки', globals_path, :class => "btn btn-primary" %>
     <%= link_to 'Управление слайдером', sliders_path, :class => "btn btn-primary" %>
     <%= link_to 'Управление случайными фразами', captions_path, :class => "btn btn-primary" %>
 <% end %>
