@@ -75,11 +75,11 @@ crumb :catalog do
   link "Каталог", parts_path
 end
 crumb :kombikorm do
-  link "Линии производства комбикорма", kombikorm_path
+  link "Оборудование для производства комбикорма", kombikorm_path
   parent :catalog
 end
 crumb :pellet do
-  link "Линии производства пеллет", pellet_path
+  link "Оборудование для производства пеллет", pellet_path
   parent :catalog
 end
 
