@@ -34,6 +34,17 @@ h1, h2, h3 {
   //  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
+.main_admin {
+  section {
+    padding:1px;
+  }
+  p {
+    position:relative;
+    right:10px;
+    top:-25px;
+  }
+}
+
 .landing {
   font-size: 16px;
 }
@@ -49,7 +60,7 @@ h3 {
 }
 
 header {
-  min-height: 16rem;
+  min-height: 18rem;
   .col-lg-4:not(.main-logo) {
     padding-top: 2rem;
     h2 {
@@ -72,13 +83,11 @@ header {
     font-size: 1.7em;
     font-weight: 300;
   }
-
   i.tooltips {
     position: relative;
     display: inline;
     opacity: 0.7;
   }
-
   i.tooltips span {
     font-size: 1.3rem;
     position: absolute;
@@ -93,7 +102,6 @@ header {
     text-align: left;
     border-radius: 6px;
   }
-
   i.tooltips span:after {
     content: '';
     position: absolute;
@@ -592,8 +600,12 @@ ul.bxslider {
   height: 4rem;
   padding-top: 0;
   font-size: 1.8rem;
-  text-decoration: underline;
+  text-decoration: none;
   color: #fff;
+  a {
+    color: $red;
+    text-decoration: underline;
+  }
 }
 
 .bx-wrapper .bx-prev {
@@ -1005,10 +1017,17 @@ section {
       margin-left: -65px;
     }
   }
+  .bx-wrapper {
+    height: 200px;
+  }
 }
-
-@media screen and (min-width: 0px) and (max-width: 992px) {
-
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .bx-wrapper {
+    height: 150px;
+  }
+  .bx-wrapper .bx-controls-direction a {
+    margin-top: 15px;
+  }
   header {
     h3 {
       font-size: 16px;
@@ -1019,7 +1038,7 @@ section {
   }
   ul.top-menu > li {
     width: 115px;
-    min-width:115px;
+    min-width: 115px;
     font-size: 12px;
   }
   .time {
@@ -1043,10 +1062,10 @@ section {
     float: left;
   }
   footer {
-    position: relative;
-    margin-top: -150px; /* отрицательное значение высоты футера */
-    height: 150px;
-    clear: both;
+//    position: relative;
+//    margin-top: -150px; /* отрицательное значение высоты футера */
+//    height: 150px;
+//    clear: both;
 
     .row {
       width: 100%;
@@ -1077,10 +1096,48 @@ section {
       float: left;
     }
   }
+  .karen {
+    position: relative;
+    float: right;
+    top: 0;
+  }
+  .preview {
+    position: relative;
+    top: -100px;
+  }
+  .catalog {
+    .col-md-2 {
+      float:left;
+      width:250px;
+    }
+    .col-md-3 {
+      float:left;
+      width:250px;
+    }
+  }
+  .callback {
+    float:left;
+    width:380px;
+    padding-right:40px;
+  }
+  .main_admin {
+    section {
+      width: 500px;
+    }
+    p {
+      top:-30px;
+    }
+  }
 }
-
-
 @media screen and (min-width: 0px) and (max-width: 768px) {
+  .main_admin {
+    section {
+      width: 500px;
+    }
+    p {
+      top:-30px;
+    }
+  }
   .top-menu {
     background: #efefef;
     text-align: center;
@@ -1089,16 +1146,110 @@ section {
   ul.top-menu > li {
     width: 100%;
     font-size: 12px;
-    border:0;
+    border: 0;
   }
   .navbar-nav a {
     color: #1b1b1b;
   }
   .navbar-default {
+    border: 0;
     .nav {
       li a {
         color: #1b1b1b;
       }
     }
+  }
+  .bx-wrapper {
+    height: 135px;
+  }
+  .bx-wrapper .bx-controls-direction a {
+    margin-top: 15px;
+  }
+  header {
+    h3 {
+      font-size: 16px;
+    }
+    h2 {
+      font-size: 18px;
+    }
+  }
+  .time {
+    width: 800px;
+  }
+  .main-logo {
+    width: 150px;
+    img {
+      width: 120px;
+      height: 85px;
+    }
+    h3 {
+      font-size: 16px;
+    }
+    h2 {
+      font-size: 18px;
+    }
+  }
+  .random-text {
+    width: 250px;
+    float: left;
+  }
+  footer {
+//    position: relative;
+//    margin-top: -150px; /* отрицательное значение высоты футера */
+//    height: 150px;
+//    clear: both;
+
+    .row {
+      width: 100%;
+      min-width: 680px;
+    }
+    .col-md-2 {
+      float: right;
+    }
+    .col-md-1 {
+      position: relative;
+      width: 125px;
+      left: 50%;
+      margin-left: -125px;
+      float: left;
+    }
+    .col-md-3:not(.random-text) {
+      position: relative;
+      width: 250px;
+      left: 50%;
+      margin-left: -65px;
+      float: left;
+    }
+    .bottom-menu {
+      position: relative;
+      width: 600px;
+      left: 50%;
+      margin-left: -400px;
+      float: left;
+    }
+  }
+  .karen {
+    position: relative;
+    float: right;
+    top: 0;
+  }
+  .preview {
+    position: relative;
+    top: -100px;
+  }
+  .catalog {
+    .col-md-2 {
+      float:left;
+      width:250px;
+    }
+    .col-md-3 {
+      float:left;
+      width:250px;
+    }
+  }
+  .callback {
+    float:left;
+    width:380px;
+    padding-right:40px;
   }
 }

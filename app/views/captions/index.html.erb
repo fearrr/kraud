@@ -6,7 +6,7 @@
     <tr>
       <td><%= caption.body %></td>
       <td><%= link_to "Изменить", edit_caption_path(caption) %></td>
-      <td><%= link_to "Удалить", captions_path, method: :delete, data: { confirm: "Вы уверены?" } %></td>
+      <td><%= link_to "Удалить", caption, method: :delete, data: { confirm: "Вы уверены?" } %></td>
     </tr>
   <% end %>
 </table>

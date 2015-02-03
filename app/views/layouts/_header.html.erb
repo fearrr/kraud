@@ -19,10 +19,12 @@
 
 <% if logged_in? %>
     <div class="main_admin">
-      Вы вошли как <b><%= current_admin.name %></b> &nbsp;|&nbsp;
+     <section>
+       Вы вошли как <b><%= current_admin.name %></b> &nbsp;|&nbsp;
       <%= link_to "Отзывы (#{@notPublic})", comments_path %> &nbsp;|&nbsp;
       <%= link_to 'Изменить данные профиля', edit_admin_path(current_admin) %> &nbsp;|&nbsp;
       <%= link_to 'Зарегистрировать нового администратора', new_admin_path %>
+      </section>
       <p><%= link_to 'Выход', logout_path, method: "delete", :class => "btn btn-primary" %></p>
     </div>
 <% end %>

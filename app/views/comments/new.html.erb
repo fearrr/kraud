@@ -12,7 +12,7 @@
       <% if logged_in? %>
           <ul class="nav nav-pills">
             <li><i class="fa fa-calendar form-control"></i></li>
-            <li><%= f.text_field :created_at, :placeholder => 'Дата публикации', class: "datepicker form-control" %></li>
+            <li><%= f.text_field :created_at, "data-parsley-trigger" => "change", "data-parsley-date" => '', 'required' => '', :placeholder => 'Дата публикации', class: "datepicker form-control" %></li>
           </ul>
       <% end %>
 
