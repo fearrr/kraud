@@ -6,6 +6,7 @@
         <div class="col_1">
           <ul class="bord">
             <% @kombikorm = Part.where(section: "Комбикормовое оборудование") %>
+           <b><li><%= link_to 'Оборудование для производства комбикорма', kombikorm_path %></li></b>
             <% @kombikorm.each do |part| %>
                 <li><%= link_to part.title, part_path(part.id) %></li>
             <% end %>
@@ -14,6 +15,7 @@
         <div class="col_1">
           <ul>
          <% @pellet = Part.where(section: "Пеллетное оборудование") %>
+            <b><li><%= link_to 'Оборудование для производства пеллет', pellet_path %></li></b>
             <% @pellet.each do |part| %>
                 <li><%= link_to part.title, part_path(part.id) %></li>
             <% end %>

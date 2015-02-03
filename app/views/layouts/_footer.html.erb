@@ -2,29 +2,28 @@
 <footer>
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 random-text"><p> <%= @caption.body if @caption %> </p></div>
-      <div class="col-lg-7 bottom-menu">
-        <%= link_to 'Главная', root_path %>
-        <%= link_to 'Каталог', parts_path%>
-        <%= link_to 'Новости', tidings_path %>
-        <%= link_to 'Акции', actions_path %>
-        <%= link_to 'О компании', abouts_path %>
+      <div class="col-md-3 random-text"><p> <%= @caption.body if @caption %> </p></div>
+      <div class="col-md-8 bottom-menu">
+        <%= link_to 'Главная', root_path %> |
+        <%= link_to 'Каталог', parts_path%> |
+        <%= link_to 'Новости', tidings_path %> |
+        <%= link_to 'Акции', actions_path %> |
+        <%= link_to 'О компании', abouts_path %> |
         <%= link_to 'Контакты', contacts_path %>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-1 col-md-offset-4">
+      <div class="col-md-1">
         <i class=" fa fa-home fa-4x"></i>
       </div>
       <div class="col-md-3">
         <%= raw(address) %> <br>
         тел. <%= phone %>
       </div>
-      <div class="col-lg-2 col-md-offset-2">
+      <div class="col-md-2">
         <%= link_to image_tag("footer-logo.png", :alt => "footer logo", :size => "160x50"), root_url %>
       </div>
     </div>
-  </div>
   </div>
   <div class="copyright">&#169 2014 Крауд. Все права защищены</div>
 </footer>

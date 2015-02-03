@@ -49,11 +49,11 @@
   <div id="openModal" class="modalDialog">
 
     <div>
-      <a href="#close" title="Close" class="close">X</a>
+      <a href="#close" title="Close" class="close"><i class="fa fa-times"></i></a>
 
       <h1>Закажите обратный зконок</h1>
 
-      <h3>Мы перезвоним Вам в течение получаса...</h3>
+      <p class="call">Мы перезвоним Вам в течение получаса...</p>
 
       <div class="col-md-6 col-sm-offset-3">
         <%= form_for @body, :html => { "data-parsley-validate" => '' }, :url => url_for(:controller => 'callbacks', :action => 'fast_callback') do %>
