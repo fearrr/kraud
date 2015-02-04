@@ -1,7 +1,7 @@
 <% breadcrumb :add_caption %>
 <%= render 'shared/captions_error_messages' %>
-<%= form_for @caption do |f| %>
-    <%= f.label :body, 'Случайный текст (50 символов)' %>
-    <%= f.text_area :body, :class => 'form-control' %>
+<%= form_for @caption, :html => { "data-parsley-validate" => ''} do |f| %>
+    <%= f.label :body, "Текст (максимум 50 символов)" %>
+    <%= f.text_area :body, "data-parsley-trigger" => 'keyup', 'data-parsley-maxlength' => '50', 'required'=> 'true', :class => 'form-control' %>
     <%= f.submit "Добавить", class: "btn btn-primary" %>
 <% end %>
