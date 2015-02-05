@@ -4,10 +4,10 @@
     <% @kombikorm.each do |part| %>
         <li><h3><%= link_to "#{part.title} для комбикорма", part_path(part.id) %></h3></li>
         <% @types = Type.where("part_id = ?", part.id) %>
-        <div class="row">
+        <div class="row row-centered">
           <% if @types.first %>
               <% @types.each do |type| %>
-                  <div class="col-md-2">
+                  <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
                     <%= image_tag(type.items.first.attached_assets.first.asset.url(:mini)) if type.items.first && !type.items.first.attached_assets.empty? && type.items.first.attached_assets.first.asset %>
                     <% if type.items.all.count == 1 && !logged_in? %>
                         <%= link_to type.items.first.title, item_path(type.items.first.id) %>
@@ -17,7 +17,7 @@
                   </div>
               <% end %>
           <% else %>
-              <div class="col-md-2">
+              <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
                 Материалов нет
               </div>
           <% end %>
@@ -30,10 +30,10 @@
     <% @pellet.each do |part| %>
         <li><h3><%= link_to "#{part.title} для пеллет", part_path(part.id) %></h3></li>
         <% @types = Type.where("part_id = ?", part.id) %>
-        <div class="row">
+        <div class="row row-centered">
           <% if @types.first %>
               <% @types.each do |type| %>
-                  <div class="col-md-2">
+                  <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
                     <%= image_tag(type.items.first.attached_assets.first.asset.url(:mini)) if type.items.first && !type.items.first.attached_assets.empty? && type.items.first.attached_assets.first.asset %>
                     <% if type.items.all.count == 1 && !logged_in? %>
                         <%= link_to type.items.first.title, item_path(type.items.first.id) %>
@@ -43,7 +43,7 @@
                   </div>
               <% end %>
           <% else %>
-              <div class="col-md-2">
+              <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
                 Материалов нет
               </div>
           <% end %>

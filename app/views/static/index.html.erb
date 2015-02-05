@@ -3,7 +3,7 @@
 <ul class="bxslider">
   <% @sliders.each do |slider| %>
       <li><%= image_tag(slider.image.url(:normal), :alt => slider.title, :title => slider.title) %></li>
-<% end %>
+  <% end %>
 </ul>
 
 
@@ -13,7 +13,7 @@
     <%= link_to 'Управление случайными фразами', captions_path, :class => "btn btn-primary" %>
 <% end %>
 
-<div class="row">
+<div class="row karen">
   <div class="col-md-8">
     <h2>Компания Крауд - производство оборудования для комбикорма и пеллет</h2>
 
@@ -22,49 +22,55 @@
       перерабатывающей промышленности. Миссия компании «Крауд НН» - способствовать развитию в России эффективного
       сельского хозяйства и перерабатывающей промышленности.</p>
   </div>
-  <div class="col-md-3 karen">
+  <div class="col-md-3 ">
     <%= image_tag("karen.png", :alt => "karen", :size => "310x230") %>
   </div>
 </div>
 
-<div class="row preview">
-  <div class="col-md-3 preview">
-    <div class="tidings-preview">
-      <h4>Новости компании</h4>
-      <ul>
-        <% @tidings.each do |tiding| %>
-            <li><span class="date"><%= tiding.created_at.strftime("%d.%m.%y") %></span>
-              <%= link_to tiding.title, tiding_path(tiding.id), :class => 'single' %>
-            </li>
-        <% end %>
-      </ul>
-      <p>
-        <%= link_to "Все новости", tidings_path, :class => 'all' %>
-      </p>
-    </div>
-    <div class="actions-preview">
-      <h4>Внимание, акция!</h4>
-      <ul>
-        <% @actions.each do |action| %>
-            <li><span class="date"><%= action.created_at.strftime("%d.%m.%y") %></span>
-              <%= link_to action.title, action_path(action.id), :class => 'single' %>
-            </li>
-        <% end %>
-      </ul>
-      <p>
-        <%= link_to "Все акции", actions_path, :class => 'all' %>
-      </p>
-    </div>
-  </div>
+<div class="row">
+  <div class="col-md-3 col-sm-6 preview">
 
-  <div class="col-md-9">
-    <table class="advantages">
+    <div class="vidget-head">
+      <h4 class="block"> &nbsp; </h4>
+      <h4>Новости компании</h4>
+    </div>
+    <ul>
+      <% @tidings.each do |tiding| %>
+          <li><span class="date"><%= tiding.created_at.strftime("%d.%m.%y") %></span>
+            <%= link_to tiding.title, tiding_path(tiding.id), :class => 'single' %>
+          </li>
+      <% end %>
+    </ul>
+    <p>
+      <%= link_to "Все новости", tidings_path, :class => 'all' %>
+    </p>
+
+    <div class="vidget-head">
+      <h4 class="block"> &nbsp; </h4>
+      <h4>Внимание, акция!</h4>
+    </div>
+    <ul>
+      <% @actions.each do |action| %>
+          <li><span class="date"><%= action.created_at.strftime("%d.%m.%y") %></span>
+            <%= link_to action.title, action_path(action.id), :class => 'single' %>
+          </li>
+      <% end %>
+    </ul>
+    <p>
+      <%= link_to "Все акции", actions_path, :class => 'all' %>
+    </p>
+
+  </div>
+  <div class="col-md-8 col-sm-8 advantages">
+    <table>
       <tr>
         <td>
           <h4>Организация процессов</h4>
 
-          <p>Благодаря правильно выстроенной цепочке процессов, современному уровню технологии производства, расширенным
-            испытаниям и квалифицированному персоналу мы обеспечиваем выпуск продукции, соответствующий всем требованиям
+          <p>Благодаря правильно выстроенной цепочке процессов, современному уровню технологии производства,
+            расширенным
+            испытаниям и квалифицированному персоналу мы обеспечиваем выпуск продукции, соответствующий всем
+            требованиям
             клиентов, а во многом и превосходим ожидания Заказчиков.
           </p>
         </td>
@@ -98,7 +104,8 @@
         <td>
           <h4>Приоритет - интерес клиента</h4>
 
-          <p>В своей работе мы руководствуемся исключительно интересами клиента. Мы начинаем сотрудничество только в том
+          <p>В своей работе мы руководствуемся исключительно интересами клиента. Мы начинаем сотрудничество только в
+            том
             случае, если на 100% уверены, что наше предложение полностью удовлетворяет нуждам заказчика и оптимальным
             образом
             решает его задачи

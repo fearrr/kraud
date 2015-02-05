@@ -51,6 +51,19 @@ $(document).ready(function () {
         slider.goToNextSlide();
     });
 
+    $('.callForm').parsley({
+        errors: {
+            classHandler: function ( elem ) {}
+            , container: function ( elem, template, isRadioOrCheckbox ) {
+                //here i have span msg. id to be displayed as custom attribute in input element
+                $('.time').html(template);
+                return true;//returning back boolean makes it work
+            }
+            , errorsWrapper: '<ul></ul>'
+            , errorElem: '<li></li>'
+        }
+    });
+
     window.ParsleyConfig = window.ParsleyConfig || {};
     window.ParsleyConfig.validators = window.ParsleyConfig.validators || {};
     window.ParsleyConfig.validators.date = {
@@ -79,8 +92,8 @@ $(document).ready(function () {
         min: "Это значение должно быть не менее чем %s",
         max: "Это значение должно быть не более чем %s",
         range: "Это значение должно быть в интервале от %s до %s",
-        minlength: "Введите не менее %s символов",
-        maxlength: "Введите не более %s символов",
+        minlength: "Не менее %s символов",
+        maxlength: "Не более %s символов",
         length: "Длина строки должна быть от %s до %s символов",
         mincheck: "Выберите не менее %s значений",
         maxcheck: "Выберите не более %s значений",

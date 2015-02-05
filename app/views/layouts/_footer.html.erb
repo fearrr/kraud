@@ -1,9 +1,10 @@
 <% @caption = Caption.offset(rand(Caption.count)).first %>
 <footer>
   <div class="container">
+
     <div class="row">
-      <div class="col-md-3 random-text"><p> <%= @caption.body if @caption %> </p></div>
-      <div class="col-md-8 bottom-menu">
+      <div class="col-md-4 col-sm-6 col-xs-6 random-text"><p> <%= @caption.body if @caption %> </p></div>
+      <div class="col-md-8 col-sm-12 col-xs-12 bottom-menu">
         <%= link_to 'Главная', root_path %> |
         <%= link_to 'Каталог', parts_path%> |
         <%= link_to 'Новости', tidings_path %> |
@@ -12,18 +13,20 @@
         <%= link_to 'Контакты', contacts_path %>
       </div>
     </div>
+
     <div class="row">
-      <div class="col-md-1">
+      <div class="col-md-1 col-sm-3 col-xs-3">
         <i class=" fa fa-home fa-4x"></i>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 col-sm-3 col-xs-3">
         <%= raw(address) %> <br>
         тел. <%= phone %>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 col-sm-3 col-xs-3">
         <%= link_to image_tag("footer-logo.png", :alt => "footer logo", :size => "160x50"), root_url %>
       </div>
     </div>
+
   </div>
   <div class="copyright">&#169 2014 Крауд. Все права защищены</div>
 </footer>

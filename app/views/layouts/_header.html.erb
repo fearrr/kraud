@@ -18,32 +18,33 @@
 %>
 
 <% if logged_in? %>
-    <div class="main_admin">
-     <section>
-       Вы вошли как <b><%= current_admin.name %></b> &nbsp;|&nbsp;
-      <%= link_to "Отзывы (#{@notPublic})", comments_path %> &nbsp;|&nbsp;
-      <%= link_to 'Изменить данные профиля', edit_admin_path(current_admin) %> &nbsp;|&nbsp;
-      <%= link_to 'Зарегистрировать нового администратора', new_admin_path %>
+    <div class="main-admin">
+      <%= link_to 'Выход', logout_path, method: "delete", :class => "btn btn-primary" %>
+      <section>
+        Вы вошли как <b><%= current_admin.name %></b> &nbsp;|&nbsp;
+        <%= link_to "Отзывы (#{@notPublic})", comments_path %> &nbsp;|&nbsp;
+        <%= link_to 'Изменить данные профиля', edit_admin_path(current_admin) %> &nbsp;|&nbsp;
+        <%= link_to 'Зарегистрировать нового администратора', new_admin_path %>
       </section>
-      <p><%= link_to 'Выход', logout_path, method: "delete", :class => "btn btn-primary" %></p>
     </div>
 <% end %>
 <header>
   <div class="row">
-    <div class="col-lg-4 main-logo">
+    <div class="col-md-4 main-logo">
       <%= link_to image_tag("logo.png", :alt => "logo", :size => "320x130", :class => "logo"), root_path %>
       <h3 class="under-logo">КОМБИКОРМОВОЕ ОБОРУДОВАНИЕ<br>
         ПЕЛЛЕТНОЕ ОБОРУДОВАНИЕ</h3>
     </div>
-    <div class="col-lg-4">
+    <div class="col-md-4">
       <h2><strong>ПРОИЗВОДИТЕЛЬ <br> И ПОСТАВЩИК</strong></h2>
 
       <p class="under-logo">СОВРЕМЕННОГО ВЫСОКОКАЧЕСТВЕННОГО ОБОРУДОВАНИЯ <br> ДЛЯ СЕЛЬСКОГО ХОЗЯЙСТВА</p>
     </div>
-    <div class="col-lg-4 time">
+    <div class="col-md-4 time">
       <p>С <%= workStart %>:00 до <%= workEnd %>:00 по МCК <br> (<%= @hours %>)</p>
       <a href="#openModal">
-        <i class="fa fa-phone fa-2x fa-fw tooltips"> <span>Нажмите, чтобы заказать обратный звонок</span></i></a>
+        <i class="fa fa-phone fa-2x fa-fw tooltips"> <span>Нажмите, чтобы заказать обратный звонок</span></i>
+      </a>
       <span class="phone"><%= phone %></span>
     </div>
   </div>
@@ -55,11 +56,11 @@
 
       <h1>Закажите обратный зконок</h1>
 
-      <p class="call">Мы перезвоним Вам в течение получаса...</p>
+      <h3>Мы перезвоним Вам в течение получаса...</h3>
 
-      <div class="col-md-6 col-sm-offset-3">
+      <div class="col-md-6 callForm">
         <%= form_for @body, :html => { "data-parsley-validate" => '' }, :url => url_for(:controller => 'callbacks', :action => 'fast_callback') do %>
-            <%= text_field_tag(:name, '', 'required' => '', :placeholder => "Ваше имя", :class => 'form-control') %>
+            <%= text_field_tag(:name, '', 'required' => '', :placeholder => "ФИО", :class => 'form-control') %>
             <%= text_field_tag(:phone, '', "data-parsley-minlength" => "6", "parsley-trigger" => "change", " data-parsley-type" => "digits", 'required' => '', :placeholder => "Телефон", :class => 'form-control') %>
             <%= submit_tag "ОТПРАВИТЬ" %>
         <% end %>
