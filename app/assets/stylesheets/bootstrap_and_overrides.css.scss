@@ -25,7 +25,8 @@ html, body, .container {
 body > .container {
   height: auto;
   min-height: 100%;
-  padding: 2rem;
+  padding-top:0;
+  padding-bottom: 2rem;
 }
 
 // Типография
@@ -65,7 +66,7 @@ hr {
   text-align: left;
   .btn {
     margin-left: 2rem;
-    margin-top: -5rem;
+    margin-top: -1rem;
     float: right;
   }
   section {
