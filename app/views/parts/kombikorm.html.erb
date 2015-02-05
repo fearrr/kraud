@@ -1,8 +1,15 @@
 <% breadcrumb :kombikorm %>
 <div class="row">
-  <div class="col-md-3 col-sm-2 col-xs-2 catalog-list">
+  <div class="col-md-3 col-sm-4 catalog-list">
     <ul>
+      <li><b><%= link_to "Комбикормовое оборудование", kombikorm_path%></b></li>
       <% @kombikorm.each do |part| %>
+          <li><%= link_to part.title, part_path(part.id) %></li>
+      <% end %>
+    </ul>
+    <ul>
+      <li><b><%= link_to "Пеллетное оборудование", pellet_path %></b></li>
+      <% @pellet.each do |part| %>
           <li><%= link_to part.title, part_path(part.id) %></li>
       <% end %>
     </ul>

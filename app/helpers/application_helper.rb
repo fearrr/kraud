@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def phone
     Global.first.phone
   end
@@ -14,4 +15,5 @@ module ApplicationHelper
   def workEnd
     Global.first.workEnd
   end
+
 end

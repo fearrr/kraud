@@ -31,7 +31,9 @@ gem "date_validator"
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
 end
-
+group :development do
+  gem 'rails-dev-tweaks'
+end
 group :production, :staging do
 gem 'rails_12factor'
 end

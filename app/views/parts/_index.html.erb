@@ -1,5 +1,6 @@
+<h2>Мы производим ...</h2>
 <div class="catalog">
-  <h2><%= @kombikorm.first.section%></h2>
+  <h2 class="on-main"><%= @kombikorm.first.section%></h2>
   <ul>
     <% @kombikorm.each do |part| %>
         <li><h3><%= link_to "#{part.title} для комбикорма", part_path(part.id) %></h3></li>
@@ -25,7 +26,7 @@
         <hr>
     <% end %>
   </ul>
-  <h2><%= @pellet.first.section %></h2>
+  <h2 class="on-main"><%= @pellet.first.section %></h2>
   <ul>
     <% @pellet.each do |part| %>
         <li><h3><%= link_to "#{part.title} для пеллет", part_path(part.id) %></h3></li>

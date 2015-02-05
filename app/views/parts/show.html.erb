@@ -1,5 +1,5 @@
 <% @part.section == "Комбикормовое оборудование" ? (breadcrumb :part_kombikorm, @part) : (breadcrumb :part_pellet, @part) %>
-<h2><%= @part.title %></h2>
+
 <% if logged_in? %>
     <p>
       <%= link_to "Редактировать раздел", edit_part_path(@part), :class => "btn btn-primary" %>
@@ -7,26 +7,42 @@
     </p>
 <% end %>
 
-<div class="catalog">
-  <ul>
-    <% if @types.first %>
-        <div class="row row-centered">
-          <% @types.each do |type| %>
-              <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
-                <%= image_tag(type.items.first.attached_assets.first.asset.url(:mini)) if type.items.first && !type.items.first.attached_assets.empty? && type.items.first.attached_assets.first.asset %>
-                <% if type.items.all.count == 1 %>
-                    <%= link_to type.items.first.title, item_path(type.items.first.id) %>
-                <% else %>
-                    <%= link_to type.title, type_path(type.id) %>
-                <% end %>
-              </div>
-          <% end %>
-        </div>
-    <% else %>
-        <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
-          Материалов нет
-        </div>
-    <% end %>
+<div class="row">
+  <div class="col-md-3 col-sm-4 catalog-list">
+    <ul>
+      <li><b><%= link_to "Комбикормовое оборудование", kombikorm_path%></b></li>
+      <% @kombikorm.each do |part| %>
+          <li><%= link_to part.title, part_path(part.id) %></li>
+      <% end %>
+    </ul>
+    <ul>
+      <li><b><%= link_to "Пеллетное оборудование", pellet_path %></b></li>
+      <% @pellet.each do |part| %>
+          <li><%= link_to part.title, part_path(part.id) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-8 catalog">
+    <ul>
+      <% if @types.first %>
+          <div class="row row-centered">
+            <% @types.each do |type| %>
+                <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
+                  <%= image_tag(type.items.first.attached_assets.first.asset.url(:mini)) if type.items.first && !type.items.first.attached_assets.empty? && type.items.first.attached_assets.first.asset %>
+                  <% if type.items.all.count == 1 %>
+                      <%= link_to type.items.first.title, item_path(type.items.first.id) %>
+                  <% else %>
+                      <%= link_to type.title, type_path(type.id) %>
+                  <% end %>
+                </div>
+            <% end %>
+          </div>
+      <% else %>
+          <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
+            Материалов нет
+          </div>
+      <% end %>
 
-  </ul>
+    </ul>
+  </div>
 </div>

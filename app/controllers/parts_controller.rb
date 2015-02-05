@@ -26,12 +26,16 @@ class PartsController < ApplicationController
   def index
     @kombikorm = Part.where(section: "Комбикормовое оборудование").limit(2)
     @pellet = Part.where(section: "Пеллетное оборудование").limit(2)
+    @kombikorm_all = Part.where(section: "Комбикормовое оборудование")
+    @pellet_all = Part.where(section: "Пеллетное оборудование")
     # @sections = Part.uniq.pluck(:section)
   end
 
   def show
     @part = Part.find(params[:id])
     @types = @part.types.all
+    @kombikorm = Part.where(section: "Комбикормовое оборудование")
+    @pellet = Part.where(section: "Пеллетное оборудование")
   end
 
   def new
@@ -51,9 +55,11 @@ class PartsController < ApplicationController
 
   def kombikorm
     @kombikorm = Part.where(section: "Комбикормовое оборудование")
+    @pellet = Part.where(section: "Пеллетное оборудование")
   end
 
   def pellet
+    @kombikorm = Part.where(section: "Комбикормовое оборудование")
     @pellet = Part.where(section: "Пеллетное оборудование")
   end
 
