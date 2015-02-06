@@ -36,5 +36,6 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   get   '/publish_item/:id', to: 'items#publish', as: 'publish_item'
+  get   '/dublicate/:id', to: 'items#dublicate', as: 'dublicate'
 
 end

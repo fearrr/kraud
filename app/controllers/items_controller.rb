@@ -107,6 +107,15 @@ class ItemsController < ApplicationController
     redirect_to item_url(@item.id)
   end
 
+
+  def dublicate
+    @item = Item.find(params[:id])
+    if Item.create(:public => @item.public, :section => @item.section, :body => @item.body, :title => @item.title, :type_id => @item.type_id, :part_id => @item.part_id)
+      flash[:success] = "Материал дублирован"
+      redirect_to type_url(Type.find(@item.type_id))
+    end
+  end
+
   private
   def items_params
     params.require(:item).permit(:public, :section, :body, :title, :type_id, :part_id, attached_assets_attributes: [:asset, :asset_file_name])
