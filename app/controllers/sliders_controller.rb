@@ -1,4 +1,5 @@
 class SlidersController < ApplicationController
+  before_action :logged_in_admin
   def index
     @sliders = Slider.all
   end
@@ -42,5 +43,13 @@ class SlidersController < ApplicationController
   private
   def slider_params
     params.require(:slider).permit(:image, :title)
+  end
+  # Confirms a logged-in user.
+  def logged_in_admin
+    unless logged_in?
+      store_location
+      flash[:danger] = "Зайдите как администратор"
+      redirect_to login_url
+    end
   end
 end

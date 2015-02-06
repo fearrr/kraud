@@ -1,6 +1,6 @@
 class PartsController < ApplicationController
   # encoding: UTF-8
-
+  before_action :logged_in_admin
   def edit
     @part = Part.find(params[:id])
   end
@@ -66,5 +66,13 @@ class PartsController < ApplicationController
   private
   def parts_params
     params.require(:part).permit(:title, :section)
+  end
+  # Confirms a logged-in user.
+  def logged_in_admin
+    unless logged_in?
+      store_location
+      flash[:danger] = "Зайдите как администратор"
+      redirect_to login_url
+    end
   end
 end

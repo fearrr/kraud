@@ -1,4 +1,5 @@
 class CaptionsController < ApplicationController
+  before_action :logged_in_admin
   def index
     @captions = Caption.all
   end
@@ -38,5 +39,13 @@ class CaptionsController < ApplicationController
   private
   def randomText_params
     params.require(:caption).permit(:body)
+  end
+  # Confirms a logged-in user.
+  def logged_in_admin
+    unless logged_in?
+      store_location
+      flash[:danger] = "Зайдите как администратор"
+      redirect_to login_url
+    end
   end
 end

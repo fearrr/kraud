@@ -1,5 +1,6 @@
 class ActionsController < ApplicationController
   # encoding: UTF-8
+  before_action :logged_in_admin
   impressionist :actions=>[:show, :index]
   def index
     @action = Action.all
@@ -44,5 +45,13 @@ class ActionsController < ApplicationController
   private
   def action_params
     params.require(:foo).permit(:title, :body)
+  end
+  # Confirms a logged-in user.
+  def logged_in_admin
+    unless logged_in?
+      store_location
+      flash[:danger] = "Зайдите как администратор"
+      redirect_to login_url
+    end
   end
 end

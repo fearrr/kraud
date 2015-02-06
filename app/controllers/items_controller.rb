@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :logged_in_admin
   def index
   end
 
@@ -109,5 +110,13 @@ class ItemsController < ApplicationController
   private
   def items_params
     params.require(:item).permit(:public, :section, :body, :title, :type_id, :part_id, attached_assets_attributes: [:asset, :asset_file_name])
+  end
+  # Confirms a logged-in user.
+  def logged_in_admin
+    unless logged_in?
+      store_location
+      flash[:danger] = "Зайдите как администратор"
+      redirect_to login_url
+    end
   end
 end

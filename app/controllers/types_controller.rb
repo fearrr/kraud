@@ -1,5 +1,6 @@
 class TypesController < ApplicationController
 # encoding: UTF-8
+  before_action :logged_in_admin
   def destroy
     @type = Type.find(params[:id])
     @type.destroy
@@ -67,4 +68,12 @@ end
 private
 def types_params
   params.require(:type).permit(:title, :section, :part_id)
+end
+# Confirms a logged-in user.
+def logged_in_admin
+  unless logged_in?
+    store_location
+    flash[:danger] = "Зайдите как администратор"
+    redirect_to login_url
+  end
 end

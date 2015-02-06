@@ -1,4 +1,5 @@
 class GlobalsController < ApplicationController
+  before_action :logged_in_admin
   def index
     @globals = Global.all.first
   end
@@ -21,5 +22,13 @@ class GlobalsController < ApplicationController
   private
   def globals_params
     params.require(:global).permit(:workStart, :workEnd, :address, :phone, :email)
+  end
+  # Confirms a logged-in user.
+  def logged_in_admin
+    unless logged_in?
+      store_location
+      flash[:danger] = "Зайдите как администратор"
+      redirect_to login_url
+    end
   end
 end

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :logged_in_admin
   def index
     @comments = Comment.all
   end
@@ -44,5 +45,13 @@ class CommentsController < ApplicationController
   end
   def publish_comment_params
     params.require(:comment).permit(:body, :public, :created_at)
+  end
+  # Confirms a logged-in user.
+  def logged_in_admin
+    unless logged_in?
+      store_location
+      flash[:danger] = "Зайдите как администратор"
+      redirect_to login_url
+    end
   end
 end

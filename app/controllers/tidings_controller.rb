@@ -1,5 +1,6 @@
 class TidingsController < ApplicationController
   # encoding: UTF-8
+  before_action :logged_in_admin
   impressionist :actions=>[:show, :index]
   def index
     @tiding = Tiding.all.order('created_at DESC')
@@ -43,5 +44,13 @@ class TidingsController < ApplicationController
   private
   def tidings_param
     params.require(:tiding).permit(:title, :body)
+  end
+  # Confirms a logged-in user.
+  def logged_in_admin
+    unless logged_in?
+      store_location
+      flash[:danger] = "Зайдите как администратор"
+      redirect_to login_url
+    end
   end
 end
