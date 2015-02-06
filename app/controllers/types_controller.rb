@@ -1,6 +1,6 @@
 class TypesController < ApplicationController
 # encoding: UTF-8
-  before_action :logged_in_admin
+  before_action :logged_in_admin, only: [:edit, :update, :new]
   def destroy
     @type = Type.find(params[:id])
     @type.destroy

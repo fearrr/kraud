@@ -1,5 +1,5 @@
 class CaptionsController < ApplicationController
-  before_action :logged_in_admin
+  before_action :logged_in_admin, only: [:edit, :update, :new]
   def index
     @captions = Caption.all
   end

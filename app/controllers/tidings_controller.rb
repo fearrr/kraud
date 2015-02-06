@@ -1,6 +1,6 @@
 class TidingsController < ApplicationController
   # encoding: UTF-8
-  before_action :logged_in_admin
+  before_action :logged_in_admin, only: [:edit, :update, :new]
   impressionist :actions=>[:show, :index]
   def index
     @tiding = Tiding.all.order('created_at DESC')

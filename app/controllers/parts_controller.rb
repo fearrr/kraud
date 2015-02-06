@@ -1,6 +1,6 @@
 class PartsController < ApplicationController
   # encoding: UTF-8
-  before_action :logged_in_admin
+  before_action :logged_in_admin, only: [:edit, :update, :new]
   def edit
     @part = Part.find(params[:id])
   end
