@@ -2,7 +2,7 @@
 <h2><%= @type.title %></h2>
 <% if logged_in? %>
     <p>
-      <%= link_to "Редактировать подраздел", edit_type_path(@type), :class => "btn btn-primary" %>
+      <%= link_to "Редактировать подраздел", edit_type_path(@type), :class => "btn btn-edit btn-primary" %>
       <%= link_to "Удалить подраздел", @type, :class => "btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
     </p>
 <% end %>

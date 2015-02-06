@@ -6,7 +6,7 @@
 
 <% if logged_in? %>
     <p>
-      <%= link_to "Редактировать материал", edit_item_path(@item), :class => "btn btn-primary" %>
+      <%= link_to "Редактировать материал", edit_item_path(@item), :class => "btn btn-edit btn-primary" %>
       <%= @item.public ? (link_to "Снять с публикации", publish_item_path(@item.id), :class => "btn btn-primary") : (link_to "Опубликовать", publish_item_path(@item.id), :class => "btn btn-primary") %>
       <%= link_to "Дублировать", dublicate_path(@item.id), :class => "btn btn-primary" %>
       <%= link_to "Удалить материал", @item, :class => "btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>

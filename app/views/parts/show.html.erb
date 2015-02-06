@@ -3,7 +3,7 @@
 <% if logged_in? %>
     <p>
       <%= link_to 'Добавить материал', new_item_path, :class => "btn btn-primary btn-item" %>
-      <%= link_to "Редактировать раздел", edit_part_path(@part), :class => "btn btn-primary" %>
+      <%= link_to "Редактировать раздел", edit_part_path(@part), :class => "btn btn-edit btn-primary" %>
       <%= link_to "Удалить раздел", @part, :class => "btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
     </p>
 <% end %>
