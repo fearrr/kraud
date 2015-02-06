@@ -35,4 +35,6 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
+  get   '/publish_item/:id', to: 'items#publish', as: 'publish_item'
+
 end

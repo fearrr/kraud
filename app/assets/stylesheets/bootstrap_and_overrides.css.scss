@@ -55,6 +55,26 @@ h3 {
 .btn {
   margin-top: 1rem;
 }
+.btn-danger::after {
+  font-family: FontAwesome;
+  content: " \f014";
+  padding-left:0.5rem;
+}
+.btn-item::after {
+  font-family: FontAwesome;
+  content: " \f016";
+  padding-left:0.5rem;
+}
+.btn-part::after {
+  font-family: FontAwesome;
+  content: " \f114";
+  padding-left:0.5rem;
+}
+.btn-type::after {
+  font-family: FontAwesome;
+  content: " \f115";
+  padding-left:0.5rem;
+}
 
 hr {
   border-color: #1b1b1b;
@@ -303,6 +323,10 @@ header {
     text-align: left;
     background: rgba(207, 79, 79, 0.92);
     width: 302%;
+    -webkit-box-shadow: 0px 3px 0px 0px rgba(152, 28, 30, 0.98);
+    -moz-box-shadow: 0px 2px 0px 0px rgba(152, 28, 30, 0.98);
+    box-shadow: 0px 2px 0px 0px rgba(152, 28, 30, 0.98);
+
     //    Сброс оформления ссылок для дропдауна
     li a:hover, .active > a, .active > a:hover, .active > a:focus {
       color: #fff;
@@ -311,7 +335,7 @@ header {
     li a {
       color: #fff;
       background: transparent;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
     }
     div ul {
       padding: 0 1rem;
@@ -319,15 +343,15 @@ header {
     }
   }
   //  Бордер сверху дропдауна не на всю ширину
-  .dropdown:after {
-    content: "";
-    background: #c0c0c0;
-    position: absolute;
-    top: 0;
-    left: 18.5rem;
-    height: 1px;
-    width: 37rem;
-  }
+//  .dropdown:after {
+//    content: "";
+//    background: #c0c0c0;
+//    position: absolute;
+//    top: 0;
+//    left: 18.5rem;
+//    height: 1px;
+//    width: 37rem;
+//  }
   .col_1 {
     display: inline;
     float: left;
@@ -950,6 +974,7 @@ footer {
     color: #555555;
   }
 }
+
 
 @media screen and (max-width: 991px) {
   //  делаем блоки в одну колонку в header

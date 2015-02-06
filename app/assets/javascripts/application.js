@@ -29,6 +29,9 @@ $(document).ready(function () {
     $('ul.top-menu a').each(function () {
         if (this.href == location.href) $(this).parent().addClass('active');
     });
+    $('.dropdown').hover(function () {
+         $('.drop').parent().toggleClass('active');
+    });
 
     $('.datepicker').datepicker({
         format: "dd/mm/yyyy"

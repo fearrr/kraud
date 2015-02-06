@@ -78,6 +78,8 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+    @type = Type.find(@item.type_id)
+    @part = Part.find(@type.part_id)
 
     @sections = Part.uniq.pluck(:section)
     @parts = Part.where("section = ?", @item.section)
@@ -92,8 +94,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def publish
+    @item = Item.find(params[:id])
+    if @item.public
+      @item.update_attributes(:public => false)
+      flash[:success] = "Материал снят с публикации"
+    else
+      @item.update_attributes(:public => true)
+      flash[:success] = "Материал опубликован"
+    end
+    redirect_to item_url(@item.id)
+  end
+
   private
   def items_params
-    params.require(:item).permit(:section, :body, :title, :type_id, :part_id, attached_assets_attributes: [:asset, :asset_file_name])
+    params.require(:item).permit(:public, :section, :body, :title, :type_id, :part_id, attached_assets_attributes: [:asset, :asset_file_name])
   end
 end

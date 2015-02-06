@@ -2,15 +2,31 @@
 <div class="row">
   <div class="col-md-3 col-sm-4 catalog-list">
     <ul>
-      <li><b><%= link_to "Комбикормовое оборудование", kombikorm_path%></b></li>
+      <li><b><%= link_to "Комбикормовое оборудование", kombikorm_path %></b></li>
       <% @kombikorm.each do |part| %>
-          <li><%= link_to part.title, part_path(part.id) %></li>
+          <% @count = 0 %>
+          <% part.types.each do |type| %>
+              <% @count += type.items.where("public = ?", false).count %>
+          <% end %>
+          <% if @count != 0 && logged_in? %>
+              <li><%= link_to "#{part.title} (#{@count})", part_path(part.id) %></li>
+          <% else %>
+              <li><%= link_to part.title, part_path(part.id) %></li>
+          <% end %>
       <% end %>
     </ul>
     <ul>
-      <li><b><%= link_to "Пеллетное оборудование", pellet_path %></b></li>
+      <li><b><%= link_to "Комбикормовое оборудование", pellet_path %></b></li>
       <% @pellet.each do |part| %>
-          <li><%= link_to part.title, part_path(part.id) %></li>
+          <% @count = 0 %>
+          <% part.types.each do |type| %>
+              <% @count += type.items.where("public = ?", false).count %>
+          <% end %>
+          <% if @count != 0 && logged_in? %>
+              <li><%= link_to "#{part.title} (#{@count})", part_path(part.id) %></li>
+          <% else %>
+              <li><%= link_to part.title, part_path(part.id) %></li>
+          <% end %>
       <% end %>
     </ul>
   </div>
@@ -23,14 +39,26 @@
           <div class="row row-centered">
             <% if @types.first %>
                 <% @types.each do |type| %>
-                    <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
-                      <%= image_tag(type.items.first.attached_assets.first.asset.url(:mini)) if type.items.first && !type.items.first.attached_assets.empty? && type.items.first.attached_assets.first.asset %>
-                      <% if type.items.all.count == 1 && !logged_in? %>
-                          <%= link_to type.items.first.title, item_path(type.items.first.id) %>
-                      <% else %>
-                          <%= link_to type.title, type_path(type.id) %>
-                      <% end %>
-                    </div>
+                    <% if logged_in? %>
+                        <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
+                          <%= image_tag(type.items.first.attached_assets.first.asset.url(:mini)) if type.items.first && !type.items.first.attached_assets.empty? && type.items.first.attached_assets.first.asset %>
+                          <% @count = type.items.where("public = ?", false).count %>
+                          <% if @count != 0 %>
+                              <%= link_to "#{type.title} (#{@count})", type_path(type.id) %>
+                          <% else %>
+                              <%= link_to type.title, type_path(type.id) %>
+                          <% end %>
+                        </div>
+                    <% else %>
+                        <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
+                          <%= image_tag(type.items.where("public = ?", true).first.attached_assets.first.asset.url(:mini)) if type.items.where("public = ?", true).first && !type.items.where("public = ?", true).first.attached_assets.empty? && type.items.where("public = ?", true).first.attached_assets.first.asset %>
+                          <% if type.items.where("public = ?", true).count == 1 %>
+                              <%= link_to type.items.where("public = ?", true).first.title, item_path(type.items.where("public = ?", true).first.id) %>
+                          <% else %>
+                              <%= link_to type.title, type_path(type.id) %>
+                          <% end %>
+                        </div>
+                    <% end %>
                 <% end %>
             <% else %>
                 <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">

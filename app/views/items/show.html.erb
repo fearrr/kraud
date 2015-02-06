@@ -8,6 +8,7 @@
     <p>
       <%= link_to "Редактировать материал", edit_item_path(@item), :class => "btn btn-primary" %>
       <%= link_to "Удалить материал", @item, :class => "btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+      <%= @item.public ? (link_to "Снять с публикации", publish_item_path(@item.id), :class => "btn btn-info") : (link_to "Опубликовать", publish_item_path(@item.id), :class => "btn btn-info") %>
     </p>
 <% end %>
 

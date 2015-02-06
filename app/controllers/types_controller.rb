@@ -31,9 +31,12 @@ class TypesController < ApplicationController
     end
   end
   def show
+    @kombikorm = Part.where(section: "Комбикормовое оборудование")
+    @pellet = Part.where(section: "Пеллетное оборудование")
+
     @type = Type.find(params[:id])
     @part = Part.find(@type.part_id)
-    @items = @type.items.all
+    logged_in? ? (@items = @type.items.all) : (@items = @type.items.where("public = ?", true))
   end
   def new
     @type = Type.new

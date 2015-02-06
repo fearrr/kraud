@@ -1,26 +1,65 @@
 <% @part.section == "Комбикормовое оборудование" ? (breadcrumb :type_kombikorm, @type, @part) : (breadcrumb :type_pellet, @type, @part) %>
 <h2><%= @type.title %></h2>
 <% if logged_in? %>
-<p>
-  <%= link_to "Редактировать подраздел", edit_type_path(@type), :class => "btn btn-primary" %>
-  <%= link_to "Удалить подраздел", @type, :class => "btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
-</p>
+    <p>
+      <%= link_to "Редактировать подраздел", edit_type_path(@type), :class => "btn btn-primary" %>
+      <%= link_to "Удалить подраздел", @type, :class => "btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+    </p>
 <% end %>
 
-<div class="catalog">
-<ul>
-  <% if @items.first %>
-      <% @items.each do |item| %>
-          <div class="col-md-2">
-            <%= image_tag(item.attached_assets.first.asset.url(:mini)) if !item.attached_assets.empty? && item.attached_assets.first.asset %>
-            <%= link_to item.title, item_path(item.id) %>
-          </div>
+<div class="row">
+  <div class="col-md-3 col-sm-4 catalog-list">
+    <ul>
+      <li><b><%= link_to "Комбикормовое оборудование", kombikorm_path %></b></li>
+      <% @kombikorm.each do |part| %>
+          <% @count = 0 %>
+          <% part.types.each do |type| %>
+              <% @count += type.items.where("public = ?", false).count %>
+          <% end %>
+          <% if @count != 0 && logged_in? %>
+              <li><%= link_to "#{part.title} (#{@count})", part_path(part.id) %></li>
+          <% else %>
+              <li><%= link_to part.title, part_path(part.id) %></li>
+          <% end %>
       <% end %>
-  <% else %>
-      <div class="col-md-2">
-        Материалов нет
-      </div>
-  <% end %>
-
-</ul>
+    </ul>
+    <ul>
+      <li><b><%= link_to "Комбикормовое оборудование", pellet_path %></b></li>
+      <% @pellet.each do |part| %>
+          <% @count = 0 %>
+          <% part.types.each do |type| %>
+              <% @count += type.items.where("public = ?", false).count %>
+          <% end %>
+          <% if @count != 0 && logged_in? %>
+              <li><%= link_to "#{part.title} (#{@count})", part_path(part.id) %></li>
+          <% else %>
+              <li><%= link_to part.title, part_path(part.id) %></li>
+          <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-8 catalog">
+    <div class="row row-centered">
+      <ul>
+        <% if @items.first %>
+            <% @items.each do |item| %>
+                <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
+                  <%= image_tag(item.attached_assets.first.asset.url(:mini)) if !item.attached_assets.empty? && item.attached_assets.first.asset %>
+                  <% @count = @items.where("public = ?", false).count %>
+                  <% if @count != 0 %>
+                      <%= link_to "#{item.title} (#{@count})", item_path(item.id) %>
+                  <% else %>
+                      <%= link_to item.title, item_path(item.id) %>
+                  <% end %>
+                </div>
+            <% end %>
+        <% else %>
+            <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
+              Материалов нет
+            </div>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
+
