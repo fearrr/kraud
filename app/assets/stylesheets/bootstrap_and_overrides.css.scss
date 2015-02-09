@@ -163,31 +163,61 @@ header {
       position: relative;
       opacity: 0.7;
     }
-    i.tooltips span {
-      font-size: 1.3rem;
-      position: absolute;
-      width: 600%;
-      padding: 1.1rem;
-      left: -30%;
-      top: 150%;
-      color: #FFFFFF;
-      background: #1b1b1b;
-      line-height: 1.4rem;
-      text-align: left;
-      border-radius: 6px;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    @media screen and (min-width: 992px) {
+      i.tooltips span {
+        font-size: 1.3rem;
+        position: absolute;
+        width: 600%;
+        padding: 1.1rem;
+        left: -30%;
+        top: 150%;
+        color: #FFFFFF;
+        background: #1b1b1b;
+        line-height: 1.4rem;
+        text-align: left;
+        border-radius: 6px;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      }
+      i.tooltips span:after {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 14%;
+        margin-left: -8px;
+        width: 0;
+        height: 0;
+        border-bottom: 8px solid #1b1b1b;
+        border-right: 8px solid transparent;
+        border-left: 8px solid transparent;
+      }
     }
-    i.tooltips span:after {
-      content: '';
-      position: absolute;
-      bottom: 100%;
-      left: 14%;
-      margin-left: -8px;
-      width: 0;
-      height: 0;
-      border-bottom: 8px solid #1b1b1b;
-      border-right: 8px solid transparent;
-      border-left: 8px solid transparent;
+    @media screen and (max-width: 991px) {
+      i.tooltips span {
+        font-size: 1.3rem;
+        position: absolute;
+        width: 600%;
+        left:1em;
+        padding: 1.1rem;
+        top: 150%;
+        color: #FFFFFF;
+        background: #1b1b1b;
+        line-height: 1.4rem;
+        text-align: left;
+        border-radius: 6px;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      }
+      i.tooltips span:after {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 48%;
+        margin-left: -8px;
+        width: 0;
+        height: 0;
+        border-bottom: 8px solid #1b1b1b;
+        border-right: 8px solid transparent;
+        border-left: 8px solid transparent;
+      }
     }
   }
 
@@ -594,6 +624,9 @@ ul.bxslider {
 // Каталог
 .catalog {
   margin-top: 2rem;
+  .catalog-main-title {
+    margin-left:-0.9em;
+  }
   .on-main {
     margin-left: 0;
     font-size: 2rem;
@@ -1028,7 +1061,6 @@ footer {
       }
     }
     .col-md-4 {
-      text-align: center;
       padding-bottom: 1rem;
     }
     .time {
@@ -1099,4 +1131,4 @@ footer {
       }
     }
   }
-}
+  }

@@ -40,7 +40,7 @@
     <h2 class="on-main"><%= @kombikorm.first.section %></h2>
     <ul>
       <% @kombikorm.each do |part| %>
-          <li><h3><%= link_to "#{part.title} для комбикорма", part_path(part.id) %></h3></li>
+          <li><h3 class="catalog-main-title"><%= link_to "#{part.title} для комбикорма", part_path(part.id) %></h3></li>
           <% @types = Type.where("part_id = ?", part.id) %>
           <div class="row row-centered">
             <% if @types.first %>
@@ -73,7 +73,7 @@
     <h2 class="on-main"><%= @pellet.first.section %></h2>
     <ul>
       <% @pellet.each do |part| %>
-          <li><h3><%= link_to "#{part.title} для пеллет", part_path(part.id) %></h3></li>
+          <li><h3 class="catalog-main-title"><%= link_to "#{part.title} для пеллет", part_path(part.id) %></h3></li>
           <% @types = Type.where("part_id = ?", part.id) %>
           <div class="row row-centered">
             <% if @types.first %>

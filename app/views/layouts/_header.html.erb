@@ -35,12 +35,12 @@
       <h3 class="under-logo">КОМБИКОРМОВОЕ ОБОРУДОВАНИЕ<br>
         ПЕЛЛЕТНОЕ ОБОРУДОВАНИЕ</h3>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 col-sm-6 col-xs-6">
       <h2><strong>ПРОИЗВОДИТЕЛЬ <br> И ПОСТАВЩИК</strong></h2>
 
       <p class="under-logo">СОВРЕМЕННОГО ВЫСОКОКАЧЕСТВЕННОГО ОБОРУДОВАНИЯ <br> ДЛЯ СЕЛЬСКОГО ХОЗЯЙСТВА</p>
     </div>
-    <div class="col-md-4 time">
+    <div class="col-md-4 col-sm-6 col-xs-6 time">
       <p>С <%= workStart %>:00 до <%= workEnd %>:00 по МCК <br> (<%= @hours %>)</p>
       <a href="#openModal">
         <i class="fa fa-phone fa-2x fa-fw tooltips"> <span>Нажмите, чтобы заказать обратный звонок</span></i>
@@ -62,7 +62,7 @@
         <%= form_for @body, :html => { "data-parsley-validate" => '' }, :url => url_for(:controller => 'callbacks', :action => 'fast_callback') do %>
             <%= text_field_tag(:name, '', 'required' => '', :placeholder => "ФИО", :class => 'form-control') %>
             <%= text_field_tag(:phone, '', "data-parsley-minlength" => "6", "parsley-trigger" => "change", " data-parsley-type" => "digits", 'required' => '', :placeholder => "Телефон", :class => 'form-control') %>
-            <%= text_field_tag(:region, '', "data-parsley-minlength" => "5", "parsley-trigger" => "change", 'required' => '', :placeholder => "Регион", :class => 'form-control') %>
+            <%= text_field_tag(:region, '', "data-parsley-minlength" => "6", "parsley-trigger" => "change", " data-parsley-type" => "digits", 'required' => '', :placeholder => "Телефон", :class => 'form-control') %>
             <%= submit_tag "ОТПРАВИТЬ" %>
         <% end %>
       </div>
