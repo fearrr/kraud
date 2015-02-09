@@ -7,7 +7,7 @@
       <%= f.label :email, 'Email*' %>
       <%= f.text_field :email, 'type' => 'email', 'required' => '', class: 'form-control' %>
       <%= f.label :body, 'Ваш отзыв*' %>
-      <%= f.text_area :body, "data-parsley-minlength-message" => 'Минимум 5 символов', "data-parsley-trigger" => 'keyup', 'data-parsley-minlength' => '5', :class => 'form-control' %>
+      <%= f.text_area :body, "data-parsley-minlength-message" => 'Минимум 5 символов', "data-parsley-trigger" => 'keyup', 'data-parsley-minlength' => '5', 'required' => '', :class => 'form-control' %>
 
       <% if logged_in? %>
           <ul class="nav nav-pills">
