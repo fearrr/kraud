@@ -12,28 +12,34 @@
     <ul>
       <li><b><%= link_to "Комбикормовое оборудование", kombikorm_path %></b></li>
       <% @kombikorm.each do |part| %>
-          <% @count = 0 %>
+          <% @all_count = 0 %>
+          <% @publish_count = 0 %>
           <% part.types.each do |type| %>
-              <% @count += type.items.where("public = ?", false).count %>
+              <% @all_count += type.items.all.count %>
+              <% @publish_count += type.items.where("public = ?", true).count %>
           <% end %>
+
           <% if @count != 0 && logged_in? %>
-              <li><%= link_to "#{part.title} (#{@count})", part_path(part.id) %></li>
+              <li><%= link_to "#{part.title} (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id) %></li>
           <% else %>
-              <li><%= link_to part.title, part_path(part.id) %></li>
+              <li><%= link_to "#{part.title} (#{@publish_count})", part_path(part.id) %></li>
           <% end %>
       <% end %>
     </ul>
     <ul>
       <li><b><%= link_to "Комбикормовое оборудование", pellet_path %></b></li>
       <% @pellet.each do |part| %>
-          <% @count = 0 %>
+          <% @all_count = 0 %>
+          <% @publish_count = 0 %>
           <% part.types.each do |type| %>
-              <% @count += type.items.where("public = ?", false).count %>
+              <% @all_count += type.items.all.count %>
+              <% @publish_count += type.items.where("public = ?", true).count %>
           <% end %>
+
           <% if @count != 0 && logged_in? %>
-              <li><%= link_to "#{part.title} (#{@count})", part_path(part.id) %></li>
+              <li><%= link_to "#{part.title} (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id) %></li>
           <% else %>
-              <li><%= link_to part.title, part_path(part.id) %></li>
+              <li><%= link_to "#{part.title} (#{@publish_count})", part_path(part.id) %></li>
           <% end %>
       <% end %>
     </ul>

@@ -51,37 +51,46 @@ h3 {
 .form-control {
   margin: 0 0 1rem;
 }
+
 .btn {
   margin-top: 1rem;
 }
+
 .btn-danger::after {
   font-family: FontAwesome;
   content: " \f014";
-  padding-left:0.5rem;
+  padding-left: 0.5rem;
 }
+
 .btn-item::after {
   font-family: FontAwesome;
   content: " \f016";
-  padding-left:0.5rem;
+  padding-left: 0.5rem;
 }
+
 .btn-part::after {
   font-family: FontAwesome;
   content: " \f114";
-  padding-left:0.5rem;
+  padding-left: 0.5rem;
 }
+
 .btn-type::after {
   font-family: FontAwesome;
   content: " \f115";
-  padding-left:0.5rem;
+  padding-left: 0.5rem;
 }
+
 .btn-edit::after {
   font-family: FontAwesome;
   content: " \f044";
-  padding-left:0.5rem;
+  padding-left: 0.5rem;
 }
 
 hr {
   border-color: #1b1b1b;
+}
+span.publish{
+  color: #9ea5bd;
 }
 
 //  Админ панель сверху страницы
@@ -213,7 +222,7 @@ header {
       color: #fff;
       opacity: 1;
       position: absolute;
-      right: 12px;
+      left: 2%;
       text-align: center;
       top: 10px;
       text-decoration: none;
@@ -247,18 +256,6 @@ header {
         background: #c22124;
       }
     }
-    //    Подсказки для формы обратного вызова
-    .parsley-required, .parsley-type, .parsley-minlength, .parsley-pattern {
-      position: relative;
-      margin-top: -15.8%;
-      right: -115%;
-      margin-bottom: -2.4%;
-      width: 40%;
-      text-align: left;
-      color: #fff;
-      background: transparent;
-      border: 0;
-    }
     //    Отмена выноски у тултипа
     .parsley-required:after, .parsley-type:after, .parsley-minlength:after, .parsley-pattern:after {
       border: 0;
@@ -269,15 +266,56 @@ header {
     opacity: 1;
     pointer-events: auto;
   }
-  .modalDialog > div {
-    width: 50%;
-    min-width: 600px;
-    height: 27em;
-    margin: 20em auto;
-    text-align: center;
-    position: relative;
-    border-radius: 10px;
-    background: rgba(27, 27, 27, 0.91);
+  @media screen and (min-width: 769px) {
+    .modalDialog {
+      //    Подсказки для формы обратного вызова
+      .parsley-required, .parsley-type, .parsley-minlength, .parsley-pattern {
+        position: relative;
+        margin-top: -15.8%;
+        right: -115%;
+        margin-bottom: -2.4%;
+        width: 40%;
+        text-align: left;
+        color: #fff;
+        background: transparent;
+        border: 0;
+      }
+    }
+    .modalDialog > div {
+      width: 50em;
+      height: 30em;
+      min-width: 200px;
+      min-height: 100px;
+      margin: 18em auto;
+      text-align: center;
+      position: relative;
+      border-radius: 10px;
+      background: rgba(27, 27, 27, 0.91);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .modalDialog > div {
+      margin: 0 auto;
+      padding-top:5em;
+      width: 100%;
+      height: 100%;
+      min-width: 380px;
+      min-height: 100%;
+      position: static;
+      text-align: center;
+      background: rgba(27, 27, 27, 0.91);
+    }
+    .modalDialog {
+      //    Подсказки для формы обратного вызова
+      .parsley-required, .parsley-type, .parsley-minlength, .parsley-pattern {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        background: transparent;
+        border: 0;
+      }
+    }
   }
 }
 
@@ -347,15 +385,15 @@ header {
     }
   }
   //  Бордер сверху дропдауна не на всю ширину
-//  .dropdown:after {
-//    content: "";
-//    background: #c0c0c0;
-//    position: absolute;
-//    top: 0;
-//    left: 18.5rem;
-//    height: 1px;
-//    width: 37rem;
-//  }
+  //  .dropdown:after {
+  //    content: "";
+  //    background: #c0c0c0;
+  //    position: absolute;
+  //    top: 0;
+  //    left: 18.5rem;
+  //    height: 1px;
+  //    width: 37rem;
+  //  }
   .col_1 {
     display: inline;
     float: left;
@@ -558,7 +596,7 @@ ul.bxslider {
   margin-top: 2rem;
   .on-main {
     margin-left: 0;
-    font-size:2rem;
+    font-size: 2rem;
   }
   .col-md-2 {
     margin-top: 2rem;
@@ -979,7 +1017,6 @@ footer {
   }
 }
 
-
 @media screen and (max-width: 991px) {
   //  делаем блоки в одну колонку в header
   header {
@@ -1062,5 +1099,4 @@ footer {
       }
     }
   }
-
 }

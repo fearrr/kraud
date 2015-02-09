@@ -5,28 +5,34 @@
     <ul>
       <li><b><%= link_to "Комбикормовое оборудование", kombikorm_path %></b></li>
       <% @kombikorm.each do |part| %>
-          <% @count = 0 %>
+          <% @all_count = 0 %>
+          <% @publish_count = 0 %>
           <% part.types.each do |type| %>
-              <% @count += type.items.where("public = ?", false).count %>
+              <% @all_count += type.items.all.count %>
+              <% @publish_count += type.items.where("public = ?", true).count %>
           <% end %>
+
           <% if @count != 0 && logged_in? %>
-              <li><%= link_to "#{part.title} (#{@count})", part_path(part.id) %></li>
+              <li><%= link_to "#{part.title} (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id) %></li>
           <% else %>
-              <li><%= link_to part.title, part_path(part.id) %></li>
+              <li><%= link_to "#{part.title} (#{@publish_count})", part_path(part.id) %></li>
           <% end %>
       <% end %>
     </ul>
     <ul>
       <li><b><%= link_to "Комбикормовое оборудование", pellet_path %></b></li>
       <% @pellet.each do |part| %>
-          <% @count = 0 %>
+          <% @all_count = 0 %>
+          <% @publish_count = 0 %>
           <% part.types.each do |type| %>
-              <% @count += type.items.where("public = ?", false).count %>
+              <% @all_count += type.items.all.count %>
+              <% @publish_count += type.items.where("public = ?", true).count %>
           <% end %>
+
           <% if @count != 0 && logged_in? %>
-              <li><%= link_to "#{part.title} (#{@count})", part_path(part.id) %></li>
+              <li><%= link_to "#{part.title} (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id) %></li>
           <% else %>
-              <li><%= link_to part.title, part_path(part.id) %></li>
+              <li><%= link_to "#{part.title} (#{@publish_count})", part_path(part.id) %></li>
           <% end %>
       <% end %>
     </ul>
@@ -44,12 +50,9 @@
                     <% if logged_in? %>
                         <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
                           <%= image_tag(type.items.first.attached_assets.first.asset.url(:mini)) if type.items.first && !type.items.first.attached_assets.empty? && type.items.first.attached_assets.first.asset %>
-                          <% @count = type.items.where("public = ?", false).count %>
-                          <% if @count != 0 %>
-                              <%= link_to "#{type.title} (#{@count})", type_path(type.id) %>
-                          <% else %>
-                              <%= link_to type.title, type_path(type.id) %>
-                          <% end %>
+                          <% @all_count = type.items.all.count %>
+                          <% @publish_count = type.items.where("public = ?", true).count %>
+                          <%= link_to "#{type.title} <br> (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, type_path(type.id) %>
                         </div>
                     <% else %>
                         <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">

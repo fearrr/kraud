@@ -5,6 +5,9 @@ class StaticController < ApplicationController
 
     @kombikorm = Part.where(section: "Комбикормовое оборудование").limit(2)
     @pellet = Part.where(section: "Пеллетное оборудование").limit(2)
+    @kombikorm_all = Part.where(section: "Комбикормовое оборудование")
+    @pellet_all = Part.where(section: "Пеллетное оборудование")
+
     @sections = Part.uniq.pluck(:section)
 
     @comments = Comment.where("public = ?", true).order('created_at DESC')

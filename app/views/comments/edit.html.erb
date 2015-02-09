@@ -1,6 +1,10 @@
 <% breadcrumb :edit_comment %>
 <%= render 'shared/comments_error_messages' %>
 <%= form_for @comment do |f| %>
+    <%= f.label :name, 'Имя' %>
+    <%= f.text_field :name, 'required' => '', class: 'form-control' %>
+    <%= f.label :email, 'Email' %>
+    <%= f.text_field :email, 'type' => 'email', 'required' => '', class: 'form-control' %>
     <%= f.label :body, 'Текст отзыва' %>
     <%= f.text_area :body, :class => 'form-control' %>
     <p>
