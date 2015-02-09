@@ -4,10 +4,11 @@
 
    Time.zone = 'Moscow'
    t = Time.zone.now
-   if t.hour >= workStart && t.hour <= workEnd && t.wday != 6 && t.wday !=0
+   if (t.hour >= workStart && t.hour <= workEnd && t.wday != 6 && t.wday !=0) ||
+           (t.wday == 5 && t.hour >= workStart && t.hour <= (workEnd - 1))
      @hours = "Сейчас работаем"
    else
-     if t.wday !=6 && t.wday !=0
+     if t.wday !=6 && t.wday !=0 && (t.wday != 5 && t.hour >= (workEnd - 1))
        @will_be_time = 24 - t.hour + workStart
        @plural = Russian::pluralize(@will_be_time, "час", "часа", "часов")
        @hours = "Открываемся через #{@will_be_time} #{@plural}"
