@@ -455,14 +455,13 @@ ul.bxslider {
 
 .bx-viewport {
   padding: 0;
-  margin-right: -2rem;
-
 }
 
 .bx-wrapper {
   margin-top: -1rem;
-  margin-left: 0.5rem;
+  margin-left: 0.45rem;
   margin-bottom: 0;
+  width:100%;
 }
 
 .bx-caption {
@@ -624,9 +623,6 @@ ul.bxslider {
 // Каталог
 .catalog {
   margin-top: 2rem;
-  .catalog-main-title {
-    margin-left:-0.9em;
-  }
   .on-main {
     margin-left: 0;
     font-size: 2rem;

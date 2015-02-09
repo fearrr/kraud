@@ -2,6 +2,6 @@
 <%= form_for @slider, :url => sliders_path, :html => { :multipart => true } do |f| %>
     <%= f.label :title, 'Подпись изображения' %>
     <%= f.text_field :title, class: 'form-control' %>
-    <div class="file_upload">+ <%= f.file_field :image %> </div> <b>Загрузить изображение</b> (1120 x 300)<br>
+    <div class="file_upload">+ <%= f.file_field :image %> </div> <b>Загрузить изображение</b> (1123 x 300)<br>
     <%= f.submit "Добавить", class: "btn btn-primary" %>
 <% end %>

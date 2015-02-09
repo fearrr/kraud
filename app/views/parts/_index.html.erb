@@ -1,42 +1,5 @@
 <h2>Мы производим ...</h2>
-<div class="row">
-  <div class="col-md-3 col-sm-4 catalog-list">
-    <ul>
-      <li><b><%= link_to "Комбикормовое оборудование", kombikorm_path %></b></li>
-      <% @kombikorm_all.each do |part| %>
-          <% @all_count = 0 %>
-          <% @publish_count = 0 %>
-          <% part.types.each do |type| %>
-              <% @all_count += type.items.all.count %>
-              <% @publish_count += type.items.where("public = ?", true).count %>
-          <% end %>
-
-          <% if @count != 0 && logged_in? %>
-              <li><%= link_to "#{part.title} (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id) %></li>
-          <% else %>
-              <li><%= link_to "#{part.title} (#{@publish_count})", part_path(part.id) %></li>
-          <% end %>
-      <% end %>
-    </ul>
-    <ul>
-      <li><b><%= link_to "Комбикормовое оборудование", pellet_path %></b></li>
-      <% @pellet_all.each do |part| %>
-          <% @all_count = 0 %>
-          <% @publish_count = 0 %>
-          <% part.types.each do |type| %>
-              <% @all_count += type.items.all.count %>
-              <% @publish_count += type.items.where("public = ?", true).count %>
-          <% end %>
-
-          <% if @count != 0 && logged_in? %>
-              <li><%= link_to "#{part.title} (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id) %></li>
-          <% else %>
-              <li><%= link_to "#{part.title} (#{@publish_count})", part_path(part.id) %></li>
-          <% end %>
-      <% end %>
-    </ul>
-  </div>
-  <div class="catalog col-md-8">
+  <div class="catalog">
     <h2 class="on-main"><%= @kombikorm.first.section %></h2>
     <ul>
       <% @kombikorm.each do |part| %>
@@ -104,4 +67,3 @@
       <% end %>
     </ul>
   </div>
-</div>
