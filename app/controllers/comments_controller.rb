@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :logged_in_admin, only: [:edit, :update, :new]
+  before_action :logged_in_admin, only: [:edit, :update]
   def index
     @comments = Comment.all
   end
