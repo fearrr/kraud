@@ -1084,8 +1084,11 @@ footer {
       float: right;
       width: 32%;
       min-width: 320px;
-      margin-left: 34rem;
+      margin-left: 36rem;
     }
+  }
+  .preview {
+    width:46%;
   }
   // Текст рандомных фраз на всю ширину и по центру
   footer {
@@ -1120,7 +1123,8 @@ footer {
   }
   // текст слайдера
   .bx-caption {
-    margin-top: -1rem;
+    margin-top: -0.5rem;
+    height: 20%;
   }
   .contact {
     width: 100%;
