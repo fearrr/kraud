@@ -5,6 +5,7 @@
 
 CKEDITOR.stylesSet.add('custom', [
     { name: 'Описание материала', element: 'section', attributes: { 'class': 'description' } },
+    { name: 'Особености конструкции', element: 'section', attributes: { 'class': 'features' } },
     { name: 'Условия поставки', element: 'section', attributes: { 'class': 'delivery' } },
     { name: 'Комплектация', element: 'section', attributes: { 'class': 'options' } }
 ]);

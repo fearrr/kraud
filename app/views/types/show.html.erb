@@ -20,9 +20,13 @@
           <% end %>
 
           <% if @count != 0 && logged_in? %>
-              <li><%= link_to "#{part.title} (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id) %></li>
+              <li>
+                <%= @part.title == part.title && @part.section == part.section ? (link_to "<span class='current'>#{part.title}</span> (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id)) : (link_to "#{part.title} (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id)) %>
+              </li>
           <% else %>
-              <li><%= link_to "#{part.title} (#{@publish_count})", part_path(part.id) %></li>
+              <li>
+                <%= @part.title == part.title && @part.section == part.section ? (link_to "<span class='current'>#{part.title}</span> (#{@publish_count})".html_safe, part_path(part.id)) : (link_to "#{part.title} (#{@publish_count})", part_path(part.id)) %>
+              </li>
           <% end %>
       <% end %>
     </ul>
@@ -37,9 +41,13 @@
           <% end %>
 
           <% if @count != 0 && logged_in? %>
-              <li><%= link_to "#{part.title} (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id) %></li>
+              <li>
+                <%= @part.title == part.title && @part.section == part.section ? (link_to "<span class='current'>#{part.title}</span> (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id)) : (link_to "#{part.title} (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id)) %>
+              </li>
           <% else %>
-              <li><%= link_to "#{part.title} (#{@publish_count})", part_path(part.id) %></li>
+              <li>
+                <%= @part.title == part.title && @part.section == part.section ? (link_to "<span class='current'>#{part.title}</span> (#{@publish_count})".html_safe, part_path(part.id)) : (link_to "#{part.title} (#{@publish_count})", part_path(part.id)) %>
+              </li>
           <% end %>
       <% end %>
     </ul>

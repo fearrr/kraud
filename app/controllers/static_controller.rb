@@ -13,5 +13,7 @@ class StaticController < ApplicationController
     @comments = Comment.where("public = ?", true).order('created_at DESC')
 
     @sliders = Slider.all
+
+    @main = Main.find(1)
   end
 end

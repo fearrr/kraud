@@ -38,12 +38,14 @@ h1, h2, h3 {
 }
 
 h2 {
-  font-size: 2.8rem;
-  color: #1b1b1b;
+  font-size: 30px;
+  //  font-size: 2.8rem;
+  color: #080808;
 }
 
 h3 {
-  font-size: 3rem;
+  font-size: 24px;
+  //  font-size: 3rem;
   color: #666666;
 }
 
@@ -89,7 +91,8 @@ h3 {
 hr {
   border-color: #1b1b1b;
 }
-span.publish{
+
+span.publish {
   color: #9ea5bd;
 }
 
@@ -99,6 +102,12 @@ span.publish{
   width: 100%;
   padding: 2rem;
   text-align: left;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -moz-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
   .btn {
     margin-left: 2rem;
     margin-top: -1rem;
@@ -196,7 +205,7 @@ header {
         font-size: 1.3rem;
         position: absolute;
         width: 600%;
-        left:1em;
+        left: 1em;
         padding: 1.1rem;
         top: 150%;
         color: #FFFFFF;
@@ -326,7 +335,7 @@ header {
   @media screen and (max-width: 768px) {
     .modalDialog > div {
       margin: 0 auto;
-      padding-top:5em;
+      padding-top: 5em;
       width: 100%;
       height: 100%;
       min-width: 380px;
@@ -359,12 +368,14 @@ header {
   }
   ul.top-menu {
     width: 100%;
+
   }
   //  Ширина ячейки меню
   ul.top-menu > li {
     width: 16.66%;
     list-style-type: none;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
+
   }
   //  Бордер для всех кроме последней ячейки меню
   ul.top-menu > li:not(:last-child) {
@@ -372,8 +383,25 @@ header {
   }
   .nav {
     text-align: center;
-    border-bottom: 1px solid #c0c0c0;
+//    border-bottom: 1px solid #c0c0c0;
+//    border-bottom-width: 10px;
     //    Оформление ссылок
+    li:first-child a {
+      -webkit-border-bottom-left-radius: 4px;
+      -moz-border-bottom-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -webkit-border-top-left-radius: 4px;
+      -moz-border-top-left-radius: 4px;
+      border-top-left-radius: 4px;
+    }
+    li:last-child a {
+      -webkit-border-bottom-right-radius: 4px;
+      -moz-border-bottom-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      -webkit-border-top-right-radius: 4px;
+      -moz-border-top-right-radius: 4px;
+      border-top-right-radius: 4px;
+    }
     li a {
       color: #fff;
       background: linear-gradient(to bottom, #727272, #8a8a8a);
@@ -398,7 +426,12 @@ header {
     -webkit-box-shadow: 0px 3px 0px 0px rgba(152, 28, 30, 0.98);
     -moz-box-shadow: 0px 2px 0px 0px rgba(152, 28, 30, 0.98);
     box-shadow: 0px 2px 0px 0px rgba(152, 28, 30, 0.98);
-
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-bottom-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    -moz-border-bottom-right-radius: 4px;
+    border-bottom-right-radius: 4px;
     //    Сброс оформления ссылок для дропдауна
     li a:hover, .active > a, .active > a:hover, .active > a:focus {
       color: #fff;
@@ -461,7 +494,7 @@ ul.bxslider {
   margin-top: -1rem;
   margin-left: 0.5rem;
   margin-bottom: 0;
-  width:100%;
+  width: 100%;
 }
 
 .bx-caption {
@@ -526,12 +559,19 @@ ul.bxslider {
   left: -5px;
   background: #fff;
 
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+
 }
 
 //панель навигации Bread crumb
 .breadcrumb {
   margin-top: -1.3rem;
   background-color: #efefef;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
   a {
     color: #555555;
   }
@@ -554,6 +594,9 @@ ul.bxslider {
   background-color: #f4f4f4;
   padding: 0.5rem 0;
   margin-left: 1.5rem;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
   h4 {
     padding: 0.5rem;
   }
@@ -612,7 +655,6 @@ ul.bxslider {
   .col-md-3 {
     text-align: center;
     width: 32%;
-    //    height:6%;
     img {
       width: 100%;
       height: 100%;
@@ -686,6 +728,9 @@ ul.bxslider {
   background-color: #efefef;
   padding: 1rem;
   margin: 2rem 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
 
 .catalog-list {
@@ -693,21 +738,20 @@ ul.bxslider {
   margin-top: 20px;
   ul {
     list-style-type: none;
-  }
-  ul:first-child {
-    background-color: #ececec;
+    background-color: #f4f4f4;
     padding: 1rem;
     margin-left: 3rem;
     margin-top: -2rem;
-  }
-  ul:last-child {
-    background-color: #e0e0e0;
-    padding: 1rem;
-    margin-left: 3rem;
-    margin-top: -1rem;
+    margin-bottom: 3rem;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
   }
   a {
     color: #555555;
+  }
+  .current {
+    color: #bd2525;
   }
 }
 
@@ -733,6 +777,9 @@ ul.bxslider {
 
 #map {
   margin-bottom: 1rem;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
 
 // Добавление изображений
@@ -1039,7 +1086,7 @@ footer {
   }
 
   .col-md-3 {
-    width:28%;
+    width: 28%;
   }
 
   .copyright {
@@ -1070,6 +1117,9 @@ footer {
   //  приемущества в одну колонку
   .advantages {
     width: 100%;
+    table{
+      margin-top:3rem;
+    }
     td {
       padding-left: 0;
     }
@@ -1088,12 +1138,12 @@ footer {
     }
   }
   .preview {
-    width:46%;
+    width: 46%;
   }
   // Текст рандомных фраз на всю ширину и по центру
   footer {
     .col-md-3 {
-      width:100%;
+      width: 100%;
     }
     .random-text {
       background-color: #752424;
@@ -1110,11 +1160,10 @@ footer {
     .random-text::after {
       display: none;
     }
-    .bottom-menu{
-      text-align:center;
+    .bottom-menu {
+      text-align: center;
     }
   }
-
   //  кнопка выхода по центру
   .main-admin {
     .btn {
@@ -1130,6 +1179,12 @@ footer {
     width: 100%;
     text-align: center;
   }
+  //  Размер шрифта в верхнем меню
+  .navbar-default {
+    ul.top-menu > li {
+      font-size: 1.2rem;
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -1144,12 +1199,12 @@ footer {
       }
     }
   }
-  }
+}
 
 // Центрирование нижнего меню
 @media screen and (max-width: 1200px) and (min-width: 991px) {
-  .bottom-menu{
-    left:-3rem;
+  .bottom-menu {
+    left: -3rem;
 
   }
 }

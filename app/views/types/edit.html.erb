@@ -4,10 +4,10 @@
   <%= form_for(@type) do |f| %>
 
       <%= f.label :section, 'Тип оборудования' %>
-      <%= f.select :section, @sections.map {|value| [ value, value ]}, {:selected => 'Выберете тип оборудования', :include_blank => "Выберете тип оборудования"}, {:class=>'form-control', :id=>'sections_select'} %>
+      <%= f.select :section, @sections.map {|value| [ value, value ]}, {:selected => @type.section, :include_blank => "Выберете тип оборудования"}, {:class=>'form-control', :id=>'sections_select'} %>
 
       <%= f.label :part_id, 'Раздел' %>
-      <%= f.collection_select :part_id, @parts, :id, :title, {}, {:class => 'form-control', :id=>'parts_select' } %>
+      <%= f.collection_select :part_id, @parts, :id, :title, {:selected => @type.part_id}, {:class => 'form-control', :id=>'parts_select' } %>
 
       <%= f.label :title, 'Наименование' %>
       <%= f.text_field :title, class: 'form-control' %>

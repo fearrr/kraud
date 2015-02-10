@@ -1,0 +1,15 @@
+<% breadcrumb :edit_main %>
+<div class="col-md-9">
+  <%= form_for(@main) do |f| %>
+      <%= f.label :seotitle, 'Заголовок SEO' %>
+      <%= f.text_field :seotitle, class: 'form-control' %>
+
+      <%= f.label :seo, 'Текст SEO' %>
+      <%= f.cktext_area :seo, :class => 'form-control', :ckeditor => {:language => 'ru'} %>
+<br>
+      <%= f.label :advantages, 'Приемущества' %>
+      <%= f.cktext_area :advantages, :class => 'form-control', :ckeditor => {:language => 'ru'} %>
+
+      <%= f.submit "Изменить", class: "btn btn-primary" %>
+  <% end %>
+</div>

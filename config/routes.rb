@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount Ckeditor::Engine => '/ckeditor'
 
   get 'types/update_parts', as: 'update_parts'
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
   resources :captions
   resources :sliders
   resources :abouts, :only => [:index, :edit, :update]
+  resources :mains, :only => [:index, :edit, :update]
   resources :contacts, :only => [:index]
   resources :globals
   root 'static#index'

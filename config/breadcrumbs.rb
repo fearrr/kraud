@@ -57,6 +57,9 @@ crumb :edit_comment do
   link "Редактировать"
   parent :comments
 end
+crumb :edit_main do
+  link "Редактировать страницу"
+end
 
 
 # Contact
