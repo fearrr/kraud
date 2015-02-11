@@ -22,6 +22,8 @@ gem 'impressionist'
 gem 'ckeditor'
 gem 'paperclip'
 gem 'russian'
+gem 'nokogiri'
+gem 'will_paginate'
 
 gem 'gmaps4rails'
 gem 'bxslider-rails'

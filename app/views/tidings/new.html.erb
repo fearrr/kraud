@@ -5,6 +5,8 @@
     <%= f.label :title, 'Заголовок' %></li>
     <%= f.text_field :title, class:'form-control' %>
     <%= f.label :body, 'Текст новости' %>
+    (Изображения 310х230)
     <%= f.cktext_area :body, :class => 'form-control', :ckeditor => {:language => 'ru'} %>
     <%= f.submit "Добавить", class: "btn btn-primary" %>
+
 <% end %>

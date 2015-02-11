@@ -1,6 +1,13 @@
+<% require 'nokogiri' %>
+<% parser = Nokogiri::HTML(@tiding.body) %>
+<% img = parser.css('img') %>
+<% img.add_class('tiding-img') %>
+<% parser.search('img').remove %>
+
 <% breadcrumb :tiding, @tiding %>
 <h3><%= @tiding.title %></h3>
-<p><%= raw(@tiding.body) %></p>
+<%= raw(img) %>
+<p><%= raw(parser) %></p>
 <p> Дата создания: <%= @tiding.created_at.strftime("%d.%m.%y") %>, Просмотров: <%= @impression %></p>
 <% if logged_in? %>
     <p class="admin">

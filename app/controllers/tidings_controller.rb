@@ -1,10 +1,16 @@
 class TidingsController < ApplicationController
   # encoding: UTF-8
+  respond_to :html, :xml, :json, :js
   before_action :logged_in_admin, only: [:edit, :update, :new]
   impressionist :actions=>[:show, :index]
   def index
-    @tiding = Tiding.all.order('created_at DESC')
+    get_and_show_posts
   end
+
+  def index_with_button
+    get_and_show_posts
+  end
+
   def show
     @tiding = Tiding.find(params[:id])
     @impression = @tiding.impressionist_count(:filter=>:all)
@@ -51,6 +57,14 @@ class TidingsController < ApplicationController
       store_location
       flash[:danger] = "Зайдите как администратор"
       redirect_to login_url
+    end
+  end
+
+  def get_and_show_posts
+    @tidings = Tiding.paginate(page: params[:page], per_page: 3).order('created_at DESC')
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 end

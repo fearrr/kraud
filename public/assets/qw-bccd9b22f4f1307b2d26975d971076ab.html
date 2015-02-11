@@ -1,0 +1,33 @@
+<div class="row tidings">
+    <% @tiding.each do |tiding| %>
+    <% require 'nokogiri' %>
+    <% parser = Nokogiri::HTML(tiding.body) %>
+    <% img = parser.css('img') %>
+    <% parser.search('img').remove %>
+
+    <div class="blog-item col-md-4">
+        <%= raw(img) %>
+        <h3><%= link_to tiding.title, tiding_path(tiding.id) %></h3>
+
+        <p><%= truncate(raw(parser), length: 255, :escape => false) %></p>
+
+        <p class="views">
+            Добавлено: <%= tiding.created_at.strftime("%d.%m.%y") %><br>
+            Просмотров: <%= tiding.impressionist_count(:filter => :all) %>
+        </p>
+
+        <p class="read">
+            <%= link_to "Читать полностью", tiding_path(tiding.id) %>
+        </p>
+
+
+
+        <% if logged_in? %>
+        <p class="admin">
+            <%= link_to "Изменить", edit_tiding_path(tiding), :class => "btn btn-sm btn-primary" %>
+            <%= link_to "Удалить", tiding, :class => "btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+        </p>
+        <% end %>
+    </div>
+    <% end %>
+</div>
