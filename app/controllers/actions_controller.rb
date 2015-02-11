@@ -3,7 +3,7 @@ class ActionsController < ApplicationController
   before_action :logged_in_admin, only: [:edit, :update, :new]
   impressionist :actions=>[:show, :index]
   def index
-    @action = Action.all
+    get_and_show_posts
   end
   def show
     @action = Action.find(params[:id])
@@ -52,6 +52,13 @@ class ActionsController < ApplicationController
       store_location
       flash[:danger] = "Зайдите как администратор"
       redirect_to login_url
+    end
+  end
+  def get_and_show_posts
+    @actions = Action.paginate(page: params[:page], per_page: 3).order('created_at DESC')
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 end

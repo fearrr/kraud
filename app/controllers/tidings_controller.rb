@@ -7,9 +7,6 @@ class TidingsController < ApplicationController
     get_and_show_posts
   end
 
-  def index_with_button
-    get_and_show_posts
-  end
 
   def show
     @tiding = Tiding.find(params[:id])

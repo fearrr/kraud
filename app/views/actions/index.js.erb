@@ -1,0 +1,7 @@
+$('#my-tidings').append('<div class="row"><%= j render @actions %></div>');
+<% if @actions.next_page %>
+$('.pagination').replaceWith('<%= j will_paginate @actions %>');
+<% else %>
+$(window).off('scroll');
+$('.pagination').remove();
+<% end %>
