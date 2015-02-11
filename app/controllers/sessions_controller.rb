@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    session[:return_to] ||= request.referer
   end
   def create
     admin = Admin.find_by(email: params[:session][:email].downcase)
@@ -8,8 +9,7 @@ class SessionsController < ApplicationController
       log_in admin
       params[:session][:remember_me] == '1' ? remember(admin) : forget(admin)
       flash.now[:success] = 'Вы вошли как администратор'
-      # redirect_back_or admin
-      redirect_to root_path
+      redirect_to session.delete(:return_to)
     else
       # Create an error message.
       flash.now[:danger] = 'Неверный пароль/логин' # Not quite right!
@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    redirect_to root_path
+    redirect_to request.referer
   end
+
 end

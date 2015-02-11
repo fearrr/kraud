@@ -6,7 +6,7 @@
       <div class="col-md-3 col-sm-6 col-xs-6 random-text"><p> <%= @caption.body if @caption %> </p></div>
       <div class="col-md-8 col-sm-12 col-xs-12 bottom-menu">
         <%= link_to 'Главная', root_path %> |
-        <%= link_to 'Каталог', parts_path%> |
+        <%= link_to 'Каталог', parts_path %> |
         <%= link_to 'Новости', tidings_path %> |
         <%= link_to 'Акции', actions_path %> |
         <%= link_to 'О компании', abouts_path %> |
@@ -28,5 +28,10 @@
     </div>
 
   </div>
-  <div class="copyright">&#169 2014 Крауд. Все права защищены</div>
+  <div class="copyright">
+    <div class="container">
+      &#169 2014 Крауд. Все права защищены
+      <%= link_to "<span class='fa fa-wrench'>".html_safe, login_path %>
+    </div>
+  </div>
 </footer>

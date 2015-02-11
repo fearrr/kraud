@@ -659,7 +659,7 @@ ul.bxslider {
     }
   }
   .col-md-4 {
-    width:325px;
+    width:30%;
     background: transparent !important;
     img {
       -webkit-box-shadow: 0px 4px 0px 0px rgba(189, 37, 37, 0.98);
@@ -1145,6 +1145,11 @@ footer {
     padding: 2rem;
     background-color: #1b1b1b;
     color: #555555;
+    a {
+      float:right;
+      color:#777777;
+      font-size:2rem;
+    }
   }
 }
 
@@ -1256,6 +1261,7 @@ footer {
       margin-right: 2rem;
     }
   }
+
 }
 
 @media screen and (max-width: 768px) {

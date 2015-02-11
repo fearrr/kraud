@@ -5,9 +5,11 @@
 <% parser.search('img').remove %>
 
 <% breadcrumb :tiding, @tiding %>
-<h3><%= @tiding.title %></h3>
 <%= raw(img) %>
-<p><%= raw(parser) %></p>
+<p>
+<h3><%= @tiding.title %></h3>
+<%= raw(parser) %>
+</p>
 <p> Дата создания: <%= @tiding.created_at.strftime("%d.%m.%y") %>, Просмотров: <%= @impression %></p>
 <% if logged_in? %>
     <p class="admin">
