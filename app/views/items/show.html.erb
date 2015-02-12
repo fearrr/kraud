@@ -13,6 +13,7 @@
     </p>
 <% end %>
 
+
 <div class="row">
   <div class="col-md-6 item-description">
     <div class="col-md-3 col-sm-offset-1 gallery">
@@ -37,19 +38,22 @@
 
 
 <div id="text">
-  <% if @table %>
+  <% if @thead %>
       <h4>Технические характеристики</h4>
-      <table class="table table-striped table-hover table-bordered"> <%= raw(@table) %></table>
+      <table class="table table-striped table-hover table-bordered">
+        <%= raw(@thead) %>
+        <%= raw(@tbody) %>
+      </table>
   <% end %>
   <div class="row">
     <% if @delivery %>
-        <div class="col-md-5">
+        <div class="col-md-5 col-sm-2 col-xs-2">
           <h4>Условия поставки</h4>
           <%= raw(@delivery) %>
         </div>
     <% end %>
     <% if @options %>
-        <div class="col-md-5">
+        <div class="col-md-5 col-sm-2 col-xs-2">
           <h4>Комплектация</h4>
           <%= raw(@options) %>
         </div>

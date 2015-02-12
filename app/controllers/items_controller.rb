@@ -18,29 +18,22 @@ class ItemsController < ApplicationController
   end
 
   def show
+    require 'nokogiri'
+
     @item = Item.find(params[:id])
     @type = Type.find(@item.type_id)
     @part = Part.find(@type.part_id)
-    parser = @item.body
+    parser = Nokogiri::HTML(@item.body)
+
+    @description = parser.css('section.description')
+    @features = parser.css('section.features')
+    @delivery = parser.css('section.delivery')
+    @options = parser.css('section.options')
+    @thead = parser.xpath('//table/thead')
+    @tbody = parser.xpath('//table/tbody')
 
 
-    @table = parser.slice(parser.index('<thead>')..parser.index('</table>')-1) if parser.index('<thead>')
 
-    if parser.index('<section class="description"')
-      @description = parser.slice(parser.index('<section class="description"')..parser.index('</section>')+10)
-      parser = parser.sub(@description, '')
-    end
-    if parser.index('<section class="features"')
-      @features = parser.slice(parser.index('<section class="features"')..parser.index('</section>')+10)
-      parser = parser.sub(@features, '')
-    end
-
-    if parser.index('<section class="options"')
-      @options = parser.slice(parser.index('<section class="options"')..parser.index('</section>')+10)
-      parser = parser.sub(@options, '')
-    end
-
-    @delivery = parser.slice(parser.index('<section class="delivery"')..parser.index('</section>')+10) if parser.index('<section class="delivery"')
 
   end
 
@@ -74,7 +67,7 @@ class ItemsController < ApplicationController
 
     @sections = Part.uniq.pluck(:section)
     @parts = Part.where("section = ?", @item.section)
-    @types = @parts.first.types.all
+    @types = @part.types.all
   end
 
   def update

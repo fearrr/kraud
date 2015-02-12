@@ -639,9 +639,10 @@ ul.bxslider {
 
 //Оформление новостей
 .tiding-img {
-  float:left;
-  padding-right:2rem;
+  float: left;
+  padding-right: 2rem;
 }
+
 #my-tidings {
   a:not(.btn) {
     color: $menu;
@@ -659,7 +660,7 @@ ul.bxslider {
     }
   }
   .col-md-4 {
-    width:30%;
+    width: 30%;
     background: transparent !important;
     img {
       -webkit-box-shadow: 0px 4px 0px 0px rgba(189, 37, 37, 0.98);
@@ -682,10 +683,14 @@ ul.bxslider {
     margin-right: 2rem;
   }
 }
+
 .pagination {
-  width:100%;
-  margin:0 auto;
+  width: 100%;
+  margin: 0 auto;
   text-align: center;
+  a, em {
+    visibility: hidden;
+  }
 }
 
 //оформление контента на главной
@@ -1146,9 +1151,9 @@ footer {
     background-color: #1b1b1b;
     color: #555555;
     a {
-      float:right;
-      color:#777777;
-      font-size:2rem;
+      float: right;
+      color: #777777;
+      font-size: 2rem;
     }
   }
 }
@@ -1242,12 +1247,12 @@ footer {
     }
   }
   //  колонка новости по всей ширине
-  #my-tidings{
+  #my-tidings {
     .col-md-4 {
-      width:100%;
-      margin:0 auto;
-      text-align:center;
-      padding:4rem;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      padding: 4rem;
     }
     .col-md-4:first-child {
       margin: 0;
@@ -1261,7 +1266,19 @@ footer {
       margin-right: 2rem;
     }
   }
-
+  //  Выравнивание галереи
+  .gallery {
+    float: none;
+    margin: 0 auto;
+  }
+  .item-description {
+    width: 100%;
+  }
+  #text {
+    .col-md-5 {
+      width: 50%;
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -1276,6 +1293,9 @@ footer {
       }
     }
   }
+  .footer-logo {
+    padding-left: 12rem;
+  }
 }
 
 // Центрирование нижнего меню
@@ -1283,5 +1303,18 @@ footer {
   .bottom-menu {
     left: -3rem;
 
+  }
+  //  Выравнивание галереи
+  .gallery {
+    float: none;
+    margin: 0 auto;
+  }
+  .item-description {
+    width: 100%;
+  }
+  #text {
+    .col-md-5 {
+      width: 50%;
+    }
   }
 }

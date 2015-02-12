@@ -5,6 +5,13 @@
 <% parser.search('img').remove %>
 
 <div class="blog-item col-md-4">
+  <% if logged_in? %>
+      <p class="admin">
+        <%= link_to "Изменить", edit_tiding_path(tiding), :class => "btn btn-sm btn-primary" %>
+        <%= link_to "Удалить", tiding, :class => "btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+      </p>
+  <% end %>
+
   <%= raw(img) %>
   <h3><%= link_to tiding.title, tiding_path(tiding.id) %></h3>
 
@@ -19,12 +26,4 @@
     <%= link_to "Читать полностью", tiding_path(tiding.id) %>
   </p>
 
-
-<br>
-  <% if logged_in? %>
-      <p class="admin">
-        <%= link_to "Изменить", edit_tiding_path(tiding), :class => "btn btn-sm btn-primary" %>
-        <%= link_to "Удалить", tiding, :class => "btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
-      </p>
-  <% end %>
 </div>

@@ -5,6 +5,13 @@
 <% parser.search('img').remove %>
 
 <div class="blog-item col-md-4">
+  <% if logged_in? %>
+      <p class="admin">
+        <%= link_to "Изменить", edit_action_path(action), :class => "btn btn-sm btn-primary" %>
+        <%= link_to "Удалить", action, :class => "btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+      </p>
+  <% end %>
+
   <%= raw(img) %>
   <h3><%= link_to action.title, action_path(action.id) %></h3>
 
@@ -20,11 +27,4 @@
   </p>
 
 
-<br>
-  <% if logged_in? %>
-      <p class="admin">
-        <%= link_to "Изменить", edit_action_path(action), :class => "btn btn-sm btn-primary" %>
-        <%= link_to "Удалить", action, :class => "btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
-      </p>
-  <% end %>
 </div>
