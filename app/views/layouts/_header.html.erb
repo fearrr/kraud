@@ -63,7 +63,7 @@
         <%= form_for @body, :html => { "data-parsley-validate" => '' }, :url => url_for(:controller => 'callbacks', :action => 'fast_callback') do %>
             <%= text_field_tag(:name, '', 'required' => '', :placeholder => "ФИО", :class => 'form-control') %>
             <%= text_field_tag(:phone, '', "data-parsley-minlength" => "6", "parsley-trigger" => "change", " data-parsley-type" => "digits", 'required' => '', :placeholder => "Телефон", :class => 'form-control') %>
-            <%= text_field_tag(:region, '', "data-parsley-minlength" => "6", "parsley-trigger" => "change", " data-parsley-type" => "digits", 'required' => '', :placeholder => "Телефон", :class => 'form-control') %>
+            <%= text_field_tag(:region, '', "data-parsley-minlength" => "6", "parsley-trigger" => "change", " data-parsley-type" => "digits", 'required' => '', :placeholder => "Регион", :class => 'form-control') %>
             <%= submit_tag "ОТПРАВИТЬ" %>
         <% end %>
       </div>
