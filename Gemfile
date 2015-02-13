@@ -38,4 +38,5 @@ group :development do
 end
 group :production, :staging do
 gem 'rails_12factor'
+gem 'unicorn',        '4.8.3'
 end

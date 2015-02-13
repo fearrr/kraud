@@ -683,6 +683,14 @@ ul.bxslider {
     margin-right: 2rem;
   }
 }
+div.preview-image {
+  width:310px;
+  height:230px;
+  img {
+    width:100% !important;
+    height:100% !important;
+  }
+}
 
 .pagination {
   width: 100%;

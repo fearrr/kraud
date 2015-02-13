@@ -12,7 +12,7 @@
       </p>
   <% end %>
 
-  <%= raw(img) %>
+  <div class="preview-image"><%= raw(img) %></div>
   <h3><%= link_to action.title, action_path(action.id) %></h3>
 
   <p><%= truncate(raw(parser), length: 255, :escape => false) %></p>
