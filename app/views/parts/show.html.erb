@@ -60,17 +60,20 @@
             <% @types.each do |type| %>
                 <% if logged_in? %>
                     <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
-                      <%= image_tag(type.items.first.attached_assets.first.asset.url(:mini)) if type.items.first && !type.items.first.attached_assets.empty? && type.items.first.attached_assets.first.asset %>
+                      <% image = image_tag(type.items.first.attached_assets.first.asset.url(:mini)) if type.items.first && !type.items.first.attached_assets.empty? && type.items.first.attached_assets.first.asset %>
+                      <%= link_to image, type_path(type.id) if image %>
                       <% @all_count = type.items.all.count %>
                       <% @publish_count = type.items.where("public = ?", true).count %>
                       <%= link_to "#{type.title} <br> (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, type_path(type.id) %>
                     </div>
                 <% else %>
                     <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
-                      <%= image_tag(type.items.where("public = ?", true).first.attached_assets.first.asset.url(:mini)) if type.items.where("public = ?", true).first && !type.items.where("public = ?", true).first.attached_assets.empty? && type.items.where("public = ?", true).first.attached_assets.first.asset %>
+                      <% image = image_tag(type.items.where("public = ?", true).first.attached_assets.first.asset.url(:mini)) if type.items.where("public = ?", true).first && !type.items.where("public = ?", true).first.attached_assets.empty? && type.items.where("public = ?", true).first.attached_assets.first.asset %>
                       <% if type.items.where("public = ?", true).count == 1 %>
+                          <%= link_to image, item_path(type.items.where("public = ?", true).first.id) if image %>
                           <%= link_to type.items.where("public = ?", true).first.title, item_path(type.items.where("public = ?", true).first.id) %>
                       <% else %>
+                          <%= link_to image, type_path(type.id) if image %>
                           <%= link_to type.title, type_path(type.id) %>
                       <% end %>
                     </div>

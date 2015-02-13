@@ -58,7 +58,8 @@
         <% if @items.first %>
             <% @items.each do |item| %>
                 <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
-                  <%= image_tag(item.attached_assets.first.asset.url(:mini)) if !item.attached_assets.empty? && item.attached_assets.first.asset %>
+                  <% image = image_tag(item.attached_assets.first.asset.url(:mini)) if !item.attached_assets.empty? && item.attached_assets.first.asset %>
+                  <%= link_to image, item_path(item.id) if image %>
                   <% if item.public %>
                       <%= link_to item.title, item_path(item.id) %>
                   <% else %>
