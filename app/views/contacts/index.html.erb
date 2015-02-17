@@ -38,9 +38,28 @@
     var handler = Gmaps.build('Google');
     handler.buildMap({internal: {id: 'map'}}, function () {
         var markers = handler.addMarkers([
-            {lat: 56.32414, lng: 44.00149, infowindow: "Офис"},
-            {lat: 56.2994, lng: 44.0249, infowindow: "Склад"}
+            {
+                lat: 56.32414,
+                lng: 44.00149,
+//                "picture": {
+//                    "url": "http://s27.postimg.org/ckm9eny3n/kraud_warehouse2.png",
+//                    "width": 36,
+//                    "height": 36
+//                },
+                infowindow: "Офис"
+            },
+            {
+                lat: 56.2994,
+                lng: 44.0249,
+//                "picture": {
+//                    "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
+//                    "width": 36,
+//                    "height": 36
+//                },
+                infowindow: "Склад"
+            }
         ]);
+
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
         handler.getMap().setZoom(13);
