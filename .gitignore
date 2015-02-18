@@ -20,3 +20,4 @@
 /config/deploy/ # файлы Capistrano
 /shared/ # файлы, которых нет в репозитории, но они будут скопированы на сервер при первом деплое приложения
 /public/system/ # если установлен Paperclip
+./vendor/bundle

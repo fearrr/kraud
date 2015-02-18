@@ -1,0 +1,13 @@
+{
+  "id": "app",
+  "comment": "Application User",
+  "ssh_keys": [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtQ/MclKTt+r9fD6KkdARXXZtsp+MlbABVsJCkyNWKhQwwz+/QMInJZM3ZcItGrI9QVlWsn8EuS2yzBPk2h9DEcEBIy+XR7pIwkX3FOeQIbEngj14ZacdIPu/BBK/nVQ1mVJEUEeg0he7JFsrBvzy0/GvelSQGlHYNjVav6x6P3Vs2KuhvQheFjjbtVfvcaScrBulAiViUFRVc+xMIrL4dYAoaL1TKnFt50uHJXHDjYViQKImTkmr/SF/9ydPC/8m8rL5FKt3q4rf/j9Nk8kdnEXHzR4+k9Xj14fQGRL/p3uNJLIaUsmLe2iSu+S/s2j9+5tfjvh4P7mXAi+IYt8KD vagrant@precise32\n"
+  ],
+  "groups": [
+    "sysadmin",
+    "sudo",
+    "staff"
+  ],
+  "shell": "/bin/bash"
+}

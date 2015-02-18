@@ -1,0 +1,72 @@
+{
+  "nginx": {
+    "dir": "/etc/nginx",
+    "log_dir": "/var/log/nginx",
+    "binary": "/usr/sbin/nginx",
+    "user": "www-data",
+    "pid": "/var/run/nginx.pid",
+    "worker_connections": "1024"
+  },
+  "git": {
+    "prefix": "/usr/local"
+  },
+  "postgresql": {
+    "users": [
+      {
+        "username": "app",
+        "superuser": true,
+        "createdb": true,
+        "login": true
+      }
+    ]
+  },
+  "authorization": {
+    "sudo": {
+      "users": [
+        "app"
+      ],
+      "passwordless": true
+    }
+  },
+  "rbenv": {
+    "user_installs": [
+      {
+        "user": "app",
+        "rubies": [
+          "2.1.0"
+        ],
+        "global": "2.1.0",
+        "environment": {
+          "CFLAGS": "-march=native -O2 -pipe"
+        },
+        "gems": {
+          "2.1.0": [
+            {
+              "name": "bundler",
+              "version": "1.5.0"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "run_list": [
+    "apt",
+    "chef-solo-search",
+    "locale",
+    "users::sysadmins",
+    "sudo",
+    "runit",
+    "memcached",
+    "postgresql::server",
+    "postgresql::contrib",
+    "postgresql::client",
+    "postgresql::libpq",
+    "imagemagick",
+    "ruby_build",
+    "rbenv::user",
+    "nginx::repo",
+    "nginx",
+    "git"
+  ]
+}

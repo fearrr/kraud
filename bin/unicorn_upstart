@@ -1,0 +1,33 @@
+#!/bin/bash
+
+unicorn_pid_file=tmp/pids/unicorn.pid
+
+if [ -f $unicorn_pid_file ]; then
+  # Someone restarted the master; wait for the new master to exit.
+
+  function graceful_shutdown {
+    echo "Initializing graceful shutdown"
+    kill -QUIT `cat $unicorn_pid_file`
+
+    # Git unicorn some time to stop
+    sleep 1
+  }
+
+  # Trap upstart stop (TERM) and send QUIT to unicorn
+  trap graceful_shutdown TERM
+
+  while [ -f $unicorn_pid_file ] && kill -0 `cat $unicorn_pid_file`; do
+    sleep 2
+  done
+
+  # If we get here, the master has exited, either because someone restarted
+  # it again (in which case there's already a new master running), or
+  # it died for real (in which case we'll need to start a new process).
+  # The sleep above is a tradeoff between polling load and mimizing the
+  # restart delay when the master dies for real (which should hopefully be
+  # rare).
+  rm -f $unicorn_pid_file
+else
+  # Run the unicorn master process (this won't return until it exits).
+  exec bundle exec unicorn -E $RAILS_ENV -c config/unicorn.rb
+fi

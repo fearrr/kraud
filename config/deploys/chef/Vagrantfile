@@ -1,0 +1,86 @@
+# encoding: utf-8
+
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant::Config.run do |config|
+
+  config.vm.box = "opscode_ubuntu-12.04-i386_chef-11.4.4"
+  config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04-i386_chef-11.4.4.box"
+  # config.ssh.forward_agent = true
+
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = ["cookbooks"]
+    chef.data_bags_path = "data_bags"
+        chef.add_recipe 'apt'
+        chef.add_recipe 'chef-solo-search'
+        chef.add_recipe 'locale'
+        chef.add_recipe 'users::sysadmins'
+        chef.add_recipe 'sudo'
+        chef.add_recipe 'runit'
+        chef.add_recipe 'memcached'
+        chef.add_recipe 'postgresql::server'
+        chef.add_recipe 'postgresql::contrib'
+        chef.add_recipe 'postgresql::client'
+        chef.add_recipe 'postgresql::libpq'
+        chef.add_recipe 'imagemagick'
+        chef.add_recipe 'ruby_build'
+        chef.add_recipe 'rbenv::user'
+        chef.add_recipe 'nginx::repo'
+        chef.add_recipe 'nginx'
+        chef.add_recipe 'git'
+        chef.json = {
+      :nginx         => {
+        :dir                => "/etc/nginx",
+        :log_dir            => "/var/log/nginx",
+        :binary             => "/usr/sbin/nginx",
+        :user               => "www-data",
+        :pid                => "/var/run/nginx.pid",
+        :worker_connections => "1024"
+      },
+      :git           => {
+        :prefix => "/usr/local"
+      },
+      :postgresql    => {
+        :users => [
+          {
+            :username  => "app",
+            :superuser => true,
+            :createdb  => true,
+            :login     => true
+          }
+        ]
+      },
+      :authorization => {
+        :sudo => {
+          :users        => [
+            "app"
+          ],
+          :passwordless => true
+        }
+      },
+      :rbenv         => {
+        :user_installs => [
+          {
+            :user        => "app",
+            :rubies      => [
+              "2.1.0"
+            ],
+            :global      => "2.1.0",
+            :environment => {
+              :CFLAGS => "-march=native -O2 -pipe"
+            },
+            :gems        => {
+              "2.1.0" => [
+                {
+                  :name    => "bundler",
+                  :version => "1.5.0"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  end
+end

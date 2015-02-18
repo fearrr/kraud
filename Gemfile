@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 
+# gem 'rails', '4.8.3'
 gem 'rails', '4.1.8'
 gem 'pg'
 gem "figaro"
@@ -38,7 +39,10 @@ group :development do
 end
 group :production, :staging do
 gem 'rails_12factor'
-gem 'unicorn',        '4.8.3'
+gem 'unicorn'
+gem 'pushapp'
+gem 'foreman'
+gem 'dotenv-rails'
 end
 group :development do
   gem 'capistrano'
