@@ -19,5 +19,5 @@ test:
 production:
   <<: *default
   database: kraud-app_production
-  username: kraud-app
-  password: <%= ENV['KRAUD-APP_DATABASE_PASSWORD'] %>
+  username: deployer
+  password: dmitry

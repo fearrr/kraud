@@ -40,3 +40,7 @@ group :production, :staging do
 gem 'rails_12factor'
 gem 'unicorn',        '4.8.3'
 end
+group :development do
+  gem 'capistrano'
+  gem 'capistrano3-ubuntu-server-prepare'
+end
