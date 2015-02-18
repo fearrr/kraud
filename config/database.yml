@@ -19,5 +19,5 @@ test:
 production:
   <<: *default
   database: kraud-app_production
-  username: deployer
+  username: dmitry
   password: dmitry
