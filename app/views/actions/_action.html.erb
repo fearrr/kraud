@@ -1,7 +1,5 @@
-
 <% require 'nokogiri' %>
 <% parser = Nokogiri::HTML(action.body) %>
-<% img = parser.css('img') %>
 <% parser.search('img').remove %>
 
 <div class="blog-item col-md-4">
@@ -12,7 +10,10 @@
       </p>
   <% end %>
 
-  <div class="preview-image"><%= raw(img) %></div>
+  <div class="preview-image">
+    <%= link_to (image_tag action.image.url(:preview)), action_path(action.id) %>
+  </div>
+
   <h3><%= link_to action.title, action_path(action.id) %></h3>
 
   <p><%= truncate(raw(parser), length: 255, :escape => false) %></p>

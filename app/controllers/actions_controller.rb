@@ -44,7 +44,7 @@ class ActionsController < ApplicationController
 
   private
   def action_params
-    params.require(:foo).permit(:title, :body)
+    params.require(:foo).permit(:image, :title, :body)
   end
   # Confirms a logged-in user.
   def logged_in_admin

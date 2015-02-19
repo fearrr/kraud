@@ -1,7 +1,5 @@
-
 <% require 'nokogiri' %>
 <% parser = Nokogiri::HTML(tiding.body) %>
-<% img = parser.css('img') %>
 <% parser.search('img').remove %>
 
 <div class="blog-item col-md-4">
@@ -12,7 +10,10 @@
       </p>
   <% end %>
 
-  <div class="preview-image"><%= raw(img) %></div>
+  <div class="preview-image">
+    <%= link_to (image_tag tiding.image.url(:preview)), tiding_path(tiding.id) %>
+  </div>
+
   <h3><%= link_to tiding.title, tiding_path(tiding.id) %></h3>
 
   <p><%= truncate(raw(parser), length: 255, :escape => false) %></p>

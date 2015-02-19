@@ -2,15 +2,11 @@
 <% parser = Nokogiri::HTML(@action.body) %>
 <% img = parser.css('img') %>
 <% img.add_class('tiding-img') %>
-<% parser.search('img').remove %>
 
 <% breadcrumb :action, @action %>
 
-<%= raw(img) %>
-<p>
 <h3><%= @action.title %></h3>
 <%= raw(parser) %>
-</p>
 <p> Дата создания: <%= @action.created_at.strftime("%d.%m.%y") %>, Просмотров: <%= @impression %></p>
 <% if logged_in? %>
     <p class="admin">

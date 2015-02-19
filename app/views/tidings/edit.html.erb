@@ -6,5 +6,6 @@
     <%= f.text_field :title, class:'form-control' %>
     <%= f.label :body, 'Текст новости' %>
     <%= f.cktext_area :body, :class => 'form-control', :ckeditor => {:language => 'ru'} %>
+    <div class="file_upload">+ <%= f.file_field :image %> </div> <b>Загрузить превью</b><br>
     <%= f.submit "Изменить", class: "btn btn-primary" %>
 <% end %>
