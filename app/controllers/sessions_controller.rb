@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    session[:return_to] ||= request.referer
+    request.referer ? session[:return_to] ||= request.referer : session[:return_to] ||= root_path
   end
   def create
     admin = Admin.find_by(email: params[:session][:email].downcase)
