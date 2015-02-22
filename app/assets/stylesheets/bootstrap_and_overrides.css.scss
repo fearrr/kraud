@@ -683,12 +683,13 @@ ul.bxslider {
     margin-right: 2rem;
   }
 }
+
 div.preview-image {
-  width:310px;
-  height:230px;
+  width: 310px;
+  height: 230px;
   img {
-    width:100% !important;
-    height:100% !important;
+    width: 100% !important;
+    height: 100% !important;
   }
 }
 
@@ -908,10 +909,11 @@ div.preview-image {
   }
   table {
     padding: 5px;
-  }
-  table td {
-    padding: 0 2rem;
-    vertical-align: top;
+    td, th {
+      padding-top:2rem;
+      vertical-align: middle;
+      line-height: 0.5rem;
+    }
   }
 }
 
