@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :logged_in_admin, only: [:edit, :update, :new]
+  before_action :logged_in_admin, only: [:edit, :update, :new, :destroy_asset]
   def index
   end
 
@@ -107,6 +107,13 @@ class ItemsController < ApplicationController
       flash[:success] = "Материал дублирован"
       redirect_to type_url(Type.find(@item.type_id))
     end
+  end
+  def destroy_asset
+    @item = Item.find(params[:item_id])
+    @asset = @item.attached_assets.find(params[:asset_id])
+    @asset.destroy
+    flash[:success] = "Изображение удалено"
+    redirect_to edit_item_path(@item)
   end
 
   private

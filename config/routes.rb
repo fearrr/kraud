@@ -40,4 +40,5 @@ Rails.application.routes.draw do
   get   '/publish_item/:id', to: 'items#publish', as: 'publish_item'
   get   '/dublicate/:id', to: 'items#dublicate', as: 'dublicate'
 
+  get   '/destroy_item_asset/:item_id/:asset_id', to: 'items#destroy_asset', as: 'destroy_item_asset'
 end

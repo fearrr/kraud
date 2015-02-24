@@ -892,13 +892,28 @@ div.preview-image {
 #text {
   table {
     padding: 20px 0;
+    td, th {
+      vertical-align: top;
+      text-align: center;
+      ul {
+        list-style: none;
+        text-align: left;
+        }
+        li:before {
+          content: "• ";
+          font-size: 2rem;
+          color: $red;
+          padding: 0.5rem;
+        }
+      p {
+        line-height: 1rem;
+      }
+    }
   }
   section {
     padding: 5px;
   }
-  td, th {
-    text-align: center;
-  }
+
   thead {
     background-color: #555555;
     color: #fff;
@@ -906,14 +921,6 @@ div.preview-image {
   .col-md-5 {
     overflow: hidden;
     width: 550px;
-  }
-  table {
-    padding: 5px;
-    td, th {
-      padding-top:2rem;
-      vertical-align: middle;
-      line-height: 0.5rem;
-    }
   }
 }
 
@@ -962,13 +969,16 @@ section {
 
 .description, .features {
   ul {
-    margin-left: -4rem;
-    margin-top: -2rem;
+    margin-left: -4.3rem;
     list-style: none;
     li {
       padding: 1rem;
       text-indent: -.7em;
     }
+    li:first-child {
+      padding: 0 1rem !important;
+    }
+
     li:before {
       content: "• ";
       font-size: 2rem;
@@ -980,7 +990,7 @@ section {
 
 .options, .delivery {
   ul {
-    margin-left: -4rem;
+    margin-left: -4.3rem;
     margin-top: -1rem;
     list-style: none;
     li {
