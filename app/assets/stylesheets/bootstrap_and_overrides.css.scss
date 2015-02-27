@@ -602,7 +602,7 @@ ul.bxslider {
   width: 25%;
   min-width: 200px;
   background-color: #f4f4f4;
-  padding: 0.5rem 0;
+  padding: 1rem;
   margin-left: 1.5rem;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -758,6 +758,7 @@ div.preview-image {
       margin: 0 auto;
       display: block;
       padding-bottom: 1rem;
+      max-width:300px;
     }
   }
   li {
