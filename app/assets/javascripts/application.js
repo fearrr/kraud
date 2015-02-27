@@ -17,6 +17,7 @@
 //= require twitter/bootstrap
 //= require bootstrap-datepicker
 //= require ckeditor/init
+//= require jquery.formatter.min
 //= require underscore
 //= require parsley.min
 //= require jquery.lightSlider
@@ -30,11 +31,15 @@ $(document).ready(function () {
         if (this.href == location.href) $(this).parent().addClass('active');
     });
     $('.dropdown').hover(function () {
-         $('.drop').parent().toggleClass('active');
+        $('.drop').parent().toggleClass('active');
     });
 
     $('.datepicker').datepicker({
         format: "dd/mm/yyyy"
+    });
+
+    $('.phone-format').formatter({
+        'pattern': '+{{9}} ({{999}}) {{999}}-{{9999}}',
     });
 
     var slider = $("#lightSlider").lightSlider({
@@ -47,6 +52,7 @@ $(document).ready(function () {
         thumbMargin: 1,
         controls: false
     });
+
     $('#goToPrevSlide').click(function () {
         slider.goToPrevSlide();
     });
@@ -54,10 +60,16 @@ $(document).ready(function () {
         slider.goToNextSlide();
     });
 
+    $('ul.bxslider li').each(function () {
+        if ($(this).find('div.bx-caption span').html() == "")
+            $(this).find('div.bx-caption').remove();
+    });
+
     $('.callForm').parsley({
         errors: {
-            classHandler: function ( elem ) {}
-            , container: function ( elem, template, isRadioOrCheckbox ) {
+            classHandler: function (elem) {
+            }
+            , container: function (elem, template, isRadioOrCheckbox) {
                 //here i have span msg. id to be displayed as custom attribute in input element
                 $('.time').html(template);
                 return true;//returning back boolean makes it work
@@ -104,6 +116,18 @@ $(document).ready(function () {
         equalto: "Это значение должно совпадать"
     });
     window.ParsleyValidator.addCatalog('ru', window.ParsleyConfig.i18n.ru, true);
+
+    if ($('.lSSlideOuter .lSPager.lSGallery li').length > 1) {
+        $('#goToPrevSlide').show();
+        $('#goToNextSlide').show();
+        $(".lSSlideOuter .lSPager.lSGallery").show();
+    }
+    else {
+        $('#goToPrevSlide').hide();
+        $('#goToNextSlide').hide();
+        $(".lSSlideOuter .lSPager.lSGallery").hide();
+    }
+
 });
 
 

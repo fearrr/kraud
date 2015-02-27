@@ -8,10 +8,10 @@
 
 
 <% if logged_in? %>
-    <%= link_to 'Редактировать страницу', edit_main_path(@main), :class => "btn btn-primary" %>
-    <%= link_to 'Глобальные настройки', globals_path, :class => "btn btn-primary" %>
-    <%= link_to 'Управление слайдером', sliders_path, :class => "btn btn-primary" %>
-    <%= link_to 'Управление случайными фразами', captions_path, :class => "btn btn-primary" %>
+    <%= link_to 'Редактировать страницу'.html_safe, edit_main_path(@main), :class => "btn btn-primary btn-edit" %>
+    <%= link_to 'Глобальные настройки <i class="fa fa-cog"></i> '.html_safe, globals_path, :class => "btn btn-primary" %>
+    <%= link_to 'Управление слайдером <i class="fa fa-film"></i> '.html_safe, sliders_path, :class => "btn btn-primary" %>
+    <%= link_to 'Управление случайными фразами <i class="fa fa-font"></i> '.html_safe, captions_path, :class => "btn btn-primary" %>
 <% end %>
 
 <div class="row karen">

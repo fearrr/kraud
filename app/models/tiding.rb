@@ -6,4 +6,5 @@ class Tiding < ActiveRecord::Base
 
   validates :title, :presence=>true
   validates :body, :presence=>true
+  validates :created_at, date: true
 end

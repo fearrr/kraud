@@ -7,6 +7,8 @@
     <%= f.label :body, 'Текст акции' %>
     <%= f.cktext_area :body, :class => 'form-control', :ckeditor => {:language => 'ru'} %>
     <div class="file_upload">+ <%= f.file_field :image %> </div> <b>Загрузить превью</b><br>
+    <br />
+    <%= f.text_field :created_at, "data-parsley-trigger" => "change", "data-parsley-date" => '', 'required' => '', :placeholder => 'Дата публикации', class: "datepicker form-control" %>
     <%= f.submit "Добавить", class: "btn btn-primary" %>
 
 

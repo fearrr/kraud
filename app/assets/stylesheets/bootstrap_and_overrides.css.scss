@@ -261,7 +261,7 @@ header {
       color: #fff;
       opacity: 1;
       position: absolute;
-      left: 2%;
+      right: 2%;
       text-align: center;
       top: 10px;
       text-decoration: none;
@@ -464,6 +464,15 @@ header {
     padding: 2rem;
     width: 50%;
   }
+  .col_1:first-child:after {
+    content: "";
+    background: rgba(247, 247, 247, 0.33);
+    position: absolute;
+    bottom: 5%;
+    right: 3px;
+    height: 90%;
+    width: 1px;
+  }
   //  Левая колонка с бордером
   .bord {
     padding: 0 1px;
@@ -471,10 +480,10 @@ header {
   }
   .bord:after {
     content: "";
-    background: #8c8c8c;
+    background: rgba(170, 29, 29, 0.76);
     position: absolute;
     bottom: 5%;
-    right: 0;
+    right: 4px;
     height: 90%;
     width: 1px;
   }
@@ -536,12 +545,12 @@ ul.bxslider {
 }
 
 .bx-wrapper .bx-prev:hover {
-  opacity: 1;
+  opacity: 0.7;
   background-position: 0 0;
 }
 
 .bx-wrapper .bx-next:hover {
-  opacity: 1;
+  opacity: 0.7;
   background-position: 0 0;
 }
 
@@ -892,6 +901,9 @@ div.preview-image {
 #text {
   table {
     padding: 20px 0;
+    th {
+      vertical-align: middle !important;
+    }
     td, th {
       vertical-align: top;
       text-align: center;
@@ -904,6 +916,8 @@ div.preview-image {
           font-size: 2rem;
           color: $red;
           padding: 0.5rem;
+          position:relative;
+          top:0.25rem;
         }
       p {
         line-height: 1rem;
@@ -984,6 +998,8 @@ section {
       font-size: 2rem;
       color: $red;
       padding: 0.5rem;
+      position:relative;
+      top:0.25rem;
     }
   }
 }
@@ -998,6 +1014,8 @@ section {
       text-indent: -.7em;
     }
     li:before {
+      position:relative;
+      top:0.25rem;
       content: "• ";
       font-size: 2rem;
       color: $red;

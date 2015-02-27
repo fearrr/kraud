@@ -46,7 +46,7 @@ class TidingsController < ApplicationController
   end
   private
   def tidings_param
-    params.require(:tiding).permit(:image, :title, :body)
+    params.require(:tiding).permit(:image, :title, :body, :created_at)
   end
   # Confirms a logged-in user.
   def logged_in_admin
