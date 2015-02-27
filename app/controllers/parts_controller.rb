@@ -1,6 +1,7 @@
 class PartsController < ApplicationController
   # encoding: UTF-8
   before_action :logged_in_admin, only: [:edit, :update, :new]
+
   def edit
     @part = Part.find(params[:id])
   end
@@ -33,9 +34,25 @@ class PartsController < ApplicationController
 
   def show
     @part = Part.find(params[:id])
-    @types = @part.types.all
-    @kombikorm = Part.where(section: "Комбикормовое оборудование")
-    @pellet = Part.where(section: "Пеллетное оборудование")
+
+    @counter = 0
+    @part.types.each do |type|
+      @counter += type.items.where("public = ?", true).count
+    end
+
+    if logged_in? == false
+      if @counter > 0
+        @types = @part.types.all
+        @kombikorm = Part.where(section: "Комбикормовое оборудование")
+        @pellet = Part.where(section: "Пеллетное оборудование")
+      else
+        logged_in_admin
+      end
+    else
+      @types = @part.types.all
+      @kombikorm = Part.where(section: "Комбикормовое оборудование")
+      @pellet = Part.where(section: "Пеллетное оборудование")
+    end
   end
 
   def new
@@ -67,6 +84,7 @@ class PartsController < ApplicationController
   def parts_params
     params.require(:part).permit(:title, :section)
   end
+
   # Confirms a logged-in user.
   def logged_in_admin
     unless logged_in?

@@ -27,18 +27,23 @@
         <% end %>
       </ul>
     </div>
-    <h4 class="item-title"><%= @item.title %></h4>
-    <%= raw(@description) if @description %>
-    <% if @features %>
+
+    <% if @description.length > 0 %>
+        <h4 class="item-title"><%= @item.title %></h4>
+        <%= raw(@description) %>
+    <% end %>
+
+    <% if @features.length > 0  %>
         <h4 class="text">Особенности конструкции</h4>
         <%= raw(@features) %>
     <% end %>
+
   </div>
 </div>
 
 
 <div id="text">
-  <% if @thead %>
+  <% if @thead.length > 0  %>
       <h4>Технические характеристики</h4>
       <table class="table table-striped table-hover table-bordered">
         <%= raw(@thead) %>
@@ -46,13 +51,14 @@
       </table>
   <% end %>
   <div class="row">
-    <% if @delivery %>
+
+    <% if @delivery.length > 0  %>
         <div class="col-md-5 col-sm-2 col-xs-2">
           <h4>Условия поставки</h4>
           <%= raw(@delivery) %>
         </div>
     <% end %>
-    <% if @options %>
+    <% if @options.length > 0  %>
         <div class="col-md-5 col-sm-2 col-xs-2">
           <h4>Комплектация</h4>
           <%= raw(@options) %>

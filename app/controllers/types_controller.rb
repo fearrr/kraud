@@ -37,7 +37,20 @@ class TypesController < ApplicationController
 
     @type = Type.find(params[:id])
     @part = Part.find(@type.part_id)
-    logged_in? ? (@items = @type.items.all) : (@items = @type.items.where("public = ?", true))
+
+    @counter = @type.items.where("public = ?", true).count
+
+    if logged_in? == false
+      if @counter > 0
+        @items = @type.items.where("public = ?", true)
+      else
+        logged_in_admin
+      end
+    else
+      @items = @type.items.all
+    end
+
+
   end
   def new
     @type = Type.new
