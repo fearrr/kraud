@@ -5,6 +5,7 @@ class UserMailer < ActionMailer::Base
   def callback_email(user)
     @user = user
     email_with_name = "D7235200@yandex.ru"
+    # email_with_name = "7235200@gmail.com"
     mail(to: email_with_name, subject: "Заявка на обратный звонок от пользователя #{@user[:name]}")
   end
 
