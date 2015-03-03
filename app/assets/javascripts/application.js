@@ -53,6 +53,7 @@ $(document).ready(function () {
         controls: false
     });
 
+    $('.bx-loading').remove();
     $('#goToPrevSlide').click(function () {
         slider.goToPrevSlide();
     });
