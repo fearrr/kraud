@@ -67,6 +67,38 @@ hr {
   padding-left: 0.5rem;
 }
 
+.btn-logout::after {
+  font-family: FontAwesome;
+  content: " \f08b";
+  padding-left: 0.5rem;
+}
+
+
+.btn-image::after {
+  font-family: FontAwesome;
+  content: " \f1c5";
+  padding-left: 0.5rem;
+}
+
+.btn-save::after {
+  font-family: FontAwesome;
+  content: " \f0c7";
+  padding-left: 0.5rem;
+}
+
+.btn-upload::after {
+  font-family: FontAwesome;
+  content: " \f093";
+  padding-left: 0.5rem;
+}
+
+.btn-input{
+  font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+
+
 .btn-item::after {
   font-family: FontAwesome;
   content: " \f016";
@@ -363,7 +395,7 @@ header {
   background-color: #fff;
   hr.top-hr {
     border: 0;
-    border-bottom: 1.5rem solid #efefef;
+    border-bottom: 1.5rem solid white;
     margin: auto;
   }
   ul.top-menu {
@@ -943,17 +975,7 @@ div.preview-image {
   background-color: #d4d4d4;
   padding: 1rem 2rem;
   width: 620px;
-}
-
-#text h4:not(.item-title)::before, h4.text::before {
-  content: '';
-  position: relative;
-  width: 0;
-  height: 0;
-  top: -0.8rem;
-  left: -2.1rem;
-  border-bottom: 1.7rem solid $menu;
-  border-left: 1.5rem solid $menu;
+  border-left: 15px solid #cf4f4f;
 }
 
 h4.item-title {
@@ -961,17 +983,7 @@ h4.item-title {
   color: #fff;
   padding: 1rem 2rem;
   width: 620px;
-}
-
-h4.item-title::before {
-  content: '';
-  position: relative;
-  width: 0;
-  height: 0;
-  top: -0.8rem;
-  left: -2.1rem;
-  border-bottom: 1.7rem solid $menu;
-  border-left: 1.5rem solid $menu;
+  border-right: 15px solid #cf4f4f;
 }
 
 section {

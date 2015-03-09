@@ -20,7 +20,7 @@
 
 <% if logged_in? %>
     <div class="main-admin">
-      <%= link_to 'Выход', logout_path, method: "delete", :class => "btn btn-primary" %>
+      <%= link_to 'Выход', logout_path, method: "delete", :class => "btn btn-primary btn-logout" %>
       <section>
         Вы вошли как <b><%= current_admin.name %></b> &nbsp;|&nbsp;
         <%= link_to "Отзывы (#{@notPublic})", comments_path %> &nbsp;|&nbsp;

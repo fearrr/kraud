@@ -22,7 +22,7 @@ end
 
 # Actions
 crumb :actions do
-  link "Акции", actions_path
+  link "Статьи", actions_path
 end
 crumb :action do |action|
   link action.title, action

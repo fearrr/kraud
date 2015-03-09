@@ -54,8 +54,11 @@
     </ul>
   </div>
   <div class="col-md-8 catalog">
+    <h2><%= @part.section %></h2>
     <ul>
       <% if @types.first %>
+          <h3><%= @part.title %></h3>
+
           <div class="row row-centered">
             <% if @types.first %>
                 <% @types.each do |type| %>
