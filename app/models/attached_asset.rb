@@ -5,4 +5,3 @@ class AttachedAsset < ActiveRecord::Base
   # validates_attachment_content_type :file_name, :content_type => %w(image/jpeg image/jpg image/png)
 
 end
-w
