@@ -2,17 +2,72 @@
 <% if logged_in? %>
     <%= link_to "Редактировать страницу", edit_about_path(@body), :class => "btn btn-edit btn-primary" %>
     <%= link_to "Управление отзывами (#{@notPublic})", comments_path, :class => "btn btn-primary" %>
+    <%= render 'shared/abouts_error_messages' %>
 <% end %>
-<p><%= raw(@body.body) %></p>
+
+
+<div class="row">
+  <div class="col-md-6 item-description">
+    <div class="col-md-3 col-sm-offset-1 gallery">
+      <div id="goToPrevSlide"></div>
+      <div id="goToNextSlide"></div>
+      <ul id="lightSlider">
+        <% @body.about_assets.each do |a| %>
+            <li data-thumb="<%= a.asset.url(:mikro) %>">
+              <%= link_to image_tag(a.asset.url(:normal)), a.asset.url(:normal), :rel => "gal", :title => a.asset_file_name.slice(0..(a.asset_file_name.index('.')-1)) %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <% if @firstSection.length > 0 %>
+        <%= raw(@firstSection) %>
+    <% end %>
+
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-3 col-sm-5">
+    <div class="attached">
+      <span>Файлы для загрузки</span>
+      <br>
+
+      <%= render "uploads/index" %>
+      <% if logged_in? %>
+          <hr>
+          <%= render "uploads/new" %>
+      <% end %>
+
+    </div>
+  </div>
+  <div class="col-md-9">
+    <% if @secondSection.length > 0 %>
+        <%= raw(@secondSection) %>
+    <% end %>
+  </div>
+</div>
 <h4>Отзывы клиентов</h4>
 <% if @comments %>
     <% @comments.each do |comment| %>
-        <% title = "дата публикации: #{comment.created_at.strftime("%d.%m.%y")}" %>
-        <div class="blog-item">
-          <p><b><%= comment.name %></b>, <%= title %> </p>
+        <% title = "<span class='comment-date'>дата публикации: #{comment.created_at.strftime("%d.%m.%y")}</span>".html_safe %>
 
-          <p><%= comment.body %></p>
+        <div class="blog-item comment-item">
+          <%= image_tag('comment.png', size: "33x23") %>
+          <p class="comment-author-title"><%= comment.name %> <%= title %></p>
+
+          <p class="comment-body"><%= comment.body %></p>
         </div>
+
     <% end %>
 <% end %>
 <%= link_to "Добавить свой отзыв", new_comment_path, :class => "btn btn-default" %>
+<br>
+<br>
+<!--<h4>Галерея фотографий</h4>-->
+<p class="map-statistic">Статистика продаж по регионам за 2014 год</p>
+<p class="map-statistic"><%= image_tag('map.jpg') %></p>
+<% if @thirdSection.length > 0 %>
+    <%= raw(@thirdSection) %>
+<% end %>
+

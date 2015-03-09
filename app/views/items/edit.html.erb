@@ -1,7 +1,7 @@
 <% @part.section == "Комбикормовое оборудование" ? (breadcrumb :edit_item_kombikorm, @item, @type, @part) : (breadcrumb :edit_item_pellet, @item, @type, @part) %>
 <%= render 'shared/items_error_messages' %>
 
-<label>Изображения материала</label>
+<label>Изображения страницы</label>
  <table class="table table-condensed">
       <% @item.attached_assets.each do |a| %>
           <tr>

@@ -1,7 +1,20 @@
 <% breadcrumb :edit_about %>
 <%= render 'shared/abouts_error_messages' %>
-<%= form_for(@body) do |f| %>
+<label>Изображения материала</label>
+ <table class="table table-condensed">
+      <% @body.about_assets.each do |a| %>
+          <tr>
+            <td><%= image_tag(a.asset.url(:mikro)) %></td>
+            <td> <%= a.asset_file_name %></td>
+            <td><%= link_to 'Удалить', destroy_about_asset_path(a.id), data: {confirm: 'Вы уверены?'} %></td>
+          </tr>
+      <% end %>
+    </table>
+
+<%= form_for @body, :html => { :multipart => true } do |f| %>
     <%= f.label :body, 'Текст страницы' %>
-    <%= f.cktext_area :body, :class => 'form-control', :ckeditor => {:language => 'ru'} %>
+
+    <%= f.cktext_area :body, :class => 'form-control', :ckeditor => { :language => 'ru', :toolbar=>'mini' } %>
+    <div class="file_upload">+<%= file_field_tag('about_about_assets_asset', multiple: true, name: "about[about_assets_attributes][][asset]") %> </div> <b>Загрузить изображения</b> (изображения отображатся в галерее)  <br>
     <%= f.submit "Изменить", class: "btn btn-primary" %>
 <% end %>

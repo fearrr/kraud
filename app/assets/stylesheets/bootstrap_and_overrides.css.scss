@@ -49,6 +49,9 @@ h3 {
   color: #666666;
 }
 
+hr {
+  border-color: #8c8c8c;
+}
 // bootstrap кнопка
 .form-control {
   margin: 0 0 1rem;
@@ -758,7 +761,7 @@ div.preview-image {
       margin: 0 auto;
       display: block;
       padding-bottom: 1rem;
-      max-width:230px;
+      max-width: 230px;
     }
   }
   li {
@@ -912,15 +915,15 @@ div.preview-image {
       ul {
         list-style: none;
         text-align: left;
-        }
-        li:before {
-          content: "• ";
-          font-size: 2rem;
-          color: $red;
-          padding: 0.5rem;
-          position:relative;
-          top:0.25rem;
-        }
+      }
+      li:before {
+        content: "• ";
+        font-size: 2rem;
+        color: $red;
+        padding: 0.5rem;
+        position: relative;
+        top: 0.25rem;
+      }
       p {
         line-height: 2rem;
       }
@@ -1000,8 +1003,8 @@ section {
       font-size: 2rem;
       color: $red;
       padding: 0.5rem;
-      position:relative;
-      top:0.25rem;
+      position: relative;
+      top: 0.25rem;
     }
   }
 }
@@ -1016,8 +1019,8 @@ section {
       text-indent: -.7em;
     }
     li:before {
-      position:relative;
-      top:0.25rem;
+      position: relative;
+      top: 0.25rem;
       content: "• ";
       font-size: 2rem;
       color: $red;
@@ -1112,6 +1115,75 @@ section {
   border-bottom: 8px solid #1b1b1b;
   border-right: 8px solid transparent;
   border-left: 8px solid transparent;
+}
+
+// About
+.comment-item {
+  padding-left:3rem;
+  img {
+    position: relative;
+    margin-top:-4rem;
+  }
+}
+.comment-author-title {
+  font-size: 2rem;
+  margin-top: -1rem;
+  margin-bottom: 0;
+}
+.comment-date {
+  position: relative;
+  font-size: 1.4rem !important;
+  margin-top: -1.5rem;
+  float: right;
+  color: #777777;
+}
+.map-statistic {
+  font-size: 2rem;
+  color: #777777;
+  text-align: center;
+}
+
+.attached {
+  border: 1px solid #ccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  padding: 2rem;
+  width:250px;
+  max-width:250px;
+  img {
+    margin:0 auto;
+    display:block;
+    padding-bottom: 1rem;
+  }
+  hr {
+    border-color: #8c8c8c;
+  }
+  span {
+    position: absolute;
+    width:250px;
+    background-color: #b5b5b5;
+    color: #4b4b4b;
+    text-align: center;
+    -webkit-border-top-left-radius: 4px;
+    -moz-border-top-left-radius: 4px;
+    border-top-left-radius: 4px;
+    -webkit-border-top-right-radius: 4px;
+    -moz-border-top-right-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 0.5rem;
+    margin-left: -2.1rem;
+    margin-top: -2.1rem;
+  }
+  p {
+    text-align: center;
+    margin:1rem;
+    padding-bottom: 1rem;
+    a {
+      color:#555555;
+      text-decoration: underline;
+    }
+  }
 }
 
 // Footer

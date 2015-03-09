@@ -3,14 +3,15 @@
 <% if @comments %>
     <% @comments.each do |comment| %>
         <% if !comment.public %>
-            <% title = "дата создания: #{comment.created_at.strftime("%d.%m.%y")}, не опубликован" %>
+            <% title = "<span class='comment-date'>дата создания: #{comment.created_at.strftime("%d.%m.%y")}, не опубликован</span>".html_safe %>
         <% else %>
-            <% title = "дата публикации: #{comment.created_at.strftime("%d.%m.%y")}" %>
+            <% title = "<span class='comment-date'>дата публикации: #{comment.created_at.strftime("%d.%m.%y")}</span>".html_safe %>
         <% end %>
 
-        <div class="blog-item">
-          <p><b><%= comment.name %></b>, <%= title %> </p>
-          <p><%= comment.body %></p>
+        <div class="blog-item comment-item">
+          <%= image_tag('comment.png', size: "33x23") %>
+          <p class="comment-author-title"><%= comment.name %> <%= title %></p>
+          <p class="comment-body"><%= comment.body %></p>
           <%= link_to "Изменить", edit_comment_path(comment), :class=>"btn btn-sm btn-primary" %>
           <%= link_to "Удалить", comment, :class=>"btn btn-sm btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
         </div>

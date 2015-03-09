@@ -1,0 +1,6 @@
+<%= form_for @upload, :url => uploads_path, :html => { :multipart => true } do |f| %>
+    <%= f.label :name, 'Имя файла' %>
+    <%= f.text_field :name, class: 'form-control' %>
+    <div class="file_upload">+ <%= f.file_field :asset %> </div> <b>Загрузить файл</b><br>
+    <%= f.submit "Добавить", class: "btn btn-primary" %>
+<% end %>

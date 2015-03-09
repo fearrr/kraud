@@ -7,9 +7,11 @@ CKEDITOR.stylesSet.add('custom', [
     { name: 'Описание материала', element: 'section', attributes: { 'class': 'description' } },
     { name: 'Особености конструкции', element: 'section', attributes: { 'class': 'features' } },
     { name: 'Условия поставки', element: 'section', attributes: { 'class': 'delivery' } },
-    { name: 'Комплектация', element: 'section', attributes: { 'class': 'options' } }
+    { name: 'Комплектация', element: 'section', attributes: { 'class': 'options' } },
+    { name: 'О компании 1', element: 'section', attributes: { 'class': 'first' } },
+    { name: 'О компании 2', element: 'section', attributes: { 'class': 'second' } },
+    { name: 'О компании 3', element: 'section', attributes: { 'class': 'third' } }
 ]);
-
 
 CKEDITOR.editorConfig = function (config) {
     // Define changes to default configuration here. For example:

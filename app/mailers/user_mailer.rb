@@ -4,14 +4,13 @@ class UserMailer < ActionMailer::Base
 
   def callback_email(user)
     @user = user
-    email_with_name = "D7235200@yandex.ru"
-    # email_with_name = "7235200@gmail.com"
+    email_with_name = "callback@kraud.org"
     mail(to: email_with_name, subject: "Заявка на обратный звонок от пользователя #{@user[:name]}")
   end
 
   def callback_from_contacts(user)
     @user=user
-    email_with_name = "D7235200@yandex.ru"
+    email_with_name = "callback@kraud.org"
     mail(to: email_with_name, subject: "Вопрос от пользователя #{@user[:name]}")
   end
 end
