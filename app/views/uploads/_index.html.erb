@@ -1,7 +1,7 @@
 <% if @uploads.length > 0 %>
     <% @uploads.each do |upload| %>
         <p>
-          <% if upload.asset_file_name.length > 0 %>
+          <% if upload.asset_file_name %>
               <% if upload.asset_file_name.include? "doc" %>
                   <%= image_tag 'doc.jpg' %>
               <% elsif upload.asset_file_name.include? "ppt" %>
