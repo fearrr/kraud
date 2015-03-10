@@ -392,10 +392,9 @@ header {
 // Верхнее меню
 .navbar-default {
   border: 0;
-  background-color: #fff;
   hr.top-hr {
     border: 0;
-    border-bottom: 1.5rem solid white;
+    border-bottom: 1.5rem solid #efefef;
     margin: auto;
   }
   ul.top-menu {
@@ -887,6 +886,12 @@ div.preview-image {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+}
+
+.noscrollbar {
+  line-height:1.35;
+  overflow:hidden;
+  white-space:nowrap;
 }
 
 // Добавление изображений

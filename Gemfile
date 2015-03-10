@@ -36,6 +36,7 @@ group :development, :test do
 end
 group :development do
   gem 'rails-dev-tweaks'
+  gem "thin"
 end
 group :production, :staging do
 gem 'rails_12factor'
