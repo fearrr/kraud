@@ -212,6 +212,13 @@ crumb :edit_globals do
   parent :globals
 end
 
+# Photogal
+crumb :photogal do
+  link "Галерея", photogals_path
+end
+crumb :new_photogal do
+  link "Добавить изображения в галерею", new_photogal_path
+end
 
 # If you want to split your breadcrumbs configuration over multiple files, you
 # can create a folder named `config/breadcrumbs` and put your configuration

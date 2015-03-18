@@ -1,0 +1,10 @@
+<div class="row">
+  <% @photogals.each do |photogal| %>
+      <% photogal.photogal_assets.each do |a| %>
+          <div class="col-md-4 col-sm-5 photogal">
+            <%= link_to image_tag(a.asset.url(:normal)), a.asset.url(:normal), :rel => "gal", :title => a.asset_file_name.slice(0..(a.asset_file_name.index('.')-1)) %>
+            <p> <%= link_to a.asset_file_name.slice(0..(a.asset_file_name.index('.')-1)), a.asset.url(:normal) %></p>
+          </div>
+      <% end %>
+  <% end %>
+</div>

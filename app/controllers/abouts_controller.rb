@@ -15,6 +15,8 @@ class AboutsController < ApplicationController
 
     @upload = Upload.new()
     @uploads = Upload.all
+
+    @photogals = Photogal.all.limit(10)
   end
   def edit
     @body = About.find(params[:id])

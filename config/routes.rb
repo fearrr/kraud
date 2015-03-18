@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :mains, :only => [:index, :edit, :update]
   resources :contacts, :only => [:index]
   resources :globals
+  resources :photogals
   root 'static#index'
 
   get    'login'   => 'sessions#new'
@@ -42,5 +43,6 @@ Rails.application.routes.draw do
   get   '/dublicate/:id', to: 'items#dublicate', as: 'dublicate'
 
   get   '/destroy_item_asset/:item_id/:asset_id', to: 'items#destroy_asset', as: 'destroy_item_asset'
+  get   '/destroy_photogal_asset/:photogal_id/:asset_id', to: 'photogals#destroy_asset', as: 'destroy_photogal_asset'
   get   '/destroy_about_asset/:asset_id', to: 'abouts#destroy_asset', as: 'destroy_about_asset'
 end

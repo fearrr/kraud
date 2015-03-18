@@ -64,7 +64,9 @@
 <%= link_to "Добавить свой отзыв", new_comment_path, :class => "btn btn-default" %>
 <br>
 <br>
-<!--<h4>Галерея фотографий</h4>-->
+<%= link_to '<h4>Галерея фотографий</h4>'.html_safe, photogals_path  %>
+<%= render "photogals/index" %>
+
 <p class="map-statistic">Статистика продаж по регионам за 2014 год</p>
 <p class="map-statistic"><%= image_tag('map.jpg') %></p>
 <% if @thirdSection.length > 0 %>

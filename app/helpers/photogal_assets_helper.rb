@@ -1,0 +1,2 @@
+module PhotogalAssetsHelper
+end
