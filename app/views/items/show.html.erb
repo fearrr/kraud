@@ -1,4 +1,10 @@
-<% if @part.section == "Комбикормовое оборудование" %>
+<% content_for :title do %>
+    <% @metatitle %>
+    <% end %>
+<% content_for :keywords do %>
+    <% @keywords %>
+<% end %>
+<% if @part.section == "комбикормовое оборудование" %>
     <% @type.items.all.count == 1 && !logged_in? ? (breadcrumb :only_item_kombikorm, @item, @part) : (breadcrumb :item_kombikorm, @item, @type, @part) %>
 <% else %>
     <% @type.items.all.count == 1 && !logged_in? ? (breadcrumb :only_item_pellet, @item, @part) : (breadcrumb :item_pellet, @item, @type, @part) %>
@@ -6,20 +12,19 @@
 
 <% if logged_in? %>
     <p>
-      <%= link_to "Редактировать материал", edit_item_path(@item), :class => "btn btn-edit btn-primary" %>
-      <%= @item.public ? (link_to "Снять с публикации", publish_item_path(@item.id), :class => "btn btn-primary") : (link_to "Опубликовать", publish_item_path(@item.id), :class => "btn btn-primary") %>
-      <%= link_to "Дублировать", dublicate_path(@item.id), :class => "btn btn-primary" %>
-      <%= link_to "Удалить материал", @item, :class => "btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
+      <%= link_to "редактировать материал", edit_item_path(@item), :class => "btn btn-edit btn-primary" %>
+      <%= @item.public ? (link_to "снять с публикации", publish_item_path(@item.id), :class => "btn btn-primary") : (link_to "опубликовать", publish_item_path(@item.id), :class => "btn btn-primary") %>
+      <%= link_to "дублировать", dublicate_path(@item.id), :class => "btn btn-primary" %>
+      <%= link_to "удалить материал", @item, :class => "btn btn-danger", method: :delete, data: { confirm: "вы уверены?" } %>
     </p>
 <% end %>
-
 
 <div class="row">
   <div class="col-md-6 item-description">
     <div class="col-md-3 col-sm-offset-1 gallery">
-      <div id="goToPrevSlide"></div>
-      <div id="goToNextSlide"></div>
-      <ul id="lightSlider">
+      <div id="gotoprevslide"></div>
+      <div id="gotonextslide"></div>
+      <ul id="lightslider">
         <% @item.attached_assets.each do |a| %>
             <li data-thumb="<%= a.asset.url(:mikro) %>">
               <%= link_to image_tag(a.asset.url(:normal)), a.asset.url(:normal), :rel => "gal", :title => a.asset_file_name.slice(0..(a.asset_file_name.index('.')-1)) %>
@@ -34,7 +39,7 @@
     <% end %>
 
     <% if @features.length > 0  %>
-        <h4 class="text">Особенности конструкции</h4>
+        <h4 class="text">особенности конструкции</h4>
         <%= raw(@features) %>
     <% end %>
 
@@ -44,7 +49,7 @@
 
 <div id="text">
   <% if @thead.length > 0  %>
-      <h4>Технические характеристики</h4>
+      <h4>технические характеристики</h4>
       <table class="table table-striped table-hover table-bordered">
         <%= raw(@thead) %>
         <%= raw(@tbody) %>
@@ -54,13 +59,13 @@
 
     <% if @delivery.length > 0  %>
         <div class="col-md-5 col-sm-2 col-xs-2">
-          <h4>Условия поставки</h4>
+          <h4>условия поставки</h4>
           <%= raw(@delivery) %>
         </div>
     <% end %>
     <% if @options.length > 0  %>
         <div class="col-md-5 col-sm-2 col-xs-2">
-          <h4>Комплектация</h4>
+          <h4>комплектация</h4>
           <%= raw(@options) %>
         </div>
     <% end %>

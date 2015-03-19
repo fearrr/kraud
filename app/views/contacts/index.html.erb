@@ -24,12 +24,15 @@
 
     <% end %>
   </div>
-  <div class="col-md-5 contact">
+  <div itemscope itemtype="http://schema.org/Organization" class="col-md-5 contact">
     <ul>
-      <li><i class="fa fa-phone"></i> <%= phone %></li>
-      <li><i class="fa fa-clock-o"></i> <%= workStart %>:00 до <%= workEnd %>:00 по Московскому времени</li>
-      <li><i class="fa fa-envelope-o"></i> <%= email %></li>
-      <li><i class="fa fa-arrows-alt"></i> <%= address.gsub(/<br\s*\/?>/, '') %></li>
+      <li itemprop="telephone"><i class="fa fa-phone"></i> <%= phone %></li>
+      <li><i class="fa fa-clock-o"></i>
+        <time itemprop="openingHours" datetime="Mo-Sa 9:00−18:00">
+          <%= workStart %>:00 до <%= workEnd %>:00 по Московскому времени</time></li>
+      <li itemprop="email"><i class="fa fa-envelope-o"></i> <%= email %></li>
+      <li itemscope itemtype="http://schema.org/PostalAddress">
+        <i class="fa fa-arrows-alt"></i><%= address.gsub(/<br\s*\/?>/, '') %></li>
     </ul>
   </div>
 </div>

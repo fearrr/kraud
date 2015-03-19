@@ -1134,11 +1134,12 @@ section {
 
 // About
 .comment-item {
-  padding-left:3rem;
-  img {
-    position: relative;
-    margin-top:-4rem;
+  .quotes:before{
+    position: absolute;
+    margin-top:-3.5rem;
+    color: $red;
   }
+  padding-left:3rem;
 }
 .comment-author-title {
   font-size: 2rem;

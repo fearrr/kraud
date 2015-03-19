@@ -31,7 +31,8 @@ class ItemsController < ApplicationController
     @options = parser.css('section.options')
     @thead = parser.xpath('//table/thead')
     @tbody = parser.xpath('//table/tbody')
-
+    @metatitle = @item.metatitle.to_s != '' ? @item.metatitle : @item.title
+    @keywords = @item.keywords
 
 
 
@@ -118,7 +119,7 @@ class ItemsController < ApplicationController
 
   private
   def items_params
-    params.require(:item).permit(:public, :section, :body, :title, :type_id, :part_id, attached_assets_attributes: [:asset, :asset_file_name])
+    params.require(:item).permit(:public, :section, :body, :title, :type_id, :part_id, :metatitle, :keywords, attached_assets_attributes: [:asset, :asset_file_name])
   end
   # Confirms a logged-in user.
   def logged_in_admin
