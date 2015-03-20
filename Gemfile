@@ -42,6 +42,7 @@ end
 group :production, :staging do
 gem 'rails_12factor'
 gem 'unicorn'
+gem 'unicorn-worker-killer'
 gem 'pushapp'
 gem 'foreman'
 gem 'dotenv-rails'
