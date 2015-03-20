@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
     @options = parser.css('section.options')
     @thead = parser.xpath('//table/thead')
     @tbody = parser.xpath('//table/tbody')
-    @metatitle = @item.metatitle.to_s != '' ? @item.metatitle : @item.title
+    @metatitle = @item.metatitle.to_s != '' ? @item.metatitle : @type.title + " | " + @item.title
     @keywords = @item.keywords
 
 
