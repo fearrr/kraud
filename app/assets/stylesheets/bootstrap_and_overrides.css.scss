@@ -10,6 +10,11 @@ $red: #841a1c;
 $menu: #cf4f4f;
 $dropdown-menu: #d55e5e;
 $grey: #a1a1a1;
+$dark_grey: #8c8c8c;
+
+/* Thumbs styles */
+$thumb_border_color: #e4e4e4;
+$thumb_background_color: #f0f0f0;
 
 // Основные
 html, body {
@@ -50,7 +55,7 @@ h3 {
 }
 
 hr {
-  border-color: #8c8c8c;
+  border-color: $dark_grey;
 }
 // bootstrap кнопка
 .form-control {
@@ -780,7 +785,7 @@ div.preview-image {
     margin-top: 2rem;
   }
   hr {
-    border-color: #8c8c8c;
+    border-color: $dark_grey;
   }
   div {
     a {
@@ -790,7 +795,7 @@ div.preview-image {
       margin: 0 auto;
       display: block;
       padding-bottom: 1rem;
-      max-width: 230px;
+      max-width: 220px;
     }
   }
   li {
@@ -828,6 +833,11 @@ div.preview-image {
   .col-fixed {
     /* custom width */
     width: 250px;
+    height: 250px;
+    border: 1px solid $thumb_border_color;
+    border-radius: 1rem;
+    margin: 1rem;
+    background-color: $thumb_background_color;
   }
 
 }
@@ -986,7 +996,7 @@ div.preview-image {
 }
 
 h4.item-title {
-  background-color: #8c8c8c;
+  background-color: $dark_grey;
   color: #fff;
   padding: 1rem 2rem;
   width: 620px;
@@ -1173,7 +1183,7 @@ section {
     padding-bottom: 1rem;
   }
   hr {
-    border-color: #8c8c8c;
+    border-color: $dark_grey;
   }
   span {
     position: absolute;

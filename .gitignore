@@ -22,3 +22,4 @@
 /public/system/ # если установлен Paperclip
 ./vendor/bundle
 public/assets/**
+.idea/

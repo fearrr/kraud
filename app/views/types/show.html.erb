@@ -3,6 +3,7 @@
 <% if logged_in? %>
     <p>
       <%= link_to "Редактировать подраздел", edit_type_path(@type), :class => "btn btn-edit btn-primary" %>
+      <%= link_to 'Добавить материал', new_item_path, :class => "btn btn-primary btn-item" %>
       <%= link_to "Удалить подраздел", @type, :class => "btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
     </p>
 <% end %>
@@ -52,7 +53,7 @@
       <% end %>
     </ul>
   </div>
-  <div class="col-md-8 catalog">
+  <div class="col-md-9 catalog">
     <h2><%= @type.title %></h2>
     <div class="row row-centered">
       <ul>
