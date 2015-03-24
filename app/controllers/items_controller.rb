@@ -93,6 +93,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.public
       @item.update_attributes(:public => false)
+      @type = Type.where("thumb_item_id = ?", @item.id).first
+      if @type != nil
+        @type.update_attributes(:thumb_item_id => nil)
+      end
       flash[:success] = "Материал снят с публикации"
     else
       @item.update_attributes(:public => true)

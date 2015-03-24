@@ -10,8 +10,11 @@
       <%= f.collection_select :part_id, @parts, :id, :title, {:selected => @type.part_id}, {:class => 'form-control', :id=>'parts_select' } %>
 
       <%= f.label :title, 'Наименование' %>
+
       <%= f.text_field :title, class: 'form-control' %>
 
+          <%= f.label :thumb_item_id, 'Превью' %>
+          <%= f.collection_select :thumb_item_id, @items, :id, :title, {}, {:class => 'form-control'} %>
       <%= f.submit "Сохранить", class: "btn btn-primary" %>
   <% end %>
 </div>

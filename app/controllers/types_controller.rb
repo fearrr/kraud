@@ -18,11 +18,13 @@ class TypesController < ApplicationController
     @part = Part.find(@type.part_id)
     @sections = Part.uniq.pluck(:section)
     @parts = Part.where("section = ?", Part.first.section)
+    @items = Item.where("type_id = ? AND public = ?", @type.id, true)
   end
   def update
     @type = Type.find(params[:id])
     @sections = Part.uniq.pluck(:section)
     @parts = Part.where("section = ?", Part.first.section)
+    @items = Item.find_by(type_id: @type.id)
     if @type.update_attributes(types_params)
       # Handle a successful update.
       flash[:success] = "Раздел обновлен"
@@ -34,8 +36,8 @@ class TypesController < ApplicationController
   def show
     @kombikorm = Part.where(section: "Комбикормовое оборудование")
     @pellet = Part.where(section: "Пеллетное оборудование")
-
     @type = Type.find(params[:id])
+    @thumb_item = Item.find(@type.thumb_item_id) if @type.thumb_item_id
     @part = Part.find(@type.part_id)
 
     @counter = @type.items.where("public = ?", true).count
@@ -80,7 +82,7 @@ end
 
 private
 def types_params
-  params.require(:type).permit(:title, :section, :part_id)
+  params.require(:type).permit(:title, :section, :part_id, :thumb_item_id)
 end
 # Confirms a logged-in user.
 def logged_in_admin

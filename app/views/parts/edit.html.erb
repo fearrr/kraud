@@ -5,6 +5,7 @@
       <%= f.label :section, 'Тип оборудования' %>
       <%= f.select(:section, [["Комбикормовое оборудование"], ["Пеллетное оборудование"]], {}, :class => 'form-control') %>
       <%= f.label :title, 'Наименование' %>
+      <%= f.select(:thumb_item_id, @thumbs, {}, :class => 'form-control') %>
       <%= f.text_field :title, class: 'form-control' %>
       <%= f.submit "Изменить", class: "btn btn-primary" %>
   <% end %>

@@ -8,6 +8,8 @@ class PartsController < ApplicationController
 
   def update
     @part = Part.find(params[:id])
+    Type.find_by(part_id: :id);
+    @thumbs = Item.find_by(part_id: @part.id);
     if @part.update_attributes(parts_params)
       # Handle a successful update.
       flash[:success] = "Раздел обновлен"
@@ -34,7 +36,6 @@ class PartsController < ApplicationController
 
   def show
     @part = Part.find(params[:id])
-
     @counter = 0
     @part.types.each do |type|
       @counter += type.items.where("public = ?", true).count

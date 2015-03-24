@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150318182305) do
+ActiveRecord::Schema.define(version: 20150323185509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -199,6 +199,7 @@ ActiveRecord::Schema.define(version: 20150318182305) do
     t.datetime "updated_at"
     t.string   "section"
     t.integer  "part_id"
+    t.integer  "thumb_item_id"
   end
 
   create_table "uploads", force: true do |t|
