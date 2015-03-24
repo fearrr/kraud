@@ -89,6 +89,7 @@
         <div class="row row-centered">
           <% if @types.first %>
               <% @types.each do |type| %>
+                  <%  @thumb = type.thumb_item_id != nil ? Item.find(type.thumb_item_id) : type.items.first%>
                   <% if logged_in? %>
                       <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
                         <% image = image_tag(@thumb.attached_assets.first.asset.url(:mini)) if @thumb && !@thumb.attached_assets.empty? && @thumb.attached_assets.first.asset %>
