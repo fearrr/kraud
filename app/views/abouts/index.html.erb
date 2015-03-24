@@ -47,21 +47,7 @@
     <% end %>
   </div>
 </div>
-<h4>Отзывы клиентов</h4>
-<% if @comments %>
-    <% @comments.each do |comment| %>
-        <% title = "<span class='comment-date'>дата публикации: #{comment.created_at.strftime("%d.%m.%y")}</span>".html_safe %>
-
-        <div class="blog-item comment-item">
-          <span class="quotes fa fa-quote-left fa-2x"></span>
-          <p class="comment-author-title"><%= comment.name %> <%= title %></p>
-
-          <p class="comment-body"><%= comment.body %></p>
-        </div>
-
-    <% end %>
-<% end %>
-<%= link_to "Добавить свой отзыв", new_comment_path, :class => "btn btn-default" %>
+<%= render 'comments/comments' %>
 <br>
 <br>
 <%= link_to '<h4>Галерея фотографий</h4>'.html_safe, photogals_path  %>

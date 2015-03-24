@@ -7,11 +7,11 @@
 <div class="row">
     <% @photogals.each do |photogal| %>
         <% photogal.photogal_assets.each do |a| %>
-          <div class="col-md-2 col-sm-5 photogal">
-              <%= link_to image_tag(a.asset.url(:mikro)), a.asset.url(:normal), :rel => "gal", :title => a.asset_file_name.slice(0..(a.asset_file_name.index('.')-1)) %>
-             <p> <%= link_to a.asset_file_name.slice(0..(a.asset_file_name.index('.')-1)), a.asset.url(:normal) %> /
+          <div class="col-md-3 col-sm-6 photogal">
+              <%= link_to image_tag(a.asset.url(:mini)), a.asset.url(:normal), :rel => "gal", :title => a.asset_file_name.slice(0..(a.asset_file_name.index('.')-1)) %>
+             <p> <%= link_to a.asset_file_name.slice(0..(a.asset_file_name.index('.')-1)), a.asset.url(:normal) %>
                <% if logged_in? %>
-                   <%= link_to 'Удалить', destroy_photogal_asset_path(photogal.id, a.id), data: {confirm: 'Вы уверены?'} %>
+                   <%= link_to '<span class="btn-delete fa-2x"></span>'.html_safe, destroy_photogal_asset_path(photogal.id, a.id), data: {confirm: 'Вы уверены?'} %>
                <% end %>
              </p>
           </div>

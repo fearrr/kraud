@@ -103,6 +103,15 @@ hr {
 
 .photogal {
   text-align:center;
+  a{
+    color: #333;
+  }
+  .btn-delete::before {
+    font-family: FontAwesome;
+    content: " \f014";
+    color: $red;
+  }
+
 }
 
 

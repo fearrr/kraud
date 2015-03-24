@@ -31,6 +31,7 @@ gem 'gmaps4rails'
 gem 'bxslider-rails'
 gem "gretel"
 gem "date_validator"
+gem 'seed_dump'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

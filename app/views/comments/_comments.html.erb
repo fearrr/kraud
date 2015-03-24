@@ -1,4 +1,4 @@
-<h2>Отзывы клиентов</h2>
+<h4>Отзывы клиентов</h4>
 <% if @comments %>
     <% @comments.each do |comment| %>
         <% title = "<span class='comment-date'>дата публикации: #{comment.created_at.strftime("%d.%m.%y")}</span>".html_safe %>
