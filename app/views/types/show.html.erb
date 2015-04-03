@@ -1,73 +1,14 @@
-
-<% @part.section == "Комбикормовое оборудование" ? (breadcrumb :type_kombikorm, @type, @part) : (breadcrumb :type_pellet, @type, @part) %>
-<% if logged_in? %>
-    <p>
-      <%= link_to "Редактировать подраздел", edit_type_path(@type), :class => "btn btn-edit btn-primary" %>
-      <%= link_to 'Добавить материал', new_item_path, :class => "btn btn-primary btn-item" %>
-      <%= link_to "Удалить подраздел", @type, :class => "btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
-    </p>
-<% end %>
-
+<% breadcrumb :type, @type, @part, @roottype%>
+<%=  render 'admins/toolbar' %>
 <div class="row">
-  <div class="col-md-3 col-sm-4 catalog-list">
-    <ul>
-      <li><b><%= link_to "Комбикормовое оборудование", kombikorm_path %></b></li>
-      <% @kombikorm.each do |part| %>
-          <% @counter = 0 %>
-          <% part.types.each do |type| %>
-              <% @counter += type.items.where("public = ?", true).count %>
-          <% end %>
-          <% @all_count = 0 %>
-          <% @publish_count = 0 %>
-          <% part.types.each do |type| %>
-              <% @all_count += type.items.all.count %>
-              <% @publish_count += type.items.where("public = ?", true).count %>
-          <% end %>
-
-          <% if @count != 0 && logged_in? %>
-              <li><%= link_to "#{part.title} (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id) %></li>
-          <% else %>
-              <li><%= (link_to "#{part.title} (#{@publish_count})", part_path(part.id)) if @counter > 0 %></li>
-          <% end %>
-      <% end %>
-    </ul>
-    <ul>
-      <li><b><%= link_to "Пеллетное оборудование", pellet_path %></b></li>
-      <% @pellet.each do |part| %>
-          <% @counter = 0 %>
-          <% part.types.each do |type| %>
-              <% @counter += type.items.where("public = ?", true).count %>
-          <% end %>
-          <% @all_count = 0 %>
-          <% @publish_count = 0 %>
-          <% part.types.each do |type| %>
-              <% @all_count += type.items.all.count %>
-              <% @publish_count += type.items.where("public = ?", true).count %>
-          <% end %>
-
-          <% if @count != 0 && logged_in? %>
-              <li><%= link_to "#{part.title} (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id) %></li>
-          <% else %>
-              <li><%= (link_to "#{part.title} (#{@publish_count})", part_path(part.id)) if @counter > 0 %></li>
-          <% end %>
-      <% end %>
-    </ul>
-  </div>
+  <%= render 'parts/items_tree_menu' %>
   <div class="col-md-9 catalog">
     <h2><%= @type.title %></h2>
     <div class="row row-centered">
       <ul>
         <% if @items.first %>
             <% @items.each do |item| %>
-                <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
-                  <% image = image_tag(item.attached_assets.first.asset.url(:mini)) if !item.attached_assets.empty? && item.attached_assets.first.asset %>
-                  <%= link_to image, item_path(item.id) if image %>
-                  <% if item.public %>
-                      <%= link_to item.title, item_path(item.id) %>
-                  <% else %>
-                      <%= link_to "#{item.title} (не опубликован)", item_path(item.id) %>
-                  <% end %>
-                </div>
+                <%= render partial: "items/card", :locals => {:item => item} %>
             <% end %>
         <% else %>
             <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">

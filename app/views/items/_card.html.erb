@@ -1,0 +1,9 @@
+<div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
+  <% image = image_tag(item.attached_assets.first.asset.url(:mini)) if !item.attached_assets.empty? && item.attached_assets.first.asset %>
+  <%= link_to image, item_path(item.id) if image %>
+  <% if item.public %>
+      <%= link_to item.title, item_path(item.id) %>
+  <% else %>
+      <%= link_to "#{item.title} (не опубликован)", item_path(item.id) %>
+  <% end %>
+</div>

@@ -77,16 +77,12 @@ end
 crumb :catalog do
   link "Каталог", parts_path
 end
-crumb :kombikorm do
-  link "Оборудование для производства комбикорма", kombikorm_path
-  parent :catalog
-end
-crumb :pellet do
-  link "Оборудование для производства пеллет", pellet_path
-  parent :catalog
-end
 
 # Catalog add new action
+crumb :add_roottype do
+  link "Добавить категорию", new_part_path
+  parent :catalog
+end
 crumb :add_part do
   link "Добавить раздел", new_part_path
   parent :catalog
@@ -101,65 +97,47 @@ crumb :add_item do
 end
 
 # Catalog show action
-crumb :part_kombikorm do |type|
+crumb :roottype do |roottype|
+  link roottype.title, roottype
+  parent :catalog
+end
+crumb :part do |part|
+  link part.title, part
+  parent :roottype, part.roottype
+end
+crumb :type do |type|
   link type.title, type
-  parent :kombikorm
+  parent :part, type.part
 end
-crumb :part_pellet do |type|
-  link type.title, type
-  parent :pellet
-end
-crumb :type_kombikorm do |type, part|
-  link type.title, type
-  parent :part_kombikorm, part
-end
-crumb :type_pellet do |type, part|
-  link type.title, type
-  parent :part_pellet, part
-end
-crumb :item_kombikorm do |item, type, part|
+crumb :item do |item|
   link item.title, item
-  parent :type_kombikorm, type, part
+  parent :type, item.type
 end
-crumb :item_pellet do |item, type, part|
+
+crumb :only_item do |item|
   link item.title, item
-  parent :type_pellet, type, part
+  parent :part, item.type.part
 end
-crumb :only_item_kombikorm do |item, part|
-  link item.title, item
-  parent :part_kombikorm, part
-end
-crumb :only_item_pellet do |item, part|
-  link item.title, item
-  parent :part_pellet, part
-end
+
 
 # Catalog edit action
-
-crumb :edit_part_pellet do |part|
-  link "Изменить", part
-  parent :part_pellet, part
+crumb :edit_roottype do |roottype|
+  link "Изменить категорию", roottype
+  parent :catalog
 end
-crumb :edit_part_kombikorm do |part|
-  link "Изменить", part
-  parent :part_kombikorm, part
-end
-crumb :edit_type_kombikorm do |type, part|
-  link "Изменить", type
-  parent :type_kombikorm, type, part
-end
-crumb :edit_type_pellet do |type, part|
-  link "Изменить", type
-  parent :type_pellet, type, part
+crumb :edit_part do |part|
+  link "Изменить раздел", part
+  parent :part, part
 end
 
-crumb :edit_item_kombikorm do |item, type, part|
-  link "Изменить", item
-  parent :item_kombikorm, item, type, part
+crumb :edit_type do |type|
+  link "Изменить подраздел", type
+  parent :type, type
 end
-crumb :edit_item_pellet do |item, type, part|
+
+crumb :edit_item do |item|
   link "Изменить", item
-  parent :item_pellet, item, type, part
+  parent :item, item
 end
 
 

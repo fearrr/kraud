@@ -1,0 +1,9 @@
+<% breadcrumb :add_roottype %>
+<%= render 'shared/roottypes_error_messages' %>
+<div class="col-md-4 form-group">
+  <%= form_for @roottype do |f| %>
+      <%= f.label :title, 'Имя категории' %>
+      <%= f.text_field :title, :class => 'form-control' %>
+      <%= f.submit "Добавить", :class => "btn btn-primary" %>
+  <% end %>
+</div>

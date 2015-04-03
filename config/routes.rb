@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   resources :contacts, :only => [:index]
   resources :globals
   resources :photogals
+  resources :roottypes
   root 'static#index'
 
   get    'login'   => 'sessions#new'

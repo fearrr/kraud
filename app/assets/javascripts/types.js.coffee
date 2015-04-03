@@ -3,12 +3,12 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $(document).on 'change', '#sections_select', (evt) ->
+  $(document).on 'change', '#roottypes_select', (evt) ->
     $.ajax 'update_parts',
       type: 'GET'
       dataType: 'script'
       data: {
-        section: $("#sections_select option:selected").val()
+        roottype: $("#roottypes_select option:selected").val()
       }
 
       error: (jqXHR, textStatus, errorThrown) ->

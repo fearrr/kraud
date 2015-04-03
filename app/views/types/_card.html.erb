@@ -1,0 +1,24 @@
+<% if logged_in? %>
+    <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
+      <% @thumb = type.thumb_item_id != nil ? Item.find(type.thumb_item_id) : type.items.first %>
+      <% image = image_tag(@thumb.attached_assets.first.asset.url(:mini)) if @thumb && !@thumb.attached_assets.empty? && @thumb.attached_assets.first.asset %>
+
+      <%= link_to image, type_path(type.id) if image %>
+      <%= link_to "#{type.title} <br> (<span class='publish'>#{type.items.where("public = ?", true).count}</span>/#{type.items.all.count})".html_safe, type_path(type.id) %>
+      <%= link_to "", edit_type_path(type), :class => "btn-edit" %>
+      <%= link_to "", type, :class => "btn-delete", method: :delete, data: {confirm: "Вы уверены?"} %>
+    </div>
+<% elsif !logged_in? && type.items.where("public = ?", true).count > 0 %>
+    <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
+      <% @thumb = type.thumb_item_id != nil ? Item.find(type.thumb_item_id) : type.items.first %>
+      <% image = image_tag(@thumb.attached_assets.first.asset.url(:mini)) if @thumb && !@thumb.attached_assets.empty? && @thumb.attached_assets.first.asset %>
+
+      <% if type.items.where("public = ?", true).count == 1 %>
+          <%= link_to image, item_path(type.items.where("public = ?", true).first.id) if image %>
+          <%= link_to type.items.where("public = ?", true).first.title, item_path(type.items.where("public = ?", true).first.id) %>
+      <% else %>
+          <%= link_to image, type_path(type.id) if image %>
+          <%= link_to type.title, type_path(type.id) %>
+      <% end %>
+    </div>
+<% end %>

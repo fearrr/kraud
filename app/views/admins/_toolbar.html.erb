@@ -1,0 +1,8 @@
+<% if logged_in? %>
+    <p>
+      <%= link_to 'Добавить категорию', new_roottype_path, :class => "btn btn-primary btn-add" %>
+      <%= link_to 'Добавить раздел', new_part_path, :class => "btn btn-primary btn-add" %>
+      <%= link_to 'Добавить подраздел', new_type_path, :class => "btn btn-primary btn-add" %>
+      <%= link_to 'Добавить материал', new_item_path, :class => "btn btn-primary btn-item" %>
+    </p>
+<% end %>

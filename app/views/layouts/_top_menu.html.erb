@@ -3,51 +3,32 @@
     <li><%= link_to 'ГЛАВНАЯ', root_path %></li>
     <li><%= link_to 'КАТАЛОГ &nbsp;<i class="fa fa-angle-down"></i>'.html_safe, parts_path, :class => "drop" %>
       <div class="dropdown">
-        <div class="col_1">
-          <ul class="bord">
-            <% @kombikorm = Part.where(section: "Комбикормовое оборудование") %>
-            <b>
-              <li><%= link_to 'Оборудование для производства комбикорма', kombikorm_path %></li>
-            </b>
-            <% @kombikorm.each do |part| %>
-                <% @counter = 0 %>
-                <% part.types.each do |type| %>
-                    <% @counter += type.items.where("public = ?", true).count %>
-                <% end %>
+        <% roottypes = Roottype.all %>
+        <% roottypes.each do |roottype| %>
+            <div class="col_1">
+              <ul class="bord">
+                <b>
+                  <li><%= link_to roottype.title, roottype_path(roottype.id) %></li>
+                </b>
+                <% parts = roottype.parts %>
+                <% parts.each do |part| %>
+                    <% counter = 0 %>
+                    <% part.types.each do |type| %>
+                        <% counter += type.items.where("public = ?", true).count %>
+                    <% end %>
 
-                <% if logged_in? == false %>
-                    <% if @counter > 0 %>
+                    <% if logged_in? == false %>
+                        <% if counter > 0 %>
+                            <li><%= link_to part.title, part_path(part.id) %></li>
+                        <% end %>
+                    <% else %>
                         <li><%= link_to part.title, part_path(part.id) %></li>
                     <% end %>
-                <% else %>
-                    <li><%= link_to part.title, part_path(part.id) %></li>
-                <% end %>
 
-            <% end %>
-          </ul>
-        </div>
-        <div class="col_1">
-          <ul>
-            <% @pellet = Part.where(section: "Пеллетное оборудование") %>
-            <b>
-              <li><%= link_to 'Оборудование для производства пеллет', pellet_path %></li>
-            </b>
-            <% @pellet.each do |part| %>
-                <% @counter = 0 %>
-                <% part.types.each do |type| %>
-                    <% @counter += type.items.where("public = ?", true).count %>
                 <% end %>
-
-                <% if logged_in? == false %>
-                    <% if @counter > 0 %>
-                        <li><%= link_to part.title, part_path(part.id) %></li>
-                    <% end %>
-                <% else %>
-                    <li><%= link_to part.title, part_path(part.id) %></li>
-                <% end %>
-            <% end %>
-          </ul>
-        </div>
+              </ul>
+            </div>
+        <% end %>
       </div>
     </li>
     <li><%= link_to 'КОНТАКТЫ', contacts_path %></li>

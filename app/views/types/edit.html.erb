@@ -1,13 +1,14 @@
-<% @part.section == "Комбикормовое оборудование" ? (breadcrumb :edit_type_kombikorm, @type, @part) : (breadcrumb :edit_type_pellet, @type, @part) %>
+<% breadcrumb :edit_type, @type %>
 <%= render 'shared/types_error_messages' %>
 <div class="col-md-4">
   <%= form_for(@type) do |f| %>
 
-      <%= f.label :section, 'Тип оборудования' %>
-      <%= f.select :section, @sections.map {|value| [ value, value ]}, {:selected => @type.section, :include_blank => "Выберете тип оборудования"}, {:class=>'form-control', :id=>'sections_select'} %>
+      <%= f.label 'Тип оборудования' %>
+      <%= f.collection_select :roottype, Roottype.all, :id, :title,
+                              {:selected => @type.part.roottype_id}, {:class => 'form-control', :id=>'roottypes_select' } %>
 
       <%= f.label :part_id, 'Раздел' %>
-      <%= f.collection_select :part_id, @parts, :id, :title, {:selected => @type.part_id}, {:class => 'form-control', :id=>'parts_select' } %>
+      <%= f.collection_select :part_id, @parts, :id, :title, {:selected => @type.part_id}, {:class => 'form-control', :id => 'parts_select' } %>
 
       <%= f.label :title, 'Наименование' %>
 

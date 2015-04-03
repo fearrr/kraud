@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323185509) do
+ActiveRecord::Schema.define(version: 20150329122330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,13 +129,11 @@ ActiveRecord::Schema.define(version: 20150323185509) do
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
 
   create_table "items", force: true do |t|
-    t.string   "section"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "type_id"
     t.string   "title"
-    t.integer  "part_id"
     t.boolean  "public"
     t.string   "metatitle"
     t.text     "keywords"
@@ -150,10 +148,10 @@ ActiveRecord::Schema.define(version: 20150323185509) do
   end
 
   create_table "parts", force: true do |t|
-    t.string   "section"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "roottype_id"
   end
 
   create_table "photogal_assets", force: true do |t|
@@ -168,6 +166,12 @@ ActiveRecord::Schema.define(version: 20150323185509) do
   end
 
   create_table "photogals", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roottypes", force: true do |t|
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -197,7 +201,6 @@ ActiveRecord::Schema.define(version: 20150323185509) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "section"
     t.integer  "part_id"
     t.integer  "thumb_item_id"
   end

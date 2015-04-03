@@ -2,8 +2,8 @@
 <%= render 'shared/parts_error_messages' %>
 <div class="col-md-4 form-group">
   <%= form_for @part do |f| %>
-      <%= f.label :section, 'Тип оборудования' %>
-      <%= f.select(:section, [["Комбикормовое оборудование"], ["Пеллетное оборудование"]], {}, :class => 'form-control') %>
+      <%= f.label :roottype_id, 'Тип оборудования' %>
+      <%= f.collection_select :roottype_id, Roottype.all, :id, :title, {:selected => @part.roottype_id}, {:class => 'form-control', :id=>'roottype_select' } %>
       <%= f.label :title, 'Наименование' %>
       <%= f.text_field :title, class: 'form-control' %>
       <%= f.submit "Добавить", class: "btn btn-primary" %>

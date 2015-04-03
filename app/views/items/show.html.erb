@@ -4,11 +4,7 @@
 <% content_for :keywords do %>
     <% @keywords %>
 <% end %>
-<% if @part.section == "Комбикормовое оборудование" %>
-    <% @type.items.all.count == 1 && !logged_in? ? (breadcrumb :only_item_kombikorm, @item, @part) : (breadcrumb :item_kombikorm, @item, @type, @part) %>
-<% else %>
-    <% @type.items.all.count == 1 && !logged_in? ? (breadcrumb :only_item_pellet, @item, @part) : (breadcrumb :item_pellet, @item, @type, @part) %>
-<% end %>
+    <% @item.type.items.all.count == 1 && !logged_in? ? (breadcrumb :only_item, @item) : (breadcrumb :item, @item) %>
 
 <% if logged_in? %>
     <p>

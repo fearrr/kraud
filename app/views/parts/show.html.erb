@@ -1,99 +1,20 @@
-<% @part.section == "Комбикормовое оборудование" ? (breadcrumb :part_kombikorm, @part) : (breadcrumb :part_pellet, @part) %>
-
-<% if logged_in? %>
-    <p>
-      <%= link_to 'Добавить материал', new_item_path, :class => "btn btn-primary btn-item" %>
-      <%= link_to "Редактировать раздел", edit_part_path(@part), :class => "btn btn-edit btn-primary" %>
-      <%= link_to "Удалить раздел", @part, :class => "btn btn-danger", method: :delete, data: { confirm: "Вы уверены?" } %>
-    </p>
-<% end %>
-
+<% breadcrumb :part, @part %>
+<%= render 'admins/toolbar' %>
 <div class="row">
-  <div class="col-md-3 col-sm-4 catalog-list">
-    <ul>
-      <li><b><%= link_to "Комбикормовое оборудование", kombikorm_path %></b></li>
-      <% @kombikorm.each do |part| %>
-          <% @counter = 0 %>
-          <% part.types.each do |type| %>
-              <% @counter += type.items.where("public = ?", true).count %>
-          <% end %>
-          <% @all_count = 0 %>
-          <% @publish_count = 0 %>
-          <% part.types.each do |type| %>
-              <% @all_count += type.items.all.count %>
-              <% @publish_count += type.items.where("public = ?", true).count %>
-          <% end %>
-
-          <% if @count != 0 && logged_in? %>
-              <li><%= link_to "#{part.title} (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id) %></li>
-          <% else %>
-              <li><%= (link_to "#{part.title} (#{@publish_count})", part_path(part.id)) if @counter > 0 %></li>
-          <% end %>
-      <% end %>
-    </ul>
-    <ul>
-      <li><b><%= link_to "Пеллетное оборудование", pellet_path %></b></li>
-      <% @pellet.each do |part| %>
-          <% @counter = 0 %>
-          <% part.types.each do |type| %>
-              <% @counter += type.items.where("public = ?", true).count %>
-          <% end %>
-          <% @all_count = 0 %>
-          <% @publish_count = 0 %>
-          <% part.types.each do |type| %>
-              <% @all_count += type.items.all.count %>
-              <% @publish_count += type.items.where("public = ?", true).count %>
-          <% end %>
-
-          <% if @count != 0 && logged_in? %>
-              <li><%= link_to "#{part.title} (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, part_path(part.id) %></li>
-          <% else %>
-              <li><%= (link_to "#{part.title} (#{@publish_count})", part_path(part.id)) if @counter > 0 %></li>
-          <% end %>
-      <% end %>
-    </ul>
-  </div>
+  <%= render 'parts/items_tree_menu' %>
   <div class="col-md-9 catalog">
-    <h2><%= @part.section %></h2>
     <ul>
-      <% if @types.first %>
-          <h3><%= @part.title %></h3>
+      <h3><%= @part.title %></h3>
 
-          <div class="row row-centered">
-            <% if @types.first %>
-                <% @types.each do |type| %>
-                    <%  @thumb = type.thumb_item_id != nil ? Item.find(type.thumb_item_id) : type.items.first%>
-                    <% if logged_in? %>
-                        <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
-                          <% image = image_tag(@thumb.attached_assets.first.asset.url(:mini)) if @thumb && !@thumb.attached_assets.empty? && @thumb.attached_assets.first.asset %>
-                          <%= link_to image, type_path(type.id) if image %>
-                          <% @all_count = type.items.all.count %>
-                          <% @publish_count = type.items.where("public = ?", true).count %>
-                          <%= link_to "#{type.title} <br> (<span class='publish'>#{@publish_count}</span>/#{@all_count})".html_safe, type_path(type.id) %>
-                        </div>
-                    <% else %>
-                        <% if type.items.where("public = ?", true).count > 0 %>
-                            <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
-                              <% image = image_tag(@thumb.attached_assets.first.asset.url(:mini)) if @thumb && !@thumb.attached_assets.empty? && @thumb.attached_assets.first.asset %>
-                              <% if type.items.where("public = ?", true).count == 1 %>
-                                  <%= link_to image, item_path(type.items.where("public = ?", true).first.id) if image %>
-                                  <%= link_to type.items.where("public = ?", true).first.title, item_path(type.items.where("public = ?", true).first.id) %>
-                              <% else %>
-                                  <%= link_to image, type_path(type.id) if image %>
-                                  <%= link_to type.title, type_path(type.id) %>
-                              <% end %>
-                            </div>
-                        <% end %>
-                    <% end %>
-                <% end %>
+      <div class="row row-centered">
+        <% if @types.first %>
+            <% @types.each do |type| %>
+                <%= render partial: "types/card", :locals => {:type => type} %>
             <% end %>
-          </div>
-      <% else %>
-          <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
+        <% else %>
             Материалов нет
-          </div>
-      <% end %>
-
-    </ul>
+            </div>
+        <% end %>
+        </ul>
   </div>
 </div>

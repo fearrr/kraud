@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def update_types
-    @types = Type.where("part_id = ?", params[:part])
+    @types = Type.where(part_id: params[:part])
     respond_to do |format|
       format.js
     end
@@ -21,8 +21,6 @@ class ItemsController < ApplicationController
     require 'nokogiri'
 
     @item = Item.find(params[:id])
-    @type = Type.find(@item.type_id)
-    @part = Part.find(@type.part_id)
     parser = Nokogiri::HTML(@item.body)
 
     @description = parser.css('section.description')
@@ -31,26 +29,15 @@ class ItemsController < ApplicationController
     @options = parser.css('section.options')
     @thead = parser.xpath('//table/thead')
     @tbody = parser.xpath('//table/tbody')
-    @metatitle = @item.metatitle.to_s != '' ? @item.metatitle : @type.title + " | " + @item.title
+    @metatitle = @item.metatitle.to_s != '' ? @item.metatitle : @item.type.title + " | " + @item.title
     @keywords = @item.keywords
-
-
-
   end
 
   def new
     @item =Item.new
-
-    @sections = Part.uniq.pluck(:section)
-    @parts = Part.where("section = ?", Part.first.section)
-    @types = @parts.first.types.all
   end
 
   def create
-    @sections = Part.uniq.pluck(:section)
-    @parts = Part.where("section = ?", Part.first.section)
-    @types = @parts.first.types.all
-
     @item = Item.new(items_params)
     if @item.save
       # Handle a successful save.
@@ -63,23 +50,13 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    @type = Type.find(@item.type_id)
-    @part = Part.find(@type.part_id)
-
-    @sections = Part.uniq.pluck(:section)
-    @parts = Part.where("section = ?", @item.section)
-    @types = @part.types.all
+    @part = @item.type.part
+    @parts = @item.type.part.roottype.parts
+    @types = @item.type.part.types
   end
 
   def update
     @item = Item.find(params[:id])
-    @type = Type.find(@item.type_id)
-    @part = Part.find(@type.part_id)
-
-    @sections = Part.uniq.pluck(:section)
-    @parts = Part.where("section = ?", @item.section)
-    @types = @parts.first.types.all
-
     if @item.update_attributes(items_params)
       # Handle a successful update.
       flash[:success] = "Материал обновлен"
@@ -108,7 +85,7 @@ class ItemsController < ApplicationController
 
   def dublicate
     @item = Item.find(params[:id])
-    if Item.create(:public => @item.public, :section => @item.section, :body => @item.body, :title => @item.title, :type_id => @item.type_id, :part_id => @item.part_id)
+    if Item.create(:public => @item.public, :body => @item.body, :title => @item.title, :type_id => @item.type_id)
       flash[:success] = "Материал дублирован"
       redirect_to type_url(Type.find(@item.type_id))
     end
@@ -123,7 +100,7 @@ class ItemsController < ApplicationController
 
   private
   def items_params
-    params.require(:item).permit(:public, :section, :body, :title, :type_id, :part_id, :metatitle, :keywords, attached_assets_attributes: [:asset, :asset_file_name])
+    params.require(:item).permit(:public, :body, :title, :type_id, :metatitle, :keywords, attached_assets_attributes: [:asset, :asset_file_name])
   end
   # Confirms a logged-in user.
   def logged_in_admin

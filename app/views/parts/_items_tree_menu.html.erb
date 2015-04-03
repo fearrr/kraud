@@ -1,0 +1,31 @@
+<div class="col-md-3 col-sm-4 catalog-list">
+  <ul>
+    <% Roottype.all.each do |roottype| %>
+        <li><b><%= link_to roottype.title, roottype_path(roottype.id) %></b>
+          <% if logged_in? %>
+              <%= link_to '', edit_roottype_path(roottype), :class => "btn-edit" %>
+              <%= link_to '', roottype, :class => "btn-delete", method: :delete, data: {confirm: "Вы уверены?"} %>
+          <% end %>
+        </li>
+        <% roottype.parts.each do |part| %>
+            <% all_count = 0 %>
+            <% publish_count = 0 %>
+            <% part.types.each do |type| %>
+                <!-- Check if type has items. If no - don't display it at all -->
+                <% all_count += type.items.all.count %>
+                <% publish_count += type.items.where("public = ?", true).count %>
+            <% end %>
+
+            <% if logged_in? %>
+                <li><%= link_to "#{part.title} (<span class='publish'>#{publish_count}</span>/#{all_count})".html_safe, part_path(part.id) %>
+                  <%= link_to '', edit_part_path(part), :class => "btn-edit" %>
+                  <%= link_to '', part, :class => "btn-delete", method: :delete, data: {confirm: "Вы уверены?"} %>
+                </li>
+            <% elsif !logged_in? && all_count > 0 %>
+                <li><%= (link_to "#{part.title} (#{publish_count})", part_path(part.id)) if publish_count > 0 %></li>
+            <% end %>
+        <% end %>
+        <br>
+    <% end %>
+  </ul>
+</div>

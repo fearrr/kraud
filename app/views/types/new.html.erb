@@ -3,8 +3,8 @@
 <div class="col-md-4">
   <%= form_for(@type) do |f| %>
 
-      <%= f.label :section, 'Тип оборудования' %>
-      <%= f.select :section, @sections.map {|value| [ value, value ]}, {:prompt=>'Выберите тип оборудования'}, {:class=>'form-control', :id=>'sections_select'} %>
+      <%= f.label 'Тип оборудования' %>
+      <%= f.collection_select @type.part.roottype_id, Roottype.all, :id, :title, {}, {:class => 'form-control', :id=>'roottype_select' } %>
 
       <%= f.label :part_id, 'Раздел' %>
       <%= f.collection_select :part_id, @parts, :id, :title, {}, {:class => 'form-control', :id=>'parts_select' } %>

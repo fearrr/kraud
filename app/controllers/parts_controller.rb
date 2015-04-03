@@ -8,7 +8,6 @@ class PartsController < ApplicationController
 
   def update
     @part = Part.find(params[:id])
-    Type.find_by(part_id: :id);
     @thumbs = Item.find_by(part_id: @part.id);
     if @part.update_attributes(parts_params)
       # Handle a successful update.
@@ -27,32 +26,27 @@ class PartsController < ApplicationController
   end
 
   def index
-    @kombikorm = Part.where(section: "Комбикормовое оборудование").limit(2)
-    @pellet = Part.where(section: "Пеллетное оборудование").limit(2)
-    @kombikorm_all = Part.where(section: "Комбикормовое оборудование")
-    @pellet_all = Part.where(section: "Пеллетное оборудование")
-    # @sections = Part.uniq.pluck(:section)
+    @roottypes = Roottype.all
   end
 
   def show
+    @roottypes = Roottype.all
+
     @part = Part.find(params[:id])
+    @roottype = @part.roottype
+
     @counter = 0
     @part.types.each do |type|
       @counter += type.items.where("public = ?", true).count
     end
-
     if logged_in? == false
       if @counter > 0
         @types = @part.types.all
-        @kombikorm = Part.where(section: "Комбикормовое оборудование")
-        @pellet = Part.where(section: "Пеллетное оборудование")
       else
         logged_in_admin
       end
     else
       @types = @part.types.all
-      @kombikorm = Part.where(section: "Комбикормовое оборудование")
-      @pellet = Part.where(section: "Пеллетное оборудование")
     end
   end
 
@@ -71,19 +65,9 @@ class PartsController < ApplicationController
     end
   end
 
-  def kombikorm
-    @kombikorm = Part.where(section: "Комбикормовое оборудование")
-    @pellet = Part.where(section: "Пеллетное оборудование")
-  end
-
-  def pellet
-    @kombikorm = Part.where(section: "Комбикормовое оборудование")
-    @pellet = Part.where(section: "Пеллетное оборудование")
-  end
-
   private
   def parts_params
-    params.require(:part).permit(:title, :section)
+    params.require(:part).permit(:title, :roottype_id)
   end
 
   # Confirms a logged-in user.
