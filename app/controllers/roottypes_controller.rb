@@ -1,6 +1,6 @@
 class RoottypesController < ApplicationController
 
-  before_action :logged_in_admin, only: [:index, :edit, :update, :new]
+  before_action :logged_in_admin, only: [:index, :edit, :update, :new, :order, :up_order, :down_order]
 
   def edit
     @roottype = Roottype.find(params[:id])
@@ -48,11 +48,38 @@ class RoottypesController < ApplicationController
     @roottypes = Roottype.all
   end
 
+  def up_order
+    roottype = Roottype.find(params[:id])
+
+    upper_roottype = Roottype.where(order: roottype.order-1).first
+    upper_roottype.update_attributes(order: upper_roottype.order+1)
+    roottype.update_attributes(order: roottype.order-1)
+
+    render 'order'
+  end
+
+  def down_order
+    roottype = Roottype.find(params[:id])
+
+    downer_roottype = Roottype.where(order: roottype.order+1).first
+    downer_roottype.update_attributes(order: downer_roottype.order-1)
+    roottype.update_attributes(order: roottype.order+1)
+
+    render 'order'
+  end
+
+  def order
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   private
   def roottype_params
-    params.require(:roottype).permit(:title)
+    params.require(:roottype).permit(:title, :order)
   end
+
   # Confirms a logged-in user.
   def logged_in_admin
     unless logged_in?

@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :logged_in_admin, only: [:edit, :update, :new, :destroy_asset]
+
   def index
   end
 
@@ -90,6 +91,7 @@ class ItemsController < ApplicationController
       redirect_to type_url(Type.find(@item.type_id))
     end
   end
+
   def destroy_asset
     @item = Item.find(params[:item_id])
     @asset = @item.attached_assets.find(params[:asset_id])
@@ -98,10 +100,31 @@ class ItemsController < ApplicationController
     redirect_to edit_item_path(@item)
   end
 
+  def up_order
+    item = Item.find(params[:id])
+
+    upper_item = Item.where(order: item.order-1, type_id: item.type_id).first
+    upper_item.update_attributes(order: upper_item.order+1)
+    item.update_attributes(order: item.order-1)
+
+    render 'parts/index'
+  end
+
+  def down_order
+    item = Item.find(params[:id])
+
+    downer_item = Item.where(order: item.order+1, type_id: item.type_id).first
+    downer_item.update_attributes(order: downer_item.order-1)
+    item.update_attributes(order: item.order+1)
+
+    render 'parts/index'
+  end
+
   private
   def items_params
     params.require(:item).permit(:public, :body, :title, :type_id, :metatitle, :keywords, attached_assets_attributes: [:asset, :asset_file_name])
   end
+
   # Confirms a logged-in user.
   def logged_in_admin
     unless logged_in?

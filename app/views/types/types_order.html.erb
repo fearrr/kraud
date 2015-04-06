@@ -1,0 +1,11 @@
+<% @types.each_with_index do |type, index| %>
+    <p>
+      <% if index != 0 %>
+          <%= link_to '', types_up_order_path(type.id), :class => "btn-up" %>
+      <% end %>
+      <% if index != @types.count-1 %>
+          <%= link_to '', types_down_order_path(type.id), :class => "btn-down" %>
+      <% end %>
+      <b><%= link_to type.title, type_path(type.id) %></b>
+    </p>
+<% end %>

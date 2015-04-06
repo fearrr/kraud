@@ -1,0 +1,11 @@
+<% @items.each_with_index do |item, index| %>
+    <p>
+      <% if index != 0 %>
+          <%= link_to '', items_up_order_path(item.id), :class => "btn-up" %>
+      <% end %>
+      <% if index != @items.count-1 %>
+          <%= link_to '', items_down_order_path(item.id), :class => "btn-down" %>
+      <% end %>
+      <b><%= item.title %></b>
+    </p>
+<% end %>

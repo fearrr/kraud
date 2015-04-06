@@ -80,6 +80,10 @@ hr {
   text-decoration: none;
 }
 
+.btn-delete:hover{
+  text-decoration: none;
+}
+
 .btn-logout::after {
   font-family: FontAwesome;
   content: " \f08b";
@@ -136,6 +140,33 @@ hr {
   text-decoration: none;
   color: darkblue;
 }
+
+.btn-edit:hover{
+  text-decoration: none;
+}
+
+.btn-up::after {
+  font-family: FontAwesome;
+  content: "\f0de";
+  padding-left: 0.5rem;
+  text-decoration: none;
+}
+
+.btn-up:hover{
+  text-decoration: none;
+}
+
+.btn-down::after {
+  font-family: FontAwesome;
+  content: "\f0dd";
+  padding-left: 0.5rem;
+  text-decoration: none;
+}
+
+.btn-down:hover{
+  text-decoration: none;
+}
+
 
 .btn-input {
   font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;

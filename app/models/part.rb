@@ -3,4 +3,5 @@ class Part < ActiveRecord::Base
   belongs_to :roottype
   accepts_nested_attributes_for :types, :allow_destroy => true
   validates_presence_of :title
+  default_scope { order(:order) }
 end

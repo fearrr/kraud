@@ -64,6 +64,26 @@ class TypesController < ApplicationController
       render 'new'
     end
   end
+
+  def up_order
+    type = Type.find(params[:id])
+
+    upper_type = Type.where(order: type.order-1, part_id: type.part_id).first
+    upper_type.update_attributes(order: upper_type.order+1)
+    type.update_attributes(order: type.order-1)
+
+    render 'parts/index'
+  end
+
+  def down_order
+    type = Type.find(params[:id])
+
+    downer_type = Type.where(order: type.order+1, part_id: type.part_id).first
+    downer_type.update_attributes(order: downer_type.order-1)
+    type.update_attributes(order: type.order+1)
+
+    render 'parts/index'
+  end
 end
 
 def index

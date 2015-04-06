@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329122330) do
+ActiveRecord::Schema.define(version: 20150405132452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 20150329122330) do
     t.boolean  "public"
     t.string   "metatitle"
     t.text     "keywords"
+    t.integer  "order"
   end
 
   create_table "mains", force: true do |t|
@@ -152,6 +153,7 @@ ActiveRecord::Schema.define(version: 20150329122330) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "roottype_id"
+    t.integer  "order"
   end
 
   create_table "photogal_assets", force: true do |t|
@@ -174,6 +176,7 @@ ActiveRecord::Schema.define(version: 20150329122330) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order"
   end
 
   create_table "sliders", force: true do |t|
@@ -203,6 +206,7 @@ ActiveRecord::Schema.define(version: 20150329122330) do
     t.datetime "updated_at"
     t.integer  "part_id"
     t.integer  "thumb_item_id"
+    t.integer  "order"
   end
 
   create_table "uploads", force: true do |t|

@@ -1,0 +1,11 @@
+<% @parts.each_with_index do |part, index| %>
+    <p>
+      <% if index != 0 %>
+          <%= link_to '', parts_up_order_path(part.id), :class => "btn-up" %>
+      <% end %>
+      <% if index != @parts.count-1 %>
+          <%= link_to '', parts_down_order_path(part.id), :class => "btn-down" %>
+      <% end %>
+      <b><%= link_to part.title, part_path(part.id) %></b>
+    </p>
+<% end %>

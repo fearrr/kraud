@@ -1,0 +1,12 @@
+<% roottypes = Roottype.all %>
+<% roottypes.each_with_index do |roottype, index| %>
+    <p>
+      <% if index != 0 %>
+          <%= link_to '', roottypes_up_order_path(roottype.id), :class => "btn-up" %>
+      <% end %>
+      <% if index != roottypes.count-1 %>
+          <%= link_to '', roottypes_down_order_path(roottype.id), :class => "btn-down" %>
+      <% end %>
+      <b><%= link_to roottype.title, parts_order_path(roottype_id: roottype.id) %></b>
+    </p>
+<% end %>

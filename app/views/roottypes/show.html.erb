@@ -7,7 +7,7 @@
 <div class="row">
   <%= render 'parts/items_tree_menu' %>
   <div class="col-md-9 catalog">
-          <% parts = @roottype.parts.limit(2) %>
+          <% parts = @roottype.parts %>
           <h2 class="on-main"><%= @roottype.title %></h2>
           <ul>
             <% parts.each do |part| %>

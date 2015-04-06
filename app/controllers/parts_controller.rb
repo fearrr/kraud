@@ -1,6 +1,6 @@
 class PartsController < ApplicationController
   # encoding: UTF-8
-  before_action :logged_in_admin, only: [:edit, :update, :new]
+  before_action :logged_in_admin, only: [:edit, :update, :new, :order, :up_order, :down_order]
 
   def edit
     @part = Part.find(params[:id])
@@ -62,6 +62,34 @@ class PartsController < ApplicationController
       redirect_to parts_url
     else
       render 'new'
+    end
+  end
+
+  def up_order
+    part = Part.find(params[:id])
+
+    upper_part = Part.where(order: part.order-1, roottype_id: part.roottype_id).first
+    upper_part.update_attributes(order: upper_part.order+1)
+    part.update_attributes(order: part.order-1)
+
+    redirect_to :controller => 'part', :action => 'order', :id => part.roottype_id
+  end
+
+  def down_order
+    part = Part.find(params[:id])
+
+    downer_part = Part.where(order: part.order+1, roottype_id: part.roottype_id).first
+    downer_part.update_attributes(order: downer_part.order-1)
+    part.update_attributes(order: part.order+1)
+
+    redirect_to :controller => 'part', :action => 'order', :id => part.roottype_id
+  end
+
+  def order
+    @parts = Part.where(roottype_id: params[:roottype_id])
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
