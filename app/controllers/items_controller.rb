@@ -1,8 +1,18 @@
 class ItemsController < ApplicationController
-  before_action :logged_in_admin, only: [:edit, :update, :new, :destroy_asset]
+  before_action :logged_in_admin, only: [:edit, :update, :new, :destroy_asset, :up_order, :down_order, :order]
 
   def index
   end
+
+  def order
+    @type = Type.find(params[:type_id])
+    @items = Item.where(type_id: params[:type_id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
 
   def destroy
     @item = Item.find(params[:id])
@@ -107,7 +117,7 @@ class ItemsController < ApplicationController
     upper_item.update_attributes(order: upper_item.order+1)
     item.update_attributes(order: item.order-1)
 
-    render 'parts/index'
+    redirect_to items_order_path(:type_id => item.type_id)
   end
 
   def down_order
@@ -117,7 +127,7 @@ class ItemsController < ApplicationController
     downer_item.update_attributes(order: downer_item.order-1)
     item.update_attributes(order: item.order+1)
 
-    render 'parts/index'
+    redirect_to items_order_path(:type_id => item.type_id)
   end
 
   private

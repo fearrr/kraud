@@ -8,7 +8,6 @@ class PartsController < ApplicationController
 
   def update
     @part = Part.find(params[:id])
-    @thumbs = Item.find_by(part_id: @part.id);
     if @part.update_attributes(parts_params)
       # Handle a successful update.
       flash[:success] = "Раздел обновлен"
@@ -65,6 +64,15 @@ class PartsController < ApplicationController
     end
   end
 
+  def order
+    @roottype = Roottype.find(params[:roottype_id])
+    @parts = Part.where(roottype_id: params[:roottype_id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def up_order
     part = Part.find(params[:id])
 
@@ -72,7 +80,7 @@ class PartsController < ApplicationController
     upper_part.update_attributes(order: upper_part.order+1)
     part.update_attributes(order: part.order-1)
 
-    redirect_to :controller => 'part', :action => 'order', :id => part.roottype_id
+    redirect_to parts_order_path(:roottype_id => part.roottype_id)
   end
 
   def down_order
@@ -82,15 +90,7 @@ class PartsController < ApplicationController
     downer_part.update_attributes(order: downer_part.order-1)
     part.update_attributes(order: part.order+1)
 
-    redirect_to :controller => 'part', :action => 'order', :id => part.roottype_id
-  end
-
-  def order
-    @parts = Part.where(roottype_id: params[:roottype_id])
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    redirect_to parts_order_path(:roottype_id => part.roottype_id)
   end
 
   private

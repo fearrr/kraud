@@ -1,3 +1,4 @@
+<% breadcrumb :roottypes_order %>
 <% roottypes = Roottype.all %>
 <% roottypes.each_with_index do |roottype, index| %>
     <p>
@@ -7,6 +8,10 @@
       <% if index != roottypes.count-1 %>
           <%= link_to '', roottypes_down_order_path(roottype.id), :class => "btn-down" %>
       <% end %>
-      <b><%= link_to roottype.title, parts_order_path(roottype_id: roottype.id) %></b>
+      <% if roottype.parts.count > 0 %>
+          <b><%= link_to roottype.title, parts_order_path(roottype_id: roottype.id) %></b>
+      <% else %>
+          <b><%= roottype.title %></b>
+      <% end %>
     </p>
 <% end %>

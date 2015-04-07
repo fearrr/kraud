@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   get 'items/:id/update_types' => 'items#update_types'
   get 'items/:id/update_parts' => 'types#update_parts'
 
-  get '*/roottypes_order' => 'roottypes#order', as: 'roottypes_order'
-  get '*/parts_order' => 'parts#order', as: 'parts_order'
-  get '*/types_order' => 'types#order', as: 'types_order'
-  get '*/items_order' => 'items#order', as: 'items_order'
+  get 'roottypes_order' => 'roottypes#order', as: 'roottypes_order'
+  get 'parts_order' => 'parts#order', as: 'parts_order'
+  get 'types_order' => 'types#order', as: 'types_order'
+  get 'items_order' => 'items#order', as: 'items_order'
 
   get 'roottypes/:id/up_order' => 'roottypes#up_order', as: 'roottypes_up_order'
   get 'roottypes/:id/down_order' => 'roottypes#down_order', as: 'roottypes_down_order'

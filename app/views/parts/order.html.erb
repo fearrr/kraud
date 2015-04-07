@@ -1,3 +1,4 @@
+<% breadcrumb :parts_order, @roottype %>
 <% @parts.each_with_index do |part, index| %>
     <p>
       <% if index != 0 %>
@@ -6,6 +7,10 @@
       <% if index != @parts.count-1 %>
           <%= link_to '', parts_down_order_path(part.id), :class => "btn-down" %>
       <% end %>
-      <b><%= link_to part.title, part_path(part.id) %></b>
+      <% if part.types.count > 0 %>
+          <b><%= link_to part.title, types_order_path(part_id: part.id) %></b>
+      <% else %>
+          <b><%= part.title %></b>
+      <% end %>
     </p>
 <% end %>

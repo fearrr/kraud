@@ -1,6 +1,15 @@
 class TypesController < ApplicationController
 # encoding: UTF-8
-  before_action :logged_in_admin, only: [:edit, :update, :new]
+  before_action :logged_in_admin, only: [:edit, :update, :new, :up_order, :down_order, :order]
+
+  def order
+    @part = Part.find(params[:part_id])
+    @types = Type.where(part_id: params[:part_id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def destroy
     @type = Type.find(params[:id])
@@ -72,7 +81,7 @@ class TypesController < ApplicationController
     upper_type.update_attributes(order: upper_type.order+1)
     type.update_attributes(order: type.order-1)
 
-    render 'parts/index'
+    redirect_to types_order_path(:part_id => type.part_id)
   end
 
   def down_order
@@ -82,12 +91,33 @@ class TypesController < ApplicationController
     downer_type.update_attributes(order: downer_type.order-1)
     type.update_attributes(order: type.order+1)
 
-    render 'parts/index'
+    redirect_to types_order_path(:part_id => type.part_id)
   end
 end
 
 def index
 end
+
+def up_order
+  type = Type.find(params[:id])
+
+  upper_type = Type.where(order: type.order-1, part_id: type.part_id).first
+  upper_type.update_attributes(order: upper_type.order+1)
+  type.update_attributes(order: type.order-1)
+
+  redirect_to types_order_path, :id => type.part_id
+end
+
+def down_order
+  type = Type.find(params[:id])
+
+  upper_type = Type.where(order: type.order+1, part_id: type.part_id).first
+  upper_type.update_attributes(order: upper_type.order-1)
+  type.update_attributes(order: type.order+1)
+
+  redirect_to types_order_path, :id => type.part_id
+end
+
 
 private
 def types_params

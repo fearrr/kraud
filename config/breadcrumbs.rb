@@ -72,7 +72,6 @@ crumb :edit_contact do
 end
 
 
-
 # Catalog main
 crumb :catalog do
   link "Каталог", parts_path
@@ -167,7 +166,6 @@ crumb :edit_admin do
 end
 
 
-
 # Slider
 crumb :sliders do
   link "Управление сладером", sliders_path
@@ -196,6 +194,26 @@ crumb :photogal do
 end
 crumb :new_photogal do
   link "Добавить изображения в галерею", new_photogal_path
+end
+
+crumb :roottypes_order do
+  link "Категории оборудования", roottypes_order_path
+  parent :catalog
+end
+
+crumb :parts_order do |roottype|
+  link roottype.title, parts_order_path(roottype_id: roottype.id)
+  parent :roottypes_order
+end
+
+crumb :types_order do |part|
+  link part.title, types_order_path(part_id: part.id)
+  parent :parts_order, part.roottype
+end
+
+crumb :items_order do |type|
+  link type.title, items_order_path(type_id: type.id)
+  parent :types_order, type.part
 end
 
 # If you want to split your breadcrumbs configuration over multiple files, you
