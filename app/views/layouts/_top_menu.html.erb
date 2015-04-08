@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default ">
   <ul class="nav navbar-nav top-menu">
     <li><%= link_to 'ГЛАВНАЯ', root_path %></li>
-    <li><%= link_to 'КАТАЛОГ &nbsp;<i class="fa fa-angle-down"></i>'.html_safe, parts_path, :class => "drop" %>
+    <li class="drop"><%= link_to 'КАТАЛОГ &nbsp;<i class="fa fa-angle-down"></i>'.html_safe, parts_path %>
       <div class="dropdown">
         <% roottypes = Roottype.all %>
         <% roottypes.each do |roottype| %>

@@ -11,6 +11,7 @@ $menu: #cf4f4f;
 $dropdown-menu: #d55e5e;
 $grey: #a1a1a1;
 $dark_grey: #8c8c8c;
+$table_rows: #eaeaea;
 
 /* Thumbs styles */
 $thumb_border_color: #e4e4e4;
@@ -62,111 +63,6 @@ hr {
 .form-control {
   margin: 0 0 1rem;
 }
-
-.btn {
-  margin-top: 1rem;
-}
-
-.btn-danger::after {
-  font-family: FontAwesome;
-  content: " \f014";
-  padding-left: 0.5rem;
-}
-
-.btn-delete::before {
-  font-family: FontAwesome;
-  content: " \f014";
-  color: $red;
-  text-decoration: none;
-}
-
-.btn-delete:hover{
-  text-decoration: none;
-}
-
-.btn-logout::after {
-  font-family: FontAwesome;
-  content: " \f08b";
-  padding-left: 0.5rem;
-}
-
-.btn-image::after {
-  font-family: FontAwesome;
-  content: " \f1c5";
-  padding-left: 0.5rem;
-}
-
-.btn-save::after {
-  font-family: FontAwesome;
-  content: " \f0c7";
-  padding-left: 0.5rem;
-}
-
-.btn-upload::after {
-  font-family: FontAwesome;
-  content: " \f093";
-  padding-left: 0.5rem;
-}
-
-.btn-item::after {
-  font-family: FontAwesome;
-  content: " \f016";
-  padding-left: 0.5rem;
-}
-
-.btn-part::after {
-  font-family: FontAwesome;
-  content: " \f114";
-  padding-left: 0.5rem;
-}
-
-.btn-type::after {
-  font-family: FontAwesome;
-  content: " \f115";
-  padding-left: 0.5rem;
-}
-
-.btn-add::after {
-  font-family: FontAwesome;
-  content: "\f067";
-  padding-left: 0.5rem;
-  text-decoration: none;
-}
-
-.btn-edit::after {
-  font-family: FontAwesome;
-  content: " \f044";
-  padding-left: 0.5rem;
-  text-decoration: none;
-  color: darkblue;
-}
-
-.btn-edit:hover{
-  text-decoration: none;
-}
-
-.btn-up::after {
-  font-family: FontAwesome;
-  content: "\f0de";
-  padding-left: 0.5rem;
-  text-decoration: none;
-}
-
-.btn-up:hover{
-  text-decoration: none;
-}
-
-.btn-down::after {
-  font-family: FontAwesome;
-  content: "\f0dd";
-  padding-left: 0.5rem;
-  text-decoration: none;
-}
-
-.btn-down:hover{
-  text-decoration: none;
-}
-
 
 .btn-input {
   font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -322,133 +218,6 @@ header {
       }
     }
   }
-
-  //  форма обратного вызова
-  .modalDialog {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 99999;
-    opacity: 0;
-    -webkit-transition: opacity 400ms ease-in;
-    -moz-transition: opacity 400ms ease-in;
-    transition: opacity 400ms ease-in;
-    pointer-events: none;
-    h1, h3 {
-      color: #d4d4d4;
-      margin: 0;
-      font-weight: lighter;
-    }
-    h1 {
-      padding-top: 2rem;
-      font-size: 3.5rem;
-    }
-    h3 {
-      font-size: 2rem;
-      padding-top: 0;
-      padding-bottom: 2rem;
-    }
-    .close {
-      color: #fff;
-      opacity: 1;
-      position: absolute;
-      right: 2%;
-      text-align: center;
-      top: 10px;
-      text-decoration: none;
-      font-weight: lighter;
-      font-size: 24px;
-    }
-    .col-md-6 {
-      text-align: center;
-      width: 55%;
-      left: 50%;
-      margin-left: -25%;
-      input {
-        padding: 1rem;
-        margin-top: 2rem;
-        color: #333333;
-        font-size: 2rem;
-      }
-      input[type=submit] {
-        padding: 1rem;
-        background: rgba(200, 51, 50, 0.98);
-        color: #fff;
-        border: 0;
-        -webkit-border-radius: 6px;
-        -moz-border-radius: 6px;
-        border-radius: 6px;
-        -webkit-box-shadow: 0px 7px 0px 0px rgba(152, 28, 30, 0.98);
-        -moz-box-shadow: 0px 7px 0px 0px rgba(152, 28, 30, 0.98);
-        box-shadow: 0px 7px 0px 0px rgba(152, 28, 30, 0.98);
-      }
-      input[type=submit]:hover {
-        background: #c22124;
-      }
-    }
-    //    Отмена выноски у тултипа
-    .parsley-required:after, .parsley-type:after, .parsley-minlength:after, .parsley-pattern:after {
-      border: 0;
-    }
-
-  }
-  .modalDialog:target {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  @media screen and (min-width: 769px) {
-    .modalDialog {
-      //    Подсказки для формы обратного вызова
-      .parsley-required, .parsley-type, .parsley-minlength, .parsley-pattern {
-        position: relative;
-        margin-top: -15.8%;
-        right: -115%;
-        margin-bottom: -2.4%;
-        width: 40%;
-        text-align: left;
-        color: #fff;
-        background: transparent;
-        border: 0;
-      }
-    }
-    .modalDialog > div {
-      width: 50em;
-      height: 30em;
-      min-width: 200px;
-      min-height: 100px;
-      margin: 18em auto;
-      text-align: center;
-      position: relative;
-      border-radius: 10px;
-      background: rgba(27, 27, 27, 0.91);
-    }
-  }
-  @media screen and (max-width: 768px) {
-    .modalDialog > div {
-      margin: 0 auto;
-      padding-top: 5em;
-      width: 100%;
-      height: 100%;
-      min-width: 380px;
-      min-height: 100%;
-      position: static;
-      text-align: center;
-      background: rgba(27, 27, 27, 0.91);
-    }
-    .modalDialog {
-      //    Подсказки для формы обратного вызова
-      .parsley-required, .parsley-type, .parsley-minlength, .parsley-pattern {
-        position: relative;
-        width: 100%;
-        text-align: center;
-        color: #fff;
-        background: transparent;
-        border: 0;
-      }
-    }
-  }
 }
 
 // Верхнее меню
@@ -508,38 +277,46 @@ header {
       color: #333;
       content: " | ";
     }
+
+    //  Dropdown
+    .dropdown {
+      display: none;
+      position: absolute;
+      z-index: 999;
+      text-align: left;
+      background: rgba(207, 79, 79, 0.92);
+      width: 302%;
+      -webkit-box-shadow: 0px 3px 0px 0px rgba(152, 28, 30, 0.98);
+      -moz-box-shadow: 0px 2px 0px 0px rgba(152, 28, 30, 0.98);
+      box-shadow: 0px 2px 0px 0px rgba(152, 28, 30, 0.98);
+      -webkit-border-bottom-left-radius: 4px;
+      -moz-border-bottom-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -webkit-border-bottom-right-radius: 4px;
+      -moz-border-bottom-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      //    Сброс оформления ссылок для дропдауна
+      li a:hover, .active > a, .active > a:hover, .active > a:focus {
+        color: #fff;
+        background: transparent;
+      }
+      li a {
+        color: #fff;
+        background: transparent;
+        font-size: 1.6rem;
+      }
+      div ul {
+        padding: 0 1rem;
+        list-style-type: none;
+      }
+    }
+    // Скрытие дропдауна
+    li.drop:hover .dropdown {
+      display: block;
+    }
+
   }
-  //  Dropdown
-  .dropdown {
-    position: absolute;
-    z-index: 999999;
-    text-align: left;
-    background: rgba(207, 79, 79, 0.92);
-    width: 302%;
-    -webkit-box-shadow: 0px 3px 0px 0px rgba(152, 28, 30, 0.98);
-    -moz-box-shadow: 0px 2px 0px 0px rgba(152, 28, 30, 0.98);
-    box-shadow: 0px 2px 0px 0px rgba(152, 28, 30, 0.98);
-    -webkit-border-bottom-left-radius: 4px;
-    -moz-border-bottom-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    -webkit-border-bottom-right-radius: 4px;
-    -moz-border-bottom-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    //    Сброс оформления ссылок для дропдауна
-    li a:hover, .active > a, .active > a:hover, .active > a:focus {
-      color: #fff;
-      background: transparent;
-    }
-    li a {
-      color: #fff;
-      background: transparent;
-      font-size: 1.6rem;
-    }
-    div ul {
-      padding: 0 1rem;
-      list-style-type: none;
-    }
-  }
+
   //  Бордер сверху дропдауна не на всю ширину
   //  .dropdown:after {
   //    content: "";
@@ -571,7 +348,8 @@ header {
     padding: 0 1px;
     width: 100%;
   }
-  .bord:after {
+  .bord:before {
+    // Лишний бордер рисуется
     content: "";
     background: rgba(170, 29, 29, 0.76);
     position: absolute;
@@ -615,7 +393,7 @@ ul.bxslider {
 
 .bx-wrapper .bx-prev {
   opacity: 0.5;
-  z-index: 9999999;
+  z-index: 999;
   left: 10px;
   background: url(asset-path("bxslider/left.png")) no-repeat;
 }
@@ -623,7 +401,7 @@ ul.bxslider {
 .bx-wrapper .bx-next {
   opacity: 0.5;
   right: -5px;
-  z-index: 9999999;
+  z-index: 999;
   background: url(asset-path("bxslider/right.png")) no-repeat;
 }
 
@@ -634,7 +412,7 @@ ul.bxslider {
   width: 40px;
   height: 40px;
   text-indent: -9999px;
-  z-index: 9999999;
+  z-index: 999;
 }
 
 .bx-wrapper .bx-prev:hover {
@@ -835,7 +613,7 @@ div.preview-image {
   .on-main {
     margin-left: 0;
     font-size: 2rem;
-    a{
+    a {
       color: #555555;
     }
   }
@@ -1113,7 +891,7 @@ section {
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: #e0e0e0;
+  background-color: $table_rows;
 }
 
 // Галерея на странице материала
@@ -1124,7 +902,7 @@ section {
   height: 45px;
   cursor: pointer;
   position: absolute;
-  z-index: 9999;
+  z-index: 999;
   margin-top: -16px;
   opacity: 0.5;
   -webkit-transition: opacity 0.35s linear 0s;
@@ -1175,9 +953,9 @@ section {
   margin-left: -40px;
   margin-top: 5px;
   width: 158px;
-  background: #1b1b1b;
+  background: #3a3a3a;
   color: #fff;
-  border: 1px solid #1b1b1b;
+  border: 1px solid #3a3a3a;
   padding: 5px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -1195,7 +973,7 @@ section {
   left: -120px;
   width: 0;
   height: 0;
-  border-bottom: 8px solid #1b1b1b;
+  border-bottom: 8px solid #3a3a3a;
   border-right: 8px solid transparent;
   border-left: 8px solid transparent;
 }

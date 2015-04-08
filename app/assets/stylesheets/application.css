@@ -13,6 +13,9 @@
  *= require_self
  *= require bxslider
  *= require lightSlider
+ *= require component
  *= require bootstrap-datepicker
+ *= require modal
+ *= require admin
  *= require_tree .
  */

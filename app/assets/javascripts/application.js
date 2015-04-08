@@ -31,7 +31,7 @@ $(document).ready(function () {
         if (this.href == location.href) $(this).parent().addClass('active');
     });
     $('.dropdown').hover(function () {
-        $('.drop').parent().toggleClass('active');
+        $('.drop').toggleClass('active');
     });
 
     $('.datepicker').datepicker({

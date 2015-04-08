@@ -10,16 +10,4 @@ jQuery ->
     captions: true
   })
 
-#     ОПТИМИЗИРОВАТЬ --------------------------------
-  $(".dropdown").hide();
-  $('.drop').mouseover ->
-    $(".dropdown").show();
-  $('.dropdown').mouseover ->
-    $(this).show();
-  $('.drop').mouseleave ->
-    $(".dropdown").hide();
-  $('.dropdown').mouseleave ->
-    $(this).hide();
-#     ОПТИМИЗИРОВАТЬ --------------------------------
-
 
