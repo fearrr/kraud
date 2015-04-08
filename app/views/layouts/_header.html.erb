@@ -58,7 +58,7 @@
 
         <h2>Мы перезвоним Вам в течение получаса...</h2>
 
-        <div class=" callForm">
+        <div class="callForm">
           <%= form_for @body, :html => {"data-parsley-validate" => ''}, :url => url_for(:controller => 'callbacks', :action => 'fast_callback') do %>
               <%= text_field_tag(:name, '', 'required' => '', :placeholder => "ФИО", :class => 'form-control') %>
               <%= text_field_tag(:phone, '', 'required' => '', :placeholder => "Телефон", :class => 'form-control phone-format') %>
