@@ -55,6 +55,9 @@ class PartsController < ApplicationController
 
   def create
     @part = Part.new(parts_params)
+    parts = Part.where(roottype_id: @part.roottype_id)
+    last_order = parts.empty? ? 1 : parts.last.order + 1
+    @part.order = last_order
     if @part.save
       # Handle a successful save.
       flash[:success] = "Раздел добавлен"

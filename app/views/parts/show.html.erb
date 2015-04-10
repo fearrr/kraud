@@ -7,14 +7,16 @@
       <h3><%= @part.title %></h3>
 
       <div class="row row-centered">
-        <% if @types.first %>
-            <% @types.each do |type| %>
-                <%= render partial: "types/card", :locals => {:type => type} %>
-            <% end %>
-        <% else %>
-            Материалов нет
-            </div>
-        <% end %>
-        </ul>
+        <div class="masonry">
+          <% if @types.first %>
+              <% @types.each do |type| %>
+                  <%= render partial: "types/card", :locals => {:type => type} %>
+              <% end %>
+          <% else %>
+              Материалов нет
+          <% end %>
+        </div>
+      </div>
+    </ul>
   </div>
 </div>

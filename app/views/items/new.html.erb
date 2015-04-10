@@ -1,21 +1,23 @@
 <% breadcrumb :add_item %>
 <%= render 'shared/items_error_messages' %>
-<%= form_for @item, :html => { :multipart => true } do |f| %>
 
-    <%= f.label 'Тип оборудования' %>
-    <%= f.collection_select Roottype.all, :id, :title, {}, {:class => 'form-control', :id=>'roottype_select' } %>
-
-    <%= f.label 'Раздел' %>
-    <%= f.collection_select @parts, :id, :title, {}, {:class => 'form-control', :id=>'parts_select' } %>
-
+<%= form_tag do %>
+    <%= label_tag 'Тип оборудования' %>
+    <%= collection_select :roottype, :title, Roottype.all || [], :id, :title,
+                          {:selected => @item.type.nil? ? "" : @item.type.part.roottype_id}, {:class => 'form-control', :id => 'roottypes_select'} %>
+    <%= label_tag 'Раздел' %>
+    <%= collection_select :part_id, :title, @parts || [], :id, :title,
+                          {:selected => @item.type.nil? ? "" : @item.type.part_id}, {:class => 'form-control', :id => 'parts_select'} %>
+<% end %>
+<%= form_for @item, :html => {:multipart => true} do |f| %>
     <%= f.label :type_id, 'Подраздел' %>
-   <%= f.collection_select :type_id, @types, :id, :title, {}, {:class => 'form-control', :id=>'types_select' } %>
+    <%= f.collection_select :type_id, @types || [], :id, :title, {}, {:class => 'form-control', :id => 'types_select'} %>
 
     <%= f.label :title, 'Наименование' %>
     <%= f.text_field :title, class: 'form-control' %>
 
     <%= f.label :body, 'Текст материала' %>
-    <%= f.cktext_area :body, :class => 'form-control', :ckeditor => { :language => 'ru', :toolbar=>'mini' } %>
+    <%= f.cktext_area :body, :class => 'form-control', :ckeditor => {:language => 'ru', :toolbar => 'mini'} %>
 
 
     <%= f.label :metatitle, 'Title' %>
@@ -24,9 +26,10 @@
     <%= f.label :keywords, 'Keywords' %>
     <%= f.text_field :keywords, class: 'form-control' %>
 
-                <div class="file_upload">+<%= file_field_tag('item_attached_assets_asset', multiple: true, name: "item[attached_assets_attributes][][asset]") %> </div> <b>Загрузить изображения</b> (изображения отображатся в превью и галерее)  <br>
+    <div class="file_upload">+<%= file_field_tag('item_attached_assets_asset', multiple: true, name: "item[attached_assets_attributes][][asset]") %> </div>
+    <b>Загрузить изображения</b> (изображения отображатся в превью и галерее)  <br>
 
-                <%= f.hidden_field :public, :value => true %>
-                <%= f.submit "Добавить", class: "btn btn-primary" %>
+    <%= f.hidden_field :public, :value => true %>
+    <%= f.submit "Добавить", class: "btn btn-primary" %>
 
-                <% end %>
+<% end %>

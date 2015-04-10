@@ -1,21 +1,24 @@
-<% breadcrumb :type, @type, @part, @roottype%>
-<%=  render 'admins/toolbar' %>
+<% breadcrumb :type, @type, @part, @roottype %>
+<%= render 'admins/toolbar' %>
 <div class="row">
   <%= render 'parts/items_tree_menu' %>
   <div class="col-md-9 catalog">
     <h2><%= @type.title %></h2>
+
     <div class="row row-centered">
-      <ul>
-        <% if @items.first %>
-            <% @items.each do |item| %>
-                <%= render partial: "items/card", :locals => {:item => item} %>
-            <% end %>
-        <% else %>
-            <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
-              Материалов нет
-            </div>
-        <% end %>
-      </ul>
+      <div class="masonry">
+        <ul>
+          <% if @items.first %>
+              <% @items.each do |item| %>
+                  <%= render partial: "items/card", :locals => {:item => item} %>
+              <% end %>
+          <% else %>
+              <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
+                Материалов нет
+              </div>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

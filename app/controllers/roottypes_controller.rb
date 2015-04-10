@@ -12,6 +12,9 @@ class RoottypesController < ApplicationController
 
   def create
     @roottype = Roottype.new(roottype_params)
+    roottypes = Roottype.all
+    last_order = roottypes.empty? ? 1 : roottypes.last.order + 1
+    @roottype.order = last_order
     if @roottype.save
       # Handle a successful save.
       flash[:success] = "Категория добавлена"

@@ -15,7 +15,7 @@
             <% end %>
 
             <% types = Type.where(part_id: part.id) %>
-            <div class="row row-centered">
+            <div class="row row-centered masonry">
               <% if types.first %>
                   <% types.each do |type| %>
                       <%= render partial: "types/card", :locals => {:type => type} %>

@@ -7,30 +7,32 @@
 <div class="row">
   <%= render 'parts/items_tree_menu' %>
   <div class="col-md-9 catalog">
-          <% parts = @roottype.parts %>
-          <h2 class="on-main"><%= @roottype.title %></h2>
-          <ul>
-            <% parts.each do |part| %>
-                <% counter = 0 %>
-                <% part.types.each do |type| %>
-                    <% counter += type.items.where("public = ?", true).count %>
-                <% end %>
-                <% if !logged_in? && counter > 0 %>
-                    <li><h3><%= link_to "#{part.title}", part_path(part.id) %></h3></li>
-                <% elsif logged_in? %>
-                    <li><h3><%= link_to "#{part.title}", part_path(part.id) %></h3></li>
-                <% end %>
+    <% parts = @roottype.parts %>
+    <h2 class="on-main"><%= @roottype.title %></h2>
+    <ul>
+      <% parts.each do |part| %>
+          <% counter = 0 %>
+          <% part.types.each do |type| %>
+              <% counter += type.items.where("public = ?", true).count %>
+          <% end %>
+          <% if !logged_in? && counter > 0 %>
+              <li><h3><%= link_to "#{part.title}", part_path(part.id) %></h3></li>
+          <% elsif logged_in? %>
+              <li><h3><%= link_to "#{part.title}", part_path(part.id) %></h3></li>
+          <% end %>
 
-                <% types = Type.where(part_id: part.id) %>
-                <div class="row row-centered">
-                  <% if types.first %>
-                      <% types.each do |type| %>
-                          <%= render partial: "types/card", :locals => {:type => type} %>
-                      <% end %>
+          <% types = Type.where(part_id: part.id) %>
+          <div class="row row-centered">
+            <div class="masonry">
+              <% if types.first %>
+                  <% types.each do |type| %>
+                      <%= render partial: "types/card", :locals => {:type => type} %>
                   <% end %>
-                </div>
-            <% end %>
-          </ul>
-          <br>
+              <% end %>
+            </div>
+          </div>
+      <% end %>
+    </ul>
+    <br>
   </div>
 </div>

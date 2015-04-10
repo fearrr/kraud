@@ -17,5 +17,6 @@
  *= require bootstrap-datepicker
  *= require modal
  *= require admin
+ *= require blocks
  *= require_tree .
  */

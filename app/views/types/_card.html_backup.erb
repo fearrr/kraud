@@ -1,5 +1,5 @@
 <% if logged_in? %>
-    <div class="item">
+    <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
       <% @thumb = type.thumb_item_id != nil ? Item.find(type.thumb_item_id) : type.items.first %>
       <% image = image_tag(@thumb.attached_assets.first.asset.url(:mini)) if @thumb && !@thumb.attached_assets.empty? && @thumb.attached_assets.first.asset %>
 
@@ -9,7 +9,7 @@
       <%= link_to "", type, :class => "btn-delete", method: :delete, data: {confirm: "Вы уверены?"} %>
     </div>
 <% elsif !logged_in? && type.items.where("public = ?", true).count > 0 %>
-    <div class="item">
+    <div class="col-md-2 col-sm-2 col-xs-2 col-fixed col-centered">
       <% @thumb = type.thumb_item_id != nil ? Item.find(type.thumb_item_id) : type.items.first %>
       <% image = image_tag(@thumb.attached_assets.first.asset.url(:mini)) if @thumb && !@thumb.attached_assets.empty? && @thumb.attached_assets.first.asset %>
 

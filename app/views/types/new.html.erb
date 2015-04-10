@@ -1,13 +1,15 @@
 <% breadcrumb :add_type %>
 <%= render 'shared/types_error_messages' %>
 <div class="col-md-4">
+  <%= form_tag do %>
+      <%= label_tag 'Тип оборудования' %>
+      <%= collection_select :roottype, :title, Roottype.all || [], :id, :title,
+                            {:selected => @type.part.nil? ? "" : @type.part.roottype_id}, {:class => 'form-control', :id => 'roottypes_select'} %>
+  <% end %>
   <%= form_for(@type) do |f| %>
-
-      <%= f.label 'Тип оборудования' %>
-      <%= f.collection_select @type.part.roottype_id, Roottype.all, :id, :title, {}, {:class => 'form-control', :id=>'roottype_select' } %>
-
       <%= f.label :part_id, 'Раздел' %>
-      <%= f.collection_select :part_id, @parts, :id, :title, {}, {:class => 'form-control', :id=>'parts_select' } %>
+      <%= f.collection_select :part_id, @parts || [], :id, :title,
+                              {:selected => @type.part_id}, {:class => 'form-control', :id => 'parts_select'} %>
 
       <%= f.label :title, 'Наименование' %>
       <%= f.text_field :title, class: 'form-control' %>

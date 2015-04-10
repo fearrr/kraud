@@ -22,6 +22,12 @@ html, body {
   min-width: 780px;
   background-color: #555555;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  a {
+    color: #555555;
+  }
+  a:hover{
+    color: #464646;
+  }
 }
 
 html, body, .container {
@@ -627,12 +633,7 @@ div.preview-image {
     a {
       color: #555555;
     }
-    img {
-      margin: 0 auto;
-      display: block;
-      padding-bottom: 1rem;
-      max-width: 220px;
-    }
+
   }
   li {
     list-style-type: none;

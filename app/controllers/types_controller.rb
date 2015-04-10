@@ -20,6 +20,7 @@ class TypesController < ApplicationController
 
   def update_parts
     @parts = Roottype.find(params[:roottype]).parts
+    @types = @parts.first.types
     respond_to do |format|
       format.js
     end
@@ -65,6 +66,9 @@ class TypesController < ApplicationController
 
   def create
     @type = Type.new(types_params)
+    types = Type.where(part_id: @type.part_id)
+    last_order = types.empty? ? 1 : types.last.order + 1
+    @type.order = last_order
     if @type.save
       # Handle a successful save.
       flash[:success] = "Подраздел добавлен"

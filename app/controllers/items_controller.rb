@@ -50,6 +50,9 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(items_params)
+    items = Item.where(type_id: @item.type_id)
+    last_order = items.empty? ? 1 : items.last.order + 1
+    @item.order = last_order
     if @item.save
       # Handle a successful save.
       flash[:success] = "Материал добавлен"
