@@ -39,7 +39,7 @@ $(document).ready(function () {
     });
 
     $('.phone-format').formatter({
-        'pattern': '+{{9}} ({{999}}) {{999}}-{{9999}}',
+        'pattern': '+{{9}} ({{999}}) {{999}}-{{9999}}'
     });
 
     var slider = $("#lightSlider").lightSlider({

@@ -1,31 +1,38 @@
 //  форма обратного вызова
 .md-content {
   h1 {
-    color: #afafaf;
+    color: #e3e3e3;
+    font-size: 3rem;
   }
   h2 {
-    color: #909090;
+    color: #d8d8d8;
+    font-size: 1.8rem;
   }
   input {
     padding: 0.5rem;
     margin: 0 auto;
     color: #333333;
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   input[type=submit] {
-    padding: 1rem;
     background: rgba(200, 51, 50, 0.98);
     color: #fff;
     border: 0;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 3px;
+    font-size: 1.8rem;
+    padding: 1rem 2rem;
   }
   input[type=submit]:hover {
     background: #c22124;
   }
   #centredForm {
     text-align: center;
+  }
+
+  form {
+    padding: 2rem 5rem 3rem;
   }
 
   // Тултипы ошибок
