@@ -3,7 +3,7 @@
 <div class="col-md-4">
   <%= form_for(@asset) do |f| %>
       <%= label_tag 'Title' %>
-      <%= f.text_field :asset_file_name, class: "form-control" %>
+      <%= f.text_field :title, class: "form-control" %>
       <%= f.submit "Изменить", class: "btn btn-primary" %>
   <% end %>
 </div>
