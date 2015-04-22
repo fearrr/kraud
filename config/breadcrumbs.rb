@@ -196,6 +196,10 @@ crumb :new_photogal do
   link "Добавить изображения в галерею", new_photogal_path
 end
 
+crumb :edit_asset do
+  link "Редактировать фотографию", photogals_path
+end
+
 crumb :roottypes_order do
   link "Категории оборудования", roottypes_order_path
   parent :catalog

@@ -1,5 +1,5 @@
 <% breadcrumb :new_photogal %>
-<%= form_for @photogal, :html => { :multipart => true } do |f| %>
+<%= form_for @photogal, :html => {:multipart => true} do |f| %>
 
     <div class="file_upload">+<%= file_field_tag('photogal_photogal_assets_asset', multiple: true, name: "photogal[photogal_assets_attributes][][asset]") %> </div> <b>Загрузить изображения</b><br>
     <%= f.submit "Добавить", class: "btn btn-primary" %>

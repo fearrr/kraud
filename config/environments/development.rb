@@ -51,5 +51,5 @@ Rails.application.configure do
       :authentication => "plain",
       :enable_starttls_auto => true
   }
-  config.consider_all_requests_local = false
+  config.consider_all_requests_local = true
 end
