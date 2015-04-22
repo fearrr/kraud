@@ -12,7 +12,7 @@
             <% a.title ||=  a.asset_file_name.slice(0..(a.asset_file_name.index('.')-1)) %>
             <p> <%= link_to a.title, a.asset.url(:normal) %>
               <% if logged_in? %>
-                  <%= link_to '<span class="btn-delete fa-2x"></span>'.html_safe, destroy_photogal_asset_path(photogal.id, a.id), data: {confirm: 'Вы уверены?'} %>
+                  <%= link_to '<span class="btn-delete"></span>'.html_safe, destroy_photogal_asset_path(photogal.id, a.id), data: {confirm: 'Вы уверены?'} %>
                   <%= link_to "", edit_photogal_asset_path(a.id), :class => "btn-edit" %>
               <% end %>
             </p>
