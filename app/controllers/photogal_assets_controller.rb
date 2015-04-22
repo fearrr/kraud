@@ -1,6 +1,6 @@
 class PhotogalAssetsController < ApplicationController
   def create
-    PhotogalAsset.create(params)
+    PhotogalAsset.create(photogal_asset_params)
   end
 
   def edit
@@ -15,7 +15,7 @@ class PhotogalAssetsController < ApplicationController
 
   private
 
-  def params
+  def photogal_asset_params
     params.require(:photogal_asset).permit(:asset, :asset_file_name)
   end
 end
